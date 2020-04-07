@@ -1,0 +1,12 @@
+---
+engines:
+exclude_paths:
+  - 'DocFXProject/**'
+  - '.github/**'
+  - 'docs/**'
+  - 'license.md'
+  - 'license.txt'
+  - 'readme.md'
+  - '.gitignore'
+  - '.gitattributes'
+  - '.editorconfig'
