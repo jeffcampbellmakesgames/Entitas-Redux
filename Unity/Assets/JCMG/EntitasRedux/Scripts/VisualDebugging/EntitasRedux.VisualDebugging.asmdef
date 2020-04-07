@@ -1,0 +1,15 @@
+{
+    "name": "EntitasRedux.VisualDebugging",
+    "references": [
+        "GUID:53bc2da9556d30547913e5a8aa819794"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

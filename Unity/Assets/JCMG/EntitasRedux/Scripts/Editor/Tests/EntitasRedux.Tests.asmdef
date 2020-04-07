@@ -1,0 +1,22 @@
+{
+    "name": "EntitasRedux.Tests",
+    "references": [
+        "GUID:53bc2da9556d30547913e5a8aa819794",
+        "GUID:2ec9a25b1747caf479579431e37f8a49",
+        "GUID:96c1e86e6f7258c40b70bd786eadd826",
+        "GUID:374de4ee46a880a44a6778c15a0387b7",
+        "GUID:587d587de4accae4eb5d2dbb13dda11f",
+        "GUID:e27c5a73d7af115488fbcb097f6442da"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
