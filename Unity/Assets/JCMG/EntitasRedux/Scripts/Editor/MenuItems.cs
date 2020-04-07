@@ -1,14 +1,14 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace JCMG.RENAME_ME.Editor
+namespace JCMG.EntitasRedux.Editor
 {
 	/// <summary>
 	/// Menu items for this library
 	/// </summary>
 	internal static class MenuItems
 	{
-		[MenuItem("Tools/JCMG/RENAME_ME/Submit bug or feature request")]
+		[MenuItem("Tools/JCMG/EntitasRedux/Submit bug or feature request")]
 		internal static void OpenURLToGitHubIssuesSection()
 		{
 			const string GITHUB_ISSUES_URL = "https://github.com/jeffcampbellmakesgames/unity-coc/issues";
@@ -16,7 +16,7 @@ namespace JCMG.RENAME_ME.Editor
 			Application.OpenURL(GITHUB_ISSUES_URL);
 		}
 
-		[MenuItem("Tools/JCMG/RENAME_ME/Donate to support development")]
+		[MenuItem("Tools/JCMG/EntitasRedux/Donate to support development")]
 		internal static void OpenURLToKoFi()
 		{
 			const string KOFI_URL = "https://ko-fi.com/stampyturtle";
@@ -24,7 +24,7 @@ namespace JCMG.RENAME_ME.Editor
 			Application.OpenURL(KOFI_URL);
 		}
 
-		[MenuItem("Tools/JCMG/RENAME_ME/About")]
+		[MenuItem("Tools/JCMG/EntitasRedux/About")]
 		internal static void OpenAboutModalDialog()
 		{
 			AboutWindow.View();

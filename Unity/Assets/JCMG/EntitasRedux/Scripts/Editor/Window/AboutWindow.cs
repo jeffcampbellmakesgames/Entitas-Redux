@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace JCMG.RENAME_ME.Editor
+namespace JCMG.EntitasRedux.Editor
 {
 	/// <summary>
 	/// A window that shows information about the library and its contributors.

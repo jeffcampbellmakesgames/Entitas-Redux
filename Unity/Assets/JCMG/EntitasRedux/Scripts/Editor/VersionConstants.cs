@@ -1,4 +1,4 @@
-﻿namespace JCMG.RENAME_ME.Editor
+﻿namespace JCMG.EntitasRedux.Editor
 {
 	/// <summary>
 	/// Version info for this library.

@@ -1,0 +1,17 @@
+{
+    "name": "EntitasRedux.Editor",
+    "references": [
+        "GUID:fa46152577deefd4baf312ca2a6668b7"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
