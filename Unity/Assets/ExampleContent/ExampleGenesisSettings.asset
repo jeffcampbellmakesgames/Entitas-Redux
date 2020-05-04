@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb860b8a549c1844aa5184fb9c7db5d1, type: 3}
+  m_Name: ExampleGenesisSettings
+  m_EditorClassIdentifier: 
+  _keyValuePairs:
+  - key: Genesis.DoUseWhiteListedAssemblies
+    value: true
+  - key: Genesis.WhiteListedAssemblies
+    value: Assembly-CSharp
+  - key: Genesis.SearchPaths
+    value: Library\ScriptAssemblies
+  - key: Genesis.Plugins
+    value: EntitasRedux.Blueprints.Editor.Plugins, EntitasRedux.Editor.Plugins, EntitasRedux.VisualDebugging.Editor.Plugins,
+      Genesis.Editor.Plugins
+  - key: Genesis.PreProcessors
+    value: JCMG.Genesis.Editor.Plugins.WarnIfCompilingPreProcessor
+  - key: Genesis.DataProviders
+    value: JCMG.EntitasRedux.Blueprints.Editor.Plugins.BlueprintDataProvider, JCMG.EntitasRedux.Editor.Plugins.ComponentDataProvider,
+      JCMG.EntitasRedux.Editor.Plugins.ContextDataProvider, JCMG.EntitasRedux.Editor.Plugins.EntityIndexDataProvider,
+      JCMG.Genesis.Editor.Plugins.ScriptableFactoryDataProvider
+  - key: Genesis.CodeGenerators
+    value: JCMG.EntitasRedux.Blueprints.Editor.Plugins.BlueprintsGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentContextApiGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.ComponentEntityApiGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentEntityApiInterfaceGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.ComponentGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentLookupGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.ComponentMatcherApiGenerator, JCMG.EntitasRedux.Editor.Plugins.ContextAttributeGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.ContextGenerator, JCMG.EntitasRedux.Editor.Plugins.ContextMatcherGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.ContextsGenerator, JCMG.EntitasRedux.Editor.Plugins.EntityGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.EntityIndexGenerator, JCMG.EntitasRedux.Editor.Plugins.EventEntityApiGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.EventListenerComponentGenerator, JCMG.EntitasRedux.Editor.Plugins.EventListenerInterfaceGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.EventSystemGenerator, JCMG.EntitasRedux.Editor.Plugins.EventSystemsGenerator,
+      JCMG.EntitasRedux.VisualDebugging.Editor.Plugins.ContextObserverGenerator,
+      JCMG.EntitasRedux.VisualDebugging.Editor.Plugins.FeatureClassGenerator, JCMG.Genesis.Editor.Plugins.ScriptableFactoryCodeGenerator
+  - key: Genesis.PostProcessors
+    value: JCMG.Genesis.Editor.Plugins.AddFileHeaderPostProcessor, JCMG.Genesis.Editor.Plugins.CleanTargetDirectoryPostProcessor,
+      JCMG.Genesis.Editor.Plugins.MergeFilesPostProcessor, JCMG.Genesis.Editor.Plugins.NewLinePostProcessor,
+      JCMG.Genesis.Editor.Plugins.WriteToDiskPostProcessor, JCMG.Genesis.Editor.Plugins.DebugLogPostProcessor
+  - key: Genesis.LineEndings
+    value: Unix
+  - key: Genesis.TargetDirectory
+    value: Assets/ExampleContent/Generated
+  - key: EntitasRedux.VisualDebugging.SystemWarningThreshold
+    value: 5
+  - key: EntitasRedux.VisualDebugging.DefaultInstanceCreatorFolderPath
+    value: Assets/Editor/DefaultInstanceCreator
+  - key: EntitasRedux.VisualDebugging.TypeDrawerFolderPath
+    value: Assets/Editor/TypeDrawer
+  - key: EntitasRedux.CodeGeneration.Plugins.Contexts
+    value: Example, VisualDebug
+  - key: EntitasRedux.CodeGeneration.Plugins.IgnoreNamespaces
+    value: true

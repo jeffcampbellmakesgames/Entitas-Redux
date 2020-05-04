@@ -1,0 +1,61 @@
+/*
+
+MIT License
+
+Copyright (c) 2020 Jeff Campbell
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+*/
+
+namespace JCMG.EntitasRedux.Migration.Editor
+{
+	internal sealed class M0360_1 : IMigration
+	{
+		public string Version
+		{
+			get { return "0.36.0-1"; }
+		}
+
+		public string WorkingDirectory
+		{
+			get { return "project root"; }
+		}
+
+		public string Description
+		{
+			get { return "Updates Entitas.properties to use renamed keys"; }
+		}
+
+		public MigrationFile[] Migrate(string path)
+		{
+			var properties = MigrationUtils.GetFiles(path, "Entitas.properties");
+
+			for (var i = 0; i < properties.Length; i++)
+			{
+				var file = properties[i];
+
+				// Entitas.CodeGenerator.Pools = Input,Core,Score
+
+				file.fileContent = file.fileContent.Replace("Entitas.CodeGenerator.Pools", "Entitas.CodeGenerator.Contexts");
+			}
+
+			return properties;
+		}
+	}
+}
