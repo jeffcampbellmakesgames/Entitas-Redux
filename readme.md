@@ -9,6 +9,10 @@
 ## About
 Entitas Redux is a reworked version of [Entitas](https://github.com/sschmid/Entitas-CSharp) with a sole focus on Unity. For more background on this project, see [here](BACKGROUND.md) for more information.
 
+## Requirements
+* **Min Unity Version**: 2019.1
+* **Scripting Runtime**: .Net 4.X
+
 ## Installing Entitas Redux
 Using this library in your project can be done in three ways:
 
