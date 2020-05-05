@@ -1,0 +1,15 @@
+{
+    "name": "EntitasRedux",
+    "references": [
+        "GUID:1c40f02dc29efdc4c902cd41c03f76c1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
