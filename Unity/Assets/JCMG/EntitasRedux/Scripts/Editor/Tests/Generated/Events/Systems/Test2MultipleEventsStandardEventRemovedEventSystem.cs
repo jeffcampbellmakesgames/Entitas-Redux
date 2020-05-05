@@ -27,7 +27,7 @@ public sealed class Test2MultipleEventsStandardEventRemovedEventSystem : JCMG.En
 
     protected override void Execute(System.Collections.Generic.List<Test2Entity> entities) {
         foreach (var e in entities) {
-
+            
             _listenerBuffer.Clear();
             _listenerBuffer.AddRange(e.Test2MultipleEventsStandardEventRemovedListener.value);
             foreach (var listener in _listenerBuffer) {

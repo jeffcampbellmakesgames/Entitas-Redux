@@ -83,8 +83,6 @@ namespace EntitasRedux.Tests.Performance
 			Run<MatcherEquals>();
 			Run<MatcherGetHashCode>();
 
-			Run<ContextCreateBlueprint>();
-
 			Run<NewInstanceT>();
 			Run<NewInstanceActivator>();
 

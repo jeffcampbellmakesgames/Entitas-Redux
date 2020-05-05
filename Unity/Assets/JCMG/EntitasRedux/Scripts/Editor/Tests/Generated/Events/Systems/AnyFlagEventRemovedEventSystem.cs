@@ -31,7 +31,7 @@ public sealed class AnyFlagEventRemovedEventSystem : JCMG.EntitasRedux.ReactiveS
 
     protected override void Execute(System.Collections.Generic.List<TestEntity> entities) {
         foreach (var e in entities) {
-
+            
             foreach (var listenerEntity in _listeners.GetEntities(_entityBuffer)) {
                 _listenerBuffer.Clear();
                 _listenerBuffer.AddRange(listenerEntity.AnyFlagEventRemovedListener.value);
