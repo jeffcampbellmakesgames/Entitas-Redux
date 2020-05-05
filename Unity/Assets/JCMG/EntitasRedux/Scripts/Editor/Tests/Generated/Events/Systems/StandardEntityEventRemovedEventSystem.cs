@@ -27,7 +27,7 @@ public sealed class StandardEntityEventRemovedEventSystem : JCMG.EntitasRedux.Re
 
     protected override void Execute(System.Collections.Generic.List<TestEntity> entities) {
         foreach (var e in entities) {
-            
+
             _listenerBuffer.Clear();
             _listenerBuffer.AddRange(e.StandardEntityEventRemovedListener.value);
             foreach (var listener in _listenerBuffer) {

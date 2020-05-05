@@ -27,7 +27,7 @@ public sealed class FlagEntityEventEventSystem : JCMG.EntitasRedux.ReactiveSyste
 
     protected override void Execute(System.Collections.Generic.List<TestEntity> entities) {
         foreach (var e in entities) {
-            
+
             _listenerBuffer.Clear();
             _listenerBuffer.AddRange(e.FlagEntityEventListener.value);
             foreach (var listener in _listenerBuffer) {
