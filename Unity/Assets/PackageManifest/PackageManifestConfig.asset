@@ -17,7 +17,7 @@ MonoBehaviour:
   packageIgnorePaths:
   - Assets/JCMG/EntitasRedux/Scripts/Editor/Tests
   packageDestinationPath: ../../Entitas-Redux-Release
-  legacyPackageDestinationPath: 
+  legacyPackageDestinationPath: ../Builds
   packageName: com.jeffcampbellmakesgames.entitasredux
   displayName: JCMG Entitas Redux
   packageVersion: 1.0.0
