@@ -29,10 +29,7 @@ namespace JCMG.EntitasRedux.VisualDebugging
 {
 	public class DebugSystemsBehaviour : MonoBehaviour
 	{
-		public DebugSystems Systems
-		{
-			get { return _systems; }
-		}
+		public DebugSystems Systems => _systems;
 
 		private DebugSystems _systems;
 

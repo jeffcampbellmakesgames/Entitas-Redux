@@ -27,7 +27,7 @@ using UnityEngine;
 
 namespace JCMG.EntitasRedux.VisualDebugging
 {
-	public static class GameObjectDestroyExtension
+	internal static class GameObjectDestroyExtensions
 	{
 		public static void DestroyGameObject(this GameObject gameObject)
 		{

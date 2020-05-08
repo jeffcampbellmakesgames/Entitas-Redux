@@ -46,8 +46,9 @@ namespace JCMG.EntitasRedux.VisualDebugging
 			get
 			{
 				var total = 0;
-				foreach (var system in _initializeSystems)
+				for (var i = 0; i < _initializeSystems.Count; i++)
 				{
+					var system = _initializeSystems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalInitializeSystemsCount : 1;
 				}
 
@@ -60,8 +61,9 @@ namespace JCMG.EntitasRedux.VisualDebugging
 			get
 			{
 				var total = 0;
-				foreach (var system in _executeSystems)
+				for (var i = 0; i < _executeSystems.Count; i++)
 				{
+					var system = _executeSystems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalExecuteSystemsCount : 1;
 				}
 
@@ -74,8 +76,9 @@ namespace JCMG.EntitasRedux.VisualDebugging
 			get
 			{
 				var total = 0;
-				foreach (var system in _cleanupSystems)
+				for (var i = 0; i < _cleanupSystems.Count; i++)
 				{
+					var system = _cleanupSystems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalCleanupSystemsCount : 1;
 				}
 
@@ -88,8 +91,9 @@ namespace JCMG.EntitasRedux.VisualDebugging
 			get
 			{
 				var total = 0;
-				foreach (var system in _tearDownSystems)
+				for (var i = 0; i < _tearDownSystems.Count; i++)
 				{
+					var system = _tearDownSystems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalTearDownSystemsCount : 1;
 				}
 
@@ -102,8 +106,9 @@ namespace JCMG.EntitasRedux.VisualDebugging
 			get
 			{
 				var total = 0;
-				foreach (var system in _systems)
+				for (var i = 0; i < _systems.Count; i++)
 				{
+					var system = _systems[i];
 					total += system is DebugSystems debugSystems ? debugSystems.TotalSystemsCount : 1;
 				}
 
@@ -111,70 +116,31 @@ namespace JCMG.EntitasRedux.VisualDebugging
 			}
 		}
 
-		public int InitializeSystemsCount
-		{
-			get { return _initializeSystems.Count; }
-		}
+		public int InitializeSystemsCount => _initializeSystems.Count;
 
-		public int ExecuteSystemsCount
-		{
-			get { return _executeSystems.Count; }
-		}
+		public int ExecuteSystemsCount => _executeSystems.Count;
 
-		public int CleanupSystemsCount
-		{
-			get { return _cleanupSystems.Count; }
-		}
+		public int CleanupSystemsCount => _cleanupSystems.Count;
 
-		public int TearDownSystemsCount
-		{
-			get { return _tearDownSystems.Count; }
-		}
+		public int TearDownSystemsCount => _tearDownSystems.Count;
 
-		public string Name
-		{
-			get { return _name; }
-		}
+		public string Name => _name;
 
-		public GameObject GameObject
-		{
-			get { return _gameObject; }
-		}
+		public GameObject GameObject => _gameObject;
 
-		public SystemInfo SystemInfo
-		{
-			get { return _systemInfo; }
-		}
+		public SystemInfo SystemInfo => _systemInfo;
 
-		public double ExecuteDuration
-		{
-			get { return _executeDuration; }
-		}
+		public double ExecuteDuration => _executeDuration;
 
-		public double CleanupDuration
-		{
-			get { return _cleanupDuration; }
-		}
+		public double CleanupDuration => _cleanupDuration;
 
-		public SystemInfo[] InitializeSystemInfos
-		{
-			get { return _initializeSystemInfos.ToArray(); }
-		}
+		public SystemInfo[] InitializeSystemInfos => _initializeSystemInfos.ToArray();
 
-		public SystemInfo[] ExecuteSystemInfos
-		{
-			get { return _executeSystemInfos.ToArray(); }
-		}
+		public SystemInfo[] ExecuteSystemInfos => _executeSystemInfos.ToArray();
 
-		public SystemInfo[] CleanupSystemInfos
-		{
-			get { return _cleanupSystemInfos.ToArray(); }
-		}
+		public SystemInfo[] CleanupSystemInfos => _cleanupSystemInfos.ToArray();
 
-		public SystemInfo[] TearDownSystemInfos
-		{
-			get { return _tearDownSystemInfos.ToArray(); }
-		}
+		public SystemInfo[] TearDownSystemInfos => _tearDownSystemInfos.ToArray();
 
 		private double _cleanupDuration;
 		private List<SystemInfo> _cleanupSystemInfos;

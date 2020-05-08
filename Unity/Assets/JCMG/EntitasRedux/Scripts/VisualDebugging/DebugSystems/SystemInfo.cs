@@ -40,90 +40,42 @@ namespace JCMG.EntitasRedux.VisualDebugging
 
 	public class SystemInfo
 	{
-		public ISystem System
-		{
-			get { return _system; }
-		}
+		public ISystem System => _system;
 
-		public string SystemName
-		{
-			get { return _systemName; }
-		}
+		public string SystemName => _systemName;
 
-		public bool IsInitializeSystems
-		{
-			get { return (_interfaceFlags & SystemInterfaceFlags.InitializeSystem) == SystemInterfaceFlags.InitializeSystem; }
-		}
+		public bool IsInitializeSystems => (_interfaceFlags & SystemInterfaceFlags.InitializeSystem) == SystemInterfaceFlags.InitializeSystem;
 
-		public bool IsExecuteSystems
-		{
-			get { return (_interfaceFlags & SystemInterfaceFlags.ExecuteSystem) == SystemInterfaceFlags.ExecuteSystem; }
-		}
+		public bool IsExecuteSystems => (_interfaceFlags & SystemInterfaceFlags.ExecuteSystem) == SystemInterfaceFlags.ExecuteSystem;
 
-		public bool IsCleanupSystems
-		{
-			get { return (_interfaceFlags & SystemInterfaceFlags.CleanupSystem) == SystemInterfaceFlags.CleanupSystem; }
-		}
+		public bool IsCleanupSystems => (_interfaceFlags & SystemInterfaceFlags.CleanupSystem) == SystemInterfaceFlags.CleanupSystem;
 
-		public bool IsTearDownSystems
-		{
-			get { return (_interfaceFlags & SystemInterfaceFlags.TearDownSystem) == SystemInterfaceFlags.TearDownSystem; }
-		}
+		public bool IsTearDownSystems => (_interfaceFlags & SystemInterfaceFlags.TearDownSystem) == SystemInterfaceFlags.TearDownSystem;
 
-		public bool IsReactiveSystems
-		{
-			get { return (_interfaceFlags & SystemInterfaceFlags.ReactiveSystem) == SystemInterfaceFlags.ReactiveSystem; }
-		}
+		public bool IsReactiveSystems => (_interfaceFlags & SystemInterfaceFlags.ReactiveSystem) == SystemInterfaceFlags.ReactiveSystem;
 
 		public double InitializationDuration { get; set; }
 
-		public double AccumulatedExecutionDuration
-		{
-			get { return _accumulatedExecutionDuration; }
-		}
+		public double AccumulatedExecutionDuration => _accumulatedExecutionDuration;
 
-		public double MinExecutionDuration
-		{
-			get { return _minExecutionDuration; }
-		}
+		public double MinExecutionDuration => _minExecutionDuration;
 
-		public double MaxExecutionDuration
-		{
-			get { return _maxExecutionDuration; }
-		}
+		public double MaxExecutionDuration => _maxExecutionDuration;
 
-		public double AverageExecutionDuration
-		{
-			get { return _executionDurationsCount == 0 ? 0 : _accumulatedExecutionDuration / _executionDurationsCount; }
-		}
+		public double AverageExecutionDuration => _executionDurationsCount == 0 ? 0 : _accumulatedExecutionDuration / _executionDurationsCount;
 
-		public double AccumulatedCleanupDuration
-		{
-			get { return _accumulatedCleanupDuration; }
-		}
+		public double AccumulatedCleanupDuration => _accumulatedCleanupDuration;
 
-		public double MinCleanupDuration
-		{
-			get { return _minCleanupDuration; }
-		}
+		public double MinCleanupDuration => _minCleanupDuration;
 
-		public double MaxCleanupDuration
-		{
-			get { return _maxCleanupDuration; }
-		}
+		public double MaxCleanupDuration => _maxCleanupDuration;
 
-		public double AverageCleanupDuration
-		{
-			get { return _cleanupDurationsCount == 0 ? 0 : _accumulatedCleanupDuration / _cleanupDurationsCount; }
-		}
+		public double AverageCleanupDuration => _cleanupDurationsCount == 0 ? 0 : _accumulatedCleanupDuration / _cleanupDurationsCount;
 
 		public double CleanupDuration { get; set; }
 		public double TeardownDuration { get; set; }
 
-		public bool AreAllParentsActive
-		{
-			get { return parentSystemInfo == null || parentSystemInfo.isActive && parentSystemInfo.AreAllParentsActive; }
-		}
+		public bool AreAllParentsActive => parentSystemInfo == null || parentSystemInfo.isActive && parentSystemInfo.AreAllParentsActive;
 
 		private readonly SystemInterfaceFlags _interfaceFlags;
 
