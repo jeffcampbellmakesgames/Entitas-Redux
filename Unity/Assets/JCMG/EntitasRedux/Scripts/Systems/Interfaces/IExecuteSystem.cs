@@ -25,10 +25,15 @@ THE SOFTWARE.
 
 namespace JCMG.EntitasRedux
 {
-	/// Implement this interface if you want to create a system which should be
-	/// executed every frame.
+	/// <summary>
+	/// Implement this interface if you want to create a system which should be executed at an arbitrary user-decided
+	/// point.
+	/// </summary>
 	public interface IExecuteSystem : ISystem
 	{
+		/// <summary>
+		/// Executes logic.
+		/// </summary>
 		void Execute();
 	}
 }

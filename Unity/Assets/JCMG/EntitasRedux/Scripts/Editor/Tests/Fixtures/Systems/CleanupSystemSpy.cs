@@ -29,9 +29,9 @@ namespace EntitasRedux.Tests
 {
 	public class CleanupSystemSpy : ICleanupSystem {
 
-		public int didCleanup { get { return _didCleanup; } }
+		public int DidCleanup { get { return _didCleanup; } }
 
-		int _didCleanup;
+		private int _didCleanup;
 
 		public void Cleanup() {
 			_didCleanup += 1;

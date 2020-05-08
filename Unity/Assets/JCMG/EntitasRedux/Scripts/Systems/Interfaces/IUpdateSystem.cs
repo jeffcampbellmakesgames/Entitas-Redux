@@ -23,48 +23,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-using System;
-using System.Collections.Generic;
-using JCMG.EntitasRedux;
-
-namespace EntitasRedux.Tests
+namespace JCMG.EntitasRedux
 {
-	public class MultiReactiveSystemSpy : MultiReactiveSystem<IMyEntity, Contexts> {
-
-		public int DidExecute { get { return _didExecute; } }
-		public IEntity[] Entities { get { return _entities; } }
-
-		public Action<List<IMyEntity>> executeAction;
-
-		protected int _didExecute;
-		protected IEntity[] _entities;
-
-		public MultiReactiveSystemSpy(Contexts contexts) : base(contexts) {
-		}
-
-		protected override ICollector[] GetTrigger(Contexts contexts) {
-			return new ICollector[] {
-				contexts.Test.CreateCollector(TestMatcher.NameAge),
-				contexts.Test2.CreateCollector(Test2Matcher.NameAge)
-			};
-		}
-
-		protected override bool Filter(IMyEntity entity) {
-			return true;
-		}
-
-		protected override void Execute(List<IMyEntity> entities) {
-			_didExecute += 1;
-
-			if (entities != null) {
-				_entities = entities.ToArray();
-			} else {
-				_entities = null;
-			}
-
-			if (executeAction != null) {
-				executeAction(entities);
-			}
-		}
+	/// <summary>
+	/// Implement this interface if you want to create a system which should execute once per render frame.
+	/// </summary>
+	public interface IUpdateSystem : ISystem
+	{
+		/// <summary>
+		/// Executes logic per render frame.
+		/// </summary>
+		void Update();
 	}
 }

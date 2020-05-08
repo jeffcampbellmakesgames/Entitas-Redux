@@ -25,10 +25,14 @@ THE SOFTWARE.
 
 namespace JCMG.EntitasRedux
 {
-	/// Implement this interface if you want to create a system which should
-	/// tear down once in the end.
+	/// <summary>
+	/// Implement this interface if you want to create a system which should tear down once in the end.
+	/// </summary>
 	public interface ITearDownSystem : ISystem
 	{
+		/// <summary>
+		/// Performs any final teardown logic, such as releasing resources or flushing changes to disk.
+		/// </summary>
 		void TearDown();
 	}
 }

@@ -29,9 +29,9 @@ namespace EntitasRedux.Tests
 {
 	public class ExecuteSystemSpy : IExecuteSystem {
 
-		public int didExecute { get { return _didExecute; } }
+		public int DidExecute { get { return _didExecute; } }
 
-		int _didExecute;
+		private int _didExecute;
 
 		public void Execute() {
 			_didExecute += 1;
