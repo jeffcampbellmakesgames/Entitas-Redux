@@ -32,13 +32,13 @@ namespace EntitasRedux.Tests
 	internal sealed class DescribeSystems
 	{
 		private MyTestContext _ctx = null;
-		private JCMG.EntitasRedux.Systems _systems = null;
+		private Systems _systems = null;
 
 		[SetUp]
 		public void Setup()
 		{
 			_ctx = new MyTestContext();
-			_systems = new JCMG.EntitasRedux.Systems();
+			_systems = new Systems();
 		}
 
 		#region Fixtures
@@ -48,23 +48,47 @@ namespace EntitasRedux.Tests
 		{
 			var system = new InitializeSystemSpy();
 
-			Assert.AreEqual(0, system.didInitialize);
+			Assert.AreEqual(0, system.DidInitialize);
 
 			system.Initialize();
 
-			Assert.AreEqual(1, system.didInitialize);
+			Assert.AreEqual(1, system.DidInitialize);
 		}
 
 		[NUnit.Framework.Test]
 		public void ExecutesExecuteSystemSpy()
 		{
-			var system = new ExecuteSystemSpy();
+			var system = new UpdateSystemSpy();
 
-			Assert.AreEqual(0, system.didExecute);
+			Assert.AreEqual(0, system.DidExecute);
 
-			system.Execute();
+			system.Update();
 
-			Assert.AreEqual(1, system.didExecute);
+			Assert.AreEqual(1, system.DidExecute);
+		}
+
+		[NUnit.Framework.Test]
+		public void ExecutesFixedUpdateSystemSpy()
+		{
+			var system = new FixedUpdateSystemSpy();
+
+			Assert.AreEqual(0, system.DidExecute);
+
+			system.FixedUpdate();
+
+			Assert.AreEqual(1, system.DidExecute);
+		}
+
+		[NUnit.Framework.Test]
+		public void ExecutesLateUpdateSystemSpy()
+		{
+			var system = new LateUpdateSystemSpy();
+
+			Assert.AreEqual(0, system.DidExecute);
+
+			system.LateUpdate();
+
+			Assert.AreEqual(1, system.DidExecute);
 		}
 
 		[NUnit.Framework.Test]
@@ -72,11 +96,11 @@ namespace EntitasRedux.Tests
 		{
 			var system = new CleanupSystemSpy();
 
-			Assert.AreEqual(0, system.didCleanup);
+			Assert.AreEqual(0, system.DidCleanup);
 
 			system.Cleanup();
 
-			Assert.AreEqual(1, system.didCleanup);
+			Assert.AreEqual(1, system.DidCleanup);
 		}
 
 		[NUnit.Framework.Test]
@@ -84,11 +108,11 @@ namespace EntitasRedux.Tests
 		{
 			var system = new TearDownSystemSpy();
 
-			Assert.AreEqual(0, system.didTearDown);
+			Assert.AreEqual(0, system.DidTearDown);
 
 			system.TearDown();
 
-			Assert.AreEqual(1, system.didTearDown);
+			Assert.AreEqual(1, system.DidTearDown);
 		}
 
 		[NUnit.Framework.Test]
@@ -97,21 +121,21 @@ namespace EntitasRedux.Tests
 			var system = new ReactiveSystemSpy(_ctx.CreateCollector(Matcher<MyTestEntity>.AllOf(CID.ComponentA)));
 			_ctx.CreateEntity().AddComponentA();
 
-			Assert.AreEqual(0, system.didInitialize);
+			Assert.AreEqual(0, system.DidInitialize);
 			system.Initialize();
-			Assert.AreEqual(1, system.didInitialize);
+			Assert.AreEqual(1, system.DidInitialize);
 
-			Assert.AreEqual(0, system.didExecute);
+			Assert.AreEqual(0, system.DidExecute);
 			system.Execute();
-			Assert.AreEqual(1, system.didExecute);
+			Assert.AreEqual(1, system.DidExecute);
 
-			Assert.AreEqual(0, system.didCleanup);
+			Assert.AreEqual(0, system.DidCleanup);
 			system.Cleanup();
-			Assert.AreEqual(1, system.didCleanup);
+			Assert.AreEqual(1, system.DidCleanup);
 
-			Assert.AreEqual(0, system.didTearDown);
+			Assert.AreEqual(0, system.DidTearDown);
 			system.TearDown();
-			Assert.AreEqual(1, system.didTearDown);
+			Assert.AreEqual(1, system.DidTearDown);
 		}
 
 		[NUnit.Framework.Test]
@@ -121,7 +145,7 @@ namespace EntitasRedux.Tests
 
 			system.Execute();
 
-			Assert.AreEqual(1, system.entities.Length);
+			Assert.AreEqual(1, system.Entities.Length);
 		}
 
 		#endregion
@@ -141,17 +165,37 @@ namespace EntitasRedux.Tests
 			_systems.Add(system);
 			_systems.Initialize();
 
-			Assert.AreEqual(1, system.didInitialize);
+			Assert.AreEqual(1, system.DidInitialize);
 		}
 
 		[NUnit.Framework.Test]
 		public void SystemsExecutesIExecuteSystemSystem()
 		{
-			var system = new ExecuteSystemSpy();
+			var system = new UpdateSystemSpy();
 			_systems.Add(system);
-			_systems.Execute();
+			_systems.Update();
 
-			Assert.AreEqual(1, system.didExecute);
+			Assert.AreEqual(1, system.DidExecute);
+		}
+
+		[NUnit.Framework.Test]
+		public void SystemsExecutesIFixedUpdateSystemSystem()
+		{
+			var system = new FixedUpdateSystemSpy();
+			_systems.Add(system);
+			_systems.FixedUpdate();
+
+			Assert.AreEqual(1, system.DidExecute);
+		}
+
+		[NUnit.Framework.Test]
+		public void SystemsExecutesILateUpdateSystemSystem()
+		{
+			var system = new LateUpdateSystemSpy();
+			_systems.Add(system);
+			_systems.LateUpdate();
+
+			Assert.AreEqual(1, system.DidExecute);
 		}
 
 		[NUnit.Framework.Test]
@@ -162,7 +206,7 @@ namespace EntitasRedux.Tests
 			_ctx.CreateEntity().AddComponentA();
 			_systems.Execute();
 
-			Assert.AreEqual(1, system.didExecute);
+			Assert.AreEqual(1, system.DidExecute);
 		}
 
 		[NUnit.Framework.Test]
@@ -173,7 +217,7 @@ namespace EntitasRedux.Tests
 			_ctx.CreateEntity().AddComponentA();
 			_systems.Execute();
 
-			Assert.AreEqual(1, system.didExecute);
+			Assert.AreEqual(1, system.DidExecute);
 		}
 
 		[NUnit.Framework.Test]
@@ -183,7 +227,7 @@ namespace EntitasRedux.Tests
 			_systems.Add(system);
 			_systems.Cleanup();
 
-			Assert.AreEqual(1, system.didCleanup);
+			Assert.AreEqual(1, system.DidCleanup);
 		}
 
 		[NUnit.Framework.Test]
@@ -194,21 +238,21 @@ namespace EntitasRedux.Tests
 
 			_systems.Add(system);
 
-			Assert.AreEqual(0, system.didInitialize);
+			Assert.AreEqual(0, system.DidInitialize);
 			_systems.Initialize();
-			Assert.AreEqual(1, system.didInitialize);
+			Assert.AreEqual(1, system.DidInitialize);
 
-			Assert.AreEqual(0, system.didExecute);
+			Assert.AreEqual(0, system.DidExecute);
 			_systems.Execute();
-			Assert.AreEqual(1, system.didExecute);
+			Assert.AreEqual(1, system.DidExecute);
 
-			Assert.AreEqual(0, system.didCleanup);
+			Assert.AreEqual(0, system.DidCleanup);
 			_systems.Cleanup();
-			Assert.AreEqual(1, system.didCleanup);
+			Assert.AreEqual(1, system.DidCleanup);
 
-			Assert.AreEqual(0, system.didTearDown);
+			Assert.AreEqual(0, system.DidTearDown);
 			_systems.TearDown();
-			Assert.AreEqual(1, system.didTearDown);
+			Assert.AreEqual(1, system.DidTearDown);
 		}
 
 		[NUnit.Framework.Test]
@@ -218,22 +262,22 @@ namespace EntitasRedux.Tests
 
 			_systems.Add(system);
 
-			Assert.AreEqual(0, system.didInitialize);
+			Assert.AreEqual(0, system.DidInitialize);
 			_systems.Initialize();
-			Assert.AreEqual(1, system.didInitialize);
+			Assert.AreEqual(1, system.DidInitialize);
 
-			Assert.AreEqual(0, system.didExecute);
+			Assert.AreEqual(0, system.DidExecute);
 			_systems.Execute();
 			_systems.Execute();
-			Assert.AreEqual(1, system.didExecute);
+			Assert.AreEqual(1, system.DidExecute);
 
-			Assert.AreEqual(0, system.didCleanup);
+			Assert.AreEqual(0, system.DidCleanup);
 			_systems.Cleanup();
-			Assert.AreEqual(1, system.didCleanup);
+			Assert.AreEqual(1, system.DidCleanup);
 
-			Assert.AreEqual(0, system.didTearDown);
+			Assert.AreEqual(0, system.DidTearDown);
 			_systems.TearDown();
-			Assert.AreEqual(1, system.didTearDown);
+			Assert.AreEqual(1, system.DidTearDown);
 		}
 
 		[NUnit.Framework.Test]
@@ -243,25 +287,25 @@ namespace EntitasRedux.Tests
 
 			_systems.Add(system);
 
-			var parentSystems = new JCMG.EntitasRedux.Systems();
+			var parentSystems = new Systems();
 			parentSystems.Add(_systems);
 
-			Assert.AreEqual(0, system.didInitialize);
+			Assert.AreEqual(0, system.DidInitialize);
 			parentSystems.Initialize();
-			Assert.AreEqual(1, system.didInitialize);
+			Assert.AreEqual(1, system.DidInitialize);
 
-			Assert.AreEqual(0, system.didExecute);
+			Assert.AreEqual(0, system.DidExecute);
 			parentSystems.Execute();
 			parentSystems.Execute();
-			Assert.AreEqual(1, system.didExecute);
+			Assert.AreEqual(1, system.DidExecute);
 
-			Assert.AreEqual(0, system.didCleanup);
+			Assert.AreEqual(0, system.DidCleanup);
 			parentSystems.Cleanup();
-			Assert.AreEqual(1, system.didCleanup);
+			Assert.AreEqual(1, system.DidCleanup);
 
-			Assert.AreEqual(0, system.didTearDown);
+			Assert.AreEqual(0, system.DidTearDown);
 			parentSystems.TearDown();
-			Assert.AreEqual(1, system.didTearDown);
+			Assert.AreEqual(1, system.DidTearDown);
 
 		}
 
@@ -274,12 +318,12 @@ namespace EntitasRedux.Tests
 
 			_systems.Initialize();
 
-			Assert.AreEqual(1, system.didInitialize);
+			Assert.AreEqual(1, system.DidInitialize);
 
-			_systems.ClearReactiveSystems();
-			_systems.Execute();
+			_systems.Clear();
+			_systems.Update();
 
-			Assert.AreEqual(0, system.didExecute);
+			Assert.AreEqual(0, system.DidExecute);
 		}
 
 		[NUnit.Framework.Test]
@@ -288,17 +332,17 @@ namespace EntitasRedux.Tests
 			var system = CreateReactiveSystem(_ctx);
 			_systems.Add(system);
 
-			var parentSystems = new JCMG.EntitasRedux.Systems();
+			var parentSystems = new Systems();
 			parentSystems.Add(_systems);
 
 			parentSystems.Initialize();
 
-			Assert.AreEqual(1, system.didInitialize);
+			Assert.AreEqual(1, system.DidInitialize);
 
-			parentSystems.ClearReactiveSystems();
-			parentSystems.Execute();
+			parentSystems.Clear();
+			parentSystems.Update();
 
-			Assert.AreEqual(0, system.didExecute);
+			Assert.AreEqual(0, system.DidExecute);
 		}
 
 		[NUnit.Framework.Test]
@@ -310,12 +354,12 @@ namespace EntitasRedux.Tests
 
 			_systems.Initialize();
 
-			Assert.AreEqual(1, system.didInitialize);
+			Assert.AreEqual(1, system.DidInitialize);
 
-			_systems.DeactivateReactiveSystems();
-			_systems.Execute();
+			_systems.Deactivate();
+			_systems.Update();
 
-			Assert.AreEqual(0, system.didExecute);
+			Assert.AreEqual(0, system.DidExecute);
 		}
 
 		[NUnit.Framework.Test]
@@ -324,17 +368,17 @@ namespace EntitasRedux.Tests
 			var system = CreateReactiveSystem(_ctx);
 			_systems.Add(system);
 
-			var parentSystems = new JCMG.EntitasRedux.Systems();
+			var parentSystems = new Systems();
 			parentSystems.Add(_systems);
 
 			parentSystems.Initialize();
 
-			Assert.AreEqual(1, system.didInitialize);
+			Assert.AreEqual(1, system.DidInitialize);
 
-			parentSystems.DeactivateReactiveSystems();
-			parentSystems.Execute();
+			parentSystems.Deactivate();
+			parentSystems.Update();
 
-			Assert.AreEqual(0, system.didExecute);
+			Assert.AreEqual(0, system.DidExecute);
 		}
 
 		[NUnit.Framework.Test]
@@ -346,18 +390,18 @@ namespace EntitasRedux.Tests
 
 			_systems.Initialize();
 
-			Assert.AreEqual(1, system.didInitialize);
+			Assert.AreEqual(1, system.DidInitialize);
 
-			_systems.DeactivateReactiveSystems();
-			_systems.ActivateReactiveSystems();
+			_systems.Deactivate();
+			_systems.Activate();
 			_systems.Execute();
 
-			Assert.AreEqual(0, system.didExecute);
+			Assert.AreEqual(0, system.DidExecute);
 
 			_ctx.CreateEntity().AddComponentA();
 			_systems.Execute();
 
-			Assert.AreEqual(1, system.didExecute);
+			Assert.AreEqual(1, system.DidExecute);
 		}
 
 		[NUnit.Framework.Test]
@@ -366,23 +410,23 @@ namespace EntitasRedux.Tests
 			var system = CreateReactiveSystem(_ctx);
 			_systems.Add(system);
 
-			var parentSystems = new JCMG.EntitasRedux.Systems();
+			var parentSystems = new Systems();
 			parentSystems.Add(_systems);
 
 			parentSystems.Initialize();
 
-			Assert.AreEqual(1, system.didInitialize);
+			Assert.AreEqual(1, system.DidInitialize);
 
-			parentSystems.DeactivateReactiveSystems();
-			parentSystems.ActivateReactiveSystems();
-			parentSystems.Execute();
+			parentSystems.Deactivate();
+			parentSystems.Activate();
+			parentSystems.Update();
 
-			Assert.AreEqual(0, system.didExecute);
+			Assert.AreEqual(0, system.DidExecute);
 
 			_ctx.CreateEntity().AddComponentA();
 			_systems.Execute();
 
-			Assert.AreEqual(1, system.didExecute);
+			Assert.AreEqual(1, system.DidExecute);
 		}
 
 		#endregion

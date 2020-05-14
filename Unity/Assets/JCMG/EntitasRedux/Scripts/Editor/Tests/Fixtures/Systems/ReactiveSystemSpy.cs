@@ -30,20 +30,20 @@ using JCMG.EntitasRedux;
 namespace EntitasRedux.Tests
 {
 	public interface IReactiveSystemSpy {
-		int didInitialize { get; }
-		int didExecute { get; }
-		int didCleanup { get; }
-		int didTearDown { get; }
-		IEntity[] entities { get; }
+		int DidInitialize { get; }
+		int DidExecute { get; }
+		int DidCleanup { get; }
+		int DidTearDown { get; }
+		IEntity[] Entities { get; }
 	}
 
 	public class ReactiveSystemSpy : ReactiveSystem<MyTestEntity>, IReactiveSystemSpy, IInitializeSystem, ICleanupSystem, ITearDownSystem {
 
-		public int didInitialize { get { return _didInitialize; } }
-		public int didExecute { get { return _didExecute; } }
-		public int didCleanup { get { return _didCleanup; } }
-		public int didTearDown { get { return _didTearDown; } }
-		public IEntity[] entities { get { return _entities; } }
+		public int DidInitialize { get { return _didInitialize; } }
+		public int DidExecute { get { return _didExecute; } }
+		public int DidCleanup { get { return _didCleanup; } }
+		public int DidTearDown { get { return _didTearDown; } }
+		public IEntity[] Entities { get { return _entities; } }
 
 		public Action<List<MyTestEntity>> executeAction;
 
@@ -53,7 +53,7 @@ namespace EntitasRedux.Tests
 		protected int _didTearDown;
 		protected IEntity[] _entities;
 
-		readonly Func<MyTestEntity, bool> _filter;
+		private readonly Func<MyTestEntity, bool> _filter;
 
 		public ReactiveSystemSpy(ICollector<MyTestEntity> collector) : base(collector) {
 		}

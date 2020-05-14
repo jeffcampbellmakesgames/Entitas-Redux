@@ -35,14 +35,20 @@ namespace JCMG.EntitasRedux
 	/// you added them.
 	/// </summary>
 	public class Systems : IInitializeSystem,
-	                       IExecuteSystem,
+	                       IUpdateSystem,
+	                       IFixedUpdateSystem,
+						   ILateUpdateSystem,
+						   IReactiveSystem,
 	                       ICleanupSystem,
 	                       ITearDownSystem
 	{
-		protected readonly List<ICleanupSystem> _cleanupSystems;
-		protected readonly List<IExecuteSystem> _executeSystems;
+		protected readonly List<IFixedUpdateSystem> _fixedUpdateSystems;
+		protected readonly List<IUpdateSystem> _updateSystems;
+		protected readonly List<ILateUpdateSystem> _lateUpdateSystems;
+		protected readonly List<IReactiveSystem> _reactiveSystems;
 
 		protected readonly List<IInitializeSystem> _initializeSystems;
+		protected readonly List<ICleanupSystem> _cleanupSystems;
 		protected readonly List<ITearDownSystem> _tearDownSystems;
 
 		/// <summary>
@@ -50,14 +56,18 @@ namespace JCMG.EntitasRedux
 		/// </summary>
 		public Systems()
 		{
+			_fixedUpdateSystems = new List<IFixedUpdateSystem>();
+			_updateSystems = new List<IUpdateSystem>();
+			_lateUpdateSystems = new List<ILateUpdateSystem>();
+			_reactiveSystems = new List<IReactiveSystem>();
+
 			_initializeSystems = new List<IInitializeSystem>();
-			_executeSystems = new List<IExecuteSystem>();
 			_cleanupSystems = new List<ICleanupSystem>();
 			_tearDownSystems = new List<ITearDownSystem>();
 		}
 
 		/// <summary>
-		/// Adds the system instance to the systems list.
+		/// Adds the <see cref="ISystem"/> instance to the systems list.
 		/// </summary>
 		/// <param name="system"></param>
 		/// <returns></returns>
@@ -68,9 +78,24 @@ namespace JCMG.EntitasRedux
 				_initializeSystems.Add(initializeSystem);
 			}
 
-			if (system is IExecuteSystem executeSystem)
+			if (system is IFixedUpdateSystem fixedUpdateSystem)
 			{
-				_executeSystems.Add(executeSystem);
+				_fixedUpdateSystems.Add(fixedUpdateSystem);
+			}
+
+			if (system is IUpdateSystem updateSystem)
+			{
+				_updateSystems.Add(updateSystem);
+			}
+
+			if (system is ILateUpdateSystem lateUpdateSystem)
+			{
+				_lateUpdateSystems.Add(lateUpdateSystem);
+			}
+
+			if (system is IReactiveSystem reactiveSystem)
+			{
+				_reactiveSystems.Add(reactiveSystem);
 			}
 
 			if (system is ICleanupSystem cleanupSystem)
@@ -87,95 +112,96 @@ namespace JCMG.EntitasRedux
 		}
 
 		/// <summary>
-		/// Activates all ReactiveSystems in the systems list.
+		/// Activates all <see cref="IReactiveSystem"/> in the systems list.
 		/// </summary>
-		public void ActivateReactiveSystems()
+		public virtual void Activate()
 		{
-			for (var i = 0; i < _executeSystems.Count; i++)
+			for (var i = 0; i < _reactiveSystems.Count; i++)
 			{
-				var system = _executeSystems[i];
-				if (system is IReactiveSystem reactiveSystem)
-				{
-					reactiveSystem.Activate();
-				}
-
-				if (system is Systems nestedSystems)
-				{
-					nestedSystems.ActivateReactiveSystems();
-				}
+				var system = _reactiveSystems[i];
+				system.Activate();
 			}
 		}
 
 		/// <summary>
-		/// Deactivates all ReactiveSystems in the systems list.
-		/// This will also clear all ReactiveSystems.
-		/// This is useful when you want to soft-restart your application and
-		/// want to reuse your existing system instances.
+		/// <para>Deactivates all <see cref="IReactiveSystem"/> in the systems list. This will also clear all
+		/// <see cref="IReactiveSystem"/>s.</para>
+		///
+		/// <para>This is useful when you want to soft-restart your application and
+		/// want to reuse your existing system instances.</para>
 		/// </summary>
-		public void DeactivateReactiveSystems()
+		public virtual void Deactivate()
 		{
-			for (var i = 0; i < _executeSystems.Count; i++)
+			for (var i = 0; i < _reactiveSystems.Count; i++)
 			{
-				var system = _executeSystems[i];
-				if (system is IReactiveSystem reactiveSystem)
-				{
-					reactiveSystem.Deactivate();
-				}
-
-				if (system is Systems nestedSystems)
-				{
-					nestedSystems.DeactivateReactiveSystems();
-				}
+				var system = _reactiveSystems[i];
+				system.Deactivate();
 			}
 		}
 
 		/// <summary>
-		/// Clears all ReactiveSystems in the systems list.
+		/// Clears all <see cref="IReactiveSystem"/> in the systems list.
 		/// </summary>
-		public void ClearReactiveSystems()
+		public virtual void Clear()
 		{
-			for (var i = 0; i < _executeSystems.Count; i++)
+			for (var i = 0; i < _reactiveSystems.Count; i++)
 			{
-				var system = _executeSystems[i];
-				if (system is IReactiveSystem reactiveSystem)
-				{
-					reactiveSystem.Clear();
-				}
-
-				if (system is Systems nestedSystems)
-				{
-					nestedSystems.ClearReactiveSystems();
-				}
+				var system = _reactiveSystems[i];
+				system.Clear();
 			}
 		}
 
 		/// <summary>
-		/// Calls Cleanup() on all ICleanupSystem and other
-		/// nested Systems instances in the order you added them.
-		/// </summary>
-		public virtual void Cleanup()
-		{
-			for (var i = 0; i < _cleanupSystems.Count; i++)
-			{
-				_cleanupSystems[i].Cleanup();
-			}
-		}
-
-		/// <summary>
-		/// Calls Execute() on all IExecuteSystem and other
-		/// nested Systems instances in the order you added them.
+		/// Executes all <see cref="IReactiveSystem"/> in the systems list.
 		/// </summary>
 		public virtual void Execute()
 		{
-			for (var i = 0; i < _executeSystems.Count; i++)
+			for (var i = 0; i < _reactiveSystems.Count; i++)
 			{
-				_executeSystems[i].Execute();
+				var system = _reactiveSystems[i];
+				system.Execute();
 			}
 		}
 
 		/// <summary>
-		/// Calls Initialize() on all IInitializeSystem and other
-		/// nested Systems instances in the order you added them.
+		/// Calls Update() on all <see cref="IUpdateSystem"/> and other nested Systems instances in the order you
+		/// added them.
+		/// </summary>
+		public virtual void Update()
+		{
+			for (var i = 0; i < _updateSystems.Count; i++)
+			{
+				_updateSystems[i].Update();
+			}
+		}
+
+		/// <summary>
+		/// Calls FixedUpdate() on all <see cref="IFixedUpdateSystem"/> and other nested systems instances in the order
+		/// you added them.
+		/// </summary>
+		public virtual void FixedUpdate()
+		{
+			for (var i = 0; i < _fixedUpdateSystems.Count; i++)
+			{
+				_fixedUpdateSystems[i].FixedUpdate();
+			}
+		}
+
+		/// <summary>
+		/// Calls LateUpdate() on all <see cref="ILateUpdateSystem"/> and other nested systems instances in the order
+		/// you added them.
+		/// </summary>
+		public virtual void LateUpdate()
+		{
+			for (var i = 0; i < _lateUpdateSystems.Count; i++)
+			{
+				_lateUpdateSystems[i].LateUpdate();
+			}
+		}
+
+		/// <summary>
+		/// Calls Initialize() on all <see cref="IInitializeSystem"/> and other nested systems instances in the order
+		/// you added them.
 		/// </summary>
 		public virtual void Initialize()
 		{
@@ -186,8 +212,20 @@ namespace JCMG.EntitasRedux
 		}
 
 		/// <summary>
-		/// Calls TearDown() on all ITearDownSystem  and other
-		/// nested Systems instances in the order you added them.
+		/// Calls Cleanup() on all <see cref="ICleanupSystem"/> and other nested systems instances in the order you
+		/// added them.
+		/// </summary>
+		public virtual void Cleanup()
+		{
+			for (var i = 0; i < _cleanupSystems.Count; i++)
+			{
+				_cleanupSystems[i].Cleanup();
+			}
+		}
+
+		/// <summary>
+		/// Calls Teardown() on all <see cref="ITearDownSystem"/> and other nested systems instances in the order you
+		/// added them.
 		/// </summary>
 		public virtual void TearDown()
 		{

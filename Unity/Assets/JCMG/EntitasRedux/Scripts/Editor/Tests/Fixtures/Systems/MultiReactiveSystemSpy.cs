@@ -31,8 +31,8 @@ namespace EntitasRedux.Tests
 {
 	public class MultiReactiveSystemSpy : MultiReactiveSystem<IMyEntity, Contexts> {
 
-		public int didExecute { get { return _didExecute; } }
-		public IEntity[] entities { get { return _entities; } }
+		public int DidExecute { get { return _didExecute; } }
+		public IEntity[] Entities { get { return _entities; } }
 
 		public Action<List<IMyEntity>> executeAction;
 

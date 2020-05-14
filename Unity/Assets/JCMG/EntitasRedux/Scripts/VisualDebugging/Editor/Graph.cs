@@ -32,15 +32,14 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 {
 	internal sealed class Graph
 	{
-		public float anchorRadius = 1f;
-		public string axisFormat = "{0:0.0}";
-		public float axisRounding = 1f;
-		public int gridLines = 1;
-		public string labelFormat = "{0:0.0}";
-		public Color lineColor = Color.magenta;
-		public int rightLinePadding = -15;
-		public float xBorder = 48f;
-		public float yBorder = 20f;
+		private const float ANCHOR_RADIUS = 1f;
+		private const string AXIS_FORMAT = "{0:0.0}";
+		private const float AXIS_ROUNDING = 1f;
+		private const int GRID_LINES = 1;
+		private const string LABEL_FORMAT = "{0:0.0}";
+		private const int RIGHT_LINE_PADDING = -15;
+		private const float X_BORDER = 48f;
+		private const float Y_BORDER = 12f;
 
 		private readonly Vector3[] _cachedLinePointVertices;
 		private readonly GUIStyle _centeredStyle;
@@ -51,30 +50,32 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 		{
 			_labelTextStyle = new GUIStyle(GUI.skin.label);
 			_labelTextStyle.alignment = TextAnchor.UpperRight;
+
 			_centeredStyle = new GUIStyle();
 			_centeredStyle.alignment = TextAnchor.UpperCenter;
 			_centeredStyle.normal.textColor = Color.white;
+
 			_linePoints = new Vector3[dataLength];
-			_cachedLinePointVertices = new Vector3[4]
+			_cachedLinePointVertices = new []
 			{
-				new Vector3(-1f, 1f, 0.0f) * anchorRadius,
-				new Vector3(1f, 1f, 0.0f) * anchorRadius,
-				new Vector3(1f, -1f, 0.0f) * anchorRadius,
-				new Vector3(-1f, -1f, 0.0f) * anchorRadius
+				new Vector3(-1f, 1f, 0.0f) * ANCHOR_RADIUS,
+				new Vector3(1f, 1f, 0.0f) * ANCHOR_RADIUS,
+				new Vector3(1f, -1f, 0.0f) * ANCHOR_RADIUS,
+				new Vector3(-1f, -1f, 0.0f) * ANCHOR_RADIUS
 			};
 		}
 
-		public void Draw(float[] data, float height)
+		public void Draw(float[] data, float height, Color lineColor)
 		{
 			var controlRect = EditorGUILayout.GetControlRect();
 			var rect = GUILayoutUtility.GetRect(controlRect.width, height);
-			var top = rect.y + yBorder;
-			var floor = rect.y + rect.height - yBorder;
+			var top = rect.y + Y_BORDER;
+			var floor = rect.y + rect.height - Y_BORDER;
 			var availableHeight = floor - top;
 			var max = data.Length != 0 ? data.Max() : 0.0f;
-			if (Math.Abs(max % (double)axisRounding) > 0.001)
+			if (Math.Abs(max % (double)AXIS_ROUNDING) > 0.001)
 			{
-				max = (float)(max + (double)axisRounding - max % (double)axisRounding);
+				max = (float)(max + (double)AXIS_ROUNDING - max % (double)AXIS_ROUNDING);
 			}
 
 			DrawGridLines(
@@ -96,26 +97,59 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 				floor,
 				rect.width,
 				availableHeight,
+				max,
+				lineColor);
+		}
+
+		public void Draw(float[][] data, float width, float height, Color[] lineColors)
+		{
+			var rect = GUILayoutUtility.GetRect(width, height);
+			var top = rect.y + Y_BORDER;
+			var floor = rect.y + rect.height - Y_BORDER;
+			var availableHeight = floor - top;
+			var max = Mathf.Max(0.0f, data.Select(x => x.Max()).Max());
+			if (Math.Abs(max % (double)AXIS_ROUNDING) > 0.001)
+			{
+				max = (float)(max + (double)AXIS_ROUNDING - max % (double)AXIS_ROUNDING);
+			}
+
+			DrawGridLines(
+				top,
+				rect.width,
+				availableHeight,
 				max);
+
+			for (var i = 0; i < data.Length; i++)
+			{
+				var newData = data[i];
+
+				DrawLine(
+					newData,
+					floor,
+					rect.width,
+					availableHeight,
+					max,
+					lineColors[i]);
+			}
 		}
 
 		private void DrawGridLines(float top, float width, float availableHeight, float max)
 		{
 			var color = Handles.color;
 			Handles.color = Color.grey;
-			var num1 = gridLines + 1;
+			var num1 = GRID_LINES + 1;
 			var num2 = availableHeight / num1;
 			for (var index = 0; index <= num1; ++index)
 			{
 				var num3 = top + num2 * index;
-				Handles.DrawLine(new Vector2(xBorder, num3), new Vector2(width - rightLinePadding, num3));
+				Handles.DrawLine(new Vector2(X_BORDER, num3), new Vector2(width - RIGHT_LINE_PADDING, num3));
 				GUI.Label(
 					new Rect(
 						0.0f,
 						num3 - 8f,
-						xBorder - 2f,
+						X_BORDER - 2f,
 						50f),
-					string.Format(axisFormat, (float)(max * (1.0 - index / (double)num1))),
+					string.Format(AXIS_FORMAT, (float)(max * (1.0 - index / (double)num1))),
 					_labelTextStyle);
 			}
 
@@ -134,7 +168,7 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 			Handles.color = Color.yellow;
 			var num1 = data.Average();
 			var num2 = floor - availableHeight * (num1 / max);
-			Handles.DrawLine(new Vector2(xBorder, num2), new Vector2(width - rightLinePadding, num2));
+			Handles.DrawLine(new Vector2(X_BORDER, num2), new Vector2(width - RIGHT_LINE_PADDING, num2));
 			Handles.color = color;
 		}
 
@@ -143,9 +177,10 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 			float floor,
 			float width,
 			float availableHeight,
-			float max)
+			float max,
+			Color lineColor)
 		{
-			var num1 = (width - xBorder - rightLinePadding) / data.Length;
+			var num1 = (width - X_BORDER - RIGHT_LINE_PADDING) / data.Length;
 			var color = Handles.color;
 			var rect = new Rect();
 			var flag = false;
@@ -157,12 +192,12 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 			{
 				var num3 = data[index];
 				var num4 = floor - availableHeight * (num3 / max);
-				var vector21 = new Vector2(xBorder + num1 * index, num4);
+				var vector21 = new Vector2(X_BORDER + num1 * index, num4);
 				_linePoints[index] = new Vector3(vector21.x, vector21.y, 0.0f);
 				if (!flag)
 				{
-					var num6 = anchorRadius * 3f;
-					var num7 = anchorRadius * 6f;
+					var num6 = ANCHOR_RADIUS * 3f;
+					var num7 = ANCHOR_RADIUS * 6f;
 					var vector22 = vector21 - Vector2.up * 0.5f;
 					rect = new Rect(
 						vector22.x - num6,
@@ -190,7 +225,7 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 				local2.width = local2.width + 50f;
 				ref var local3 = ref rect;
 				local3.x = local3.x - 25f;
-				GUI.Label(rect, string.Format(labelFormat, num2), _centeredStyle);
+				GUI.Label(rect, string.Format(LABEL_FORMAT, num2), _centeredStyle);
 			}
 
 			Handles.color = color;

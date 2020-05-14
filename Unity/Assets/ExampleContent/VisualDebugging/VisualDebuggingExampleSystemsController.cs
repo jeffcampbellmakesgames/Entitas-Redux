@@ -10,10 +10,11 @@ namespace ExampleContent.VisualDebugging
 			public SomeSystems(Contexts contexts)
 			{
 				Add(new SlowInitializeSystem());
-				Add(new SlowInitializeExecuteSystem());
+				Add(new SlowInitializeUpdateSystem());
 				Add(new FastSystem());
 				Add(new SlowSystem());
-				Add(new RandomDurationSystem());
+				Add(new RandomDurationUpdateSystem());
+				Add(new RandomDurationLateUpdateSystem());
 				Add(new AReactiveSystem(contexts));
 
 				Add(new RandomValueSystem(contexts));
@@ -30,18 +31,21 @@ namespace ExampleContent.VisualDebugging
 		private void Start()
 		{
 			_contexts = new Contexts();
-
-			//_systems = createNestedSystems();
-
-			_systems = new Feature().Add(new SomeMultiReactiveSystem(_contexts));
+			_systems = CreateSystems();
+			_systems.Initialize();
 
 			//// Test call
-			_systems.Initialize();
-			_systems.Execute();
-			_systems.Cleanup();
-			_systems.TearDown();
-
 			_contexts.VisualDebug.CreateEntity().AddMyString("");
+		}
+
+		private void OnDestroy()
+		{
+			_systems.TearDown();
+		}
+
+		private void FixedUpdate()
+		{
+			_systems.FixedUpdate();
 		}
 
 		private void Update()
@@ -50,40 +54,37 @@ namespace ExampleContent.VisualDebugging
 				.GetSingleEntity()
 				.ReplaceMyString(Random.value.ToString());
 
+			_systems.Update();
 			_systems.Execute();
+		}
+
+		private void LateUpdate()
+		{
+			_systems.LateUpdate();
 			_systems.Cleanup();
 		}
 
-		private Systems CreateAllSystemCombinations()
+		/// <summary>
+		/// Creates all systems for visual debugging
+		/// </summary>
+		/// <returns></returns>
+		private Systems CreateSystems()
 		{
-			return new Feature("All System Combinations")
-				.Add(new SomeInitializeSystem())
-				.Add(new SomeExecuteSystem())
-				.Add(new SomeReactiveSystem(_contexts))
-				.Add(new SomeMultiReactiveSystem(_contexts))
-				.Add(new SomeInitializeExecuteSystem())
-				.Add(new SomeInitializeReactiveSystem(_contexts));
-		}
+			var systems = new Systems();
 
-		private Systems CreateSubSystems()
-		{
-			var allSystems = CreateAllSystemCombinations();
-			var subSystems = new Feature("Sub Systems").Add(allSystems);
+			// Create Nested Systems
+			systems.Add(CreateNestedSystems());
 
-			return new Feature("Systems with SubSystems")
-				.Add(allSystems)
-				.Add(allSystems)
-				.Add(subSystems)
-				.Add(subSystems);
-		}
+			// All System Types Combinations
+			systems.Add(CreateAllTypesOfSystems());
 
-		private Systems CreateSameInstance()
-		{
-			var system = new RandomDurationSystem();
-			return new Feature("Same System Instances")
-				.Add(system)
-				.Add(system)
-				.Add(system);
+			// Create Empty Systems
+			systems.Add(CreateEmptySystems());
+
+			// Duplicate systems added to same Feature
+			systems.Add(CreateSameInstance());
+
+			return systems;
 		}
 
 		private Systems CreateNestedSystems()
@@ -93,11 +94,35 @@ namespace ExampleContent.VisualDebugging
 			var systems3 = new Feature("Nested 3");
 
 			systems1.Add(systems2);
-			systems2.Add(systems3);
 			systems1.Add(CreateSomeSystems());
+			systems2.Add(systems3);
 
 			return new Feature("Nested Systems")
 				.Add(systems1);
+		}
+
+		private Systems CreateSomeSystems()
+		{
+			return new SomeSystems(_contexts);
+		}
+
+		private Systems CreateAllTypesOfSystems()
+		{
+			var allSystems = new Feature("All System Combinations")
+				.Add(new SomeInitializeSystem())
+				.Add(new SomeUpdateSystem())
+				.Add(new SomeReactiveSystem(_contexts))
+				.Add(new SomeMultiReactiveSystem(_contexts))
+				.Add(new SomeInitializeUpdateSystem())
+				.Add(new SomeInitializeReactiveSystem(_contexts));
+
+			var subSystems = new Feature("Sub Systems").Add(allSystems);
+
+			return new Feature("Systems with SubSystems")
+				.Add(allSystems)
+				.Add(allSystems)
+				.Add(subSystems)
+				.Add(subSystems);
 		}
 
 		private Systems CreateEmptySystems()
@@ -113,9 +138,13 @@ namespace ExampleContent.VisualDebugging
 				.Add(systems1);
 		}
 
-		private Systems CreateSomeSystems()
+		private Systems CreateSameInstance()
 		{
-			return new SomeSystems(_contexts);
+			var system = new RandomDurationUpdateSystem();
+			return new Feature("Same System Instances")
+				.Add(system)
+				.Add(system)
+				.Add(system);
 		}
 	}
 }

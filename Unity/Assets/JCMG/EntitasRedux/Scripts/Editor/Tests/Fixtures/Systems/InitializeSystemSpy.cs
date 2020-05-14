@@ -29,9 +29,9 @@ namespace EntitasRedux.Tests
 {
 	public class InitializeSystemSpy : IInitializeSystem {
 
-		public int didInitialize { get { return _didInitialize; } }
+		public int DidInitialize { get { return _didInitialize; } }
 
-		int _didInitialize;
+		private int _didInitialize;
 
 		public void Initialize() {
 			_didInitialize += 1;

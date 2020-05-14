@@ -3,9 +3,9 @@ using JCMG.EntitasRedux;
 
 namespace ExampleContent.VisualDebugging
 {
-	public class SlowSystem : IExecuteSystem
+	public class SlowSystem : IUpdateSystem
 	{
-		public void Execute()
+		public void Update()
 		{
 			Thread.Sleep(4);
 		}

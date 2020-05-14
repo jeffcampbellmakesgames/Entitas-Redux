@@ -23,12 +23,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-namespace JCMG.EntitasRedux
+using JCMG.EntitasRedux;
+
+namespace EntitasRedux.Tests
 {
-	/// Implement this interface if you want to create a system which should be
-	/// executed every frame.
-	public interface IExecuteSystem : ISystem
-	{
-		void Execute();
+	public class UpdateSystemSpy : IUpdateSystem {
+
+		public int DidExecute { get { return _didExecute; } }
+
+		private int _didExecute;
+
+		public void Update() {
+			_didExecute += 1;
+		}
 	}
 }

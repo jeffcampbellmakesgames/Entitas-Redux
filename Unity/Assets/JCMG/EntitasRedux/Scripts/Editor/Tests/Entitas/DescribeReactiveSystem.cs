@@ -330,8 +330,8 @@ namespace EntitasRedux.Tests
 
 			_system.Execute();
 
-			Assert.AreEqual(1, _system.entities.Length);
-			Assert.AreEqual(eAb2, _system.entities[0]);
+			Assert.AreEqual(1, _system.Entities.Length);
+			Assert.AreEqual(eAb2, _system.Entities[0]);
 
 			Assert.AreEqual(2, eAb1.RetainCount); // retained by context and group
 			Assert.AreEqual(2, eAb2.RetainCount);
@@ -398,15 +398,15 @@ namespace EntitasRedux.Tests
 		{
 			if (entity == null)
 			{
-				Assert.AreEqual(0, system.didExecute);
-				Assert.IsNull(system.entities);
+				Assert.AreEqual(0, system.DidExecute);
+				Assert.IsNull(system.Entities);
 
 			}
 			else
 			{
-				Assert.AreEqual(didExecute, system.didExecute);
-				Assert.AreEqual(1, system.entities.Length);
-				Assert.Contains(entity, system.entities);
+				Assert.AreEqual(didExecute, system.DidExecute);
+				Assert.AreEqual(1, system.Entities.Length);
+				Assert.Contains(entity, system.Entities);
 			}
 		}
 

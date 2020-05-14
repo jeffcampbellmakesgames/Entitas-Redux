@@ -167,6 +167,15 @@ namespace JCMG.EntitasRedux.Editor
 			return strArray.Length == 0 || strArray.Any(str.Contains);
 		}
 
+		public static bool DrawSectionHeaderToggle(string header, bool value)
+		{
+			return GUILayout.Toggle(
+				value,
+				header,
+				EntitasReduxStyles.SectionHeader,
+				Array.Empty<GUILayoutOption>());
+		}
+
 		public static Rect BeginVerticalBox()
 		{
 			return EditorGUILayout.BeginVertical(GUI.skin.box);
@@ -175,6 +184,43 @@ namespace JCMG.EntitasRedux.Editor
 		public static void EndVerticalBox()
 		{
 			EditorGUILayout.EndVertical();
+		}
+
+		public static Texture2D CreateSimpleUITexture2D(Color color)
+		{
+			const int TEX_DIMENSIONS = 2;
+			var tex = new Texture2D(TEX_DIMENSIONS, TEX_DIMENSIONS)
+			{
+				wrapMode = TextureWrapMode.Repeat
+			};
+
+			for (var x = 0; x < TEX_DIMENSIONS; x++)
+			{
+				for (var y = 0; y < TEX_DIMENSIONS; y++)
+				{
+					tex.SetPixel(x, y, color);
+				}
+			}
+
+			tex.Apply();
+
+			return tex;
+		}
+
+		public static void DrawRectWithBorder(
+			Rect rect,
+			float borderWidth,
+			Color innerColor,
+			Color borderColor)
+		{
+			var innerRect = new Rect(rect);
+			innerRect.x += borderWidth;
+			innerRect.y += borderWidth;
+			innerRect.width -= borderWidth * 2;
+			innerRect.height -= borderWidth * 2;
+
+			EditorGUI.DrawRect(rect, borderColor);
+			EditorGUI.DrawRect(innerRect, innerColor);
 		}
 	}
 }

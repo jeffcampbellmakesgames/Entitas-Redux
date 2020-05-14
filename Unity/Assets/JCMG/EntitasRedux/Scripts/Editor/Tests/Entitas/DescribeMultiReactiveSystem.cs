@@ -42,9 +42,9 @@ namespace EntitasRedux.Tests
 		{
 			SetupTriggeredSystem();
 
-			Assert.AreEqual(2, _multiReactiveSystemSpy.entities.Length);
-			Assert.Contains(e1, _multiReactiveSystemSpy.entities);
-			Assert.Contains(e2, _multiReactiveSystemSpy.entities);
+			Assert.AreEqual(2, _multiReactiveSystemSpy.Entities.Length);
+			Assert.Contains(e1, _multiReactiveSystemSpy.Entities);
+			Assert.Contains(e2, _multiReactiveSystemSpy.Entities);
 
 			Assert.AreEqual(52, e1.NameAge.age);
 			Assert.AreEqual(34, e2.NameAge.age);
@@ -55,7 +55,7 @@ namespace EntitasRedux.Tests
 		{
 			SetupTriggeredSystem();
 
-			Assert.AreEqual(1, _multiReactiveSystemSpy.didExecute);
+			Assert.AreEqual(1, _multiReactiveSystemSpy.DidExecute);
 		}
 
 		[NUnit.Framework.Test]
@@ -75,7 +75,7 @@ namespace EntitasRedux.Tests
 		{
 			SetupMultipleCollectorTriggered();
 
-			Assert.AreEqual(1, system.didExecute);
+			Assert.AreEqual(1, system.DidExecute);
 		}
 
 		[NUnit.Framework.Test]
@@ -83,7 +83,7 @@ namespace EntitasRedux.Tests
 		{
 			SetupMultipleCollectorTriggered();
 
-			Assert.AreEqual(1, system.entities.Length);
+			Assert.AreEqual(1, system.Entities.Length);
 		}
 
 		[NUnit.Framework.Test]
@@ -93,7 +93,7 @@ namespace EntitasRedux.Tests
 
 			system.Execute();
 
-			Assert.AreEqual(1, system.didExecute);
+			Assert.AreEqual(1, system.DidExecute);
 		}
 
 		#endregion

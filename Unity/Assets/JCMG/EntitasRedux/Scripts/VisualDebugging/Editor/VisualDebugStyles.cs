@@ -23,18 +23,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-using JCMG.EntitasRedux;
+using JCMG.EntitasRedux.Editor;
+using UnityEngine;
 
-namespace EntitasRedux.Tests
+namespace JCMG.EntitasRedux.VisualDebugging.Editor
 {
-	public class ExecuteSystemSpy : IExecuteSystem {
+	/// <summary>
+	/// Editor styles for Visual Debugging
+	/// </summary>
+	internal static class VisualDebugStyles
+	{
+		public static GUIStyle SectionContent
+		{
+			get
+			{
+				if (_sectionContent == null)
+				{
+					_sectionContent = new GUIStyle(EntitasReduxStyles.GROUP_BOX_STYLE);
+					_sectionContent.padding = new RectOffset(0, 0, 0, 0);
+					_sectionContent.margin = new RectOffset(0, 0, 0, 0);
+					_sectionContent.contentOffset = Vector2.zero;
+				}
 
-		public int didExecute { get { return _didExecute; } }
-
-		int _didExecute;
-
-		public void Execute() {
-			_didExecute += 1;
+				return _sectionContent;
+			}
 		}
+
+		// Cache
+		private static GUIStyle _sectionContent;
 	}
 }

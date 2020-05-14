@@ -27,9 +27,9 @@ using JCMG.EntitasRedux;
 
 namespace EntitasRedux.Tests
 {
-	public class TestExecuteSystem : IExecuteSystem {
+	public class TestUpdateSystem : IUpdateSystem {
 
-		public void Execute() {
+		public void Update() {
 		}
 	}
 }

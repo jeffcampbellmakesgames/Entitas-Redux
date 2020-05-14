@@ -2,9 +2,9 @@
 
 namespace ExampleContent.VisualDebugging
 {
-	public class SomeExecuteSystem : IExecuteSystem
+	public class SomeUpdateSystem : IUpdateSystem
 	{
-		public void Execute()
+		public void Update()
 		{
 		}
 	}

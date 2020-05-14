@@ -30,10 +30,7 @@ namespace JCMG.EntitasRedux.VisualDebugging
 	[ExecuteInEditMode]
 	public class ContextObserverBehaviour : MonoBehaviour
 	{
-		public ContextObserver ContextObserver
-		{
-			get { return _contextObserver; }
-		}
+		public ContextObserver ContextObserver => _contextObserver;
 
 		private ContextObserver _contextObserver;
 

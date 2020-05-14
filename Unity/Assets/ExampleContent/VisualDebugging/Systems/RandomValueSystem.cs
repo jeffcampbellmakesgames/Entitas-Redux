@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ExampleContent.VisualDebugging
 {
-	public class RandomValueSystem : IExecuteSystem
+	public class RandomValueSystem : IUpdateSystem
 	{
 		private readonly VisualDebugContext _context;
 
@@ -12,7 +12,7 @@ namespace ExampleContent.VisualDebugging
 			_context = contexts.VisualDebug;
 		}
 
-		public void Execute()
+		public void Update()
 		{
 			_context.CreateEntity().AddMyFloat(Random.value);
 		}

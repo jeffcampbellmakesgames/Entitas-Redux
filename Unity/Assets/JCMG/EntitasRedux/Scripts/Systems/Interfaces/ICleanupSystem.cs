@@ -25,10 +25,14 @@ THE SOFTWARE.
 
 namespace JCMG.EntitasRedux
 {
-	/// Implement this interface if you want to create a system which should
-	/// execute cleanup logic after execution.
+	/// <summary>
+	/// Implement this interface if you want to create a system which should execute cleanup logic after execution.
+	/// </summary>
 	public interface ICleanupSystem : ISystem
 	{
+		/// <summary>
+		/// Performs cleanup logic after other systems have executed.
+		/// </summary>
 		void Cleanup();
 	}
 }

@@ -3,7 +3,7 @@
 namespace ExampleContent.VisualDebugging
 {
 	public class MixedSystem : IInitializeSystem,
-	                           IExecuteSystem,
+	                           IUpdateSystem,
 	                           ICleanupSystem,
 	                           ITearDownSystem
 	{
@@ -12,7 +12,7 @@ namespace ExampleContent.VisualDebugging
 			//UnityEngine.Debug.Log("Cleanup");
 		}
 
-		public void Execute()
+		public void Update()
 		{
 			//UnityEngine.Debug.Log("Execute");
 		}

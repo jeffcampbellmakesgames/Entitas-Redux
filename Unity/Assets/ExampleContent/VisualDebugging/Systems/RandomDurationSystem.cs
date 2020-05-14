@@ -1,14 +1,13 @@
 ﻿using System.Threading;
-using JCMG.EntitasRedux;
 using UnityEngine;
 
 namespace ExampleContent.VisualDebugging
 {
-	public class RandomDurationSystem : IExecuteSystem
+	public abstract class RandomDurationSystem
 	{
-		public void Execute()
+		public void SleepRandomDuration()
 		{
-			Thread.Sleep(Random.Range(0, 9));
+			Thread.Sleep(Random.Range(0, 5));
 		}
 	}
 }

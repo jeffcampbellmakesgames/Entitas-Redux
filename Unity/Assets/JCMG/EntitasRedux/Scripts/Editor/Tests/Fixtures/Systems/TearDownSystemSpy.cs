@@ -29,9 +29,9 @@ namespace EntitasRedux.Tests
 {
 	public class TearDownSystemSpy : ITearDownSystem {
 
-		public int didTearDown { get { return _didTearDown; } }
+		public int DidTearDown { get { return _didTearDown; } }
 
-		int _didTearDown;
+		private int _didTearDown;
 
 		public void TearDown() {
 			_didTearDown += 1;

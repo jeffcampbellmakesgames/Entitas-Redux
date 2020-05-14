@@ -39,6 +39,10 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 		// UI
 		private const string TITLE = "Visual Debugging";
 
+		private const string COLOR_DESCRIPTION =
+			"These preferences alter which colors visual debugging draws for different types " +
+			"of systems in the Unity Editor.";
+
 		// Scripting Symbols
 		private const string ENTITAS_DISABLE_VISUAL_DEBUGGING = "ENTITAS_DISABLE_VISUAL_DEBUGGING";
 		private const string ENTITAS_DISABLE_DEEP_PROFILING = "ENTITAS_DISABLE_DEEP_PROFILING";
@@ -103,10 +107,51 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 					using (var scope = new EditorGUI.ChangeCheckScope())
 					{
 						var newValue = EditorGUILayout.IntField(VisualDebuggingPreferences.SystemWarningThreshold);
-
 						if (scope.changed)
 						{
 							VisualDebuggingPreferences.SystemWarningThreshold = newValue;
+						}
+					}
+				}
+
+				// Colors
+				EditorGUILayout.HelpBox(COLOR_DESCRIPTION, MessageType.Info);
+				using (new EditorGUILayout.HorizontalScope())
+				{
+					EditorGUILayout.LabelField("IFixedUpdate Color");
+					using (var scope = new EditorGUI.ChangeCheckScope())
+					{
+						var newValue = EditorGUILayout.ColorField(VisualDebuggingPreferences.FixedUpdateColor);
+						if (scope.changed)
+						{
+							VisualDebuggingPreferences.FixedUpdateColor = newValue;
+						}
+					}
+				}
+
+				using (new EditorGUILayout.HorizontalScope())
+				{
+					EditorGUILayout.LabelField("IUpdate Color");
+					using (var scope = new EditorGUI.ChangeCheckScope())
+					{
+						var newValue = EditorGUILayout.ColorField(VisualDebuggingPreferences.UpdateColor);
+						if (scope.changed)
+						{
+							VisualDebuggingPreferences.UpdateColor = newValue;
+						}
+					}
+				}
+
+
+				using (new EditorGUILayout.HorizontalScope())
+				{
+					EditorGUILayout.LabelField("ILateUpdate Color");
+					using (var scope = new EditorGUI.ChangeCheckScope())
+					{
+						var newValue = EditorGUILayout.ColorField(VisualDebuggingPreferences.LateUpdateColor);
+						if (scope.changed)
+						{
+							VisualDebuggingPreferences.LateUpdateColor = newValue;
 						}
 					}
 				}
