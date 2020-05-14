@@ -3,10 +3,10 @@ using JCMG.EntitasRedux;
 
 namespace ExampleContent.VisualDebugging
 {
-	public class SlowInitializeExecuteSystem : IInitializeSystem,
-	                                           IExecuteSystem
+	public class SlowInitializeUpdateSystem : IInitializeSystem,
+	                                           IUpdateSystem
 	{
-		public void Execute()
+		public void Update()
 		{
 			Thread.Sleep(5);
 		}

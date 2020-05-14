@@ -3,11 +3,14 @@ using JCMG.EntitasRedux;
 
 namespace ExampleContent.VisualDebugging
 {
-	public class FastSystem : IExecuteSystem
+	public class FastSystem : IFixedUpdateSystem
 	{
-		public void Execute()
+		/// <summary>
+		/// Executes physics logic.
+		/// </summary>
+		public void FixedUpdate()
 		{
-			Thread.Sleep(1);
+			Thread.Sleep(2);
 		}
 	}
 }
