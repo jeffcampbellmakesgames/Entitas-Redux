@@ -1,4 +1,4 @@
-﻿/*
+/*
 
 MIT License
 
@@ -23,16 +23,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-namespace JCMG.EntitasRedux
+namespace JCMG.EntitasRedux.VisualDebugging
 {
-	/// <summary>
-	/// Implement this interface if you want to create a system which should be initialized once in the beginning.
-	/// </summary>
-	public interface IInitializeSystem : ISystem
+	public enum AvgResetInterval
 	{
-		/// <summary>
-		/// Performs any required initialization logic.
-		/// </summary>
-		void Initialize();
+		Always = 1,
+		VeryFast = 30,
+		Fast = 60,
+		Normal = 120,
+		Slow = 300,
+		Never = int.MaxValue
 	}
 }

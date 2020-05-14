@@ -31,15 +31,9 @@ namespace JCMG.EntitasRedux.VisualDebugging
 	[ExecuteInEditMode]
 	public class EntityBehaviour : MonoBehaviour
 	{
-		public IContext Context
-		{
-			get { return _context; }
-		}
+		public IContext Context => _context;
 
-		public IEntity Entity
-		{
-			get { return _entity; }
-		}
+		public IEntity Entity => _entity;
 
 		private string _cachedName;
 

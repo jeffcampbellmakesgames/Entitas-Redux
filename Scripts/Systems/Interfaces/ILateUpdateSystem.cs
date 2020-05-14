@@ -26,13 +26,14 @@ THE SOFTWARE.
 namespace JCMG.EntitasRedux
 {
 	/// <summary>
-	/// Implement this interface if you want to create a system which should be initialized once in the beginning.
+	/// Implement this interface if you want to create a system which should be executed at the end of every render
+	/// frame.
 	/// </summary>
-	public interface IInitializeSystem : ISystem
+	public interface ILateUpdateSystem : ISystem
 	{
 		/// <summary>
-		/// Performs any required initialization logic.
+		/// Executes logic at the end of the frame render.
 		/// </summary>
-		void Initialize();
+		void LateUpdate();
 	}
 }

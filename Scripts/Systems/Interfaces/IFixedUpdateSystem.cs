@@ -1,4 +1,4 @@
-/*
+﻿/*
 
 MIT License
 
@@ -23,22 +23,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-using UnityEngine;
-
-namespace JCMG.EntitasRedux.VisualDebugging
+namespace JCMG.EntitasRedux
 {
-	public static class GameObjectDestroyExtension
+	/// <summary>
+	/// Implement this interface if you want to create a system which should execute every fixed physics step.
+	/// </summary>
+	public interface IFixedUpdateSystem : ISystem
 	{
-		public static void DestroyGameObject(this GameObject gameObject)
-		{
-			if (Application.isPlaying)
-			{
-				Object.Destroy(gameObject);
-			}
-			else
-			{
-				Object.DestroyImmediate(gameObject);
-			}
-		}
+		/// <summary>
+		/// Executes physics logic.
+		/// </summary>
+		void FixedUpdate();
 	}
 }

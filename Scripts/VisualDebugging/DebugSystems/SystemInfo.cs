@@ -32,148 +32,238 @@ namespace JCMG.EntitasRedux.VisualDebugging
 	{
 		None = 0,
 		InitializeSystem = 1 << 1,
-		ExecuteSystem = 1 << 2,
+		FixedUpdateSystem = 1 << 6,
+		UpdateSystem = 1 << 2,
+		LateUpdateSystem = 1 << 7,
+		ReactiveSystem = 1 << 5,
 		CleanupSystem = 1 << 3,
-		TearDownSystem = 1 << 4,
-		ReactiveSystem = 1 << 5
+		TearDownSystem = 1 << 4
 	}
 
 	public class SystemInfo
 	{
-		public ISystem System
-		{
-			get { return _system; }
-		}
+		public ISystem System { get; }
 
-		public string SystemName
-		{
-			get { return _systemName; }
-		}
+		public string SystemName { get; }
 
-		public bool IsInitializeSystems
-		{
-			get { return (_interfaceFlags & SystemInterfaceFlags.InitializeSystem) == SystemInterfaceFlags.InitializeSystem; }
-		}
+		public bool AreAllParentsActive =>
+			parentSystemInfo == null || parentSystemInfo.isActive && parentSystemInfo.AreAllParentsActive;
 
-		public bool IsExecuteSystems
-		{
-			get { return (_interfaceFlags & SystemInterfaceFlags.ExecuteSystem) == SystemInterfaceFlags.ExecuteSystem; }
-		}
+		#region SystemInterfaceFlag Properties
 
-		public bool IsCleanupSystems
-		{
-			get { return (_interfaceFlags & SystemInterfaceFlags.CleanupSystem) == SystemInterfaceFlags.CleanupSystem; }
-		}
+		public bool IsInitializeSystems =>
+			(_interfaceFlags & SystemInterfaceFlags.InitializeSystem) == SystemInterfaceFlags.InitializeSystem;
 
-		public bool IsTearDownSystems
-		{
-			get { return (_interfaceFlags & SystemInterfaceFlags.TearDownSystem) == SystemInterfaceFlags.TearDownSystem; }
-		}
+		public bool IsUpdateSystems =>
+			(_interfaceFlags & SystemInterfaceFlags.UpdateSystem) == SystemInterfaceFlags.UpdateSystem;
 
-		public bool IsReactiveSystems
-		{
-			get { return (_interfaceFlags & SystemInterfaceFlags.ReactiveSystem) == SystemInterfaceFlags.ReactiveSystem; }
-		}
+		public bool IsFixedUpdateSystems =>
+			(_interfaceFlags & SystemInterfaceFlags.FixedUpdateSystem) == SystemInterfaceFlags.FixedUpdateSystem;
+
+		public bool IsLateUpdateSystems =>
+			(_interfaceFlags & SystemInterfaceFlags.LateUpdateSystem) == SystemInterfaceFlags.LateUpdateSystem;
+
+		public bool IsCleanupSystems =>
+			(_interfaceFlags & SystemInterfaceFlags.CleanupSystem) == SystemInterfaceFlags.CleanupSystem;
+
+		public bool IsTearDownSystems =>
+			(_interfaceFlags & SystemInterfaceFlags.TearDownSystem) == SystemInterfaceFlags.TearDownSystem;
+
+		public bool IsReactiveSystems =>
+			(_interfaceFlags & SystemInterfaceFlags.ReactiveSystem) == SystemInterfaceFlags.ReactiveSystem;
+
+		#endregion
+
+		#region FixedUpdate System Properties
+
+		public double MinFixedUpdateDuration => _minFixedUpdateDuration;
+
+		public double MaxFixedUpdateDuration => _maxFixedUpdateDuration;
+
+		public double AccumulatedFixedUpdateDuration => _accumulatedFixedUpdateDuration;
+
+		public double AverageFixedUpdateDuration =>
+			_fixedUpdateDurationsCount == 0 ? 0 : _accumulatedFixedUpdateDuration / _fixedUpdateDurationsCount;
+
+		#endregion
+
+		#region Update System Properties
+
+		public double MinUpdateDuration => _minUpdateDuration;
+
+		public double MaxUpdateDuration => _maxUpdateDuration;
+
+		public double AccumulatedUpdateDuration => _accumulatedUpdateDuration;
+
+		public double AverageUpdateDuration =>
+			_updateDurationsCount == 0 ? 0 : _accumulatedUpdateDuration / _updateDurationsCount;
+
+		#endregion
+
+		#region LateUpdate System Properties
+
+		public double MinLateUpdateDuration => _minLateUpdateDuration;
+
+		public double MaxLateUpdateDuration => _maxLateUpdateDuration;
+
+		public double AccumulatedLateUpdateDuration => _accumulatedLateUpdateDuration;
+
+		public double AverageLateUpdateDuration =>
+			_lateUpdateDurationsCount == 0 ? 0 : _accumulatedLateUpdateDuration / _lateUpdateDurationsCount;
+
+		#endregion
+
+		#region Reactive System Properties
+
+		public double MinReactiveDuration => _minReactiveDuration;
+
+		public double MaxReactiveDuration => _maxReactiveDuration;
+
+		public double AccumulatedReactiveDuration => _accumulatedReactiveDuration;
+
+		public double AverageReactiveDuration =>
+			_reactiveDurationsCount == 0 ? 0 : _accumulatedReactiveDuration / _reactiveDurationsCount;
+
+		#endregion
+
+		#region Cleanup System Properties
+
+		public double CleanupDuration { get; set; }
+
+		public double MinCleanupDuration => _minCleanupDuration;
+
+		public double MaxCleanupDuration => _maxCleanupDuration;
+
+		public double AccumulatedCleanupDuration => _accumulatedCleanupDuration;
+
+		public double AverageCleanupDuration =>
+			_cleanupDurationsCount == 0 ? 0 : _accumulatedCleanupDuration / _cleanupDurationsCount;
+
+		#endregion
+
+		#region Initialization and Teardown Properties
 
 		public double InitializationDuration { get; set; }
 
-		public double AccumulatedExecutionDuration
-		{
-			get { return _accumulatedExecutionDuration; }
-		}
-
-		public double MinExecutionDuration
-		{
-			get { return _minExecutionDuration; }
-		}
-
-		public double MaxExecutionDuration
-		{
-			get { return _maxExecutionDuration; }
-		}
-
-		public double AverageExecutionDuration
-		{
-			get { return _executionDurationsCount == 0 ? 0 : _accumulatedExecutionDuration / _executionDurationsCount; }
-		}
-
-		public double AccumulatedCleanupDuration
-		{
-			get { return _accumulatedCleanupDuration; }
-		}
-
-		public double MinCleanupDuration
-		{
-			get { return _minCleanupDuration; }
-		}
-
-		public double MaxCleanupDuration
-		{
-			get { return _maxCleanupDuration; }
-		}
-
-		public double AverageCleanupDuration
-		{
-			get { return _cleanupDurationsCount == 0 ? 0 : _accumulatedCleanupDuration / _cleanupDurationsCount; }
-		}
-
-		public double CleanupDuration { get; set; }
 		public double TeardownDuration { get; set; }
 
-		public bool AreAllParentsActive
-		{
-			get { return parentSystemInfo == null || parentSystemInfo.isActive && parentSystemInfo.AreAllParentsActive; }
-		}
+		#endregion
 
-		private readonly SystemInterfaceFlags _interfaceFlags;
-
-		private readonly ISystem _system;
-		private readonly string _systemName;
-
-		private double _accumulatedCleanupDuration;
-
-		private double _accumulatedExecutionDuration;
-		private int _cleanupDurationsCount;
-		private int _executionDurationsCount;
-		private double _maxCleanupDuration;
-		private double _maxExecutionDuration;
-		private double _minCleanupDuration;
-		private double _minExecutionDuration;
 		public bool isActive;
 
 		public SystemInfo parentSystemInfo;
 
+		// Update
+		private double _maxUpdateDuration;
+		private double _minUpdateDuration;
+		private double _accumulatedUpdateDuration;
+		private int _updateDurationsCount;
+
+		// Fixed Update
+		private double _minFixedUpdateDuration;
+		private double _maxFixedUpdateDuration;
+		private double _accumulatedFixedUpdateDuration;
+		private int _fixedUpdateDurationsCount;
+
+		// Late Update
+		private double _minLateUpdateDuration;
+		private double _maxLateUpdateDuration;
+		private double _accumulatedLateUpdateDuration;
+		private int _lateUpdateDurationsCount;
+
+		// Reactive
+		private double _maxReactiveDuration;
+		private double _minReactiveDuration;
+		private double _accumulatedReactiveDuration;
+		private int _reactiveDurationsCount;
+
+		// Cleanup
+		private int _cleanupDurationsCount;
+		private double _maxCleanupDuration;
+		private double _minCleanupDuration;
+		private double _accumulatedCleanupDuration;
+
+		private readonly SystemInterfaceFlags _interfaceFlags;
+
 		public SystemInfo(ISystem system)
 		{
-			_system = system;
+			System = system;
 			_interfaceFlags = GetInterfaceFlags(system);
 
-			_systemName = system is DebugSystems debugSystem
+			SystemName = system is DebugSystems debugSystem
 				? debugSystem.Name
 				: system.GetType().Name.RemoveSystemSuffix();
 
 			isActive = true;
 		}
 
-		public void AddExecutionDuration(double executionDuration)
+		public void AddFixedUpdateDuration(double duration)
 		{
-			if (executionDuration < _minExecutionDuration || _minExecutionDuration == 0)
+			if (duration < _minFixedUpdateDuration || Math.Abs(_minFixedUpdateDuration) < 0.001)
 			{
-				_minExecutionDuration = executionDuration;
+				_minFixedUpdateDuration = duration;
 			}
 
-			if (executionDuration > _maxExecutionDuration)
+			if (duration > _maxFixedUpdateDuration)
 			{
-				_maxExecutionDuration = executionDuration;
+				_maxFixedUpdateDuration = duration;
 			}
 
-			_accumulatedExecutionDuration += executionDuration;
-			_executionDurationsCount += 1;
+			_accumulatedFixedUpdateDuration += duration;
+			_fixedUpdateDurationsCount += 1;
+		}
+
+		public void AddUpdateDuration(double duration)
+		{
+			if (duration < _minUpdateDuration || Math.Abs(_minUpdateDuration) < 0.001)
+			{
+				_minUpdateDuration = duration;
+			}
+
+			if (duration > _maxUpdateDuration)
+			{
+				_maxUpdateDuration = duration;
+			}
+
+			_accumulatedUpdateDuration += duration;
+			_updateDurationsCount += 1;
+		}
+
+		public void AddLateUpdateDuration(double duration)
+		{
+			if (duration < _minLateUpdateDuration || Math.Abs(_minLateUpdateDuration) < 0.001)
+			{
+				_minLateUpdateDuration = duration;
+			}
+
+			if (duration > _maxLateUpdateDuration)
+			{
+				_maxLateUpdateDuration = duration;
+			}
+
+			_accumulatedLateUpdateDuration += duration;
+			_lateUpdateDurationsCount += 1;
+		}
+
+		public void AddReactiveDuration(double duration)
+		{
+			if (duration < _minReactiveDuration || Math.Abs(_minReactiveDuration) < 0.001)
+			{
+				_minReactiveDuration = duration;
+			}
+
+			if (duration > _maxReactiveDuration)
+			{
+				_maxReactiveDuration = duration;
+			}
+
+			_accumulatedReactiveDuration += duration;
+			_reactiveDurationsCount += 1;
 		}
 
 		public void AddCleanupDuration(double cleanupDuration)
 		{
-			if (cleanupDuration < _minCleanupDuration || _minCleanupDuration == 0)
+			if (cleanupDuration < _minCleanupDuration || Math.Abs(_minCleanupDuration) < 0.001)
 			{
 				_minCleanupDuration = cleanupDuration;
 			}
@@ -187,11 +277,28 @@ namespace JCMG.EntitasRedux.VisualDebugging
 			_cleanupDurationsCount += 1;
 		}
 
-		public void ResetDurations()
+		/// <summary>
+		/// Resets the duration times and counts for all relevant render frame system metrics.
+		/// </summary>
+		public void ResetFrameDurations()
 		{
-			_accumulatedExecutionDuration = 0;
-			_executionDurationsCount = 0;
+			// Fixed Update
+			_accumulatedFixedUpdateDuration = 0;
+			_fixedUpdateDurationsCount = 0;
 
+			// Update
+			_accumulatedUpdateDuration = 0;
+			_updateDurationsCount = 0;
+
+			// Late Update
+			_accumulatedLateUpdateDuration = 0;
+			_lateUpdateDurationsCount = 0;
+
+			// Execute
+			_accumulatedReactiveDuration = 0;
+			_reactiveDurationsCount = 0;
+
+			// Cleanup
 			_accumulatedCleanupDuration = 0;
 			_cleanupDurationsCount = 0;
 		}
@@ -204,13 +311,24 @@ namespace JCMG.EntitasRedux.VisualDebugging
 				flags |= SystemInterfaceFlags.InitializeSystem;
 			}
 
+			if (system is IFixedUpdateSystem)
+			{
+				flags |= SystemInterfaceFlags.FixedUpdateSystem;
+			}
+
+			if (system is IUpdateSystem)
+			{
+				flags |= SystemInterfaceFlags.UpdateSystem;
+			}
+
+			if (system is ILateUpdateSystem)
+			{
+				flags |= SystemInterfaceFlags.LateUpdateSystem;
+			}
+
 			if (system is IReactiveSystem)
 			{
 				flags |= SystemInterfaceFlags.ReactiveSystem;
-			}
-			else if (system is IExecuteSystem)
-			{
-				flags |= SystemInterfaceFlags.ExecuteSystem;
 			}
 
 			if (system is ICleanupSystem)

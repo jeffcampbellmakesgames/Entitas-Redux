@@ -35,7 +35,7 @@ namespace JCMG.EntitasRedux
 	/// writing multi-threaded code in Entitas.
 	/// </summary>
 	/// <typeparam name="TEntity"></typeparam>
-	public abstract class JobSystem<TEntity> : IExecuteSystem
+	public abstract class JobSystem<TEntity> : IUpdateSystem
 		where TEntity : class, IEntity
 	{
 		private readonly IGroup<TEntity> _group;
@@ -81,7 +81,7 @@ namespace JCMG.EntitasRedux
 
 		protected abstract void Execute(TEntity entity);
 
-		public virtual void Execute()
+		public virtual void Update()
 		{
 			_threadsRunning = _threads;
 			var entities = _group.GetEntities();

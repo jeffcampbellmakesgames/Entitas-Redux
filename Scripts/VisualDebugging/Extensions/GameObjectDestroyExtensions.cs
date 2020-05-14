@@ -1,4 +1,4 @@
-﻿/*
+/*
 
 MIT License
 
@@ -23,16 +23,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-namespace JCMG.EntitasRedux
+using UnityEngine;
+
+namespace JCMG.EntitasRedux.VisualDebugging
 {
-	/// <summary>
-	/// Implement this interface if you want to create a system which should be initialized once in the beginning.
-	/// </summary>
-	public interface IInitializeSystem : ISystem
+	internal static class GameObjectDestroyExtensions
 	{
-		/// <summary>
-		/// Performs any required initialization logic.
-		/// </summary>
-		void Initialize();
+		public static void DestroyGameObject(this GameObject gameObject)
+		{
+			if (Application.isPlaying)
+			{
+				Object.Destroy(gameObject);
+			}
+			else
+			{
+				Object.DestroyImmediate(gameObject);
+			}
+		}
 	}
 }

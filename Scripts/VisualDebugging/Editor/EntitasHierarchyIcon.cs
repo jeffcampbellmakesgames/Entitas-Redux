@@ -211,7 +211,7 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 				var debugSystemsBehaviour = gameObject.GetComponent<DebugSystemsBehaviour>();
 				if (debugSystemsBehaviour != null)
 				{
-					if (debugSystemsBehaviour.Systems.ExecuteDuration < VisualDebuggingPreferences.SystemWarningThreshold)
+					if (debugSystemsBehaviour.Systems.UpdateDuration < VisualDebuggingPreferences.SystemWarningThreshold)
 					{
 						GUI.DrawTexture(rect, SystemsHierarchyIcon);
 					}

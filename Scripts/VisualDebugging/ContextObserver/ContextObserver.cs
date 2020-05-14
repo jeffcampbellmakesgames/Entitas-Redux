@@ -31,20 +31,11 @@ namespace JCMG.EntitasRedux.VisualDebugging
 {
 	public class ContextObserver
 	{
-		public IContext Context
-		{
-			get { return _context; }
-		}
+		public IContext Context => _context;
 
-		public IGroup[] Groups
-		{
-			get { return _groups.ToArray(); }
-		}
+		public IGroup[] Groups => _groups.ToArray();
 
-		public GameObject GameObject
-		{
-			get { return _gameObject; }
-		}
+		public GameObject GameObject => _gameObject;
 
 		private readonly IContext _context;
 		private readonly Stack<EntityBehaviour> _entityBehaviourPool = new Stack<EntityBehaviour>();

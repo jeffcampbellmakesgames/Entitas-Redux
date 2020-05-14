@@ -25,10 +25,30 @@ THE SOFTWARE.
 
 namespace JCMG.EntitasRedux
 {
-	public interface IReactiveSystem : IExecuteSystem
+	/// <summary>
+	/// Implement this interface if you want to create a system which should be executed in reaction to an event or
+	/// data change.
+	/// </summary>
+	public interface IReactiveSystem : ISystem
 	{
+		/// <summary>
+		/// Executed when the system has been activated.
+		/// </summary>
 		void Activate();
+
+		/// <summary>
+		/// Executed when the system has been de-activated.
+		/// </summary>
 		void Deactivate();
+
+		/// <summary>
+		/// Executed when the system should clear any accumulated changes.
+		/// </summary>
 		void Clear();
+
+		/// <summary>
+		/// Executes logic per render frame.
+		/// </summary>
+		void Execute();
 	}
 }
