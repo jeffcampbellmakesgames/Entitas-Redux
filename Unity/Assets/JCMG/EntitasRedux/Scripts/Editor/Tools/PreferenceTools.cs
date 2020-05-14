@@ -24,6 +24,7 @@ THE SOFTWARE.
 */
 
 using UnityEditor;
+using UnityEngine;
 
 namespace JCMG.EntitasRedux.Editor
 {
@@ -94,6 +95,22 @@ namespace JCMG.EntitasRedux.Editor
 			}
 
 			return EditorPrefs.GetBool(key);
+		}
+
+		/// <summary>
+		/// Returns the current Color preference; if none exists, the default is set and returned.
+		/// </summary>
+		/// <param name="key"></param>
+		/// <param name="defaultValue"></param>
+		/// <returns></returns>
+		public static Color GetColorPref(string key, Color defaultValue)
+		{
+			if (!EditorPrefs.HasKey(key))
+			{
+				EditorPrefs.SetString(key, defaultValue.ToHexWithAlpha());
+			}
+
+			return ColorTools.FromHex(EditorPrefs.GetString(key));
 		}
 	}
 }

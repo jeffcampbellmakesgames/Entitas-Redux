@@ -36,7 +36,7 @@ namespace EntitasRedux.Tests
 		[SetUp]
 		public void Setup()
 		{
-			_info = new SystemInfo(new TestExecuteSystem());
+			_info = new SystemInfo(new TestUpdateSystem());
 		}
 
 		[NUnit.Framework.Test]
@@ -49,16 +49,16 @@ namespace EntitasRedux.Tests
 			Assert.AreEqual("TestInitialize", info.SystemName);
 
 			Assert.IsTrue(info.IsInitializeSystems);
-			Assert.IsFalse(info.IsExecuteSystems);
+			Assert.IsFalse(info.IsUpdateSystems);
 
 			Assert.IsFalse(info.IsCleanupSystems);
 			Assert.IsFalse(info.IsTearDownSystems);
 			Assert.IsFalse(info.IsReactiveSystems);
 
-			Assert.AreEqual(0, info.AccumulatedExecutionDuration);
-			Assert.AreEqual(0, info.MinExecutionDuration);
-			Assert.AreEqual(0, info.MaxExecutionDuration);
-			Assert.AreEqual(0, info.AverageExecutionDuration);
+			Assert.AreEqual(0, info.AccumulatedUpdateDuration);
+			Assert.AreEqual(0, info.MinUpdateDuration);
+			Assert.AreEqual(0, info.MaxUpdateDuration);
+			Assert.AreEqual(0, info.AverageUpdateDuration);
 
 			Assert.IsTrue(info.isActive);
 		}
@@ -66,12 +66,12 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void CreatesSystemInfoForExecuteSystem()
 		{
-			var system = new TestExecuteSystem();
+			var system = new TestUpdateSystem();
 			var info = new SystemInfo(system);
 
-			Assert.AreEqual("TestExecute", info.SystemName);
+			Assert.AreEqual("TestUpdate", info.SystemName);
 			Assert.IsFalse(info.IsInitializeSystems);
-			Assert.IsTrue(info.IsExecuteSystems);
+			Assert.IsTrue(info.IsUpdateSystems);
 			Assert.IsFalse(info.IsCleanupSystems);
 			Assert.IsFalse(info.IsTearDownSystems);
 			Assert.IsFalse(info.IsReactiveSystems);
@@ -85,7 +85,7 @@ namespace EntitasRedux.Tests
 
 			Assert.AreEqual("TestCleanup", info.SystemName);
 			Assert.IsFalse(info.IsInitializeSystems);
-			Assert.IsFalse(info.IsExecuteSystems);
+			Assert.IsFalse(info.IsUpdateSystems);
 			Assert.IsTrue(info.IsCleanupSystems);
 			Assert.IsFalse(info.IsTearDownSystems);
 			Assert.IsFalse(info.IsReactiveSystems);
@@ -100,7 +100,7 @@ namespace EntitasRedux.Tests
 			Assert.AreEqual("TestTearDown", info.SystemName);
 
 			Assert.IsFalse(info.IsInitializeSystems);
-			Assert.IsFalse(info.IsExecuteSystems);
+			Assert.IsFalse(info.IsUpdateSystems);
 			Assert.IsFalse(info.IsCleanupSystems);
 			Assert.IsTrue(info.IsTearDownSystems);
 			Assert.IsFalse(info.IsReactiveSystems);
@@ -115,7 +115,7 @@ namespace EntitasRedux.Tests
 			Assert.AreEqual("TestReactive", info.SystemName);
 
 			Assert.IsFalse(info.IsInitializeSystems);
-			Assert.IsFalse(info.IsExecuteSystems);
+			Assert.IsFalse(info.IsUpdateSystems);
 			Assert.IsFalse(info.IsCleanupSystems);
 			Assert.IsFalse(info.IsTearDownSystems);
 			Assert.IsTrue(info.IsReactiveSystems);
@@ -124,54 +124,54 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void AddsExecutionDuration()
 		{
-			_info.AddExecutionDuration(42);
+			_info.AddUpdateDuration(42);
 
-			Assert.AreEqual(42, _info.AccumulatedExecutionDuration);
-			Assert.AreEqual(42, _info.MinExecutionDuration);
-			Assert.AreEqual(42, _info.MaxExecutionDuration);
-			Assert.AreEqual(42, _info.AverageExecutionDuration);
+			Assert.AreEqual(42, _info.AccumulatedUpdateDuration);
+			Assert.AreEqual(42, _info.MinUpdateDuration);
+			Assert.AreEqual(42, _info.MaxUpdateDuration);
+			Assert.AreEqual(42, _info.AverageUpdateDuration);
 		}
 
 		[NUnit.Framework.Test]
 		public void AddsAnotherExecutionDuration()
 		{
-			_info.AddExecutionDuration(20);
-			_info.AddExecutionDuration(10);
+			_info.AddUpdateDuration(20);
+			_info.AddUpdateDuration(10);
 
-			Assert.AreEqual(30, _info.AccumulatedExecutionDuration);
-			Assert.AreEqual(10, _info.MinExecutionDuration);
-			Assert.AreEqual(20, _info.MaxExecutionDuration);
-			Assert.AreEqual(15, _info.AverageExecutionDuration);
+			Assert.AreEqual(30, _info.AccumulatedUpdateDuration);
+			Assert.AreEqual(10, _info.MinUpdateDuration);
+			Assert.AreEqual(20, _info.MaxUpdateDuration);
+			Assert.AreEqual(15, _info.AverageUpdateDuration);
 		}
 
 		[NUnit.Framework.Test]
 		public void ResetsDurations()
 		{
-			_info.AddExecutionDuration(20);
-			_info.AddExecutionDuration(10);
+			_info.AddUpdateDuration(20);
+			_info.AddUpdateDuration(10);
 
-			_info.ResetDurations();
+			_info.ResetFrameDurations();
 
-			Assert.AreEqual(0, _info.AccumulatedExecutionDuration);
-			Assert.AreEqual(10, _info.MinExecutionDuration);
-			Assert.AreEqual(20, _info.MaxExecutionDuration);
-			Assert.AreEqual(0, _info.AverageExecutionDuration);
+			Assert.AreEqual(0, _info.AccumulatedUpdateDuration);
+			Assert.AreEqual(10, _info.MinUpdateDuration);
+			Assert.AreEqual(20, _info.MaxUpdateDuration);
+			Assert.AreEqual(0, _info.AverageUpdateDuration);
 		}
 
 		[NUnit.Framework.Test]
 		public void KeepsMinDurationAfterReset()
 		{
-			_info.AddExecutionDuration(20);
-			_info.AddExecutionDuration(10);
+			_info.AddUpdateDuration(20);
+			_info.AddUpdateDuration(10);
 
-			_info.ResetDurations();
+			_info.ResetFrameDurations();
 
-			_info.AddExecutionDuration(15);
+			_info.AddUpdateDuration(15);
 
-			Assert.AreEqual(15, _info.AccumulatedExecutionDuration);
-			Assert.AreEqual(10, _info.MinExecutionDuration);
-			Assert.AreEqual(20, _info.MaxExecutionDuration);
-			Assert.AreEqual(15, _info.AverageExecutionDuration);
+			Assert.AreEqual(15, _info.AccumulatedUpdateDuration);
+			Assert.AreEqual(10, _info.MinUpdateDuration);
+			Assert.AreEqual(20, _info.MaxUpdateDuration);
+			Assert.AreEqual(15, _info.AverageUpdateDuration);
 		}
 	}
 }

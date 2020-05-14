@@ -27,7 +27,7 @@ namespace JCMG.EntitasRedux
 {
 	/// <summary>
 	/// The base interface for all systems. It's not meant to be implemented directly. Use one of its child interfaces
-	/// such as <see cref="IInitializeSystem"/>, <see cref="IExecuteSystem"/>, <see cref="IFixedUpdateSystem"/>,
+	/// such as <see cref="IInitializeSystem"/>, <see cref="IUpdateSystem"/>, <see cref="IFixedUpdateSystem"/>,
 	/// <see cref="IUpdateSystem"/>, <see cref="ILateUpdateSystem"/>, <see cref="ICleanupSystem"/> or
 	/// <see cref="ITearDownSystem"/>.
 	/// </summary>

@@ -1,4 +1,4 @@
-﻿/*
+/*
 
 MIT License
 
@@ -23,18 +23,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-using JCMG.EntitasRedux;
-
-namespace EntitasRedux.Tests
+namespace JCMG.EntitasRedux.VisualDebugging
 {
-	public class ExecuteSystemSpy : IExecuteSystem {
-
-		public int DidExecute { get { return _didExecute; } }
-
-		private int _didExecute;
-
-		public void Execute() {
-			_didExecute += 1;
-		}
+	public enum AvgResetInterval
+	{
+		Always = 1,
+		VeryFast = 30,
+		Fast = 60,
+		Normal = 120,
+		Slow = 300,
+		Never = int.MaxValue
 	}
 }

@@ -25,22 +25,17 @@ THE SOFTWARE.
 
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using UnityEngine;
 
 namespace JCMG.EntitasRedux.VisualDebugging
 {
-	public enum AvgResetInterval
-	{
-		Always = 1,
-		VeryFast = 30,
-		Fast = 60,
-		Normal = 120,
-		Slow = 300,
-		Never = int.MaxValue
-	}
-
 	public class DebugSystems : Systems
 	{
+		/// <summary>
+		/// Returns the total number of <see cref="IInitializeSystem"/> instances in this <see cref="DebugSystems"/> and
+		/// any child <see cref="DebugSystems"/>.
+		/// </summary>
 		public int TotalInitializeSystemsCount
 		{
 			get
@@ -56,21 +51,86 @@ namespace JCMG.EntitasRedux.VisualDebugging
 			}
 		}
 
-		public int TotalExecuteSystemsCount
+		/// <summary>
+		/// Returns the total number of <see cref="IUpdateSystem"/> instances in this <see cref="DebugSystems"/> and
+		/// any child <see cref="DebugSystems"/>.
+		/// </summary>
+		public int TotalUpdateSystemsCount
 		{
 			get
 			{
 				var total = 0;
-				for (var i = 0; i < _executeSystems.Count; i++)
+				for (var i = 0; i < _updateSystems.Count; i++)
 				{
-					var system = _executeSystems[i];
-					total += system is DebugSystems debugSystems ? debugSystems.TotalExecuteSystemsCount : 1;
+					var system = _updateSystems[i];
+					total += system is DebugSystems debugSystems ? debugSystems.TotalUpdateSystemsCount : 1;
 				}
 
 				return total;
 			}
 		}
 
+		/// <summary>
+		/// Returns the total number of <see cref="IFixedUpdateSystem"/> instances in this <see cref="DebugSystems"/> and
+		/// any child <see cref="DebugSystems"/>.
+		/// </summary>
+		public int TotalFixedUpdateSystemsCount
+		{
+			get
+			{
+				var total = 0;
+				for (var i = 0; i < _fixedUpdateSystems.Count; i++)
+				{
+					var system = _fixedUpdateSystems[i];
+					total += system is DebugSystems debugSystems ? debugSystems.TotalFixedUpdateSystemsCount : 1;
+				}
+
+				return total;
+			}
+		}
+
+		/// <summary>
+		/// Returns the total number of <see cref="ILateUpdateSystem"/> instances in this <see cref="DebugSystems"/> and
+		/// any child <see cref="DebugSystems"/>.
+		/// </summary>
+		public int TotalLateUpdateSystemsCount
+		{
+			get
+			{
+				var total = 0;
+				for (var i = 0; i < _lateUpdateSystems.Count; i++)
+				{
+					var system = _lateUpdateSystems[i];
+					total += system is DebugSystems debugSystems ? debugSystems.TotalLateUpdateSystemsCount : 1;
+				}
+
+				return total;
+			}
+		}
+
+		/// <summary>
+		/// Returns the total number of <see cref="IReactiveSystem"/> instances in this <see cref="DebugSystems"/> and
+		/// any child <see cref="DebugSystems"/>.
+		/// </summary>
+		public int TotalReactiveSystemsCount
+		{
+			get
+			{
+				var total = 0;
+				for (var i = 0; i < _reactiveSystems.Count; i++)
+				{
+					var system = _reactiveSystems[i];
+					total += system is DebugSystems debugSystems ? debugSystems.TotalReactiveSystemsCount : 1;
+				}
+
+				return total;
+			}
+		}
+
+		/// <summary>
+		/// Returns the total number of <see cref="ICleanupSystem"/> instances in this <see cref="DebugSystems"/> and
+		/// any child <see cref="DebugSystems"/>.
+		/// </summary>
 		public int TotalCleanupSystemsCount
 		{
 			get
@@ -86,6 +146,10 @@ namespace JCMG.EntitasRedux.VisualDebugging
 			}
 		}
 
+		/// <summary>
+		/// Returns the total number of <see cref="ITearDownSystem"/> instances in this <see cref="DebugSystems"/> and
+		/// any child <see cref="DebugSystems"/>.
+		/// </summary>
 		public int TotalTearDownSystemsCount
 		{
 			get
@@ -101,6 +165,10 @@ namespace JCMG.EntitasRedux.VisualDebugging
 			}
 		}
 
+		/// <summary>
+		/// Returns the total number of <see cref="ISystem"/> instances in this <see cref="DebugSystems"/> and
+		/// any child <see cref="DebugSystems"/>.
+		/// </summary>
 		public int TotalSystemsCount
 		{
 			get
@@ -116,52 +184,75 @@ namespace JCMG.EntitasRedux.VisualDebugging
 			}
 		}
 
-		public int InitializeSystemsCount => _initializeSystems.Count;
-
-		public int ExecuteSystemsCount => _executeSystems.Count;
-
-		public int CleanupSystemsCount => _cleanupSystems.Count;
-
-		public int TearDownSystemsCount => _tearDownSystems.Count;
-
 		public string Name => _name;
 
 		public GameObject GameObject => _gameObject;
 
 		public SystemInfo SystemInfo => _systemInfo;
 
-		public double ExecuteDuration => _executeDuration;
+		public double AverageUpdateDuration => _updateSystemInfos.Select(x => x.AverageUpdateDuration).Sum();
+
+		public double AverageFixedUpdateDuration => _fixedUpdateSystemInfos.Select(x => x.AverageFixedUpdateDuration).Sum();
+
+		public double AverageLateUpdateDuration => _lateUpdateSystemInfos.Select(x => x.AverageLateUpdateDuration).Sum();
+
+		public double AverageReactiveDuration => _lateUpdateSystemInfos.Select(x => x.AverageReactiveDuration).Sum();
+
+		public double AverageCleanupDuration => _cleanupSystemInfos.Select(x => x.AverageCleanupDuration).Sum();
+
+		public double UpdateDuration => _updateDuration;
+
+		public double FixedUpdateDuration => _fixedUpdateDuration;
+
+		public double LateUpdateDuration => _lateUpdateDuration;
+
+		public double ReactiveDuration => _reactiveDuration;
 
 		public double CleanupDuration => _cleanupDuration;
 
-		public SystemInfo[] InitializeSystemInfos => _initializeSystemInfos.ToArray();
+		public IReadOnlyList<SystemInfo> InitializeSystemInfos => _initializeSystemInfos;
 
-		public SystemInfo[] ExecuteSystemInfos => _executeSystemInfos.ToArray();
+		public IReadOnlyList<SystemInfo> UpdateSystemInfos => _updateSystemInfos;
 
-		public SystemInfo[] CleanupSystemInfos => _cleanupSystemInfos.ToArray();
+		public IReadOnlyList<SystemInfo> FixedUpdateSystemInfos => _fixedUpdateSystemInfos;
 
-		public SystemInfo[] TearDownSystemInfos => _tearDownSystemInfos.ToArray();
+		public IReadOnlyList<SystemInfo> LateUpdateSystemInfos => _lateUpdateSystemInfos;
 
-		private double _cleanupDuration;
-		private List<SystemInfo> _cleanupSystemInfos;
+		public IReadOnlyList<SystemInfo> CleanupSystemInfos => _cleanupSystemInfos;
 
-		private double _executeDuration;
-		private List<SystemInfo> _executeSystemInfos;
-		private GameObject _gameObject;
+		public IReadOnlyList<SystemInfo> TearDownSystemInfos => _tearDownSystemInfos;
 
-		private List<SystemInfo> _initializeSystemInfos;
+		public IReadOnlyList<SystemInfo> ReactiveSystemInfos => _reactiveSystemInfos;
 
 		private string _name;
+		private GameObject _gameObject;
+
+		private double _reactiveDuration;
+		private double _fixedUpdateDuration;
+		private double _updateDuration;
+		private double _lateUpdateDuration;
+		private double _cleanupDuration;
+
+		private List<SystemInfo> _allSystemInfos;
+		private List<SystemInfo> _initializeSystemInfos;
+		private List<SystemInfo> _updateSystemInfos;
+		private List<SystemInfo> _fixedUpdateSystemInfos;
+		private List<SystemInfo> _lateUpdateSystemInfos;
+		private List<SystemInfo> _reactiveSystemInfos;
+		private List<SystemInfo> _cleanupSystemInfos;
+		private List<SystemInfo> _tearDownSystemInfos;
 
 		private Stopwatch _stopwatch;
 		private SystemInfo _systemInfo;
 
 		private List<ISystem> _systems;
-		private List<SystemInfo> _tearDownSystemInfos;
 
-		public bool paused;
+		public static AvgResetInterval avgResetInterval;
 
-		public static AvgResetInterval avgResetInterval = AvgResetInterval.Never;
+		static DebugSystems()
+		{
+			avgResetInterval = AvgResetInterval.Slow;
+		}
 
 		public DebugSystems(string name)
 		{
@@ -180,11 +271,16 @@ namespace JCMG.EntitasRedux.VisualDebugging
 
 			_systemInfo = new SystemInfo(this);
 
-			_systems = new List<ISystem>();
+			_allSystemInfos = new List<SystemInfo>();
 			_initializeSystemInfos = new List<SystemInfo>();
-			_executeSystemInfos = new List<SystemInfo>();
+			_updateSystemInfos = new List<SystemInfo>();
+			_fixedUpdateSystemInfos = new List<SystemInfo>();
+			_lateUpdateSystemInfos = new List<SystemInfo>();
+			_reactiveSystemInfos = new List<SystemInfo>();
 			_cleanupSystemInfos = new List<SystemInfo>();
 			_tearDownSystemInfos = new List<SystemInfo>();
+
+			_systems = new List<ISystem>();
 
 			_stopwatch = new Stopwatch();
 		}
@@ -205,6 +301,8 @@ namespace JCMG.EntitasRedux.VisualDebugging
 				childSystemInfo = new SystemInfo(system);
 			}
 
+			_allSystemInfos.Add(childSystemInfo);
+
 			childSystemInfo.parentSystemInfo = _systemInfo;
 
 			if (childSystemInfo.IsInitializeSystems)
@@ -212,9 +310,24 @@ namespace JCMG.EntitasRedux.VisualDebugging
 				_initializeSystemInfos.Add(childSystemInfo);
 			}
 
-			if (childSystemInfo.IsExecuteSystems || childSystemInfo.IsReactiveSystems)
+			if (childSystemInfo.IsUpdateSystems || childSystemInfo.IsReactiveSystems)
 			{
-				_executeSystemInfos.Add(childSystemInfo);
+				_updateSystemInfos.Add(childSystemInfo);
+			}
+
+			if (childSystemInfo.IsFixedUpdateSystems)
+			{
+				_fixedUpdateSystemInfos.Add(childSystemInfo);
+			}
+
+			if (childSystemInfo.IsLateUpdateSystems)
+			{
+				_lateUpdateSystemInfos.Add(childSystemInfo);
+			}
+
+			if (childSystemInfo.IsReactiveSystems)
+			{
+				_reactiveSystemInfos.Add(childSystemInfo);
 			}
 
 			if (childSystemInfo.IsCleanupSystems)
@@ -232,13 +345,15 @@ namespace JCMG.EntitasRedux.VisualDebugging
 
 		public void ResetDurations()
 		{
-			foreach (var systemInfo in _executeSystemInfos)
+			for (var i = 0; i < _allSystemInfos.Count; i++)
 			{
-				systemInfo.ResetDurations();
+				var systemInfo = _allSystemInfos[i];
+				systemInfo.ResetFrameDurations();
 			}
 
-			foreach (var system in _systems)
+			for (var i = 0; i < _systems.Count; i++)
 			{
+				var system = _systems[i];
 				if (system is DebugSystems debugSystems)
 				{
 					debugSystems.ResetDurations();
@@ -262,47 +377,88 @@ namespace JCMG.EntitasRedux.VisualDebugging
 			}
 		}
 
-		public override void Execute()
+		public override void Update()
 		{
-			if (!paused)
-			{
-				StepExecute();
-			}
-		}
-
-		public override void Cleanup()
-		{
-			if (!paused)
-			{
-				StepCleanup();
-			}
-		}
-
-		public void StepExecute()
-		{
-			_executeDuration = 0;
+			_updateDuration = 0;
 			if (Time.frameCount % (int)avgResetInterval == 0)
 			{
 				ResetDurations();
 			}
 
-			for (var i = 0; i < _executeSystems.Count; i++)
+			for (var i = 0; i < _updateSystems.Count; i++)
 			{
-				var systemInfo = _executeSystemInfos[i];
+				var systemInfo = _updateSystemInfos[i];
 				if (systemInfo.isActive)
 				{
 					_stopwatch.Reset();
 					_stopwatch.Start();
-					_executeSystems[i].Execute();
+					_updateSystems[i].Update();
 					_stopwatch.Stop();
 					var duration = _stopwatch.Elapsed.TotalMilliseconds;
-					_executeDuration += duration;
-					systemInfo.AddExecutionDuration(duration);
+					_updateDuration += duration;
+					systemInfo.AddUpdateDuration(duration);
 				}
 			}
 		}
 
-		public void StepCleanup()
+		public override void FixedUpdate()
+		{
+			_fixedUpdateDuration = 0;
+			for (var i = 0; i < _fixedUpdateSystems.Count; i++)
+			{
+				var systemInfo = _fixedUpdateSystemInfos[i];
+				if (systemInfo.isActive)
+				{
+					_stopwatch.Reset();
+					_stopwatch.Start();
+					_fixedUpdateSystems[i].FixedUpdate();
+					_stopwatch.Stop();
+					var duration = _stopwatch.Elapsed.TotalMilliseconds;
+					_fixedUpdateDuration += duration;
+					systemInfo.AddFixedUpdateDuration(duration);
+				}
+			}
+		}
+
+		public override void LateUpdate()
+		{
+			_lateUpdateDuration = 0;
+			for (var i = 0; i < _lateUpdateSystems.Count; i++)
+			{
+				var systemInfo = _lateUpdateSystemInfos[i];
+				if (systemInfo.isActive)
+				{
+					_stopwatch.Reset();
+					_stopwatch.Start();
+					_lateUpdateSystems[i].LateUpdate();
+					_stopwatch.Stop();
+					var duration = _stopwatch.Elapsed.TotalMilliseconds;
+					_lateUpdateDuration += duration;
+					systemInfo.AddLateUpdateDuration(duration);
+				}
+			}
+		}
+
+		public override void Execute()
+		{
+			_reactiveDuration = 0;
+			for (var i = 0; i < _reactiveSystems.Count; i++)
+			{
+				var systemInfo = _reactiveSystemInfos[i];
+				if (systemInfo.isActive)
+				{
+					_stopwatch.Reset();
+					_stopwatch.Start();
+					_reactiveSystems[i].Execute();
+					_stopwatch.Stop();
+					var duration = _stopwatch.Elapsed.TotalMilliseconds;
+					_reactiveDuration += duration;
+					systemInfo.AddReactiveDuration(duration);
+				}
+			}
+		}
+
+		public override void Cleanup()
 		{
 			_cleanupDuration = 0;
 			for (var i = 0; i < _cleanupSystems.Count; i++)

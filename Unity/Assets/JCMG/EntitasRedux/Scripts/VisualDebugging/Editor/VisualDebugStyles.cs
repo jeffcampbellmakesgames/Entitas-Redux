@@ -23,17 +23,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-namespace JCMG.EntitasRedux
+using JCMG.EntitasRedux.Editor;
+using UnityEngine;
+
+namespace JCMG.EntitasRedux.VisualDebugging.Editor
 {
 	/// <summary>
-	/// Implement this interface if you want to create a system which should be executed at an arbitrary user-decided
-	/// point.
+	/// Editor styles for Visual Debugging
 	/// </summary>
-	public interface IExecuteSystem : ISystem
+	internal static class VisualDebugStyles
 	{
-		/// <summary>
-		/// Executes logic.
-		/// </summary>
-		void Execute();
+		public static GUIStyle SectionContent
+		{
+			get
+			{
+				if (_sectionContent == null)
+				{
+					_sectionContent = new GUIStyle(EntitasReduxStyles.GROUP_BOX_STYLE);
+					_sectionContent.padding = new RectOffset(0, 0, 0, 0);
+					_sectionContent.margin = new RectOffset(0, 0, 0, 0);
+					_sectionContent.contentOffset = Vector2.zero;
+				}
+
+				return _sectionContent;
+			}
+		}
+
+		// Cache
+		private static GUIStyle _sectionContent;
 	}
 }

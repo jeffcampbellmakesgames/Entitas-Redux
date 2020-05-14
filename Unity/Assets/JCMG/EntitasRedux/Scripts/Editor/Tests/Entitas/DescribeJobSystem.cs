@@ -45,7 +45,7 @@ namespace EntitasRedux.Tests
 			var system = new TestJobSystem(ctx, 2);
 			var e = ctx.CreateEntity();
 			e.AddNameAge("e", -1);
-			system.Execute();
+			system.Update();
 
 			Assert.AreEqual("e-Processed", e.NameAge.name);
 		}
@@ -61,7 +61,7 @@ namespace EntitasRedux.Tests
 				e.AddNameAge("e" + i, -1);
 			}
 
-			system.Execute();
+			system.Update();
 
 			var entities = ctx.GetEntities();
 
@@ -87,7 +87,7 @@ namespace EntitasRedux.Tests
 				e.AddNameAge("e" + i, -1);
 			}
 
-			system.Execute();
+			system.Update();
 
 			var entities = ctx.GetEntities();
 
@@ -110,7 +110,7 @@ namespace EntitasRedux.Tests
 				e.AddNameAge("e" + i, -1);
 			}
 
-			Assert.Throws<Exception>(() => system.Execute());
+			Assert.Throws<Exception>(() => system.Update());
 		}
 
 		[NUnit.Framework.Test]
@@ -127,7 +127,7 @@ namespace EntitasRedux.Tests
 			var didThrow = 0;
 			try
 			{
-				system.Execute();
+				system.Update();
 			}
 			catch
 			{
@@ -138,7 +138,7 @@ namespace EntitasRedux.Tests
 
 			system.exception = null;
 
-			system.Execute();
+			system.Update();
 		}
 	}
 }

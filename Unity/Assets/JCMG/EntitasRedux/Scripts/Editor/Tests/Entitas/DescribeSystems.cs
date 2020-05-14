@@ -58,18 +58,6 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void ExecutesExecuteSystemSpy()
 		{
-			var system = new ExecuteSystemSpy();
-
-			Assert.AreEqual(0, system.DidExecute);
-
-			system.Execute();
-
-			Assert.AreEqual(1, system.DidExecute);
-		}
-
-		[NUnit.Framework.Test]
-		public void ExecutesUpdateSystemSpy()
-		{
 			var system = new UpdateSystemSpy();
 
 			Assert.AreEqual(0, system.DidExecute);
@@ -182,16 +170,6 @@ namespace EntitasRedux.Tests
 
 		[NUnit.Framework.Test]
 		public void SystemsExecutesIExecuteSystemSystem()
-		{
-			var system = new ExecuteSystemSpy();
-			_systems.Add(system);
-			_systems.Execute();
-
-			Assert.AreEqual(1, system.DidExecute);
-		}
-
-		[NUnit.Framework.Test]
-		public void SystemsExecutesIUpdateSystemSystem()
 		{
 			var system = new UpdateSystemSpy();
 			_systems.Add(system);
@@ -342,8 +320,8 @@ namespace EntitasRedux.Tests
 
 			Assert.AreEqual(1, system.DidInitialize);
 
-			_systems.ClearReactiveSystems();
-			_systems.Execute();
+			_systems.Clear();
+			_systems.Update();
 
 			Assert.AreEqual(0, system.DidExecute);
 		}
@@ -361,8 +339,8 @@ namespace EntitasRedux.Tests
 
 			Assert.AreEqual(1, system.DidInitialize);
 
-			parentSystems.ClearReactiveSystems();
-			parentSystems.Execute();
+			parentSystems.Clear();
+			parentSystems.Update();
 
 			Assert.AreEqual(0, system.DidExecute);
 		}
@@ -378,8 +356,8 @@ namespace EntitasRedux.Tests
 
 			Assert.AreEqual(1, system.DidInitialize);
 
-			_systems.DeactivateReactiveSystems();
-			_systems.Execute();
+			_systems.Deactivate();
+			_systems.Update();
 
 			Assert.AreEqual(0, system.DidExecute);
 		}
@@ -397,8 +375,8 @@ namespace EntitasRedux.Tests
 
 			Assert.AreEqual(1, system.DidInitialize);
 
-			parentSystems.DeactivateReactiveSystems();
-			parentSystems.Execute();
+			parentSystems.Deactivate();
+			parentSystems.Update();
 
 			Assert.AreEqual(0, system.DidExecute);
 		}
@@ -414,8 +392,8 @@ namespace EntitasRedux.Tests
 
 			Assert.AreEqual(1, system.DidInitialize);
 
-			_systems.DeactivateReactiveSystems();
-			_systems.ActivateReactiveSystems();
+			_systems.Deactivate();
+			_systems.Activate();
 			_systems.Execute();
 
 			Assert.AreEqual(0, system.DidExecute);
@@ -439,9 +417,9 @@ namespace EntitasRedux.Tests
 
 			Assert.AreEqual(1, system.DidInitialize);
 
-			parentSystems.DeactivateReactiveSystems();
-			parentSystems.ActivateReactiveSystems();
-			parentSystems.Execute();
+			parentSystems.Deactivate();
+			parentSystems.Activate();
+			parentSystems.Update();
 
 			Assert.AreEqual(0, system.DidExecute);
 
