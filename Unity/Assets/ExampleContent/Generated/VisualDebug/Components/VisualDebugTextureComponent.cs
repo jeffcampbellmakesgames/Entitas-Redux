@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.TextureComponent Texture { get { return (ExampleContent.VisualDebugging.TextureComponent)GetComponent(VisualDebugComponentsLookup.Texture); } }
-    public bool hasTexture { get { return HasComponent(VisualDebugComponentsLookup.Texture); } }
+    public bool HasTexture { get { return HasComponent(VisualDebugComponentsLookup.Texture); } }
 
     public void AddTexture(UnityEngine.Texture newTexture) {
         var index = VisualDebugComponentsLookup.Texture;

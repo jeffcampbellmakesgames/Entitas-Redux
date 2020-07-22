@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.Vector3Component Vector3 { get { return (ExampleContent.VisualDebugging.Vector3Component)GetComponent(VisualDebugComponentsLookup.Vector3); } }
-    public bool hasVector3 { get { return HasComponent(VisualDebugComponentsLookup.Vector3); } }
+    public bool HasVector3 { get { return HasComponent(VisualDebugComponentsLookup.Vector3); } }
 
     public void AddVector3(UnityEngine.Vector3 newVector3) {
         var index = VisualDebugComponentsLookup.Vector3;

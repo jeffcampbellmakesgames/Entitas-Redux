@@ -10,7 +10,7 @@
 public partial class Test2Entity {
 
     public EntitasRedux.Tests.Test2ContextComponent Test2Context { get { return (EntitasRedux.Tests.Test2ContextComponent)GetComponent(Test2ComponentsLookup.Test2Context); } }
-    public bool hasTest2Context { get { return HasComponent(Test2ComponentsLookup.Test2Context); } }
+    public bool HasTest2Context { get { return HasComponent(Test2ComponentsLookup.Test2Context); } }
 
     public void AddTest2Context(string newValue) {
         var index = Test2ComponentsLookup.Test2Context;

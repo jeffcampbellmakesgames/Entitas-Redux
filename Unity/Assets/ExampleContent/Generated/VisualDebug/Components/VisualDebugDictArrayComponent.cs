@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.DictArrayComponent DictArray { get { return (ExampleContent.VisualDebugging.DictArrayComponent)GetComponent(VisualDebugComponentsLookup.DictArray); } }
-    public bool hasDictArray { get { return HasComponent(VisualDebugComponentsLookup.DictArray); } }
+    public bool HasDictArray { get { return HasComponent(VisualDebugComponentsLookup.DictArray); } }
 
     public void AddDictArray(System.Collections.Generic.Dictionary<int, string[]> newDict, System.Collections.Generic.Dictionary<int, string[]>[] newDictArray) {
         var index = VisualDebugComponentsLookup.DictArray;

@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.DateTimeComponent DateTime { get { return (ExampleContent.VisualDebugging.DateTimeComponent)GetComponent(VisualDebugComponentsLookup.DateTime); } }
-    public bool hasDateTime { get { return HasComponent(VisualDebugComponentsLookup.DateTime); } }
+    public bool HasDateTime { get { return HasComponent(VisualDebugComponentsLookup.DateTime); } }
 
     public void AddDateTime(System.DateTime newDate) {
         var index = VisualDebugComponentsLookup.DateTime;

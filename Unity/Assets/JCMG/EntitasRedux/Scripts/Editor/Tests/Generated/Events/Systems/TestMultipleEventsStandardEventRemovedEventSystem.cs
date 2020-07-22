@@ -22,7 +22,7 @@ public sealed class TestMultipleEventsStandardEventRemovedEventSystem : JCMG.Ent
     }
 
     protected override bool Filter(TestEntity entity) {
-        return !entity.hasMultipleEventsStandardEvent && entity.hasTestMultipleEventsStandardEventRemovedListener;
+        return !entity.HasMultipleEventsStandardEvent && entity.HasTestMultipleEventsStandardEventRemovedListener;
     }
 
     protected override void Execute(System.Collections.Generic.List<TestEntity> entities) {

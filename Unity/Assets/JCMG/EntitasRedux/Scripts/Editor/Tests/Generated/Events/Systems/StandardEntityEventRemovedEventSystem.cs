@@ -22,7 +22,7 @@ public sealed class StandardEntityEventRemovedEventSystem : JCMG.EntitasRedux.Re
     }
 
     protected override bool Filter(TestEntity entity) {
-        return !entity.hasStandardEntityEvent && entity.hasStandardEntityEventRemovedListener;
+        return !entity.HasStandardEntityEvent && entity.HasStandardEntityEventRemovedListener;
     }
 
     protected override void Execute(System.Collections.Generic.List<TestEntity> entities) {

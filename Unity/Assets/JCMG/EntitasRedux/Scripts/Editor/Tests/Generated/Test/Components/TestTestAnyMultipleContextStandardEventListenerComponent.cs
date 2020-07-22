@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public TestAnyMultipleContextStandardEventListenerComponent TestAnyMultipleContextStandardEventListener { get { return (TestAnyMultipleContextStandardEventListenerComponent)GetComponent(TestComponentsLookup.TestAnyMultipleContextStandardEventListener); } }
-    public bool hasTestAnyMultipleContextStandardEventListener { get { return HasComponent(TestComponentsLookup.TestAnyMultipleContextStandardEventListener); } }
+    public bool HasTestAnyMultipleContextStandardEventListener { get { return HasComponent(TestComponentsLookup.TestAnyMultipleContextStandardEventListener); } }
 
     public void AddTestAnyMultipleContextStandardEventListener(System.Collections.Generic.List<ITestAnyMultipleContextStandardEventListener> newValue) {
         var index = TestComponentsLookup.TestAnyMultipleContextStandardEventListener;
@@ -69,7 +69,7 @@ public sealed partial class TestMatcher {
 public partial class TestEntity {
 
     public void AddTestAnyMultipleContextStandardEventListener(ITestAnyMultipleContextStandardEventListener value) {
-        var listeners = hasTestAnyMultipleContextStandardEventListener
+        var listeners = HasTestAnyMultipleContextStandardEventListener
             ? TestAnyMultipleContextStandardEventListener.value
             : new System.Collections.Generic.List<ITestAnyMultipleContextStandardEventListener>();
         listeners.Add(value);

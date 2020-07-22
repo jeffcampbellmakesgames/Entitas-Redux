@@ -11,10 +11,10 @@ public partial class VisualDebugContext {
 
     public VisualDebugEntity ISomeInterfaceEntity { get { return GetGroup(VisualDebugMatcher.ISomeInterface).GetSingleEntity(); } }
     public ISomeInterfaceComponent ISomeInterface { get { return ISomeInterfaceEntity.ISomeInterface; } }
-    public bool hasISomeInterface { get { return ISomeInterfaceEntity != null; } }
+    public bool HasISomeInterface { get { return ISomeInterfaceEntity != null; } }
 
     public VisualDebugEntity SetISomeInterface(ExampleContent.VisualDebugging.ISomeInterface newValue) {
-        if (hasISomeInterface) {
+        if (HasISomeInterface) {
             throw new JCMG.EntitasRedux.EntitasReduxException("Could not set ISomeInterface!\n" + this + " already has an entity with ISomeInterfaceComponent!",
                 "You should check if the context already has a ISomeInterfaceEntity before setting it or use context.ReplaceISomeInterface().");
         }
@@ -49,7 +49,7 @@ public partial class VisualDebugContext {
 public partial class VisualDebugEntity {
 
     public ISomeInterfaceComponent ISomeInterface { get { return (ISomeInterfaceComponent)GetComponent(VisualDebugComponentsLookup.ISomeInterface); } }
-    public bool hasISomeInterface { get { return HasComponent(VisualDebugComponentsLookup.ISomeInterface); } }
+    public bool HasISomeInterface { get { return HasComponent(VisualDebugComponentsLookup.ISomeInterface); } }
 
     public void AddISomeInterface(ExampleContent.VisualDebugging.ISomeInterface newValue) {
         var index = VisualDebugComponentsLookup.ISomeInterface;

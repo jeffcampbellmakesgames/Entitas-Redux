@@ -26,7 +26,7 @@ public sealed class TestAnyMultipleEventsStandardEventEventSystem : JCMG.Entitas
     }
 
     protected override bool Filter(TestEntity entity) {
-        return entity.hasMultipleEventsStandardEvent;
+        return entity.HasMultipleEventsStandardEvent;
     }
 
     protected override void Execute(System.Collections.Generic.List<TestEntity> entities) {

@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public EntitasRedux.Tests.StandardComponent Standard { get { return (EntitasRedux.Tests.StandardComponent)GetComponent(TestComponentsLookup.Standard); } }
-    public bool hasStandard { get { return HasComponent(TestComponentsLookup.Standard); } }
+    public bool HasStandard { get { return HasComponent(TestComponentsLookup.Standard); } }
 
     public void AddStandard(string newValue) {
         var index = TestComponentsLookup.Standard;

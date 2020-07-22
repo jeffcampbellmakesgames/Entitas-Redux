@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public EntitasRedux.Tests.SizeComponent Size { get { return (EntitasRedux.Tests.SizeComponent)GetComponent(TestComponentsLookup.Size); } }
-    public bool hasSize { get { return HasComponent(TestComponentsLookup.Size); } }
+    public bool HasSize { get { return HasComponent(TestComponentsLookup.Size); } }
 
     public void AddSize(int newWidth, int newHeight) {
         var index = TestComponentsLookup.Size;

@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.MyFloatComponent MyFloat { get { return (ExampleContent.VisualDebugging.MyFloatComponent)GetComponent(VisualDebugComponentsLookup.MyFloat); } }
-    public bool hasMyFloat { get { return HasComponent(VisualDebugComponentsLookup.MyFloat); } }
+    public bool HasMyFloat { get { return HasComponent(VisualDebugComponentsLookup.MyFloat); } }
 
     public void AddMyFloat(float newMyFloat) {
         var index = VisualDebugComponentsLookup.MyFloat;

@@ -22,7 +22,7 @@ public sealed class FlagEntityEventEventSystem : JCMG.EntitasRedux.ReactiveSyste
     }
 
     protected override bool Filter(TestEntity entity) {
-        return entity.IsFlagEntityEvent && entity.hasFlagEntityEventListener;
+        return entity.IsFlagEntityEvent && entity.HasFlagEntityEventListener;
     }
 
     protected override void Execute(System.Collections.Generic.List<TestEntity> entities) {

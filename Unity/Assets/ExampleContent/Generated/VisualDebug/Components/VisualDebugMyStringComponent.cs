@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.MyStringComponent MyString { get { return (ExampleContent.VisualDebugging.MyStringComponent)GetComponent(VisualDebugComponentsLookup.MyString); } }
-    public bool hasMyString { get { return HasComponent(VisualDebugComponentsLookup.MyString); } }
+    public bool HasMyString { get { return HasComponent(VisualDebugComponentsLookup.MyString); } }
 
     public void AddMyString(string newMyString) {
         var index = VisualDebugComponentsLookup.MyString;

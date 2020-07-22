@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.PersonComponent Person { get { return (ExampleContent.VisualDebugging.PersonComponent)GetComponent(VisualDebugComponentsLookup.Person); } }
-    public bool hasPerson { get { return HasComponent(VisualDebugComponentsLookup.Person); } }
+    public bool HasPerson { get { return HasComponent(VisualDebugComponentsLookup.Person); } }
 
     public void AddPerson(string newGender, string newName) {
         var index = VisualDebugComponentsLookup.Person;

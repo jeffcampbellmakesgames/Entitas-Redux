@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public AnyFlagEventRemovedListenerComponent AnyFlagEventRemovedListener { get { return (AnyFlagEventRemovedListenerComponent)GetComponent(TestComponentsLookup.AnyFlagEventRemovedListener); } }
-    public bool hasAnyFlagEventRemovedListener { get { return HasComponent(TestComponentsLookup.AnyFlagEventRemovedListener); } }
+    public bool HasAnyFlagEventRemovedListener { get { return HasComponent(TestComponentsLookup.AnyFlagEventRemovedListener); } }
 
     public void AddAnyFlagEventRemovedListener(System.Collections.Generic.List<IAnyFlagEventRemovedListener> newValue) {
         var index = TestComponentsLookup.AnyFlagEventRemovedListener;
@@ -69,7 +69,7 @@ public sealed partial class TestMatcher {
 public partial class TestEntity {
 
     public void AddAnyFlagEventRemovedListener(IAnyFlagEventRemovedListener value) {
-        var listeners = hasAnyFlagEventRemovedListener
+        var listeners = HasAnyFlagEventRemovedListener
             ? AnyFlagEventRemovedListener.value
             : new System.Collections.Generic.List<IAnyFlagEventRemovedListener>();
         listeners.Add(value);

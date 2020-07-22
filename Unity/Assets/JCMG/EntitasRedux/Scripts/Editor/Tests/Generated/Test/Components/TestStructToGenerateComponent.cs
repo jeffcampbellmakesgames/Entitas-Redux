@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public StructToGenerateComponent StructToGenerate { get { return (StructToGenerateComponent)GetComponent(TestComponentsLookup.StructToGenerate); } }
-    public bool hasStructToGenerate { get { return HasComponent(TestComponentsLookup.StructToGenerate); } }
+    public bool HasStructToGenerate { get { return HasComponent(TestComponentsLookup.StructToGenerate); } }
 
     public void AddStructToGenerate(EntitasRedux.Tests.StructToGenerate newValue) {
         var index = TestComponentsLookup.StructToGenerate;

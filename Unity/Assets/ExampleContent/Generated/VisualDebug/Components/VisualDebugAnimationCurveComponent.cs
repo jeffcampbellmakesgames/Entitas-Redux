@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.AnimationCurveComponent AnimationCurve { get { return (ExampleContent.VisualDebugging.AnimationCurveComponent)GetComponent(VisualDebugComponentsLookup.AnimationCurve); } }
-    public bool hasAnimationCurve { get { return HasComponent(VisualDebugComponentsLookup.AnimationCurve); } }
+    public bool HasAnimationCurve { get { return HasComponent(VisualDebugComponentsLookup.AnimationCurve); } }
 
     public void AddAnimationCurve(UnityEngine.AnimationCurve newAnimationCurve) {
         var index = VisualDebugComponentsLookup.AnimationCurve;

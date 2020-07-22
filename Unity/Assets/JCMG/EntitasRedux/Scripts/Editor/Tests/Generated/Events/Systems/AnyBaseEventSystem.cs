@@ -26,7 +26,7 @@ public sealed class AnyBaseEventSystem : JCMG.EntitasRedux.ReactiveSystem<TestEn
     }
 
     protected override bool Filter(TestEntity entity) {
-        return entity.hasBase;
+        return entity.HasBase;
     }
 
     protected override void Execute(System.Collections.Generic.List<TestEntity> entities) {

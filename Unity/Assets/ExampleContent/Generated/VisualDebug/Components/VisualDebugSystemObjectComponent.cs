@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.SystemObjectComponent SystemObject { get { return (ExampleContent.VisualDebugging.SystemObjectComponent)GetComponent(VisualDebugComponentsLookup.SystemObject); } }
-    public bool hasSystemObject { get { return HasComponent(VisualDebugComponentsLookup.SystemObject); } }
+    public bool HasSystemObject { get { return HasComponent(VisualDebugComponentsLookup.SystemObject); } }
 
     public void AddSystemObject(object newSystemObject) {
         var index = VisualDebugComponentsLookup.SystemObject;

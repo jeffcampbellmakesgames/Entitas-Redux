@@ -26,7 +26,7 @@ public sealed class AnyStandardEventEventSystem : JCMG.EntitasRedux.ReactiveSyst
     }
 
     protected override bool Filter(TestEntity entity) {
-        return entity.hasStandardEvent;
+        return entity.HasStandardEvent;
     }
 
     protected override void Execute(System.Collections.Generic.List<TestEntity> entities) {

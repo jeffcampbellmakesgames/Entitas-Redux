@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public EntitasRedux.Tests.MixedEventComponent MixedEvent { get { return (EntitasRedux.Tests.MixedEventComponent)GetComponent(TestComponentsLookup.MixedEvent); } }
-    public bool hasMixedEvent { get { return HasComponent(TestComponentsLookup.MixedEvent); } }
+    public bool HasMixedEvent { get { return HasComponent(TestComponentsLookup.MixedEvent); } }
 
     public void AddMixedEvent(string newValue) {
         var index = TestComponentsLookup.MixedEvent;

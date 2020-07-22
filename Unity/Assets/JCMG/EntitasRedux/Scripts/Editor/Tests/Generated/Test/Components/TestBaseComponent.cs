@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public EntitasRedux.Tests.BaseComponent Base { get { return (EntitasRedux.Tests.BaseComponent)GetComponent(TestComponentsLookup.Base); } }
-    public bool hasBase { get { return HasComponent(TestComponentsLookup.Base); } }
+    public bool HasBase { get { return HasComponent(TestComponentsLookup.Base); } }
 
     public void AddBase(int newValue) {
         var index = TestComponentsLookup.Base;

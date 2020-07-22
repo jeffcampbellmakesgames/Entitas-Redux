@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.ColorComponent Color { get { return (ExampleContent.VisualDebugging.ColorComponent)GetComponent(VisualDebugComponentsLookup.Color); } }
-    public bool hasColor { get { return HasComponent(VisualDebugComponentsLookup.Color); } }
+    public bool HasColor { get { return HasComponent(VisualDebugComponentsLookup.Color); } }
 
     public void AddColor(UnityEngine.Color newColor) {
         var index = VisualDebugComponentsLookup.Color;

@@ -10,7 +10,7 @@
 public partial class MyTestEntity {
 
     public EntitasRedux.Tests.Performance.NameAgeComponent NameAge { get { return (EntitasRedux.Tests.Performance.NameAgeComponent)GetComponent(MyTestComponentsLookup.NameAge); } }
-    public bool hasNameAge { get { return HasComponent(MyTestComponentsLookup.NameAge); } }
+    public bool HasNameAge { get { return HasComponent(MyTestComponentsLookup.NameAge); } }
 
     public void AddNameAge(int newAge, string newName) {
         var index = MyTestComponentsLookup.NameAge;

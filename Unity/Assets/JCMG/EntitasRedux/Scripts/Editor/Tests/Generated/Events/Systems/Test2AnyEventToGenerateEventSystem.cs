@@ -26,7 +26,7 @@ public sealed class Test2AnyEventToGenerateEventSystem : JCMG.EntitasRedux.React
     }
 
     protected override bool Filter(Test2Entity entity) {
-        return entity.hasEventToGenerate;
+        return entity.HasEventToGenerate;
     }
 
     protected override void Execute(System.Collections.Generic.List<Test2Entity> entities) {

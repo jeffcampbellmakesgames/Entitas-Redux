@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.HashSetComponent HashSet { get { return (ExampleContent.VisualDebugging.HashSetComponent)GetComponent(VisualDebugComponentsLookup.HashSet); } }
-    public bool hasHashSet { get { return HasComponent(VisualDebugComponentsLookup.HashSet); } }
+    public bool HasHashSet { get { return HasComponent(VisualDebugComponentsLookup.HashSet); } }
 
     public void AddHashSet(System.Collections.Generic.HashSet<string> newHashset) {
         var index = VisualDebugComponentsLookup.HashSet;

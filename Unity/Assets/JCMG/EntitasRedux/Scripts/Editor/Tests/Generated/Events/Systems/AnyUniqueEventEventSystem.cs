@@ -26,7 +26,7 @@ public sealed class AnyUniqueEventEventSystem : JCMG.EntitasRedux.ReactiveSystem
     }
 
     protected override bool Filter(TestEntity entity) {
-        return entity.hasUniqueEvent;
+        return entity.HasUniqueEvent;
     }
 
     protected override void Execute(System.Collections.Generic.List<TestEntity> entities) {

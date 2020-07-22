@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.DictionaryComponent Dictionary { get { return (ExampleContent.VisualDebugging.DictionaryComponent)GetComponent(VisualDebugComponentsLookup.Dictionary); } }
-    public bool hasDictionary { get { return HasComponent(VisualDebugComponentsLookup.Dictionary); } }
+    public bool HasDictionary { get { return HasComponent(VisualDebugComponentsLookup.Dictionary); } }
 
     public void AddDictionary(System.Collections.Generic.Dictionary<string, string> newDict) {
         var index = VisualDebugComponentsLookup.Dictionary;

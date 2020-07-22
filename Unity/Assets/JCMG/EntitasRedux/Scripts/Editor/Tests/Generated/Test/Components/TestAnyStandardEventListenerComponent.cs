@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public AnyStandardEventListenerComponent AnyStandardEventListener { get { return (AnyStandardEventListenerComponent)GetComponent(TestComponentsLookup.AnyStandardEventListener); } }
-    public bool hasAnyStandardEventListener { get { return HasComponent(TestComponentsLookup.AnyStandardEventListener); } }
+    public bool HasAnyStandardEventListener { get { return HasComponent(TestComponentsLookup.AnyStandardEventListener); } }
 
     public void AddAnyStandardEventListener(System.Collections.Generic.List<IAnyStandardEventListener> newValue) {
         var index = TestComponentsLookup.AnyStandardEventListener;
@@ -69,7 +69,7 @@ public sealed partial class TestMatcher {
 public partial class TestEntity {
 
     public void AddAnyStandardEventListener(IAnyStandardEventListener value) {
-        var listeners = hasAnyStandardEventListener
+        var listeners = HasAnyStandardEventListener
             ? AnyStandardEventListener.value
             : new System.Collections.Generic.List<IAnyStandardEventListener>();
         listeners.Add(value);

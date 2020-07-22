@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.MyFlagsComponent MyFlags { get { return (ExampleContent.VisualDebugging.MyFlagsComponent)GetComponent(VisualDebugComponentsLookup.MyFlags); } }
-    public bool hasMyFlags { get { return HasComponent(VisualDebugComponentsLookup.MyFlags); } }
+    public bool HasMyFlags { get { return HasComponent(VisualDebugComponentsLookup.MyFlags); } }
 
     public void AddMyFlags(ExampleContent.VisualDebugging.MyFlagsComponent.MyFlags newMyFlags) {
         var index = VisualDebugComponentsLookup.MyFlags;

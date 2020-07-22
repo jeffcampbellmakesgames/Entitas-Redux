@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.MyBoolComponent MyBool { get { return (ExampleContent.VisualDebugging.MyBoolComponent)GetComponent(VisualDebugComponentsLookup.MyBool); } }
-    public bool hasMyBool { get { return HasComponent(VisualDebugComponentsLookup.MyBool); } }
+    public bool HasMyBool { get { return HasComponent(VisualDebugComponentsLookup.MyBool); } }
 
     public void AddMyBool(bool newMyBool) {
         var index = VisualDebugComponentsLookup.MyBool;

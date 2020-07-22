@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public PositionComponent Position { get { return (PositionComponent)GetComponent(VisualDebugComponentsLookup.Position); } }
-    public bool hasPosition { get { return HasComponent(VisualDebugComponentsLookup.Position); } }
+    public bool HasPosition { get { return HasComponent(VisualDebugComponentsLookup.Position); } }
 
     public void AddPosition(ExampleContent.VisualDebugging.IntVector2 newValue) {
         var index = VisualDebugComponentsLookup.Position;

@@ -26,7 +26,7 @@ public sealed class AnyMixedEventEventSystem : JCMG.EntitasRedux.ReactiveSystem<
     }
 
     protected override bool Filter(TestEntity entity) {
-        return entity.hasMixedEvent;
+        return entity.HasMixedEvent;
     }
 
     protected override void Execute(System.Collections.Generic.List<TestEntity> entities) {

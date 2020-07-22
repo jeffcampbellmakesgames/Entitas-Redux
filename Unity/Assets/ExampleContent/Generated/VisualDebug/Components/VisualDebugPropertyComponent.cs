@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.PropertyComponent Property { get { return (ExampleContent.VisualDebugging.PropertyComponent)GetComponent(VisualDebugComponentsLookup.Property); } }
-    public bool hasProperty { get { return HasComponent(VisualDebugComponentsLookup.Property); } }
+    public bool HasProperty { get { return HasComponent(VisualDebugComponentsLookup.Property); } }
 
     public void AddProperty(string newValue) {
         var index = VisualDebugComponentsLookup.Property;

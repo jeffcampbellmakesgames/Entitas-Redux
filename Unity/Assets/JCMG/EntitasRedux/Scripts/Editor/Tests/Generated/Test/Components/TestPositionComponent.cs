@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public EntitasRedux.Tests.PositionComponent Position { get { return (EntitasRedux.Tests.PositionComponent)GetComponent(TestComponentsLookup.Position); } }
-    public bool hasPosition { get { return HasComponent(TestComponentsLookup.Position); } }
+    public bool HasPosition { get { return HasComponent(TestComponentsLookup.Position); } }
 
     public void AddPosition(int newX, int newY) {
         var index = TestComponentsLookup.Position;
