@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public TestMultipleEventsStandardEventRemovedListenerComponent TestMultipleEventsStandardEventRemovedListener { get { return (TestMultipleEventsStandardEventRemovedListenerComponent)GetComponent(TestComponentsLookup.TestMultipleEventsStandardEventRemovedListener); } }
-    public bool hasTestMultipleEventsStandardEventRemovedListener { get { return HasComponent(TestComponentsLookup.TestMultipleEventsStandardEventRemovedListener); } }
+    public bool HasTestMultipleEventsStandardEventRemovedListener { get { return HasComponent(TestComponentsLookup.TestMultipleEventsStandardEventRemovedListener); } }
 
     public void AddTestMultipleEventsStandardEventRemovedListener(System.Collections.Generic.List<ITestMultipleEventsStandardEventRemovedListener> newValue) {
         var index = TestComponentsLookup.TestMultipleEventsStandardEventRemovedListener;
@@ -69,7 +69,7 @@ public sealed partial class TestMatcher {
 public partial class TestEntity {
 
     public void AddTestMultipleEventsStandardEventRemovedListener(ITestMultipleEventsStandardEventRemovedListener value) {
-        var listeners = hasTestMultipleEventsStandardEventRemovedListener
+        var listeners = HasTestMultipleEventsStandardEventRemovedListener
             ? TestMultipleEventsStandardEventRemovedListener.value
             : new System.Collections.Generic.List<ITestMultipleEventsStandardEventRemovedListener>();
         listeners.Add(value);

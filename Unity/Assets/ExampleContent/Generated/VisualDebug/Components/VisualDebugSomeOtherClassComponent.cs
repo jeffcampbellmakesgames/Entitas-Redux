@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public SomeOtherClassComponent SomeOtherClass { get { return (SomeOtherClassComponent)GetComponent(VisualDebugComponentsLookup.SomeOtherClass); } }
-    public bool hasSomeOtherClass { get { return HasComponent(VisualDebugComponentsLookup.SomeOtherClass); } }
+    public bool HasSomeOtherClass { get { return HasComponent(VisualDebugComponentsLookup.SomeOtherClass); } }
 
     public void AddSomeOtherClass(ExampleContent.VisualDebugging.SomeOtherClass newValue) {
         var index = VisualDebugComponentsLookup.SomeOtherClass;

@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.MyDoubleComponent MyDouble { get { return (ExampleContent.VisualDebugging.MyDoubleComponent)GetComponent(VisualDebugComponentsLookup.MyDouble); } }
-    public bool hasMyDouble { get { return HasComponent(VisualDebugComponentsLookup.MyDouble); } }
+    public bool HasMyDouble { get { return HasComponent(VisualDebugComponentsLookup.MyDouble); } }
 
     public void AddMyDouble(double newMyDouble) {
         var index = VisualDebugComponentsLookup.MyDouble;

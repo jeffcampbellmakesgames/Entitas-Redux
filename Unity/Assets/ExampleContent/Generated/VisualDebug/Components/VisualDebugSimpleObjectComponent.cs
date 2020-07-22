@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.SimpleObjectComponent SimpleObject { get { return (ExampleContent.VisualDebugging.SimpleObjectComponent)GetComponent(VisualDebugComponentsLookup.SimpleObject); } }
-    public bool hasSimpleObject { get { return HasComponent(VisualDebugComponentsLookup.SimpleObject); } }
+    public bool HasSimpleObject { get { return HasComponent(VisualDebugComponentsLookup.SimpleObject); } }
 
     public void AddSimpleObject(ExampleContent.VisualDebugging.SimpleObject newSimpleObject) {
         var index = VisualDebugComponentsLookup.SimpleObject;

@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.MyEnumComponent MyEnum { get { return (ExampleContent.VisualDebugging.MyEnumComponent)GetComponent(VisualDebugComponentsLookup.MyEnum); } }
-    public bool hasMyEnum { get { return HasComponent(VisualDebugComponentsLookup.MyEnum); } }
+    public bool HasMyEnum { get { return HasComponent(VisualDebugComponentsLookup.MyEnum); } }
 
     public void AddMyEnum(ExampleContent.VisualDebugging.MyEnumComponent.MyEnum newMyEnum) {
         var index = VisualDebugComponentsLookup.MyEnum;

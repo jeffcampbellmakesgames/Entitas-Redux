@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public EntitasRedux.Tests.ComponentWithFields ComponentWithFields { get { return (EntitasRedux.Tests.ComponentWithFields)GetComponent(TestComponentsLookup.ComponentWithFields); } }
-    public bool hasComponentWithFields { get { return HasComponent(TestComponentsLookup.ComponentWithFields); } }
+    public bool HasComponentWithFields { get { return HasComponent(TestComponentsLookup.ComponentWithFields); } }
 
     public void AddComponentWithFields(string newPublicField) {
         var index = TestComponentsLookup.ComponentWithFields;

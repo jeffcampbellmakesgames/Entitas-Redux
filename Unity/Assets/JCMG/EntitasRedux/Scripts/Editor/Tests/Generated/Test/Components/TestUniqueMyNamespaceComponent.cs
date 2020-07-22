@@ -11,10 +11,10 @@ public partial class TestContext {
 
     public TestEntity UniqueMyNamespaceEntity { get { return GetGroup(TestMatcher.UniqueMyNamespace).GetSingleEntity(); } }
     public EntitasRedux.Tests.UniqueMyNamespaceComponent UniqueMyNamespace { get { return UniqueMyNamespaceEntity.UniqueMyNamespace; } }
-    public bool hasUniqueMyNamespace { get { return UniqueMyNamespaceEntity != null; } }
+    public bool HasUniqueMyNamespace { get { return UniqueMyNamespaceEntity != null; } }
 
     public TestEntity SetUniqueMyNamespace(string newValue) {
-        if (hasUniqueMyNamespace) {
+        if (HasUniqueMyNamespace) {
             throw new JCMG.EntitasRedux.EntitasReduxException("Could not set UniqueMyNamespace!\n" + this + " already has an entity with EntitasRedux.Tests.UniqueMyNamespaceComponent!",
                 "You should check if the context already has a UniqueMyNamespaceEntity before setting it or use context.ReplaceUniqueMyNamespace().");
         }
@@ -49,7 +49,7 @@ public partial class TestContext {
 public partial class TestEntity {
 
     public EntitasRedux.Tests.UniqueMyNamespaceComponent UniqueMyNamespace { get { return (EntitasRedux.Tests.UniqueMyNamespaceComponent)GetComponent(TestComponentsLookup.UniqueMyNamespace); } }
-    public bool hasUniqueMyNamespace { get { return HasComponent(TestComponentsLookup.UniqueMyNamespace); } }
+    public bool HasUniqueMyNamespace { get { return HasComponent(TestComponentsLookup.UniqueMyNamespace); } }
 
     public void AddUniqueMyNamespace(string newValue) {
         var index = TestComponentsLookup.UniqueMyNamespace;

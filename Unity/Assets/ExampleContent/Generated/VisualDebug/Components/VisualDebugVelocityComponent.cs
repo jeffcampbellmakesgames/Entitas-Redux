@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public VelocityComponent Velocity { get { return (VelocityComponent)GetComponent(VisualDebugComponentsLookup.Velocity); } }
-    public bool hasVelocity { get { return HasComponent(VisualDebugComponentsLookup.Velocity); } }
+    public bool HasVelocity { get { return HasComponent(VisualDebugComponentsLookup.Velocity); } }
 
     public void AddVelocity(ExampleContent.VisualDebugging.IntVector2 newValue) {
         var index = VisualDebugComponentsLookup.Velocity;

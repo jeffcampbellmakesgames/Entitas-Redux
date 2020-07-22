@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.AnArrayComponent AnArray { get { return (ExampleContent.VisualDebugging.AnArrayComponent)GetComponent(VisualDebugComponentsLookup.AnArray); } }
-    public bool hasAnArray { get { return HasComponent(VisualDebugComponentsLookup.AnArray); } }
+    public bool HasAnArray { get { return HasComponent(VisualDebugComponentsLookup.AnArray); } }
 
     public void AddAnArray(string[] newArray) {
         var index = VisualDebugComponentsLookup.AnArray;

@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.MyHiddenIntComponent MyHiddenInt { get { return (ExampleContent.VisualDebugging.MyHiddenIntComponent)GetComponent(VisualDebugComponentsLookup.MyHiddenInt); } }
-    public bool hasMyHiddenInt { get { return HasComponent(VisualDebugComponentsLookup.MyHiddenInt); } }
+    public bool HasMyHiddenInt { get { return HasComponent(VisualDebugComponentsLookup.MyHiddenInt); } }
 
     public void AddMyHiddenInt(int newMyInt) {
         var index = VisualDebugComponentsLookup.MyHiddenInt;

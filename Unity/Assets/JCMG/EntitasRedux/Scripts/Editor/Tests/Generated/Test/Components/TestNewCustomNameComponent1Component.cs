@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public NewCustomNameComponent1Component NewCustomNameComponent1 { get { return (NewCustomNameComponent1Component)GetComponent(TestComponentsLookup.NewCustomNameComponent1); } }
-    public bool hasNewCustomNameComponent1 { get { return HasComponent(TestComponentsLookup.NewCustomNameComponent1); } }
+    public bool HasNewCustomNameComponent1 { get { return HasComponent(TestComponentsLookup.NewCustomNameComponent1); } }
 
     public void AddNewCustomNameComponent1(EntitasRedux.Tests.CustomName newValue) {
         var index = TestComponentsLookup.NewCustomNameComponent1;

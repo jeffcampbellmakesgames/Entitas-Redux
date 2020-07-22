@@ -22,7 +22,7 @@ public sealed class MixedEventEventSystem : JCMG.EntitasRedux.ReactiveSystem<Tes
     }
 
     protected override bool Filter(TestEntity entity) {
-        return entity.hasMixedEvent && entity.hasMixedEventListener;
+        return entity.HasMixedEvent && entity.HasMixedEventListener;
     }
 
     protected override void Execute(System.Collections.Generic.List<TestEntity> entities) {

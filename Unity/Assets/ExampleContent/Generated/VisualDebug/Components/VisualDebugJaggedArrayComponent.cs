@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.JaggedArrayComponent JaggedArray { get { return (ExampleContent.VisualDebugging.JaggedArrayComponent)GetComponent(VisualDebugComponentsLookup.JaggedArray); } }
-    public bool hasJaggedArray { get { return HasComponent(VisualDebugComponentsLookup.JaggedArray); } }
+    public bool HasJaggedArray { get { return HasComponent(VisualDebugComponentsLookup.JaggedArray); } }
 
     public void AddJaggedArray(string[][] newJaggedArray) {
         var index = VisualDebugComponentsLookup.JaggedArray;

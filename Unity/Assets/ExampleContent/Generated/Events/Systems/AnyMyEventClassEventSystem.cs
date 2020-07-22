@@ -26,7 +26,7 @@ public sealed class AnyMyEventClassEventSystem : JCMG.EntitasRedux.ReactiveSyste
     }
 
     protected override bool Filter(VisualDebugEntity entity) {
-        return entity.hasMyEventClass;
+        return entity.HasMyEventClass;
     }
 
     protected override void Execute(System.Collections.Generic.List<VisualDebugEntity> entities) {

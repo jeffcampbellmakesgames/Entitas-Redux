@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public AnyMixedEventListenerComponent AnyMixedEventListener { get { return (AnyMixedEventListenerComponent)GetComponent(TestComponentsLookup.AnyMixedEventListener); } }
-    public bool hasAnyMixedEventListener { get { return HasComponent(TestComponentsLookup.AnyMixedEventListener); } }
+    public bool HasAnyMixedEventListener { get { return HasComponent(TestComponentsLookup.AnyMixedEventListener); } }
 
     public void AddAnyMixedEventListener(System.Collections.Generic.List<IAnyMixedEventListener> newValue) {
         var index = TestComponentsLookup.AnyMixedEventListener;
@@ -69,7 +69,7 @@ public sealed partial class TestMatcher {
 public partial class TestEntity {
 
     public void AddAnyMixedEventListener(IAnyMixedEventListener value) {
-        var listeners = hasAnyMixedEventListener
+        var listeners = HasAnyMixedEventListener
             ? AnyMixedEventListener.value
             : new System.Collections.Generic.List<IAnyMixedEventListener>();
         listeners.Add(value);

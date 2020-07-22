@@ -10,7 +10,7 @@
 public partial interface IMyNamespaceEntity {
 
     EntitasRedux.Tests.MyNamespaceComponent MyNamespace { get; }
-    bool hasMyNamespace { get; }
+    bool HasMyNamespace { get; }
 
     void AddMyNamespace(string newValue);
     void ReplaceMyNamespace(string newValue);

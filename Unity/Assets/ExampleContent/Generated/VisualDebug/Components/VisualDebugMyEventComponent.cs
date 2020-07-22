@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.MyEventComponent MyEvent { get { return (ExampleContent.VisualDebugging.MyEventComponent)GetComponent(VisualDebugComponentsLookup.MyEvent); } }
-    public bool hasMyEvent { get { return HasComponent(VisualDebugComponentsLookup.MyEvent); } }
+    public bool HasMyEvent { get { return HasComponent(VisualDebugComponentsLookup.MyEvent); } }
 
     public void AddMyEvent(string newValue) {
         var index = VisualDebugComponentsLookup.MyEvent;

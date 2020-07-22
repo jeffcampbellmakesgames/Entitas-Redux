@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.UnityObjectComponent UnityObject { get { return (ExampleContent.VisualDebugging.UnityObjectComponent)GetComponent(VisualDebugComponentsLookup.UnityObject); } }
-    public bool hasUnityObject { get { return HasComponent(VisualDebugComponentsLookup.UnityObject); } }
+    public bool HasUnityObject { get { return HasComponent(VisualDebugComponentsLookup.UnityObject); } }
 
     public void AddUnityObject(UnityEngine.Object newUnityObject) {
         var index = VisualDebugComponentsLookup.UnityObject;

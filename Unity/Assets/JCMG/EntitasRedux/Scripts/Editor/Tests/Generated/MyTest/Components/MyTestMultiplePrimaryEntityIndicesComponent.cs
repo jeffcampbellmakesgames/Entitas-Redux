@@ -10,7 +10,7 @@
 public partial class MyTestEntity {
 
     public EntitasRedux.Tests.MultiplePrimaryEntityIndicesComponent MultiplePrimaryEntityIndices { get { return (EntitasRedux.Tests.MultiplePrimaryEntityIndicesComponent)GetComponent(MyTestComponentsLookup.MultiplePrimaryEntityIndices); } }
-    public bool hasMultiplePrimaryEntityIndices { get { return HasComponent(MyTestComponentsLookup.MultiplePrimaryEntityIndices); } }
+    public bool HasMultiplePrimaryEntityIndices { get { return HasComponent(MyTestComponentsLookup.MultiplePrimaryEntityIndices); } }
 
     public void AddMultiplePrimaryEntityIndices(string newValue, string newValue2) {
         var index = MyTestComponentsLookup.MultiplePrimaryEntityIndices;

@@ -10,7 +10,7 @@
 public partial class MyTestEntity {
 
     public EntitasRedux.Tests.Array3dComponent Array3d { get { return (EntitasRedux.Tests.Array3dComponent)GetComponent(MyTestComponentsLookup.Array3d); } }
-    public bool hasArray3d { get { return HasComponent(MyTestComponentsLookup.Array3d); } }
+    public bool HasArray3d { get { return HasComponent(MyTestComponentsLookup.Array3d); } }
 
     public void AddArray3d(int[,,] newValue) {
         var index = MyTestComponentsLookup.Array3d;

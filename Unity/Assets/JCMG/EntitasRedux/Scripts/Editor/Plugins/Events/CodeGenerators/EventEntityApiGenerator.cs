@@ -39,7 +39,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 			@"public partial class ${EntityType} {
 
     public void Add${EventListener}(I${EventListener} value) {
-        var listeners = has${EventListener}
+        var listeners = Has${EventListener}
             ? ${eventListener}.value
             : new System.Collections.Generic.List<I${EventListener}>();
         listeners.Add(value);

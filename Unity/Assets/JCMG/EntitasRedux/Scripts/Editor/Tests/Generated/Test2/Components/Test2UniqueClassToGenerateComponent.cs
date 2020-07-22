@@ -11,10 +11,10 @@ public partial class Test2Context {
 
     public Test2Entity UniqueClassToGenerateEntity { get { return GetGroup(Test2Matcher.UniqueClassToGenerate).GetSingleEntity(); } }
     public UniqueClassToGenerateComponent UniqueClassToGenerate { get { return UniqueClassToGenerateEntity.UniqueClassToGenerate; } }
-    public bool hasUniqueClassToGenerate { get { return UniqueClassToGenerateEntity != null; } }
+    public bool HasUniqueClassToGenerate { get { return UniqueClassToGenerateEntity != null; } }
 
     public Test2Entity SetUniqueClassToGenerate(EntitasRedux.Tests.UniqueClassToGenerate newValue) {
-        if (hasUniqueClassToGenerate) {
+        if (HasUniqueClassToGenerate) {
             throw new JCMG.EntitasRedux.EntitasReduxException("Could not set UniqueClassToGenerate!\n" + this + " already has an entity with UniqueClassToGenerateComponent!",
                 "You should check if the context already has a UniqueClassToGenerateEntity before setting it or use context.ReplaceUniqueClassToGenerate().");
         }
@@ -49,7 +49,7 @@ public partial class Test2Context {
 public partial class Test2Entity {
 
     public UniqueClassToGenerateComponent UniqueClassToGenerate { get { return (UniqueClassToGenerateComponent)GetComponent(Test2ComponentsLookup.UniqueClassToGenerate); } }
-    public bool hasUniqueClassToGenerate { get { return HasComponent(Test2ComponentsLookup.UniqueClassToGenerate); } }
+    public bool HasUniqueClassToGenerate { get { return HasComponent(Test2ComponentsLookup.UniqueClassToGenerate); } }
 
     public void AddUniqueClassToGenerate(EntitasRedux.Tests.UniqueClassToGenerate newValue) {
         var index = Test2ComponentsLookup.UniqueClassToGenerate;

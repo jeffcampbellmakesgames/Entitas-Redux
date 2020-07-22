@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public CoolNameComponent CoolName { get { return (CoolNameComponent)GetComponent(VisualDebugComponentsLookup.CoolName); } }
-    public bool hasCoolName { get { return HasComponent(VisualDebugComponentsLookup.CoolName); } }
+    public bool HasCoolName { get { return HasComponent(VisualDebugComponentsLookup.CoolName); } }
 
     public void AddCoolName(ExampleContent.VisualDebugging.BadName newValue) {
         var index = VisualDebugComponentsLookup.CoolName;

@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public AnyMyEventListenerComponent AnyMyEventListener { get { return (AnyMyEventListenerComponent)GetComponent(VisualDebugComponentsLookup.AnyMyEventListener); } }
-    public bool hasAnyMyEventListener { get { return HasComponent(VisualDebugComponentsLookup.AnyMyEventListener); } }
+    public bool HasAnyMyEventListener { get { return HasComponent(VisualDebugComponentsLookup.AnyMyEventListener); } }
 
     public void AddAnyMyEventListener(System.Collections.Generic.List<IAnyMyEventListener> newValue) {
         var index = VisualDebugComponentsLookup.AnyMyEventListener;
@@ -69,7 +69,7 @@ public sealed partial class VisualDebugMatcher {
 public partial class VisualDebugEntity {
 
     public void AddAnyMyEventListener(IAnyMyEventListener value) {
-        var listeners = hasAnyMyEventListener
+        var listeners = HasAnyMyEventListener
             ? AnyMyEventListener.value
             : new System.Collections.Generic.List<IAnyMyEventListener>();
         listeners.Add(value);

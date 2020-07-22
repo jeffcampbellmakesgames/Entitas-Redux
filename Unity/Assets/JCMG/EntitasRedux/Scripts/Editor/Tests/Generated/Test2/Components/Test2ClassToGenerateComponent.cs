@@ -10,7 +10,7 @@
 public partial class Test2Entity {
 
     public ClassToGenerateComponent ClassToGenerate { get { return (ClassToGenerateComponent)GetComponent(Test2ComponentsLookup.ClassToGenerate); } }
-    public bool hasClassToGenerate { get { return HasComponent(Test2ComponentsLookup.ClassToGenerate); } }
+    public bool HasClassToGenerate { get { return HasComponent(Test2ComponentsLookup.ClassToGenerate); } }
 
     public void AddClassToGenerate(EntitasRedux.Tests.ClassToGenerate newValue) {
         var index = Test2ComponentsLookup.ClassToGenerate;

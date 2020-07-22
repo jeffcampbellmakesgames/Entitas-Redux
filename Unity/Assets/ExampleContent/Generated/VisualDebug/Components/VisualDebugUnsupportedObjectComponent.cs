@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.UnsupportedObjectComponent UnsupportedObject { get { return (ExampleContent.VisualDebugging.UnsupportedObjectComponent)GetComponent(VisualDebugComponentsLookup.UnsupportedObject); } }
-    public bool hasUnsupportedObject { get { return HasComponent(VisualDebugComponentsLookup.UnsupportedObject); } }
+    public bool HasUnsupportedObject { get { return HasComponent(VisualDebugComponentsLookup.UnsupportedObject); } }
 
     public void AddUnsupportedObject(ExampleContent.VisualDebugging.UnsupportedObject newUnsupportedObject) {
         var index = VisualDebugComponentsLookup.UnsupportedObject;

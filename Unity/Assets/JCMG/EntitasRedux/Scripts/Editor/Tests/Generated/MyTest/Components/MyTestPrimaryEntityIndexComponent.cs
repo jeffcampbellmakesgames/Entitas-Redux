@@ -10,7 +10,7 @@
 public partial class MyTestEntity {
 
     public EntitasRedux.Tests.PrimaryEntityIndexComponent PrimaryEntityIndex { get { return (EntitasRedux.Tests.PrimaryEntityIndexComponent)GetComponent(MyTestComponentsLookup.PrimaryEntityIndex); } }
-    public bool hasPrimaryEntityIndex { get { return HasComponent(MyTestComponentsLookup.PrimaryEntityIndex); } }
+    public bool HasPrimaryEntityIndex { get { return HasComponent(MyTestComponentsLookup.PrimaryEntityIndex); } }
 
     public void AddPrimaryEntityIndex(string newValue) {
         var index = MyTestComponentsLookup.PrimaryEntityIndex;

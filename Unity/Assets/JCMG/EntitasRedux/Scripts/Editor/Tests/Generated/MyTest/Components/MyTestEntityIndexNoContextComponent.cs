@@ -10,7 +10,7 @@
 public partial class MyTestEntity {
 
     public EntitasRedux.Tests.EntityIndexNoContextComponent EntityIndexNoContext { get { return (EntitasRedux.Tests.EntityIndexNoContextComponent)GetComponent(MyTestComponentsLookup.EntityIndexNoContext); } }
-    public bool hasEntityIndexNoContext { get { return HasComponent(MyTestComponentsLookup.EntityIndexNoContext); } }
+    public bool HasEntityIndexNoContext { get { return HasComponent(MyTestComponentsLookup.EntityIndexNoContext); } }
 
     public void AddEntityIndexNoContext(string newValue) {
         var index = MyTestComponentsLookup.EntityIndexNoContext;

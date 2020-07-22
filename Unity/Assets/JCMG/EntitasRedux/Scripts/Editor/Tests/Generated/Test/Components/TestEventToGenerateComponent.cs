@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public EventToGenerateComponent EventToGenerate { get { return (EventToGenerateComponent)GetComponent(TestComponentsLookup.EventToGenerate); } }
-    public bool hasEventToGenerate { get { return HasComponent(TestComponentsLookup.EventToGenerate); } }
+    public bool HasEventToGenerate { get { return HasComponent(TestComponentsLookup.EventToGenerate); } }
 
     public void AddEventToGenerate(EntitasRedux.Tests.EventToGenerate newValue) {
         var index = TestComponentsLookup.EventToGenerate;

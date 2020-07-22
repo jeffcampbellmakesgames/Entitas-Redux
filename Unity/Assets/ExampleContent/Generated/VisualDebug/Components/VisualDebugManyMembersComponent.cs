@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.ManyMembersComponent ManyMembers { get { return (ExampleContent.VisualDebugging.ManyMembersComponent)GetComponent(VisualDebugComponentsLookup.ManyMembers); } }
-    public bool hasManyMembers { get { return HasComponent(VisualDebugComponentsLookup.ManyMembers); } }
+    public bool HasManyMembers { get { return HasComponent(VisualDebugComponentsLookup.ManyMembers); } }
 
     public void AddManyMembers(string newField1, string newField10, string newField11, string newField12, string newField2, string newField3, string newField4, string newField5, string newField6, string newField7, string newField8, string newField9) {
         var index = VisualDebugComponentsLookup.ManyMembers;

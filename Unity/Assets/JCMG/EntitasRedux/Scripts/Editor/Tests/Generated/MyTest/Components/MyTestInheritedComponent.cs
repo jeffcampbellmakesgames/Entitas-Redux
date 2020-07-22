@@ -10,7 +10,7 @@
 public partial class MyTestEntity {
 
     public EntitasRedux.Tests.InheritedComponent Inherited { get { return (EntitasRedux.Tests.InheritedComponent)GetComponent(MyTestComponentsLookup.Inherited); } }
-    public bool hasInherited { get { return HasComponent(MyTestComponentsLookup.Inherited); } }
+    public bool HasInherited { get { return HasComponent(MyTestComponentsLookup.Inherited); } }
 
     public void AddInherited(float newValue) {
         var index = MyTestComponentsLookup.Inherited;

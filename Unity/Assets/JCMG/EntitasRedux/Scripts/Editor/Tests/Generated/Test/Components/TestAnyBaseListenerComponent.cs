@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public AnyBaseListenerComponent AnyBaseListener { get { return (AnyBaseListenerComponent)GetComponent(TestComponentsLookup.AnyBaseListener); } }
-    public bool hasAnyBaseListener { get { return HasComponent(TestComponentsLookup.AnyBaseListener); } }
+    public bool HasAnyBaseListener { get { return HasComponent(TestComponentsLookup.AnyBaseListener); } }
 
     public void AddAnyBaseListener(System.Collections.Generic.List<IAnyBaseListener> newValue) {
         var index = TestComponentsLookup.AnyBaseListener;
@@ -69,7 +69,7 @@ public sealed partial class TestMatcher {
 public partial class TestEntity {
 
     public void AddAnyBaseListener(IAnyBaseListener value) {
-        var listeners = hasAnyBaseListener
+        var listeners = HasAnyBaseListener
             ? AnyBaseListener.value
             : new System.Collections.Generic.List<IAnyBaseListener>();
         listeners.Add(value);

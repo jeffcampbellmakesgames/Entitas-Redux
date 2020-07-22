@@ -11,10 +11,10 @@ public partial class TestContext {
 
     public TestEntity UniqueStandardEntity { get { return GetGroup(TestMatcher.UniqueStandard).GetSingleEntity(); } }
     public EntitasRedux.Tests.UniqueStandardComponent UniqueStandard { get { return UniqueStandardEntity.UniqueStandard; } }
-    public bool hasUniqueStandard { get { return UniqueStandardEntity != null; } }
+    public bool HasUniqueStandard { get { return UniqueStandardEntity != null; } }
 
     public TestEntity SetUniqueStandard(string newValue) {
-        if (hasUniqueStandard) {
+        if (HasUniqueStandard) {
             throw new JCMG.EntitasRedux.EntitasReduxException("Could not set UniqueStandard!\n" + this + " already has an entity with EntitasRedux.Tests.UniqueStandardComponent!",
                 "You should check if the context already has a UniqueStandardEntity before setting it or use context.ReplaceUniqueStandard().");
         }
@@ -49,7 +49,7 @@ public partial class TestContext {
 public partial class TestEntity {
 
     public EntitasRedux.Tests.UniqueStandardComponent UniqueStandard { get { return (EntitasRedux.Tests.UniqueStandardComponent)GetComponent(TestComponentsLookup.UniqueStandard); } }
-    public bool hasUniqueStandard { get { return HasComponent(TestComponentsLookup.UniqueStandard); } }
+    public bool HasUniqueStandard { get { return HasComponent(TestComponentsLookup.UniqueStandard); } }
 
     public void AddUniqueStandard(string newValue) {
         var index = TestComponentsLookup.UniqueStandard;

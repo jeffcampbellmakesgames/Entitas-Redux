@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public InterfaceToGenerateComponent InterfaceToGenerate { get { return (InterfaceToGenerateComponent)GetComponent(TestComponentsLookup.InterfaceToGenerate); } }
-    public bool hasInterfaceToGenerate { get { return HasComponent(TestComponentsLookup.InterfaceToGenerate); } }
+    public bool HasInterfaceToGenerate { get { return HasComponent(TestComponentsLookup.InterfaceToGenerate); } }
 
     public void AddInterfaceToGenerate(EntitasRedux.Tests.InterfaceToGenerate newValue) {
         var index = TestComponentsLookup.InterfaceToGenerate;

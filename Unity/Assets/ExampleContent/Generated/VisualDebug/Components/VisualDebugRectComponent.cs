@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.RectComponent Rect { get { return (ExampleContent.VisualDebugging.RectComponent)GetComponent(VisualDebugComponentsLookup.Rect); } }
-    public bool hasRect { get { return HasComponent(VisualDebugComponentsLookup.Rect); } }
+    public bool HasRect { get { return HasComponent(VisualDebugComponentsLookup.Rect); } }
 
     public void AddRect(UnityEngine.Rect newRect) {
         var index = VisualDebugComponentsLookup.Rect;

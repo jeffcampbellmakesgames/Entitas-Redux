@@ -10,7 +10,7 @@
 public partial class Test2Entity {
 
     public EntitasRedux.Tests.MultipleEventsStandardEventComponent MultipleEventsStandardEvent { get { return (EntitasRedux.Tests.MultipleEventsStandardEventComponent)GetComponent(Test2ComponentsLookup.MultipleEventsStandardEvent); } }
-    public bool hasMultipleEventsStandardEvent { get { return HasComponent(Test2ComponentsLookup.MultipleEventsStandardEvent); } }
+    public bool HasMultipleEventsStandardEvent { get { return HasComponent(Test2ComponentsLookup.MultipleEventsStandardEvent); } }
 
     public void AddMultipleEventsStandardEvent(string newValue) {
         var index = Test2ComponentsLookup.MultipleEventsStandardEvent;

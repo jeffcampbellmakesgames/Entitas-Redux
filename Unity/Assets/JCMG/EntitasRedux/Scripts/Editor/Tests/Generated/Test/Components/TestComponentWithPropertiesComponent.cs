@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public EntitasRedux.Tests.ComponentWithProperties ComponentWithProperties { get { return (EntitasRedux.Tests.ComponentWithProperties)GetComponent(TestComponentsLookup.ComponentWithProperties); } }
-    public bool hasComponentWithProperties { get { return HasComponent(TestComponentsLookup.ComponentWithProperties); } }
+    public bool HasComponentWithProperties { get { return HasComponent(TestComponentsLookup.ComponentWithProperties); } }
 
     public void AddComponentWithProperties(string newPublicProperty) {
         var index = TestComponentsLookup.ComponentWithProperties;

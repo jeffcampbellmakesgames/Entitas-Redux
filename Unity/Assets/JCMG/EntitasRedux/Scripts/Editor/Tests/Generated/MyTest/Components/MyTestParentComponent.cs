@@ -10,7 +10,7 @@
 public partial class MyTestEntity {
 
     public EntitasRedux.Tests.ParentComponent Parent { get { return (EntitasRedux.Tests.ParentComponent)GetComponent(MyTestComponentsLookup.Parent); } }
-    public bool hasParent { get { return HasComponent(MyTestComponentsLookup.Parent); } }
+    public bool HasParent { get { return HasComponent(MyTestComponentsLookup.Parent); } }
 
     public void AddParent(float newValue) {
         var index = MyTestComponentsLookup.Parent;

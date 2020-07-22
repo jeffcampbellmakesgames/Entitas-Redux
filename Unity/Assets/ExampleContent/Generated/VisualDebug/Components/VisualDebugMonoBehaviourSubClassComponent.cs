@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent MonoBehaviourSubClass { get { return (ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent)GetComponent(VisualDebugComponentsLookup.MonoBehaviourSubClass); } }
-    public bool hasMonoBehaviourSubClass { get { return HasComponent(VisualDebugComponentsLookup.MonoBehaviourSubClass); } }
+    public bool HasMonoBehaviourSubClass { get { return HasComponent(VisualDebugComponentsLookup.MonoBehaviourSubClass); } }
 
     public void AddMonoBehaviourSubClass(ExampleContent.VisualDebugging.MonoBehaviourSubClass newMonoBehaviour) {
         var index = VisualDebugComponentsLookup.MonoBehaviourSubClass;

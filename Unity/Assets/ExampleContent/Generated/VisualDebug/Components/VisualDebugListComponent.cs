@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.ListComponent List { get { return (ExampleContent.VisualDebugging.ListComponent)GetComponent(VisualDebugComponentsLookup.List); } }
-    public bool hasList { get { return HasComponent(VisualDebugComponentsLookup.List); } }
+    public bool HasList { get { return HasComponent(VisualDebugComponentsLookup.List); } }
 
     public void AddList(System.Collections.Generic.List<string> newList) {
         var index = VisualDebugComponentsLookup.List;

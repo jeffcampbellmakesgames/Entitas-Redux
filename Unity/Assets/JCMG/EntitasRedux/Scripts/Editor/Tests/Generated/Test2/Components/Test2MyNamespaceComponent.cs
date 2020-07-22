@@ -10,7 +10,7 @@
 public partial class Test2Entity {
 
     public EntitasRedux.Tests.MyNamespaceComponent MyNamespace { get { return (EntitasRedux.Tests.MyNamespaceComponent)GetComponent(Test2ComponentsLookup.MyNamespace); } }
-    public bool hasMyNamespace { get { return HasComponent(Test2ComponentsLookup.MyNamespace); } }
+    public bool HasMyNamespace { get { return HasComponent(Test2ComponentsLookup.MyNamespace); } }
 
     public void AddMyNamespace(string newValue) {
         var index = Test2ComponentsLookup.MyNamespace;

@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.Texture2DComponent Texture2D { get { return (ExampleContent.VisualDebugging.Texture2DComponent)GetComponent(VisualDebugComponentsLookup.Texture2D); } }
-    public bool hasTexture2D { get { return HasComponent(VisualDebugComponentsLookup.Texture2D); } }
+    public bool HasTexture2D { get { return HasComponent(VisualDebugComponentsLookup.Texture2D); } }
 
     public void AddTexture2D(UnityEngine.Texture2D newTexture2D) {
         var index = VisualDebugComponentsLookup.Texture2D;

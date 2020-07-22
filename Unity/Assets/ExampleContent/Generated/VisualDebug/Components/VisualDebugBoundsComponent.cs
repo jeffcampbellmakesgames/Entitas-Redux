@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.BoundsComponent Bounds { get { return (ExampleContent.VisualDebugging.BoundsComponent)GetComponent(VisualDebugComponentsLookup.Bounds); } }
-    public bool hasBounds { get { return HasComponent(VisualDebugComponentsLookup.Bounds); } }
+    public bool HasBounds { get { return HasComponent(VisualDebugComponentsLookup.Bounds); } }
 
     public void AddBounds(UnityEngine.Bounds newBounds) {
         var index = VisualDebugComponentsLookup.Bounds;

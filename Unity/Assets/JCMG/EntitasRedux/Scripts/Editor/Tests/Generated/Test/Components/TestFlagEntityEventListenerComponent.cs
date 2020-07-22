@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public FlagEntityEventListenerComponent FlagEntityEventListener { get { return (FlagEntityEventListenerComponent)GetComponent(TestComponentsLookup.FlagEntityEventListener); } }
-    public bool hasFlagEntityEventListener { get { return HasComponent(TestComponentsLookup.FlagEntityEventListener); } }
+    public bool HasFlagEntityEventListener { get { return HasComponent(TestComponentsLookup.FlagEntityEventListener); } }
 
     public void AddFlagEntityEventListener(System.Collections.Generic.List<IFlagEntityEventListener> newValue) {
         var index = TestComponentsLookup.FlagEntityEventListener;
@@ -69,7 +69,7 @@ public sealed partial class TestMatcher {
 public partial class TestEntity {
 
     public void AddFlagEntityEventListener(IFlagEntityEventListener value) {
-        var listeners = hasFlagEntityEventListener
+        var listeners = HasFlagEntityEventListener
             ? FlagEntityEventListener.value
             : new System.Collections.Generic.List<IFlagEntityEventListener>();
         listeners.Add(value);

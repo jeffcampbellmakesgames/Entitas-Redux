@@ -11,10 +11,10 @@ public partial class TestContext {
 
     public TestEntity UniqueEventEntity { get { return GetGroup(TestMatcher.UniqueEvent).GetSingleEntity(); } }
     public EntitasRedux.Tests.UniqueEventComponent UniqueEvent { get { return UniqueEventEntity.UniqueEvent; } }
-    public bool hasUniqueEvent { get { return UniqueEventEntity != null; } }
+    public bool HasUniqueEvent { get { return UniqueEventEntity != null; } }
 
     public TestEntity SetUniqueEvent(string newValue) {
-        if (hasUniqueEvent) {
+        if (HasUniqueEvent) {
             throw new JCMG.EntitasRedux.EntitasReduxException("Could not set UniqueEvent!\n" + this + " already has an entity with EntitasRedux.Tests.UniqueEventComponent!",
                 "You should check if the context already has a UniqueEventEntity before setting it or use context.ReplaceUniqueEvent().");
         }
@@ -49,7 +49,7 @@ public partial class TestContext {
 public partial class TestEntity {
 
     public EntitasRedux.Tests.UniqueEventComponent UniqueEvent { get { return (EntitasRedux.Tests.UniqueEventComponent)GetComponent(TestComponentsLookup.UniqueEvent); } }
-    public bool hasUniqueEvent { get { return HasComponent(TestComponentsLookup.UniqueEvent); } }
+    public bool HasUniqueEvent { get { return HasComponent(TestComponentsLookup.UniqueEvent); } }
 
     public void AddUniqueEvent(string newValue) {
         var index = TestComponentsLookup.UniqueEvent;

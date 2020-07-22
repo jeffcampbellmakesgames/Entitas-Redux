@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.CustomObjectComponent CustomObject { get { return (ExampleContent.VisualDebugging.CustomObjectComponent)GetComponent(VisualDebugComponentsLookup.CustomObject); } }
-    public bool hasCustomObject { get { return HasComponent(VisualDebugComponentsLookup.CustomObject); } }
+    public bool HasCustomObject { get { return HasComponent(VisualDebugComponentsLookup.CustomObject); } }
 
     public void AddCustomObject(ExampleContent.VisualDebugging.CustomObject newCustomObject) {
         var index = VisualDebugComponentsLookup.CustomObject;

@@ -10,7 +10,7 @@
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.Array3DComponent Array3D { get { return (ExampleContent.VisualDebugging.Array3DComponent)GetComponent(VisualDebugComponentsLookup.Array3D); } }
-    public bool hasArray3D { get { return HasComponent(VisualDebugComponentsLookup.Array3D); } }
+    public bool HasArray3D { get { return HasComponent(VisualDebugComponentsLookup.Array3D); } }
 
     public void AddArray3D(string[,,] newArray3d) {
         var index = VisualDebugComponentsLookup.Array3D;

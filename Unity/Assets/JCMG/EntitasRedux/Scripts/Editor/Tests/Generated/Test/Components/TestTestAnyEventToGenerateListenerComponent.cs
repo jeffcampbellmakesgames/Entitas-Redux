@@ -10,7 +10,7 @@
 public partial class TestEntity {
 
     public TestAnyEventToGenerateListenerComponent TestAnyEventToGenerateListener { get { return (TestAnyEventToGenerateListenerComponent)GetComponent(TestComponentsLookup.TestAnyEventToGenerateListener); } }
-    public bool hasTestAnyEventToGenerateListener { get { return HasComponent(TestComponentsLookup.TestAnyEventToGenerateListener); } }
+    public bool HasTestAnyEventToGenerateListener { get { return HasComponent(TestComponentsLookup.TestAnyEventToGenerateListener); } }
 
     public void AddTestAnyEventToGenerateListener(System.Collections.Generic.List<ITestAnyEventToGenerateListener> newValue) {
         var index = TestComponentsLookup.TestAnyEventToGenerateListener;
@@ -69,7 +69,7 @@ public sealed partial class TestMatcher {
 public partial class TestEntity {
 
     public void AddTestAnyEventToGenerateListener(ITestAnyEventToGenerateListener value) {
-        var listeners = hasTestAnyEventToGenerateListener
+        var listeners = HasTestAnyEventToGenerateListener
             ? TestAnyEventToGenerateListener.value
             : new System.Collections.Generic.List<ITestAnyEventToGenerateListener>();
         listeners.Add(value);

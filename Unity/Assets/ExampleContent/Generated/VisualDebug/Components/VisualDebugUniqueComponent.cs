@@ -11,10 +11,10 @@ public partial class VisualDebugContext {
 
     public VisualDebugEntity UniqueEntity { get { return GetGroup(VisualDebugMatcher.Unique).GetSingleEntity(); } }
     public ExampleContent.VisualDebugging.UniqueComponent Unique { get { return UniqueEntity.Unique; } }
-    public bool hasUnique { get { return UniqueEntity != null; } }
+    public bool HasUnique { get { return UniqueEntity != null; } }
 
     public VisualDebugEntity SetUnique(string newValue) {
-        if (hasUnique) {
+        if (HasUnique) {
             throw new JCMG.EntitasRedux.EntitasReduxException("Could not set Unique!\n" + this + " already has an entity with ExampleContent.VisualDebugging.UniqueComponent!",
                 "You should check if the context already has a UniqueEntity before setting it or use context.ReplaceUnique().");
         }
@@ -49,7 +49,7 @@ public partial class VisualDebugContext {
 public partial class VisualDebugEntity {
 
     public ExampleContent.VisualDebugging.UniqueComponent Unique { get { return (ExampleContent.VisualDebugging.UniqueComponent)GetComponent(VisualDebugComponentsLookup.Unique); } }
-    public bool hasUnique { get { return HasComponent(VisualDebugComponentsLookup.Unique); } }
+    public bool HasUnique { get { return HasComponent(VisualDebugComponentsLookup.Unique); } }
 
     public void AddUnique(string newValue) {
         var index = VisualDebugComponentsLookup.Unique;
