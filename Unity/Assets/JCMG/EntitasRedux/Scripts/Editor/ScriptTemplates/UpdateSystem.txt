@@ -1,0 +1,15 @@
+﻿using JCMG.EntitasRedux;
+
+namespace #NAMESPACE#
+{
+	public class #SCRIPTNAME# : IUpdateSystem
+	{
+		/// <summary>
+		/// Executes logic per render frame.
+		/// </summary>
+		public void Update()
+		{
+
+		}
+	}
+}

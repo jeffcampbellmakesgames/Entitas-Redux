@@ -1,0 +1,39 @@
+﻿using JCMG.EntitasRedux;
+
+namespace #NAMESPACE#
+{
+	public class #SCRIPTNAME# : IReactiveSystem
+	{
+		/// <summary>
+		/// Executed when the system has been activated.
+		/// </summary>
+		public void Activate()
+		{
+
+		}
+
+		/// <summary>
+		/// Executed when the system has been de-activated.
+		/// </summary>
+		public void Deactivate()
+		{
+
+		}
+
+		/// <summary>
+		/// Executed when the system should clear any accumulated changes.
+		/// </summary>
+		public void Clear()
+		{
+
+		}
+
+		/// <summary>
+		/// Executes logic per render frame.
+		/// </summary>
+		public void Execute()
+		{
+
+		}
+	}
+}

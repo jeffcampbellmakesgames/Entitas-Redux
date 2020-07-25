@@ -1,0 +1,15 @@
+﻿using JCMG.EntitasRedux;
+
+namespace #NAMESPACE#
+{
+	public class #SCRIPTNAME# : ICleanupSystem
+	{
+		/// <summary>
+		/// Performs cleanup logic after other systems have executed.
+		/// </summary>
+		public void Cleanup()
+		{
+
+		}
+	}
+}
