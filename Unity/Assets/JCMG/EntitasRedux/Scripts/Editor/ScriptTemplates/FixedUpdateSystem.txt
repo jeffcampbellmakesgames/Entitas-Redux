@@ -1,0 +1,15 @@
+﻿using JCMG.EntitasRedux;
+
+namespace #NAMESPACE#
+{
+	public class #SCRIPTNAME# : IFixedUpdateSystem
+	{
+		/// <summary>
+		/// Executes physics logic.
+		/// </summary>
+		public void FixedUpdate()
+		{
+
+		}
+	}
+}
