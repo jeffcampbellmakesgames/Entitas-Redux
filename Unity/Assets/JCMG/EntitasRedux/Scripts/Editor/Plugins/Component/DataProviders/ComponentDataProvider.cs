@@ -27,6 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using JCMG.Genesis.Editor;
+using UnityEngine;
 
 namespace JCMG.EntitasRedux.Editor.Plugins
 {
@@ -225,7 +226,11 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 				.SelectMany(CreateDataForEvents)
 				.ToArray();
 
-			return Merge(dataFromEvents, mergedData);
+			var finalMergedData = Merge(dataFromEvents, mergedData);
+
+			ComponentValidationTools.ValidateComponentData(finalMergedData);
+
+			return finalMergedData;
 		}
 	}
 }
