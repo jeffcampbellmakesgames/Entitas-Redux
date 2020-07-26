@@ -23,6 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+using System;
 using System.CodeDom.Compiler;
 using System.Linq;
 using JCMG.Genesis.Editor;
@@ -40,6 +41,25 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		public static string ComponentName(this ComponentData data)
 		{
 			return data.GetTypeName().ToComponentName();
+		}
+
+		public static string[] GetComponentNames(this ComponentData data)
+		{
+			var type = data.GetTypeName().ToType();
+			var attr = Attribute
+				.GetCustomAttributes(type)
+				.OfType<ComponentNameAttribute>()
+				.SingleOrDefault();
+
+			if (attr == null)
+			{
+				return new[]
+				{
+					type.ToCompilableString().ShortTypeName().AddComponentSuffix()
+				};
+			}
+
+			return attr.componentNames;
 		}
 
 		public static string ComponentNameValidLowercaseFirst(this ComponentData data)

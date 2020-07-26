@@ -29,6 +29,7 @@ using JCMG.EntitasRedux.Editor.Plugins;
 using JCMG.Genesis.Editor;
 using NUnit.Framework;
 using UnityEngine;
+using UnityEngine.TestTools;
 using EventType = JCMG.EntitasRedux.EventType;
 
 namespace EntitasRedux.Tests
@@ -268,6 +269,37 @@ namespace EntitasRedux.Tests
 			Assert.AreEqual(1, d[2].GetMemberData().Length);
 			Assert.AreEqual("value", d[2].GetMemberData()[0].name);
 			Assert.AreEqual("System.Collections.Generic.List<ITest2AnyMultipleContextStandardEventListener>", d[2].GetMemberData()[0].type);
+		}
+
+		[NUnit.Framework.Test]
+		public static void DuplicateComponentNamesAreDetectedAndThrows()
+		{
+			// Ignore Debug.Log's
+			LogAssert.ignoreFailingMessages = true;
+
+			// Setup duplicate components, any component in this case will do.
+			var contextNames = new[]
+			{
+				"Game"
+			};
+			var componentDataOne = new ComponentData();
+			componentDataOne.SetTypeName(typeof(ClassToGenerate).FullName);
+			componentDataOne.SetContextNames(contextNames);
+
+			var componentDataTwo = new ComponentData();
+			componentDataTwo.SetTypeName(typeof(ClassToGenerate).FullName);
+			componentDataTwo.SetContextNames(contextNames);
+
+			var componentData = new[]
+			{
+				componentDataOne,
+				componentDataTwo
+			};
+
+			// This should throw a exception since we don't allow duplicate components with the same name
+			// as that would cause compile errors at code generation.
+			Assert.Throws<DuplicateComponentNameException>(() =>
+				ComponentValidationTools.ValidateComponentData(componentData));
 		}
 
 		#endregion
