@@ -20,7 +20,7 @@ MonoBehaviour:
   legacyPackageDestinationPath: ../Builds
   packageName: com.jeffcampbellmakesgames.entitasredux
   displayName: JCMG Entitas Redux
-  packageVersion: 1.1.0
+  packageVersion: 1.2.0
   unityVersion: 2019.1
   description: Entitas Redux is an fast, accessible, and feature-rich ECS framework
     for Unity. It leverages code generation and an extensible plugin framework to
@@ -30,4 +30,6 @@ MonoBehaviour:
   dependencies:
   - packageName: com.jeffcampbellmakesgames.genesis
     packageVersion: 1.2.0
+  versionConstantsPath: Assets/JCMG/EntitasRedux/Scripts
+  versionConstantsNamespace: JCMG.EntitasRedux
   _id: 6c31b17e-d755-422c-88ff-421b4c2fed29
