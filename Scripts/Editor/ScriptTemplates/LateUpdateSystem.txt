@@ -1,0 +1,15 @@
+﻿using JCMG.EntitasRedux;
+
+namespace #NAMESPACE#
+{
+	public class #SCRIPTNAME# : ILateUpdateSystem
+	{
+		/// <summary>
+		/// Executes logic at the end of the frame render.
+		/// </summary>
+		public void LateUpdate()
+		{
+
+		}
+	}
+}

@@ -40,7 +40,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 			@"public partial interface I${ComponentName}Entity {
 
     ${ComponentType} ${validComponentName} { get; }
-    bool has${ComponentName} { get; }
+    bool Has${ComponentName} { get; }
 
     void Add${ComponentName}(${newMethodParameters});
     void Replace${ComponentName}(${newMethodParameters});

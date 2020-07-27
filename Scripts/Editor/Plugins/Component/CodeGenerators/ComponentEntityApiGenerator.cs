@@ -40,7 +40,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 			@"public partial class ${EntityType} {
 
     public ${ComponentType} ${validComponentName} { get { return (${ComponentType})GetComponent(${Index}); } }
-    public bool has${ComponentName} { get { return HasComponent(${Index}); } }
+    public bool Has${ComponentName} { get { return HasComponent(${Index}); } }
 
     public void Add${ComponentName}(${newMethodParameters}) {
         var index = ${Index};

@@ -41,10 +41,10 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 
     public ${EntityType} ${componentName}Entity { get { return GetGroup(${MatcherType}.${ComponentName}).GetSingleEntity(); } }
     public ${ComponentType} ${validComponentName} { get { return ${componentName}Entity.${componentName}; } }
-    public bool has${ComponentName} { get { return ${componentName}Entity != null; } }
+    public bool Has${ComponentName} { get { return ${componentName}Entity != null; } }
 
     public ${EntityType} Set${ComponentName}(${newMethodParameters}) {
-        if (has${ComponentName}) {
+        if (Has${ComponentName}) {
             throw new JCMG.EntitasRedux.EntitasReduxException(""Could not set ${ComponentName}!\n"" + this + "" already has an entity with ${ComponentType}!"",
                 ""You should check if the context already has a ${componentName}Entity before setting it or use context.Replace${ComponentName}()."");
         }

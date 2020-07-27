@@ -188,17 +188,17 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 				switch (eventData.eventType)
 				{
 					case EventType.Added:
-						filter = "entity.has" + data.ComponentName();
+						filter = "entity.Has" + data.ComponentName();
 						break;
 					case EventType.Removed:
-						filter = "!entity.has" + data.ComponentName();
+						filter = "!entity.Has" + data.ComponentName();
 						break;
 				}
 			}
 
 			if (eventData.eventTarget == EventTarget.Self)
 			{
-				filter += " && entity.has" + data.EventListener(contextName, eventData);
+				filter += " && entity.Has" + data.EventListener(contextName, eventData);
 			}
 
 			return filter;
