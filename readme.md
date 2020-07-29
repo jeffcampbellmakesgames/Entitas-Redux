@@ -47,7 +47,7 @@ The latest release can be found [here](https://github.com/jeffcampbellmakesgames
 
 ## Usage
 
-Entitas Redux at the moment is largely representative of the features present in `v1.13.0` of Entitas. As a temporary solution for now, I would point you to the Entitas Wiki [here](https://github.com/sschmid/Entitas-CSharp/wiki/Tutorials) for a breakdown on features and documentation on usage. In the future, EntitasRedux documentation and code examples will be hosted on this repository.
+Entitas Redux at the moment is largely representative of the features present in `v1.13.0` of Entitas. As a temporary solution for now, I would point you to the Entitas Wiki [here](https://github.com/sschmid/Entitas-CSharp/wiki/Tutorials) for a breakdown on features and documentation on usage. In the future, EntitasRedux documentation and code examples will be hosted on this repository's wiki [here](https://github.com/jeffcampbellmakesgames/Entitas-Redux/wiki).
 
 ## Support
 If this is useful to you and/or you’d like to see future development and more tools in the future, please consider supporting it either by contributing to the Github projects (submitting bug reports or features and/or creating pull requests) or by buying me coffee using any of the links below. Every little bit helps!
