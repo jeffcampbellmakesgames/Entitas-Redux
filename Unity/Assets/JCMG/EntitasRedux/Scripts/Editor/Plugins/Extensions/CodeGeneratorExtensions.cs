@@ -45,21 +45,32 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 
 		public static string[] GetComponentNames(this ComponentData data)
 		{
+			// Attempt to get the actual Type object for this
 			var type = data.GetTypeName().ToType();
-			var attr = Attribute
-				.GetCustomAttributes(type)
-				.OfType<ComponentNameAttribute>()
-				.SingleOrDefault();
-
-			if (attr == null)
+			if (type != null)
 			{
+				var attr = Attribute
+					.GetCustomAttributes(type)
+					.OfType<ComponentNameAttribute>()
+					.SingleOrDefault();
+
+				if (attr != null)
+				{
+					return attr.componentNames;
+				}
+
+				// Otherwise if the attribute is inaccessible return the string-calculated type name.
 				return new[]
 				{
 					type.ToCompilableString().ShortTypeName().AddComponentSuffix()
 				};
 			}
 
-			return attr.componentNames;
+			// Otherwise just return the type name as originally set in the ComponentData instance.
+			return new[]
+			{
+				data.GetTypeName()
+			};
 		}
 
 		public static string ComponentNameValidLowercaseFirst(this ComponentData data)
