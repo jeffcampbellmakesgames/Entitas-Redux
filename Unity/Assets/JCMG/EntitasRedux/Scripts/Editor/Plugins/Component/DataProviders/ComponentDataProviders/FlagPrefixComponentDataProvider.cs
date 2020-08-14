@@ -54,6 +54,16 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 			return (string)data[COMPONENT_FLAG_PREFIX];
 		}
 
+		/// <summary>
+		/// Returns true if this component is a flag, otherwise false.
+		/// </summary>
+		/// <param name="data"></param>
+		/// <returns></returns>
+		public static bool IsFlag(this ComponentData data)
+		{
+			return data.GetMemberData().Length == 0;
+		}
+
 		public static void SetFlagPrefix(this ComponentData data, string prefix)
 		{
 			data[COMPONENT_FLAG_PREFIX] = prefix;
