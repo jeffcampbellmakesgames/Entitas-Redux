@@ -9,15 +9,21 @@
 //------------------------------------------------------------------------------
 public static class ExampleComponentsLookup {
 
-    public const int NoContext = 0;
+    public const int AnCleanupDestroyEntity = 0;
+    public const int AnCleanupRemove = 1;
+    public const int NoContext = 2;
 
-    public const int TotalComponents = 1;
+    public const int TotalComponents = 3;
 
     public static readonly string[] ComponentNames = {
+        "AnCleanupDestroyEntity",
+        "AnCleanupRemove",
         "NoContext"
     };
 
     public static readonly System.Type[] ComponentTypes = {
+        typeof(ExampleContent.VisualDebugging.AnCleanupDestroyEntityComponent),
+        typeof(ExampleContent.VisualDebugging.AnCleanupRemoveComponent),
         typeof(ExampleContent.VisualDebugging.NoContextComponent)
     };
 }
