@@ -20,25 +20,25 @@ MonoBehaviour:
   - key: Genesis.SearchPaths
     value: Library\ScriptAssemblies
   - key: Genesis.Plugins
-    value: EntitasRedux.Blueprints.Editor.Plugins, EntitasRedux.Editor.Plugins, EntitasRedux.VisualDebugging.Editor.Plugins,
+    value: EntitasRedux.Editor.Plugins, EntitasRedux.VisualDebugging.Editor.Plugins,
       Genesis.Editor.Plugins
   - key: Genesis.PreProcessors
     value: JCMG.Genesis.Editor.Plugins.WarnIfCompilingPreProcessor
   - key: Genesis.DataProviders
-    value: JCMG.EntitasRedux.Blueprints.Editor.Plugins.BlueprintDataProvider, JCMG.EntitasRedux.Editor.Plugins.ComponentDataProvider,
-      JCMG.EntitasRedux.Editor.Plugins.ContextDataProvider, JCMG.EntitasRedux.Editor.Plugins.EntityIndexDataProvider,
-      JCMG.Genesis.Editor.Plugins.ScriptableFactoryDataProvider
+    value: JCMG.EntitasRedux.Editor.Plugins.ComponentDataProvider, JCMG.EntitasRedux.Editor.Plugins.ContextDataProvider,
+      JCMG.EntitasRedux.Editor.Plugins.EntityIndexDataProvider, JCMG.Genesis.Editor.Plugins.ScriptableFactoryDataProvider
   - key: Genesis.CodeGenerators
-    value: JCMG.EntitasRedux.Blueprints.Editor.Plugins.BlueprintsGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentContextApiGenerator,
-      JCMG.EntitasRedux.Editor.Plugins.ComponentEntityApiGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentEntityApiInterfaceGenerator,
-      JCMG.EntitasRedux.Editor.Plugins.ComponentGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentLookupGenerator,
-      JCMG.EntitasRedux.Editor.Plugins.ComponentMatcherApiGenerator, JCMG.EntitasRedux.Editor.Plugins.ContextAttributeGenerator,
-      JCMG.EntitasRedux.Editor.Plugins.ContextGenerator, JCMG.EntitasRedux.Editor.Plugins.ContextMatcherGenerator,
-      JCMG.EntitasRedux.Editor.Plugins.ContextsGenerator, JCMG.EntitasRedux.Editor.Plugins.EntityGenerator,
-      JCMG.EntitasRedux.Editor.Plugins.EntityIndexGenerator, JCMG.EntitasRedux.Editor.Plugins.EventEntityApiGenerator,
-      JCMG.EntitasRedux.Editor.Plugins.EventListenerComponentGenerator, JCMG.EntitasRedux.Editor.Plugins.EventListenerInterfaceGenerator,
-      JCMG.EntitasRedux.Editor.Plugins.EventSystemGenerator, JCMG.EntitasRedux.Editor.Plugins.EventSystemsGenerator,
-      JCMG.EntitasRedux.VisualDebugging.Editor.Plugins.ContextObserverGenerator,
+    value: JCMG.EntitasRedux.Editor.Plugins.Cleanup.CodeGenerators.CleanupDestroyEntitySystemGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.Cleanup.CodeGenerators.CleanupRemoveComponentSystemGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.ComponentContextApiGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentEntityApiGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.ComponentEntityApiInterfaceGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.ComponentLookupGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentMatcherApiGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.ContextAttributeGenerator, JCMG.EntitasRedux.Editor.Plugins.ContextGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.ContextMatcherGenerator, JCMG.EntitasRedux.Editor.Plugins.ContextsGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.EntityGenerator, JCMG.EntitasRedux.Editor.Plugins.EntityIndexGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.EventEntityApiGenerator, JCMG.EntitasRedux.Editor.Plugins.EventListenerComponentGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.EventListenerInterfaceGenerator, JCMG.EntitasRedux.Editor.Plugins.EventSystemGenerator,
+      JCMG.EntitasRedux.Editor.Plugins.EventSystemsGenerator, JCMG.EntitasRedux.VisualDebugging.Editor.Plugins.ContextObserverGenerator,
       JCMG.EntitasRedux.VisualDebugging.Editor.Plugins.FeatureClassGenerator, JCMG.Genesis.Editor.Plugins.ScriptableFactoryCodeGenerator
   - key: Genesis.PostProcessors
     value: JCMG.Genesis.Editor.Plugins.AddFileHeaderPostProcessor, JCMG.Genesis.Editor.Plugins.CleanTargetDirectoryPostProcessor,

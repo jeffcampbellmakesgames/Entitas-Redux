@@ -27,14 +27,19 @@ using System;
 
 namespace JCMG.EntitasRedux
 {
-	[AttributeUsage(AttributeTargets.Interface | AttributeTargets.Class | AttributeTargets.Struct | AttributeTargets.Enum)]
+	[AttributeUsage(
+		AttributeTargets.Interface |
+		AttributeTargets.Class |
+		AttributeTargets.Struct |
+		AttributeTargets.Enum,
+		AllowMultiple = true)]
 	public class CleanupAttribute : Attribute
 	{
-		public readonly CleanupMode cleanupMode;
+		public CleanupMode CleanupMode { get; }
 
 		public CleanupAttribute(CleanupMode cleanupMode)
 		{
-			this.cleanupMode = cleanupMode;
+			CleanupMode = cleanupMode;
 		}
 	}
 }

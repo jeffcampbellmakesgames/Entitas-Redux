@@ -73,7 +73,8 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 				new ShouldGenerateComponentComponentDataProvider(),
 				new ShouldGenerateMethodsComponentDataProvider(),
 				new ShouldGenerateComponentIndexComponentDataProvider(),
-				new EventComponentDataProvider()
+				new EventComponentDataProvider(),
+				new CleanupComponentDataProvider()
 			};
 		}
 
