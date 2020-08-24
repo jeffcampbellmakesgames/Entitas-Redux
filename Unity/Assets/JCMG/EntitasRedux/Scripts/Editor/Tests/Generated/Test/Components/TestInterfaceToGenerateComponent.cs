@@ -26,6 +26,13 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyInterfaceToGenerateTo(InterfaceToGenerateComponent copyComponent) {
+        var index = TestComponentsLookup.InterfaceToGenerate;
+        var component = (InterfaceToGenerateComponent)CreateComponent(index, typeof(InterfaceToGenerateComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveInterfaceToGenerate() {
         RemoveComponent(TestComponentsLookup.InterfaceToGenerate);
     }

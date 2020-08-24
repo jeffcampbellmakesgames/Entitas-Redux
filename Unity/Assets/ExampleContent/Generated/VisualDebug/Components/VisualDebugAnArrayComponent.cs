@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyAnArrayTo(ExampleContent.VisualDebugging.AnArrayComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.AnArray;
+        var component = (ExampleContent.VisualDebugging.AnArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.AnArrayComponent));
+        component.array = copyComponent.array;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveAnArray() {
         RemoveComponent(VisualDebugComponentsLookup.AnArray);
     }

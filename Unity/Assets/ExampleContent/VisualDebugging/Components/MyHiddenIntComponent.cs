@@ -1,8 +1,9 @@
-﻿using JCMG.EntitasRedux;
-using JCMG.EntitasRedux.VisualDebugging;
+﻿using System;
+using JCMG.EntitasRedux;
 
 namespace ExampleContent.VisualDebugging
 {
+	[Serializable]
 	[VisualDebug]
 	[DontDrawComponent]
 	public class MyHiddenIntComponent : IComponent

@@ -7,6 +7,10 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using JCMG.EntitasRedux;
+
 public static class TestComponentsLookup {
 
     public const int AnyBaseListener = 0;
@@ -161,4 +165,76 @@ public static class TestComponentsLookup {
         typeof(TestMultipleEventsStandardEventRemovedListenerComponent),
         typeof(UniqueClassToGenerateComponent)
     };
+
+	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
+	{
+        { typeof(AnyBaseListenerComponent), 0 },
+        { typeof(AnyFlagEventRemovedListenerComponent), 1 },
+        { typeof(AnyMixedEventListenerComponent), 2 },
+        { typeof(AnyStandardEventListenerComponent), 3 },
+        { typeof(AnyUniqueEventListenerComponent), 4 },
+        { typeof(ClassToGenerateComponent), 5 },
+        { typeof(ClassWithEntitIndexAttributeComponent), 6 },
+        { typeof(EntitasRedux.Tests.BaseComponent), 7 },
+        { typeof(EntitasRedux.Tests.ComponentWithFields), 8 },
+        { typeof(EntitasRedux.Tests.ComponentWithFieldsAndProperties), 9 },
+        { typeof(EntitasRedux.Tests.ComponentWithProperties), 10 },
+        { typeof(EntitasRedux.Tests.CustomPrefixFlagComponent), 11 },
+        { typeof(EntitasRedux.Tests.DontGenerateMethodsComponent), 12 },
+        { typeof(EntitasRedux.Tests.EntityIndexComponent), 13 },
+        { typeof(EntitasRedux.Tests.FlagComponent), 14 },
+        { typeof(EntitasRedux.Tests.FlagEntityEventComponent), 15 },
+        { typeof(EntitasRedux.Tests.FlagEventComponent), 16 },
+        { typeof(EntitasRedux.Tests.MixedEventComponent), 17 },
+        { typeof(EntitasRedux.Tests.MultipleContextStandardEventComponent), 18 },
+        { typeof(EntitasRedux.Tests.MultipleEntityIndicesComponent), 19 },
+        { typeof(EntitasRedux.Tests.MultipleEventsStandardEventComponent), 20 },
+        { typeof(EntitasRedux.Tests.MyNamespaceComponent), 21 },
+        { typeof(EntitasRedux.Tests.MyNamespaceFlagComponent), 22 },
+        { typeof(EntitasRedux.Tests.NameAgeComponent), 23 },
+        { typeof(EntitasRedux.Tests.PositionComponent), 24 },
+        { typeof(EntitasRedux.Tests.SizeComponent), 25 },
+        { typeof(EntitasRedux.Tests.StandardComponent), 26 },
+        { typeof(EntitasRedux.Tests.StandardEntityEventComponent), 27 },
+        { typeof(EntitasRedux.Tests.StandardEventComponent), 28 },
+        { typeof(EntitasRedux.Tests.Test2ContextComponent), 29 },
+        { typeof(EntitasRedux.Tests.UniqueEventComponent), 30 },
+        { typeof(EntitasRedux.Tests.UniqueFlagComponent), 31 },
+        { typeof(EntitasRedux.Tests.UniqueMyNamespaceComponent), 32 },
+        { typeof(EntitasRedux.Tests.UniqueMyNamespaceFlagComponent), 33 },
+        { typeof(EntitasRedux.Tests.UniqueStandardComponent), 34 },
+        { typeof(EventToGenerateComponent), 35 },
+        { typeof(FlagEntityEventListenerComponent), 36 },
+        { typeof(InterfaceToGenerateComponent), 37 },
+        { typeof(MixedEventListenerComponent), 38 },
+        { typeof(NewCustomNameComponent1Component), 39 },
+        { typeof(NewCustomNameComponent2Component), 40 },
+        { typeof(StandardEntityEventRemovedListenerComponent), 41 },
+        { typeof(StructToGenerateComponent), 42 },
+        { typeof(TestAnyEventToGenerateListenerComponent), 43 },
+        { typeof(TestAnyMultipleContextStandardEventListenerComponent), 44 },
+        { typeof(TestAnyMultipleEventsStandardEventListenerComponent), 45 },
+        { typeof(TestMultipleEventsStandardEventRemovedListenerComponent), 46 },
+        { typeof(UniqueClassToGenerateComponent), 47 }
+	};
+
+	/// <summary>
+	/// Returns a component index based on the passed <paramref name="component"/> type; where an index cannot be found
+	/// -1 will be returned instead.
+	/// </summary>
+	/// <param name="component"></param>
+	public static int GetComponentIndex(IComponent component)
+	{
+		return GetComponentIndex(component.GetType());
+	}
+
+	/// <summary>
+	/// Returns a component index based on the passed <paramref name="componentType"/>; where an index cannot be found
+	/// -1 will be returned instead.
+	/// </summary>
+	/// <param name="componentType"></param>
+	public static int GetComponentIndex(Type componentType)
+	{
+		return ComponentTypeToIndex.TryGetValue(componentType, out var index) ? index : -1;
+	}
 }

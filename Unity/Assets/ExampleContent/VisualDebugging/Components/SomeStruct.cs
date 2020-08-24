@@ -1,5 +1,8 @@
+using System;
+
 namespace ExampleContent.VisualDebugging
 {
+	[Serializable]
 	[VisualDebug]
 	public struct SomeStruct
 	{

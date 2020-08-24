@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyUnityObjectTo(ExampleContent.VisualDebugging.UnityObjectComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.UnityObject;
+        var component = (ExampleContent.VisualDebugging.UnityObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.UnityObjectComponent));
+        component.unityObject = copyComponent.unityObject;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveUnityObject() {
         RemoveComponent(VisualDebugComponentsLookup.UnityObject);
     }

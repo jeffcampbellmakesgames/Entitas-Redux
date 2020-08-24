@@ -26,6 +26,13 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMyNamespaceTo(EntitasRedux.Tests.MyNamespaceComponent copyComponent) {
+        var index = TestComponentsLookup.MyNamespace;
+        var component = (EntitasRedux.Tests.MyNamespaceComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MyNamespaceComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMyNamespace() {
         RemoveComponent(TestComponentsLookup.MyNamespace);
     }

@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyListArrayTo(ExampleContent.VisualDebugging.ListArrayComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.ListArray;
+        var component = (ExampleContent.VisualDebugging.ListArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.ListArrayComponent));
+        component.listArray = copyComponent.listArray;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveListArray() {
         RemoveComponent(VisualDebugComponentsLookup.ListArray);
     }

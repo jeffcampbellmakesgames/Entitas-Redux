@@ -48,6 +48,24 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyManyMembersTo(ExampleContent.VisualDebugging.ManyMembersComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.ManyMembers;
+        var component = (ExampleContent.VisualDebugging.ManyMembersComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.ManyMembersComponent));
+        component.field1 = copyComponent.field1;
+        component.field10 = copyComponent.field10;
+        component.field11 = copyComponent.field11;
+        component.field12 = copyComponent.field12;
+        component.field2 = copyComponent.field2;
+        component.field3 = copyComponent.field3;
+        component.field4 = copyComponent.field4;
+        component.field5 = copyComponent.field5;
+        component.field6 = copyComponent.field6;
+        component.field7 = copyComponent.field7;
+        component.field8 = copyComponent.field8;
+        component.field9 = copyComponent.field9;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveManyMembers() {
         RemoveComponent(VisualDebugComponentsLookup.ManyMembers);
     }

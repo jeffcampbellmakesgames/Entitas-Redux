@@ -26,6 +26,13 @@ public partial class Test2Entity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyTest2ContextTo(EntitasRedux.Tests.Test2ContextComponent copyComponent) {
+        var index = Test2ComponentsLookup.Test2Context;
+        var component = (EntitasRedux.Tests.Test2ContextComponent)CreateComponent(index, typeof(EntitasRedux.Tests.Test2ContextComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveTest2Context() {
         RemoveComponent(Test2ComponentsLookup.Test2Context);
     }

@@ -26,10 +26,9 @@ MonoBehaviour:
     value: JCMG.Genesis.Editor.Plugins.WarnIfCompilingPreProcessor
   - key: Genesis.DataProviders
     value: JCMG.EntitasRedux.Editor.Plugins.ComponentDataProvider, JCMG.EntitasRedux.Editor.Plugins.ContextDataProvider,
-      JCMG.EntitasRedux.Editor.Plugins.EntityIndexDataProvider, JCMG.Genesis.Editor.Plugins.ScriptableFactoryDataProvider,
-      JCMG.EntitasRedux.Blueprints.Editor.Plugins.BlueprintDataProvider
+      JCMG.EntitasRedux.Editor.Plugins.EntityIndexDataProvider, JCMG.Genesis.Editor.Plugins.ScriptableFactoryDataProvider
   - key: Genesis.CodeGenerators
-    value: JCMG.EntitasRedux.Editor.Plugins.Cleanup.CodeGenerators.CleanupDestroyEntitySystemGenerator,
+    value: JCMG.EntitasRedux.Blueprints.Editor.Plugins.BlueprintClassGenerator, JCMG.EntitasRedux.Editor.Plugins.Cleanup.CodeGenerators.CleanupDestroyEntitySystemGenerator,
       JCMG.EntitasRedux.Editor.Plugins.Cleanup.CodeGenerators.CleanupRemoveComponentSystemGenerator,
       JCMG.EntitasRedux.Editor.Plugins.ComponentContextApiGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentEntityApiGenerator,
       JCMG.EntitasRedux.Editor.Plugins.ComponentEntityApiInterfaceGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentGenerator,
@@ -40,8 +39,7 @@ MonoBehaviour:
       JCMG.EntitasRedux.Editor.Plugins.EventEntityApiGenerator, JCMG.EntitasRedux.Editor.Plugins.EventListenerComponentGenerator,
       JCMG.EntitasRedux.Editor.Plugins.EventListenerInterfaceGenerator, JCMG.EntitasRedux.Editor.Plugins.EventSystemGenerator,
       JCMG.EntitasRedux.Editor.Plugins.EventSystemsGenerator, JCMG.EntitasRedux.VisualDebugging.Editor.Plugins.ContextObserverGenerator,
-      JCMG.EntitasRedux.VisualDebugging.Editor.Plugins.FeatureClassGenerator, JCMG.Genesis.Editor.Plugins.ScriptableFactoryCodeGenerator,
-      JCMG.EntitasRedux.Blueprints.Editor.Plugins.BlueprintsGenerator
+      JCMG.EntitasRedux.VisualDebugging.Editor.Plugins.FeatureClassGenerator, JCMG.Genesis.Editor.Plugins.ScriptableFactoryCodeGenerator
   - key: Genesis.PostProcessors
     value: JCMG.Genesis.Editor.Plugins.AddFileHeaderPostProcessor, JCMG.Genesis.Editor.Plugins.CleanTargetDirectoryPostProcessor,
       JCMG.Genesis.Editor.Plugins.MergeFilesPostProcessor, JCMG.Genesis.Editor.Plugins.NewLinePostProcessor,

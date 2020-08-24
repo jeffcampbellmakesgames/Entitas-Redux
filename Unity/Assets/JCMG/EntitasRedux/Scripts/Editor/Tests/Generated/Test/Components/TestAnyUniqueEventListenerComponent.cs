@@ -26,6 +26,13 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyAnyUniqueEventListenerTo(AnyUniqueEventListenerComponent copyComponent) {
+        var index = TestComponentsLookup.AnyUniqueEventListener;
+        var component = (AnyUniqueEventListenerComponent)CreateComponent(index, typeof(AnyUniqueEventListenerComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveAnyUniqueEventListener() {
         RemoveComponent(TestComponentsLookup.AnyUniqueEventListener);
     }

@@ -65,6 +65,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyISomeInterfaceTo(ISomeInterfaceComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.ISomeInterface;
+        var component = (ISomeInterfaceComponent)CreateComponent(index, typeof(ISomeInterfaceComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveISomeInterface() {
         RemoveComponent(VisualDebugComponentsLookup.ISomeInterface);
     }

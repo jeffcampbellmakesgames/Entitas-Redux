@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyVelocityTo(VelocityComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.Velocity;
+        var component = (VelocityComponent)CreateComponent(index, typeof(VelocityComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveVelocity() {
         RemoveComponent(VisualDebugComponentsLookup.Velocity);
     }

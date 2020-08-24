@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyDontDrawSimpleObjectTo(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.DontDrawSimpleObject;
+        var component = (ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent));
+        component.simpleObject = copyComponent.simpleObject;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveDontDrawSimpleObject() {
         RemoveComponent(VisualDebugComponentsLookup.DontDrawSimpleObject);
     }

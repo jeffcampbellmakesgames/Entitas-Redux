@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyColorTo(ExampleContent.VisualDebugging.ColorComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.Color;
+        var component = (ExampleContent.VisualDebugging.ColorComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.ColorComponent));
+        component.color = copyComponent.color;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveColor() {
         RemoveComponent(VisualDebugComponentsLookup.Color);
     }

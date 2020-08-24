@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMyDoubleTo(ExampleContent.VisualDebugging.MyDoubleComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.MyDouble;
+        var component = (ExampleContent.VisualDebugging.MyDoubleComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyDoubleComponent));
+        component.myDouble = copyComponent.myDouble;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMyDouble() {
         RemoveComponent(VisualDebugComponentsLookup.MyDouble);
     }

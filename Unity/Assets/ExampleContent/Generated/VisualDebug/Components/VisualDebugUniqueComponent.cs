@@ -65,6 +65,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyUniqueTo(ExampleContent.VisualDebugging.UniqueComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.Unique;
+        var component = (ExampleContent.VisualDebugging.UniqueComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.UniqueComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveUnique() {
         RemoveComponent(VisualDebugComponentsLookup.Unique);
     }

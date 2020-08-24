@@ -1,5 +1,6 @@
 using System;
 using JCMG.EntitasRedux;
+using JCMG.EntitasRedux.Editor;
 using JCMG.EntitasRedux.VisualDebugging.Editor;
 using UnityEditor;
 
@@ -29,9 +30,13 @@ namespace ExampleContent.VisualDebugging.Editor
 				person.gender = PersonGender.Male.ToString();
 			}
 
-			var gender = (PersonGender)Enum.Parse(typeof(PersonGender), person.gender);
-			gender = (PersonGender)EditorGUILayout.EnumPopup("Gender", gender);
-			person.gender = gender.ToString();
+			if (!Enum.TryParse<PersonGender>(person.gender, out var personGender))
+			{
+				personGender = PersonGender.Male;
+			}
+
+			personGender = (PersonGender)EditorGUILayout.EnumPopup("Gender", personGender);
+			person.gender = personGender.ToString();
 
 			return person;
 		}

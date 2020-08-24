@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyRectTo(ExampleContent.VisualDebugging.RectComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.Rect;
+        var component = (ExampleContent.VisualDebugging.RectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.RectComponent));
+        component.rect = copyComponent.rect;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveRect() {
         RemoveComponent(VisualDebugComponentsLookup.Rect);
     }

@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyDateTimeTo(ExampleContent.VisualDebugging.DateTimeComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.DateTime;
+        var component = (ExampleContent.VisualDebugging.DateTimeComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DateTimeComponent));
+        component.date = copyComponent.date;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveDateTime() {
         RemoveComponent(VisualDebugComponentsLookup.DateTime);
     }

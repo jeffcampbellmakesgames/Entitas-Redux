@@ -26,3 +26,4 @@ THE SOFTWARE.
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("EntitasRedux.Migration.Editor")]
+[assembly: InternalsVisibleTo("EntitasRedux.Blueprints.Editor")]

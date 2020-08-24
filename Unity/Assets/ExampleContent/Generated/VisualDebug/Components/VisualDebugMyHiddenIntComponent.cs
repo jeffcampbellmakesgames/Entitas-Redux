@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMyHiddenIntTo(ExampleContent.VisualDebugging.MyHiddenIntComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.MyHiddenInt;
+        var component = (ExampleContent.VisualDebugging.MyHiddenIntComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyHiddenIntComponent));
+        component.myInt = copyComponent.myInt;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMyHiddenInt() {
         RemoveComponent(VisualDebugComponentsLookup.MyHiddenInt);
     }

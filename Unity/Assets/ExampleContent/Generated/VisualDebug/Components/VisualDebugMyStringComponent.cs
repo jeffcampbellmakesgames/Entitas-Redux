@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMyStringTo(ExampleContent.VisualDebugging.MyStringComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.MyString;
+        var component = (ExampleContent.VisualDebugging.MyStringComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyStringComponent));
+        component.myString = copyComponent.myString;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMyString() {
         RemoveComponent(VisualDebugComponentsLookup.MyString);
     }

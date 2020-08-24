@@ -7,6 +7,10 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using JCMG.EntitasRedux;
+
 public static class VisualDebugComponentsLookup {
 
     public const int AnyMyEventClassListener = 0;
@@ -176,4 +180,81 @@ public static class VisualDebugComponentsLookup {
         typeof(SomeStructComponent),
         typeof(VelocityComponent)
     };
+
+	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
+	{
+        { typeof(AnyMyEventClassListenerComponent), 0 },
+        { typeof(AnyMyEventListenerComponent), 1 },
+        { typeof(CoolNameComponent), 2 },
+        { typeof(ExampleContent.VisualDebugging.AnArrayComponent), 3 },
+        { typeof(ExampleContent.VisualDebugging.AnimationCurveComponent), 4 },
+        { typeof(ExampleContent.VisualDebugging.Array2DComponent), 5 },
+        { typeof(ExampleContent.VisualDebugging.Array3DComponent), 6 },
+        { typeof(ExampleContent.VisualDebugging.BoundsComponent), 7 },
+        { typeof(ExampleContent.VisualDebugging.ColorComponent), 8 },
+        { typeof(ExampleContent.VisualDebugging.CustomFlagComponent), 9 },
+        { typeof(ExampleContent.VisualDebugging.CustomObjectComponent), 10 },
+        { typeof(ExampleContent.VisualDebugging.DateTimeComponent), 11 },
+        { typeof(ExampleContent.VisualDebugging.DictArrayComponent), 12 },
+        { typeof(ExampleContent.VisualDebugging.DictionaryComponent), 13 },
+        { typeof(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent), 14 },
+        { typeof(ExampleContent.VisualDebugging.FlagComponent), 15 },
+        { typeof(ExampleContent.VisualDebugging.GameObjectComponent), 16 },
+        { typeof(ExampleContent.VisualDebugging.HashSetComponent), 17 },
+        { typeof(ExampleContent.VisualDebugging.JaggedArrayComponent), 18 },
+        { typeof(ExampleContent.VisualDebugging.ListArrayComponent), 19 },
+        { typeof(ExampleContent.VisualDebugging.ListComponent), 20 },
+        { typeof(ExampleContent.VisualDebugging.ManyMembersComponent), 21 },
+        { typeof(ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent), 22 },
+        { typeof(ExampleContent.VisualDebugging.MyBoolComponent), 23 },
+        { typeof(ExampleContent.VisualDebugging.MyCharComponent), 24 },
+        { typeof(ExampleContent.VisualDebugging.MyDoubleComponent), 25 },
+        { typeof(ExampleContent.VisualDebugging.MyEnumComponent), 26 },
+        { typeof(ExampleContent.VisualDebugging.MyEventComponent), 27 },
+        { typeof(ExampleContent.VisualDebugging.MyFlagsComponent), 28 },
+        { typeof(ExampleContent.VisualDebugging.MyFloatComponent), 29 },
+        { typeof(ExampleContent.VisualDebugging.MyHiddenIntComponent), 30 },
+        { typeof(ExampleContent.VisualDebugging.MyIntComponent), 31 },
+        { typeof(ExampleContent.VisualDebugging.MyStringComponent), 32 },
+        { typeof(ExampleContent.VisualDebugging.PersonComponent), 33 },
+        { typeof(ExampleContent.VisualDebugging.PropertyComponent), 34 },
+        { typeof(ExampleContent.VisualDebugging.RectComponent), 35 },
+        { typeof(ExampleContent.VisualDebugging.SimpleObjectComponent), 36 },
+        { typeof(ExampleContent.VisualDebugging.SystemObjectComponent), 37 },
+        { typeof(ExampleContent.VisualDebugging.Texture2DComponent), 38 },
+        { typeof(ExampleContent.VisualDebugging.TextureComponent), 39 },
+        { typeof(ExampleContent.VisualDebugging.UniqueComponent), 40 },
+        { typeof(ExampleContent.VisualDebugging.UnityObjectComponent), 41 },
+        { typeof(ExampleContent.VisualDebugging.UnsupportedObjectComponent), 42 },
+        { typeof(ExampleContent.VisualDebugging.Vector2Component), 43 },
+        { typeof(ExampleContent.VisualDebugging.Vector3Component), 44 },
+        { typeof(ExampleContent.VisualDebugging.Vector4Component), 45 },
+        { typeof(ISomeInterfaceComponent), 46 },
+        { typeof(MyEventClassComponent), 47 },
+        { typeof(PositionComponent), 48 },
+        { typeof(SomeClassComponent), 49 },
+        { typeof(SomeOtherClassComponent), 50 },
+        { typeof(SomeStructComponent), 51 },
+        { typeof(VelocityComponent), 52 }
+	};
+
+	/// <summary>
+	/// Returns a component index based on the passed <paramref name="component"/> type; where an index cannot be found
+	/// -1 will be returned instead.
+	/// </summary>
+	/// <param name="component"></param>
+	public static int GetComponentIndex(IComponent component)
+	{
+		return GetComponentIndex(component.GetType());
+	}
+
+	/// <summary>
+	/// Returns a component index based on the passed <paramref name="componentType"/>; where an index cannot be found
+	/// -1 will be returned instead.
+	/// </summary>
+	/// <param name="componentType"></param>
+	public static int GetComponentIndex(Type componentType)
+	{
+		return ComponentTypeToIndex.TryGetValue(componentType, out var index) ? index : -1;
+	}
 }

@@ -28,6 +28,14 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopySizeTo(EntitasRedux.Tests.SizeComponent copyComponent) {
+        var index = TestComponentsLookup.Size;
+        var component = (EntitasRedux.Tests.SizeComponent)CreateComponent(index, typeof(EntitasRedux.Tests.SizeComponent));
+        component.width = copyComponent.width;
+        component.height = copyComponent.height;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveSize() {
         RemoveComponent(TestComponentsLookup.Size);
     }

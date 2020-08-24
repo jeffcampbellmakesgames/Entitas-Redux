@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyHashSetTo(ExampleContent.VisualDebugging.HashSetComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.HashSet;
+        var component = (ExampleContent.VisualDebugging.HashSetComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.HashSetComponent));
+        component.hashset = copyComponent.hashset;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveHashSet() {
         RemoveComponent(VisualDebugComponentsLookup.HashSet);
     }

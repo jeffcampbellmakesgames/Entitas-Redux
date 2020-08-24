@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyUnsupportedObjectTo(ExampleContent.VisualDebugging.UnsupportedObjectComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.UnsupportedObject;
+        var component = (ExampleContent.VisualDebugging.UnsupportedObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.UnsupportedObjectComponent));
+        component.unsupportedObject = copyComponent.unsupportedObject;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveUnsupportedObject() {
         RemoveComponent(VisualDebugComponentsLookup.UnsupportedObject);
     }

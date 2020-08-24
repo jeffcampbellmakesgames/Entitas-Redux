@@ -7,6 +7,10 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using JCMG.EntitasRedux;
+
 public static class MyTestComponentsLookup {
 
     public const int Array3d = 0;
@@ -65,4 +69,44 @@ public static class MyTestComponentsLookup {
         typeof(EntitasRedux.Tests.Performance.NameAgeComponent),
         typeof(EntitasRedux.Tests.PrimaryEntityIndexComponent)
     };
+
+	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
+	{
+        { typeof(EntitasRedux.Tests.Array3dComponent), 0 },
+        { typeof(EntitasRedux.Tests.CleanupDestroyComponent), 1 },
+        { typeof(EntitasRedux.Tests.CleanupRemoveComponent), 2 },
+        { typeof(EntitasRedux.Tests.ComponentA), 3 },
+        { typeof(EntitasRedux.Tests.ComponentB), 4 },
+        { typeof(EntitasRedux.Tests.ComponentC), 5 },
+        { typeof(EntitasRedux.Tests.ComponentD), 6 },
+        { typeof(EntitasRedux.Tests.ComponentE), 7 },
+        { typeof(EntitasRedux.Tests.ComponentF), 8 },
+        { typeof(EntitasRedux.Tests.EntityIndexNoContextComponent), 9 },
+        { typeof(EntitasRedux.Tests.InheritedComponent), 10 },
+        { typeof(EntitasRedux.Tests.MultiplePrimaryEntityIndicesComponent), 11 },
+        { typeof(EntitasRedux.Tests.NoContextComponent), 12 },
+        { typeof(EntitasRedux.Tests.ParentComponent), 13 },
+        { typeof(EntitasRedux.Tests.Performance.NameAgeComponent), 14 },
+        { typeof(EntitasRedux.Tests.PrimaryEntityIndexComponent), 15 }
+	};
+
+	/// <summary>
+	/// Returns a component index based on the passed <paramref name="component"/> type; where an index cannot be found
+	/// -1 will be returned instead.
+	/// </summary>
+	/// <param name="component"></param>
+	public static int GetComponentIndex(IComponent component)
+	{
+		return GetComponentIndex(component.GetType());
+	}
+
+	/// <summary>
+	/// Returns a component index based on the passed <paramref name="componentType"/>; where an index cannot be found
+	/// -1 will be returned instead.
+	/// </summary>
+	/// <param name="componentType"></param>
+	public static int GetComponentIndex(Type componentType)
+	{
+		return ComponentTypeToIndex.TryGetValue(componentType, out var index) ? index : -1;
+	}
 }

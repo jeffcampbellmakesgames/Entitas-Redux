@@ -26,6 +26,13 @@ public partial class MyTestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyInheritedTo(EntitasRedux.Tests.InheritedComponent copyComponent) {
+        var index = MyTestComponentsLookup.Inherited;
+        var component = (EntitasRedux.Tests.InheritedComponent)CreateComponent(index, typeof(EntitasRedux.Tests.InheritedComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveInherited() {
         RemoveComponent(MyTestComponentsLookup.Inherited);
     }

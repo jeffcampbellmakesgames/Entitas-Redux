@@ -26,6 +26,13 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyClassWithEntitIndexAttributeTo(ClassWithEntitIndexAttributeComponent copyComponent) {
+        var index = TestComponentsLookup.ClassWithEntitIndexAttribute;
+        var component = (ClassWithEntitIndexAttributeComponent)CreateComponent(index, typeof(ClassWithEntitIndexAttributeComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveClassWithEntitIndexAttribute() {
         RemoveComponent(TestComponentsLookup.ClassWithEntitIndexAttribute);
     }

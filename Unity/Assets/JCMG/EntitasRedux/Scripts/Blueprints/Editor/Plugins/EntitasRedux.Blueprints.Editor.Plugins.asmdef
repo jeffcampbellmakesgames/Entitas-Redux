@@ -1,0 +1,19 @@
+{
+    "name": "EntitasRedux.Blueprints.Editor.Plugins",
+    "references": [
+        "GUID:e27c5a73d7af115488fbcb097f6442da",
+        "GUID:4f86ea35524e99d4fb2177e6a10dfbff",
+        "GUID:587d587de4accae4eb5d2dbb13dda11f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

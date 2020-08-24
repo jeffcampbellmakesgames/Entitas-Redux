@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyAnimationCurveTo(ExampleContent.VisualDebugging.AnimationCurveComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.AnimationCurve;
+        var component = (ExampleContent.VisualDebugging.AnimationCurveComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.AnimationCurveComponent));
+        component.animationCurve = copyComponent.animationCurve;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveAnimationCurve() {
         RemoveComponent(VisualDebugComponentsLookup.AnimationCurve);
     }

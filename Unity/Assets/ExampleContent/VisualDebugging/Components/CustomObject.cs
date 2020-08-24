@@ -1,5 +1,8 @@
-﻿namespace ExampleContent.VisualDebugging
+﻿using System;
+
+namespace ExampleContent.VisualDebugging
 {
+	[Serializable]
 	public class CustomObject
 	{
 		public string name;

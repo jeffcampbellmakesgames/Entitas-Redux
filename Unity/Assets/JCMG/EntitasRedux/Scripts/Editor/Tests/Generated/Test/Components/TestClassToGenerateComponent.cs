@@ -26,6 +26,13 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyClassToGenerateTo(ClassToGenerateComponent copyComponent) {
+        var index = TestComponentsLookup.ClassToGenerate;
+        var component = (ClassToGenerateComponent)CreateComponent(index, typeof(ClassToGenerateComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveClassToGenerate() {
         RemoveComponent(TestComponentsLookup.ClassToGenerate);
     }

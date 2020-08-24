@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMonoBehaviourSubClassTo(ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.MonoBehaviourSubClass;
+        var component = (ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent));
+        component.monoBehaviour = copyComponent.monoBehaviour;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMonoBehaviourSubClass() {
         RemoveComponent(VisualDebugComponentsLookup.MonoBehaviourSubClass);
     }

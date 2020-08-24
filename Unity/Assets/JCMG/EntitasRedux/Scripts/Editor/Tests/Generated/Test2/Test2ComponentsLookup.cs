@@ -7,6 +7,10 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+using System;
+using System.Collections.Generic;
+using JCMG.EntitasRedux;
+
 public static class Test2ComponentsLookup {
 
     public const int ClassToGenerate = 0;
@@ -59,4 +63,42 @@ public static class Test2ComponentsLookup {
         typeof(Test2MultipleEventsStandardEventRemovedListenerComponent),
         typeof(UniqueClassToGenerateComponent)
     };
+
+	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
+	{
+        { typeof(ClassToGenerateComponent), 0 },
+        { typeof(EntitasRedux.Tests.EntityIndexComponent), 1 },
+        { typeof(EntitasRedux.Tests.MultipleContextStandardEventComponent), 2 },
+        { typeof(EntitasRedux.Tests.MultipleEntityIndicesComponent), 3 },
+        { typeof(EntitasRedux.Tests.MultipleEventsStandardEventComponent), 4 },
+        { typeof(EntitasRedux.Tests.MyNamespaceComponent), 5 },
+        { typeof(EntitasRedux.Tests.NameAgeComponent), 6 },
+        { typeof(EntitasRedux.Tests.Test2ContextComponent), 7 },
+        { typeof(EventToGenerateComponent), 8 },
+        { typeof(Test2AnyEventToGenerateListenerComponent), 9 },
+        { typeof(Test2AnyMultipleContextStandardEventListenerComponent), 10 },
+        { typeof(Test2AnyMultipleEventsStandardEventListenerComponent), 11 },
+        { typeof(Test2MultipleEventsStandardEventRemovedListenerComponent), 12 },
+        { typeof(UniqueClassToGenerateComponent), 13 }
+	};
+
+	/// <summary>
+	/// Returns a component index based on the passed <paramref name="component"/> type; where an index cannot be found
+	/// -1 will be returned instead.
+	/// </summary>
+	/// <param name="component"></param>
+	public static int GetComponentIndex(IComponent component)
+	{
+		return GetComponentIndex(component.GetType());
+	}
+
+	/// <summary>
+	/// Returns a component index based on the passed <paramref name="componentType"/>; where an index cannot be found
+	/// -1 will be returned instead.
+	/// </summary>
+	/// <param name="componentType"></param>
+	public static int GetComponentIndex(Type componentType)
+	{
+		return ComponentTypeToIndex.TryGetValue(componentType, out var index) ? index : -1;
+	}
 }

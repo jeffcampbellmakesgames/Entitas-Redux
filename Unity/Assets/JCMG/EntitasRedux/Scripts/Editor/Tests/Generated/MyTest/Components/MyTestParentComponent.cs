@@ -26,6 +26,13 @@ public partial class MyTestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyParentTo(EntitasRedux.Tests.ParentComponent copyComponent) {
+        var index = MyTestComponentsLookup.Parent;
+        var component = (EntitasRedux.Tests.ParentComponent)CreateComponent(index, typeof(EntitasRedux.Tests.ParentComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveParent() {
         RemoveComponent(MyTestComponentsLookup.Parent);
     }

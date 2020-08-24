@@ -28,6 +28,14 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyPositionTo(EntitasRedux.Tests.PositionComponent copyComponent) {
+        var index = TestComponentsLookup.Position;
+        var component = (EntitasRedux.Tests.PositionComponent)CreateComponent(index, typeof(EntitasRedux.Tests.PositionComponent));
+        component.x = copyComponent.x;
+        component.y = copyComponent.y;
+        ReplaceComponent(index, component);
+    }
+
     public void RemovePosition() {
         RemoveComponent(TestComponentsLookup.Position);
     }

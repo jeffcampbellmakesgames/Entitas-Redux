@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyPropertyTo(ExampleContent.VisualDebugging.PropertyComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.Property;
+        var component = (ExampleContent.VisualDebugging.PropertyComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.PropertyComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveProperty() {
         RemoveComponent(VisualDebugComponentsLookup.Property);
     }

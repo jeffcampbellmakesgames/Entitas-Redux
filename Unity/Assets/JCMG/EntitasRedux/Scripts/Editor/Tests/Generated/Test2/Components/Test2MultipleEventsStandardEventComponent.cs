@@ -26,6 +26,13 @@ public partial class Test2Entity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMultipleEventsStandardEventTo(EntitasRedux.Tests.MultipleEventsStandardEventComponent copyComponent) {
+        var index = Test2ComponentsLookup.MultipleEventsStandardEvent;
+        var component = (EntitasRedux.Tests.MultipleEventsStandardEventComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MultipleEventsStandardEventComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMultipleEventsStandardEvent() {
         RemoveComponent(Test2ComponentsLookup.MultipleEventsStandardEvent);
     }

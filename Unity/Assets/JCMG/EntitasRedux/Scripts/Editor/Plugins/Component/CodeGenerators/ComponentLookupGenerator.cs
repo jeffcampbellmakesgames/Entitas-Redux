@@ -38,7 +38,11 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		}
 
 		private const string TEMPLATE =
-			@"public static class ${Lookup} {
+			@"using System;
+using System.Collections.Generic;
+using JCMG.EntitasRedux;
+
+public static class ${Lookup} {
 
 ${componentConstantsList}
 
@@ -51,6 +55,31 @@ ${componentNamesList}
     public static readonly System.Type[] ComponentTypes = {
 ${componentTypesList}
     };
+
+	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
+	{
+${componentTypeToIndexLookup}
+	};
+
+	/// <summary>
+	/// Returns a component index based on the passed <paramref name=""component""/> type; where an index cannot be found
+	/// -1 will be returned instead.
+	/// </summary>
+	/// <param name=""component""></param>
+	public static int GetComponentIndex(IComponent component)
+	{
+		return GetComponentIndex(component.GetType());
+	}
+
+	/// <summary>
+	/// Returns a component index based on the passed <paramref name=""componentType""/>; where an index cannot be found
+	/// -1 will be returned instead.
+	/// </summary>
+	/// <param name=""componentType""></param>
+	public static int GetComponentIndex(Type componentType)
+	{
+		return ComponentTypeToIndex.TryGetValue(componentType, out var index) ? index : -1;
+	}
 }
 ";
 
@@ -58,6 +87,7 @@ ${componentTypesList}
 		private const string TOTAL_COMPONENTS_CONSTANT_TEMPLATE = @"    public const int TotalComponents = ${totalComponents};";
 		private const string COMPONENT_NAME_TEMPLATE = @"        ""${ComponentName}""";
 		private const string COMPONENT_TYPE_TEMPLATE = @"        typeof(${ComponentType})";
+		private const string COMPONENT_TYPE_TO_INDEX_TEMPLATE = "        { typeof(${ComponentType}), ${Index} }";
 
 		public override CodeGenFile[] Generate(CodeGeneratorData[] data)
 		{
@@ -150,12 +180,23 @@ ${componentTypesList}
 							.Replace("${ComponentType}", d.GetTypeName()))
 					.ToArray());
 
+			var componentTypeToIndexLookup = string.Join(
+				",\n",
+				data
+					.Select(
+						(d, index) => COMPONENT_TYPE_TO_INDEX_TEMPLATE
+							.Replace("${ComponentType}", d.GetTypeName())
+							.Replace("${Index}", index.ToString()))
+					.ToArray());
+
+
 			var fileContent = TEMPLATE
 				.Replace("${Lookup}", contextName + CodeGeneratorExtensions.LOOKUP)
 				.Replace("${componentConstantsList}", componentConstantsList)
 				.Replace("${totalComponentsConstant}", totalComponentsConstant)
 				.Replace("${componentNamesList}", componentNamesList)
-				.Replace("${componentTypesList}", componentTypesList);
+				.Replace("${componentTypesList}", componentTypesList)
+				.Replace("${componentTypeToIndexLookup}", componentTypeToIndexLookup);
 
 			return new CodeGenFile(
 				contextName +
