@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyBoundsTo(ExampleContent.VisualDebugging.BoundsComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.Bounds;
+        var component = (ExampleContent.VisualDebugging.BoundsComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.BoundsComponent));
+        component.bounds = copyComponent.bounds;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveBounds() {
         RemoveComponent(VisualDebugComponentsLookup.Bounds);
     }

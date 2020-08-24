@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMyFloatTo(ExampleContent.VisualDebugging.MyFloatComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.MyFloat;
+        var component = (ExampleContent.VisualDebugging.MyFloatComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyFloatComponent));
+        component.myFloat = copyComponent.myFloat;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMyFloat() {
         RemoveComponent(VisualDebugComponentsLookup.MyFloat);
     }

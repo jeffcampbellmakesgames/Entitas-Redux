@@ -28,6 +28,14 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyPersonTo(ExampleContent.VisualDebugging.PersonComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.Person;
+        var component = (ExampleContent.VisualDebugging.PersonComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.PersonComponent));
+        component.gender = copyComponent.gender;
+        component.name = copyComponent.name;
+        ReplaceComponent(index, component);
+    }
+
     public void RemovePerson() {
         RemoveComponent(VisualDebugComponentsLookup.Person);
     }

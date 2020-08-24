@@ -26,6 +26,13 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMixedEventTo(EntitasRedux.Tests.MixedEventComponent copyComponent) {
+        var index = TestComponentsLookup.MixedEvent;
+        var component = (EntitasRedux.Tests.MixedEventComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MixedEventComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMixedEvent() {
         RemoveComponent(TestComponentsLookup.MixedEvent);
     }

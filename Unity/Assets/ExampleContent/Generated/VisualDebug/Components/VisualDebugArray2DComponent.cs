@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyArray2DTo(ExampleContent.VisualDebugging.Array2DComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.Array2D;
+        var component = (ExampleContent.VisualDebugging.Array2DComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Array2DComponent));
+        component.array2d = copyComponent.array2d;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveArray2D() {
         RemoveComponent(VisualDebugComponentsLookup.Array2D);
     }

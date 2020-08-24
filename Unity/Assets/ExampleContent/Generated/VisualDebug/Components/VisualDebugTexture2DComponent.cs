@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyTexture2DTo(ExampleContent.VisualDebugging.Texture2DComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.Texture2D;
+        var component = (ExampleContent.VisualDebugging.Texture2DComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Texture2DComponent));
+        component.texture2D = copyComponent.texture2D;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveTexture2D() {
         RemoveComponent(VisualDebugComponentsLookup.Texture2D);
     }

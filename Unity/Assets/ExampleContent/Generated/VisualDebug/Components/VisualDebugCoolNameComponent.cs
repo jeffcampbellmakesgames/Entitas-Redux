@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyCoolNameTo(CoolNameComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.CoolName;
+        var component = (CoolNameComponent)CreateComponent(index, typeof(CoolNameComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveCoolName() {
         RemoveComponent(VisualDebugComponentsLookup.CoolName);
     }

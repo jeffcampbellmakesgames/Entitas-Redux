@@ -28,6 +28,14 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyNameAgeTo(EntitasRedux.Tests.NameAgeComponent copyComponent) {
+        var index = TestComponentsLookup.NameAge;
+        var component = (EntitasRedux.Tests.NameAgeComponent)CreateComponent(index, typeof(EntitasRedux.Tests.NameAgeComponent));
+        component.name = copyComponent.name;
+        component.age = copyComponent.age;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveNameAge() {
         RemoveComponent(TestComponentsLookup.NameAge);
     }

@@ -26,6 +26,13 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyNewCustomNameComponent1To(NewCustomNameComponent1Component copyComponent) {
+        var index = TestComponentsLookup.NewCustomNameComponent1;
+        var component = (NewCustomNameComponent1Component)CreateComponent(index, typeof(NewCustomNameComponent1Component));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveNewCustomNameComponent1() {
         RemoveComponent(TestComponentsLookup.NewCustomNameComponent1);
     }

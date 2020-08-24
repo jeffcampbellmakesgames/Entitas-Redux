@@ -26,6 +26,13 @@ public partial class Test2Entity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyTest2AnyEventToGenerateListenerTo(Test2AnyEventToGenerateListenerComponent copyComponent) {
+        var index = Test2ComponentsLookup.Test2AnyEventToGenerateListener;
+        var component = (Test2AnyEventToGenerateListenerComponent)CreateComponent(index, typeof(Test2AnyEventToGenerateListenerComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveTest2AnyEventToGenerateListener() {
         RemoveComponent(Test2ComponentsLookup.Test2AnyEventToGenerateListener);
     }

@@ -26,6 +26,13 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMixedEventListenerTo(MixedEventListenerComponent copyComponent) {
+        var index = TestComponentsLookup.MixedEventListener;
+        var component = (MixedEventListenerComponent)CreateComponent(index, typeof(MixedEventListenerComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMixedEventListener() {
         RemoveComponent(TestComponentsLookup.MixedEventListener);
     }

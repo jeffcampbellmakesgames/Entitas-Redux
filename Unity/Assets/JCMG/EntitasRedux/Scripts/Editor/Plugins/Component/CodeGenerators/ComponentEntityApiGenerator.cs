@@ -56,6 +56,13 @@ ${memberAssignmentList}
         ReplaceComponent(index, component);
     }
 
+	public void Copy${ComponentName}To(${ComponentType} copyComponent) {
+        var index = ${Index};
+        var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+${memberCopyAssignmentList}
+        ReplaceComponent(index, component);
+    }
+
     public void Remove${ComponentName}() {
         RemoveComponent(${Index});
     }
@@ -112,6 +119,7 @@ ${memberAssignmentList}
 
 			var fileContent = template
 				.Replace("${memberAssignmentList}", GetMemberAssignmentList(data.GetMemberData()))
+				.Replace("${memberCopyAssignmentList}", GetMemberCopyAssignmentList(data.GetMemberData()))
 				.Replace(data, contextName);
 
 			return new CodeGenFile(
@@ -131,6 +139,15 @@ ${memberAssignmentList}
 				"\n",
 				memberData
 					.Select(info => "        component." + info.name + " = new" + info.name.UppercaseFirst() + ";")
+					.ToArray());
+		}
+
+		private string GetMemberCopyAssignmentList(MemberData[] memberData)
+		{
+			return string.Join(
+				"\n",
+				memberData
+					.Select(info => "        component." + info.name + " = copyComponent." + info.name + ";")
 					.ToArray());
 		}
 	}

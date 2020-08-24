@@ -20,7 +20,7 @@ MonoBehaviour:
   - key: Genesis.SearchPaths
     value: Library\ScriptAssemblies
   - key: Genesis.Plugins
-    value: EntitasRedux.Editor.Plugins, EntitasRedux.VisualDebugging.Editor.Plugins,
+    value: EntitasRedux.Blueprints.Editor.Plugins, EntitasRedux.Editor.Plugins, EntitasRedux.VisualDebugging.Editor.Plugins,
       Genesis.Editor.Plugins
   - key: Genesis.PreProcessors
     value: JCMG.Genesis.Editor.Plugins.WarnIfCompilingPreProcessor
@@ -28,7 +28,7 @@ MonoBehaviour:
     value: JCMG.EntitasRedux.Editor.Plugins.ComponentDataProvider, JCMG.EntitasRedux.Editor.Plugins.ContextDataProvider,
       JCMG.EntitasRedux.Editor.Plugins.EntityIndexDataProvider, JCMG.Genesis.Editor.Plugins.ScriptableFactoryDataProvider
   - key: Genesis.CodeGenerators
-    value: JCMG.EntitasRedux.Editor.Plugins.Cleanup.CodeGenerators.CleanupDestroyEntitySystemGenerator,
+    value: JCMG.EntitasRedux.Blueprints.Editor.Plugins.BlueprintClassGenerator, JCMG.EntitasRedux.Editor.Plugins.Cleanup.CodeGenerators.CleanupDestroyEntitySystemGenerator,
       JCMG.EntitasRedux.Editor.Plugins.Cleanup.CodeGenerators.CleanupRemoveComponentSystemGenerator,
       JCMG.EntitasRedux.Editor.Plugins.ComponentContextApiGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentEntityApiGenerator,
       JCMG.EntitasRedux.Editor.Plugins.ComponentEntityApiInterfaceGenerator, JCMG.EntitasRedux.Editor.Plugins.ComponentGenerator,

@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMyFlagsTo(ExampleContent.VisualDebugging.MyFlagsComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.MyFlags;
+        var component = (ExampleContent.VisualDebugging.MyFlagsComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyFlagsComponent));
+        component.myFlags = copyComponent.myFlags;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMyFlags() {
         RemoveComponent(VisualDebugComponentsLookup.MyFlags);
     }

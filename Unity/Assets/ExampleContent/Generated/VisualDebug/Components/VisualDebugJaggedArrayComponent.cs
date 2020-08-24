@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyJaggedArrayTo(ExampleContent.VisualDebugging.JaggedArrayComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.JaggedArray;
+        var component = (ExampleContent.VisualDebugging.JaggedArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.JaggedArrayComponent));
+        component.jaggedArray = copyComponent.jaggedArray;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveJaggedArray() {
         RemoveComponent(VisualDebugComponentsLookup.JaggedArray);
     }

@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyDictionaryTo(ExampleContent.VisualDebugging.DictionaryComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.Dictionary;
+        var component = (ExampleContent.VisualDebugging.DictionaryComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictionaryComponent));
+        component.dict = copyComponent.dict;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveDictionary() {
         RemoveComponent(VisualDebugComponentsLookup.Dictionary);
     }

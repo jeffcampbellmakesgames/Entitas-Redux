@@ -24,6 +24,7 @@ THE SOFTWARE.
 */
 
 using System.Linq;
+using JCMG.EntitasRedux.Editor;
 using UnityEditor;
 using UnityEngine;
 

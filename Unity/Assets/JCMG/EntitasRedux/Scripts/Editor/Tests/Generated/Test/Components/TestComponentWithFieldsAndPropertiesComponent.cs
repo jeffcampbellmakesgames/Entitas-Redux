@@ -28,6 +28,14 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyComponentWithFieldsAndPropertiesTo(EntitasRedux.Tests.ComponentWithFieldsAndProperties copyComponent) {
+        var index = TestComponentsLookup.ComponentWithFieldsAndProperties;
+        var component = (EntitasRedux.Tests.ComponentWithFieldsAndProperties)CreateComponent(index, typeof(EntitasRedux.Tests.ComponentWithFieldsAndProperties));
+        component.publicField = copyComponent.publicField;
+        component.publicProperty = copyComponent.publicProperty;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveComponentWithFieldsAndProperties() {
         RemoveComponent(TestComponentsLookup.ComponentWithFieldsAndProperties);
     }

@@ -26,6 +26,13 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyStandardTo(EntitasRedux.Tests.StandardComponent copyComponent) {
+        var index = TestComponentsLookup.Standard;
+        var component = (EntitasRedux.Tests.StandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.StandardComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveStandard() {
         RemoveComponent(TestComponentsLookup.Standard);
     }

@@ -1,7 +1,9 @@
-﻿using JCMG.EntitasRedux;
+﻿using System;
+using JCMG.EntitasRedux;
 
 namespace ExampleContent.VisualDebugging
 {
+	[Serializable]
 	[VisualDebug]
 	public class PersonComponent : IComponent
 	{

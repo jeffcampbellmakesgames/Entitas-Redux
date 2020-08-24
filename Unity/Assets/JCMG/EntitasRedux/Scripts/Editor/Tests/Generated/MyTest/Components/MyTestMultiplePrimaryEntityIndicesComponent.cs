@@ -28,6 +28,14 @@ public partial class MyTestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMultiplePrimaryEntityIndicesTo(EntitasRedux.Tests.MultiplePrimaryEntityIndicesComponent copyComponent) {
+        var index = MyTestComponentsLookup.MultiplePrimaryEntityIndices;
+        var component = (EntitasRedux.Tests.MultiplePrimaryEntityIndicesComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MultiplePrimaryEntityIndicesComponent));
+        component.value = copyComponent.value;
+        component.value2 = copyComponent.value2;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMultiplePrimaryEntityIndices() {
         RemoveComponent(MyTestComponentsLookup.MultiplePrimaryEntityIndices);
     }

@@ -65,6 +65,13 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyUniqueEventTo(EntitasRedux.Tests.UniqueEventComponent copyComponent) {
+        var index = TestComponentsLookup.UniqueEvent;
+        var component = (EntitasRedux.Tests.UniqueEventComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueEventComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveUniqueEvent() {
         RemoveComponent(TestComponentsLookup.UniqueEvent);
     }

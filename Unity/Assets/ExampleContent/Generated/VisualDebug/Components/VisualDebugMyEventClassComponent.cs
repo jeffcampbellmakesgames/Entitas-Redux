@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMyEventClassTo(MyEventClassComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.MyEventClass;
+        var component = (MyEventClassComponent)CreateComponent(index, typeof(MyEventClassComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMyEventClass() {
         RemoveComponent(VisualDebugComponentsLookup.MyEventClass);
     }

@@ -65,6 +65,13 @@ public partial class TestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyUniqueMyNamespaceTo(EntitasRedux.Tests.UniqueMyNamespaceComponent copyComponent) {
+        var index = TestComponentsLookup.UniqueMyNamespace;
+        var component = (EntitasRedux.Tests.UniqueMyNamespaceComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueMyNamespaceComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveUniqueMyNamespace() {
         RemoveComponent(TestComponentsLookup.UniqueMyNamespace);
     }

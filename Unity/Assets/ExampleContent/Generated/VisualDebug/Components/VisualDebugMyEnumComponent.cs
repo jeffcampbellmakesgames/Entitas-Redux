@@ -26,6 +26,13 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyMyEnumTo(ExampleContent.VisualDebugging.MyEnumComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.MyEnum;
+        var component = (ExampleContent.VisualDebugging.MyEnumComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyEnumComponent));
+        component.myEnum = copyComponent.myEnum;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveMyEnum() {
         RemoveComponent(VisualDebugComponentsLookup.MyEnum);
     }

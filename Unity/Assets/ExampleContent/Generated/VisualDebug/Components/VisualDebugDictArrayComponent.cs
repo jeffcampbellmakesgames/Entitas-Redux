@@ -28,6 +28,14 @@ public partial class VisualDebugEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyDictArrayTo(ExampleContent.VisualDebugging.DictArrayComponent copyComponent) {
+        var index = VisualDebugComponentsLookup.DictArray;
+        var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
+        component.dict = copyComponent.dict;
+        component.dictArray = copyComponent.dictArray;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveDictArray() {
         RemoveComponent(VisualDebugComponentsLookup.DictArray);
     }

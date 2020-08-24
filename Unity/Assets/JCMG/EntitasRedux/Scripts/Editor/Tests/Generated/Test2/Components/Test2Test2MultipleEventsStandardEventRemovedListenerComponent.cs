@@ -26,6 +26,13 @@ public partial class Test2Entity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyTest2MultipleEventsStandardEventRemovedListenerTo(Test2MultipleEventsStandardEventRemovedListenerComponent copyComponent) {
+        var index = Test2ComponentsLookup.Test2MultipleEventsStandardEventRemovedListener;
+        var component = (Test2MultipleEventsStandardEventRemovedListenerComponent)CreateComponent(index, typeof(Test2MultipleEventsStandardEventRemovedListenerComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveTest2MultipleEventsStandardEventRemovedListener() {
         RemoveComponent(Test2ComponentsLookup.Test2MultipleEventsStandardEventRemovedListener);
     }

@@ -26,6 +26,13 @@ public partial class MyTestEntity {
         ReplaceComponent(index, component);
     }
 
+	public void CopyArray3dTo(EntitasRedux.Tests.Array3dComponent copyComponent) {
+        var index = MyTestComponentsLookup.Array3d;
+        var component = (EntitasRedux.Tests.Array3dComponent)CreateComponent(index, typeof(EntitasRedux.Tests.Array3dComponent));
+        component.value = copyComponent.value;
+        ReplaceComponent(index, component);
+    }
+
     public void RemoveArray3d() {
         RemoveComponent(MyTestComponentsLookup.Array3d);
     }
