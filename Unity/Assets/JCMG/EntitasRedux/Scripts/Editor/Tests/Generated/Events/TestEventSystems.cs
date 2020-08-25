@@ -10,16 +10,16 @@
 public sealed class TestEventSystems : Feature {
 
     public TestEventSystems(Contexts contexts) {
-        Add(new AnyBaseEventSystem(contexts)); // priority: 0
-        Add(new TestAnyEventToGenerateEventSystem(contexts)); // priority: 0
+        Add(new AnyBaseAddedEventSystem(contexts)); // priority: 0
+        Add(new TestAnyEventToGenerateAddedEventSystem(contexts)); // priority: 0
         Add(new AnyFlagEventRemovedEventSystem(contexts)); // priority: 0
-        Add(new AnyMixedEventEventSystem(contexts)); // priority: 0
-        Add(new MixedEventEventSystem(contexts)); // priority: 0
-        Add(new TestAnyMultipleContextStandardEventEventSystem(contexts)); // priority: 0
-        Add(new AnyStandardEventEventSystem(contexts)); // priority: 0
-        Add(new AnyUniqueEventEventSystem(contexts)); // priority: 0
-        Add(new FlagEntityEventEventSystem(contexts)); // priority: 1
-        Add(new TestAnyMultipleEventsStandardEventEventSystem(contexts)); // priority: 1
+        Add(new AnyMixedEventAddedEventSystem(contexts)); // priority: 0
+        Add(new MixedEventAddedEventSystem(contexts)); // priority: 0
+        Add(new TestAnyMultipleContextStandardEventAddedEventSystem(contexts)); // priority: 0
+        Add(new AnyStandardEventAddedEventSystem(contexts)); // priority: 0
+        Add(new AnyUniqueEventAddedEventSystem(contexts)); // priority: 0
+        Add(new FlagEntityEventAddedEventSystem(contexts)); // priority: 1
+        Add(new TestAnyMultipleEventsStandardEventAddedEventSystem(contexts)); // priority: 1
         Add(new StandardEntityEventRemovedEventSystem(contexts)); // priority: 1
         Add(new TestMultipleEventsStandardEventRemovedEventSystem(contexts)); // priority: 2
     }

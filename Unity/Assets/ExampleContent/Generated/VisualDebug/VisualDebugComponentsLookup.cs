@@ -13,8 +13,8 @@ using JCMG.EntitasRedux;
 
 public static class VisualDebugComponentsLookup {
 
-    public const int AnyMyEventClassListener = 0;
-    public const int AnyMyEventListener = 1;
+    public const int AnyMyEventAddedListener = 0;
+    public const int AnyMyEventClassAddedListener = 1;
     public const int CoolName = 2;
     public const int AnArray = 3;
     public const int AnimationCurve = 4;
@@ -70,8 +70,8 @@ public static class VisualDebugComponentsLookup {
     public const int TotalComponents = 53;
 
     public static readonly string[] ComponentNames = {
-        "AnyMyEventClassListener",
-        "AnyMyEventListener",
+        "AnyMyEventAddedListener",
+        "AnyMyEventClassAddedListener",
         "CoolName",
         "AnArray",
         "AnimationCurve",
@@ -126,8 +126,8 @@ public static class VisualDebugComponentsLookup {
     };
 
     public static readonly System.Type[] ComponentTypes = {
-        typeof(AnyMyEventClassListenerComponent),
-        typeof(AnyMyEventListenerComponent),
+        typeof(AnyMyEventAddedListenerComponent),
+        typeof(AnyMyEventClassAddedListenerComponent),
         typeof(CoolNameComponent),
         typeof(ExampleContent.VisualDebugging.AnArrayComponent),
         typeof(ExampleContent.VisualDebugging.AnimationCurveComponent),
@@ -183,8 +183,8 @@ public static class VisualDebugComponentsLookup {
 
 	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
 	{
-        { typeof(AnyMyEventClassListenerComponent), 0 },
-        { typeof(AnyMyEventListenerComponent), 1 },
+        { typeof(AnyMyEventAddedListenerComponent), 0 },
+        { typeof(AnyMyEventClassAddedListenerComponent), 1 },
         { typeof(CoolNameComponent), 2 },
         { typeof(ExampleContent.VisualDebugging.AnArrayComponent), 3 },
         { typeof(ExampleContent.VisualDebugging.AnimationCurveComponent), 4 },
