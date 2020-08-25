@@ -168,12 +168,28 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 
 		public static string GetEventTypeSuffix(this EventData eventData)
 		{
-			return eventData.eventType == EventType.Removed ? "Removed" : string.Empty;
+			switch (eventData.eventType)
+			{
+				case EventType.Added:
+					return "Added";
+				case EventType.Removed:
+					return "Removed";
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
 		}
 
 		public static string GetEventPrefix(this EventData eventData)
 		{
-			return eventData.eventTarget == EventTarget.Any ? "Any" : string.Empty;
+			switch (eventData.eventTarget)
+			{
+				case EventTarget.Any:
+					return "Any";
+				case EventTarget.Self:
+					return string.Empty;
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
 		}
 
 		public static string GetMethodParameters(this MemberData[] memberData, bool newPrefix)
