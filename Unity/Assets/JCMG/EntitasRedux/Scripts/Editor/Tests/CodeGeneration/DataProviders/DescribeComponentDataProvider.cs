@@ -233,10 +233,10 @@ namespace EntitasRedux.Tests
 
 			Assert.AreEqual(2, d.Length);
 			Assert.IsFalse(d[1].IsEvent());
-			Assert.AreEqual("AnyStandardEventListenerComponent", d[1].GetTypeName());
+			Assert.AreEqual("AnyStandardEventAddedListenerComponent", d[1].GetTypeName());
 			Assert.AreEqual(1, d[1].GetMemberData().Length);
 			Assert.AreEqual("value", d[1].GetMemberData()[0].name);
-			Assert.AreEqual("System.Collections.Generic.List<IAnyStandardEventListener>", d[1].GetMemberData()[0].type);
+			Assert.AreEqual("System.Collections.Generic.List<IAnyStandardEventAddedListener>", d[1].GetMemberData()[0].type);
 		}
 
 		[NUnit.Framework.Test]
@@ -259,16 +259,16 @@ namespace EntitasRedux.Tests
 			var d = GetMultipleData<MultipleContextStandardEventComponent>();
 			Assert.AreEqual(3, d.Length);
 			Assert.IsFalse(d[1].IsEvent());
-			Assert.AreEqual("TestAnyMultipleContextStandardEventListenerComponent", d[1].GetTypeName());
+			Assert.AreEqual("TestAnyMultipleContextStandardEventAddedListenerComponent", d[1].GetTypeName());
 			Assert.AreEqual(1, d[1].GetMemberData().Length);
 			Assert.AreEqual("value", d[1].GetMemberData()[0].name);
-			Assert.AreEqual("System.Collections.Generic.List<ITestAnyMultipleContextStandardEventListener>", d[1].GetMemberData()[0].type);
+			Assert.AreEqual("System.Collections.Generic.List<ITestAnyMultipleContextStandardEventAddedListener>", d[1].GetMemberData()[0].type);
 
 			Assert.IsFalse(d[2].IsEvent());
-			Assert.AreEqual("Test2AnyMultipleContextStandardEventListenerComponent", d[2].GetTypeName());
+			Assert.AreEqual("Test2AnyMultipleContextStandardEventAddedListenerComponent", d[2].GetTypeName());
 			Assert.AreEqual(1, d[2].GetMemberData().Length);
 			Assert.AreEqual("value", d[2].GetMemberData()[0].name);
-			Assert.AreEqual("System.Collections.Generic.List<ITest2AnyMultipleContextStandardEventListener>", d[2].GetMemberData()[0].type);
+			Assert.AreEqual("System.Collections.Generic.List<ITest2AnyMultipleContextStandardEventAddedListener>", d[2].GetMemberData()[0].type);
 		}
 
 		[NUnit.Framework.Test]
@@ -416,17 +416,17 @@ namespace EntitasRedux.Tests
 			Assert.AreEqual(3, d.Length);
 			Assert.IsFalse(d[1].IsEvent());
 			Assert.IsFalse(d[1].ShouldGenerateComponent());
-			Assert.AreEqual("TestAnyEventToGenerateListenerComponent", d[1].GetTypeName());
+			Assert.AreEqual("TestAnyEventToGenerateAddedListenerComponent", d[1].GetTypeName());
 			Assert.AreEqual(1, d[1].GetMemberData().Length);
 			Assert.AreEqual("value", d[1].GetMemberData()[0].name);
-			Assert.AreEqual("System.Collections.Generic.List<ITestAnyEventToGenerateListener>", d[1].GetMemberData()[0].type);
+			Assert.AreEqual("System.Collections.Generic.List<ITestAnyEventToGenerateAddedListener>", d[1].GetMemberData()[0].type);
 
 			Assert.IsFalse(d[2].IsEvent());
 			Assert.IsFalse(d[2].ShouldGenerateComponent());
-			Assert.AreEqual("Test2AnyEventToGenerateListenerComponent", d[2].GetTypeName());
+			Assert.AreEqual("Test2AnyEventToGenerateAddedListenerComponent", d[2].GetTypeName());
 			Assert.AreEqual(1, d[2].GetMemberData().Length);
 			Assert.AreEqual("value", d[2].GetMemberData()[0].name);
-			Assert.AreEqual("System.Collections.Generic.List<ITest2AnyEventToGenerateListener>", d[2].GetMemberData()[0].type);
+			Assert.AreEqual("System.Collections.Generic.List<ITest2AnyEventToGenerateAddedListener>", d[2].GetMemberData()[0].type);
 		}
 
 		#endregion

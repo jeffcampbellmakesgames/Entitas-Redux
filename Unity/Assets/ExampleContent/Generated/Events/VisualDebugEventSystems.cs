@@ -10,7 +10,7 @@
 public sealed class VisualDebugEventSystems : Feature {
 
     public VisualDebugEventSystems(Contexts contexts) {
-        Add(new AnyMyEventEventSystem(contexts)); // priority: 0
-        Add(new AnyMyEventClassEventSystem(contexts)); // priority: 0
+        Add(new AnyMyEventAddedEventSystem(contexts)); // priority: 0
+        Add(new AnyMyEventClassAddedEventSystem(contexts)); // priority: 0
     }
 }

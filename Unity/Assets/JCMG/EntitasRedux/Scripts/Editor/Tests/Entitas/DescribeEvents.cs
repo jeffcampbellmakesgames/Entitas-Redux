@@ -31,8 +31,8 @@ namespace EntitasRedux.Tests
 	internal sealed class DescribeEvents
 	{
 		#region Private Fixture
-		private class RemoveEventTest : IAnyStandardEventListener,
-		                                IFlagEntityEventListener
+		private class RemoveEventTest : IAnyStandardEventAddedListener,
+										IFlagEntityEventAddedListener
 		{
 			public TestEntity listener => _listener;
 			public string value => _value;
@@ -46,19 +46,19 @@ namespace EntitasRedux.Tests
 			{
 				_removeComponentWhenEmpty = removeComponentWhenEmpty;
 				_listener = contexts.Test.CreateEntity();
-				_listener.AddAnyStandardEventListener(this);
-				_listener.AddFlagEntityEventListener(this);
+				_listener.AddAnyStandardEventAddedListener(this);
+				_listener.AddFlagEntityEventAddedListener(this);
 			}
 
-			public void OnAnyStandardEvent(TestEntity entity, string value)
+			public void OnAnyStandardEventAdded(TestEntity entity, string value)
 			{
-				_listener.RemoveAnyStandardEventListener(this, _removeComponentWhenEmpty);
+				_listener.RemoveAnyStandardEventAddedListener(this, _removeComponentWhenEmpty);
 				_value = value;
 			}
 
-			public void OnFlagEntityEvent(TestEntity entity)
+			public void OnFlagEntityEventAdded(TestEntity entity)
 			{
-				_listener.RemoveFlagEntityEventListener(this, _removeComponentWhenEmpty);
+				_listener.RemoveFlagEntityEventAddedListener(this, _removeComponentWhenEmpty);
 				_value = "true";
 			}
 		}
@@ -66,15 +66,15 @@ namespace EntitasRedux.Tests
 		#endregion
 
 		private Contexts _contexts;
-		private AnyStandardEventEventSystem _standardEventSystem;
-		private FlagEntityEventEventSystem _flagEntityEventSystem;
+		private AnyStandardEventAddedEventSystem _standardEventSystem;
+		private FlagEntityEventAddedEventSystem _flagEntityEventSystem;
 
 		[SetUp]
 		public void Setup()
 		{
 			_contexts = new Contexts();
-			_standardEventSystem = new AnyStandardEventEventSystem(_contexts);
-			_flagEntityEventSystem = new FlagEntityEventEventSystem(_contexts);
+			_standardEventSystem = new AnyStandardEventAddedEventSystem(_contexts);
+			_flagEntityEventSystem = new FlagEntityEventAddedEventSystem(_contexts);
 		}
 
 		#region AnyStandardEventEventSystem

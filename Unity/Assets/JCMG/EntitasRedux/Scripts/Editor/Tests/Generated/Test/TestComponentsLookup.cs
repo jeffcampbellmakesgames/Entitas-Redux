@@ -13,11 +13,11 @@ using JCMG.EntitasRedux;
 
 public static class TestComponentsLookup {
 
-    public const int AnyBaseListener = 0;
+    public const int AnyBaseAddedListener = 0;
     public const int AnyFlagEventRemovedListener = 1;
-    public const int AnyMixedEventListener = 2;
-    public const int AnyStandardEventListener = 3;
-    public const int AnyUniqueEventListener = 4;
+    public const int AnyMixedEventAddedListener = 2;
+    public const int AnyStandardEventAddedListener = 3;
+    public const int AnyUniqueEventAddedListener = 4;
     public const int ClassToGenerate = 5;
     public const int ClassWithEntitIndexAttribute = 6;
     public const int Base = 7;
@@ -49,27 +49,27 @@ public static class TestComponentsLookup {
     public const int UniqueMyNamespaceFlag = 33;
     public const int UniqueStandard = 34;
     public const int EventToGenerate = 35;
-    public const int FlagEntityEventListener = 36;
+    public const int FlagEntityEventAddedListener = 36;
     public const int InterfaceToGenerate = 37;
-    public const int MixedEventListener = 38;
+    public const int MixedEventAddedListener = 38;
     public const int NewCustomNameComponent1 = 39;
     public const int NewCustomNameComponent2 = 40;
     public const int StandardEntityEventRemovedListener = 41;
     public const int StructToGenerate = 42;
-    public const int TestAnyEventToGenerateListener = 43;
-    public const int TestAnyMultipleContextStandardEventListener = 44;
-    public const int TestAnyMultipleEventsStandardEventListener = 45;
+    public const int TestAnyEventToGenerateAddedListener = 43;
+    public const int TestAnyMultipleContextStandardEventAddedListener = 44;
+    public const int TestAnyMultipleEventsStandardEventAddedListener = 45;
     public const int TestMultipleEventsStandardEventRemovedListener = 46;
     public const int UniqueClassToGenerate = 47;
 
     public const int TotalComponents = 48;
 
     public static readonly string[] ComponentNames = {
-        "AnyBaseListener",
+        "AnyBaseAddedListener",
         "AnyFlagEventRemovedListener",
-        "AnyMixedEventListener",
-        "AnyStandardEventListener",
-        "AnyUniqueEventListener",
+        "AnyMixedEventAddedListener",
+        "AnyStandardEventAddedListener",
+        "AnyUniqueEventAddedListener",
         "ClassToGenerate",
         "ClassWithEntitIndexAttribute",
         "Base",
@@ -101,26 +101,26 @@ public static class TestComponentsLookup {
         "UniqueMyNamespaceFlag",
         "UniqueStandard",
         "EventToGenerate",
-        "FlagEntityEventListener",
+        "FlagEntityEventAddedListener",
         "InterfaceToGenerate",
-        "MixedEventListener",
+        "MixedEventAddedListener",
         "NewCustomNameComponent1",
         "NewCustomNameComponent2",
         "StandardEntityEventRemovedListener",
         "StructToGenerate",
-        "TestAnyEventToGenerateListener",
-        "TestAnyMultipleContextStandardEventListener",
-        "TestAnyMultipleEventsStandardEventListener",
+        "TestAnyEventToGenerateAddedListener",
+        "TestAnyMultipleContextStandardEventAddedListener",
+        "TestAnyMultipleEventsStandardEventAddedListener",
         "TestMultipleEventsStandardEventRemovedListener",
         "UniqueClassToGenerate"
     };
 
     public static readonly System.Type[] ComponentTypes = {
-        typeof(AnyBaseListenerComponent),
+        typeof(AnyBaseAddedListenerComponent),
         typeof(AnyFlagEventRemovedListenerComponent),
-        typeof(AnyMixedEventListenerComponent),
-        typeof(AnyStandardEventListenerComponent),
-        typeof(AnyUniqueEventListenerComponent),
+        typeof(AnyMixedEventAddedListenerComponent),
+        typeof(AnyStandardEventAddedListenerComponent),
+        typeof(AnyUniqueEventAddedListenerComponent),
         typeof(ClassToGenerateComponent),
         typeof(ClassWithEntitIndexAttributeComponent),
         typeof(EntitasRedux.Tests.BaseComponent),
@@ -152,27 +152,27 @@ public static class TestComponentsLookup {
         typeof(EntitasRedux.Tests.UniqueMyNamespaceFlagComponent),
         typeof(EntitasRedux.Tests.UniqueStandardComponent),
         typeof(EventToGenerateComponent),
-        typeof(FlagEntityEventListenerComponent),
+        typeof(FlagEntityEventAddedListenerComponent),
         typeof(InterfaceToGenerateComponent),
-        typeof(MixedEventListenerComponent),
+        typeof(MixedEventAddedListenerComponent),
         typeof(NewCustomNameComponent1Component),
         typeof(NewCustomNameComponent2Component),
         typeof(StandardEntityEventRemovedListenerComponent),
         typeof(StructToGenerateComponent),
-        typeof(TestAnyEventToGenerateListenerComponent),
-        typeof(TestAnyMultipleContextStandardEventListenerComponent),
-        typeof(TestAnyMultipleEventsStandardEventListenerComponent),
+        typeof(TestAnyEventToGenerateAddedListenerComponent),
+        typeof(TestAnyMultipleContextStandardEventAddedListenerComponent),
+        typeof(TestAnyMultipleEventsStandardEventAddedListenerComponent),
         typeof(TestMultipleEventsStandardEventRemovedListenerComponent),
         typeof(UniqueClassToGenerateComponent)
     };
 
 	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
 	{
-        { typeof(AnyBaseListenerComponent), 0 },
+        { typeof(AnyBaseAddedListenerComponent), 0 },
         { typeof(AnyFlagEventRemovedListenerComponent), 1 },
-        { typeof(AnyMixedEventListenerComponent), 2 },
-        { typeof(AnyStandardEventListenerComponent), 3 },
-        { typeof(AnyUniqueEventListenerComponent), 4 },
+        { typeof(AnyMixedEventAddedListenerComponent), 2 },
+        { typeof(AnyStandardEventAddedListenerComponent), 3 },
+        { typeof(AnyUniqueEventAddedListenerComponent), 4 },
         { typeof(ClassToGenerateComponent), 5 },
         { typeof(ClassWithEntitIndexAttributeComponent), 6 },
         { typeof(EntitasRedux.Tests.BaseComponent), 7 },
@@ -204,16 +204,16 @@ public static class TestComponentsLookup {
         { typeof(EntitasRedux.Tests.UniqueMyNamespaceFlagComponent), 33 },
         { typeof(EntitasRedux.Tests.UniqueStandardComponent), 34 },
         { typeof(EventToGenerateComponent), 35 },
-        { typeof(FlagEntityEventListenerComponent), 36 },
+        { typeof(FlagEntityEventAddedListenerComponent), 36 },
         { typeof(InterfaceToGenerateComponent), 37 },
-        { typeof(MixedEventListenerComponent), 38 },
+        { typeof(MixedEventAddedListenerComponent), 38 },
         { typeof(NewCustomNameComponent1Component), 39 },
         { typeof(NewCustomNameComponent2Component), 40 },
         { typeof(StandardEntityEventRemovedListenerComponent), 41 },
         { typeof(StructToGenerateComponent), 42 },
-        { typeof(TestAnyEventToGenerateListenerComponent), 43 },
-        { typeof(TestAnyMultipleContextStandardEventListenerComponent), 44 },
-        { typeof(TestAnyMultipleEventsStandardEventListenerComponent), 45 },
+        { typeof(TestAnyEventToGenerateAddedListenerComponent), 43 },
+        { typeof(TestAnyMultipleContextStandardEventAddedListenerComponent), 44 },
+        { typeof(TestAnyMultipleEventsStandardEventAddedListenerComponent), 45 },
         { typeof(TestMultipleEventsStandardEventRemovedListenerComponent), 46 },
         { typeof(UniqueClassToGenerateComponent), 47 }
 	};
