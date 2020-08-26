@@ -12,6 +12,13 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 {
 	public abstract class BlueprintInspector : UnityEditor.Editor
 	{
+		/// <summary>
+		/// Returns true if the context has any valid components that can be selected in the inspector, otherwise false.
+		/// </summary>
+		protected bool ContextHasSerializableComponents => _componentTypes.Length > 0 ||
+		                                                 _componentDisplayNames.Length > 0 ||
+		                                                 _componentInfo.Length > 0;
+
 		private static readonly IEnumerable<Assembly> ASSEMBLIES;
 
 		private int _selectedComponentIndex;
@@ -24,6 +31,9 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 
 		// UI
 		private const string ADD_BUTTON_TEXT = "Add";
+		private const string NO_VALID_COMPONENTS_WARNING =
+			"There are not any serializable components with a default constructor for the context [{0}]. Only components " +
+			"that meet that criteria will be available for blueprint usage.";
 
 		static BlueprintInspector()
 		{
@@ -69,23 +79,30 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 
 		protected void DrawComponentSelectorGUI(List<IComponent> components, Action onComponentAdded)
 		{
-			using (new EditorGUILayout.HorizontalScope())
+			if (!ContextHasSerializableComponents)
 			{
-				// Select a component type specific to this blueprint's context.
-				_selectedComponentIndex = EditorGUILayout.Popup(_selectedComponentIndex, _componentDisplayNames);
-
-				// Add component if not already present in the blueprint.
-				using (new EditorGUI.DisabledScope(
-					HasComponentType(
-						components,
-						_componentTypes[_selectedComponentIndex])))
+				EditorGUILayout.HelpBox(string.Format(NO_VALID_COMPONENTS_WARNING, _contextName), MessageType.Warning);
+			}
+			else
+			{
+				using (new EditorGUILayout.HorizontalScope())
 				{
-					if (GUILayout.Button(ADD_BUTTON_TEXT))
-					{
-						var componentInstance = Activator.CreateInstance(_componentTypes[_selectedComponentIndex]);
-						components.Add((IComponent)componentInstance);
+					// Select a component type specific to this blueprint's context.
+					_selectedComponentIndex = EditorGUILayout.Popup(_selectedComponentIndex, _componentDisplayNames);
 
-						onComponentAdded?.Invoke();
+					// Add component if not already present in the blueprint.
+					using (new EditorGUI.DisabledScope(
+						HasComponentType(
+							components,
+							_componentTypes[_selectedComponentIndex])))
+					{
+						if (GUILayout.Button(ADD_BUTTON_TEXT))
+						{
+							var componentInstance = Activator.CreateInstance(_componentTypes[_selectedComponentIndex]);
+							components.Add((IComponent)componentInstance);
+
+							onComponentAdded?.Invoke();
+						}
 					}
 				}
 			}
