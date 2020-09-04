@@ -23,6 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -64,6 +65,41 @@ namespace JCMG.EntitasRedux
 			}
 
 			return collection.First();
+		}
+
+		/// <summary>
+		/// Performs a naive deep copy of an <see cref="IList{T}"/> where the deep-copy of each <typeparamref name="T"/>
+		/// value is performed by calling <see cref="ICloneable.Clone"/>.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="list"></param>
+		/// <returns></returns>
+		public static IList<T> DeepCopy<T>(this IList<T> list) where T : ICloneable
+		{
+			var newList = (IList<T>)Activator.CreateInstance(list.GetType());
+			for (var i = 0; i < list.Count; i++)
+			{
+				newList.Add((T)list[i].Clone());
+			}
+
+			return newList;
+		}
+
+		/// <summary>
+		/// Performs a shallow copy of an  <see cref="IList{T}"/> to a new list.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="list"></param>
+		/// <returns></returns>
+		public static IList<T> ShallowCopy<T>(this IList<T> list)
+		{
+			var newList = (IList<T>)Activator.CreateInstance(list.GetType());
+			for (var i = 0; i < list.Count; i++)
+			{
+				newList.Add(list[i]);
+			}
+
+			return newList;
 		}
 	}
 }

@@ -29,7 +29,7 @@ public partial class VisualDebugEntity {
 	public void CopyCustomObjectTo(ExampleContent.VisualDebugging.CustomObjectComponent copyComponent) {
         var index = VisualDebugComponentsLookup.CustomObject;
         var component = (ExampleContent.VisualDebugging.CustomObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectComponent));
-        component.customObject = copyComponent.customObject;
+        component.customObject = (ExampleContent.VisualDebugging.CustomObject)copyComponent.customObject.Clone();
         ReplaceComponent(index, component);
     }
 

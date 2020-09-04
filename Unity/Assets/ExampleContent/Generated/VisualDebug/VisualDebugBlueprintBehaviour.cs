@@ -35,7 +35,7 @@ public partial class VisualDebugBlueprintBehaviour : BlueprintBehaviourBase, IVi
 			var index = VisualDebugComponentsLookup.GetComponentIndex(component);
 			if (index != -1)
 			{
-				entity.AddComponent(index, component);
+				entity.CopyComponentTo(component);
 			}
 			else
 			{

@@ -23,17 +23,27 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+using System;
+using JCMG.Genesis.Editor;
+
 namespace JCMG.EntitasRedux.Editor.Plugins
 {
 	public class MemberData
 	{
+		public readonly Type memberType;
 		public readonly string name;
+		public readonly string compilableTypeString;
 
-		public readonly string type;
-
-		public MemberData(string type, string name)
+		public MemberData(Type type, string name)
 		{
-			this.type = type;
+			memberType = type;
+			compilableTypeString = memberType.ToCompilableString();
+			this.name = name;
+		}
+
+		public MemberData(string typeString, string name)
+		{
+			compilableTypeString = typeString;
 			this.name = name;
 		}
 	}

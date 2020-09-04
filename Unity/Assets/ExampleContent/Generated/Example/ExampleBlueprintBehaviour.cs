@@ -35,7 +35,7 @@ public partial class ExampleBlueprintBehaviour : BlueprintBehaviourBase, IExampl
 			var index = ExampleComponentsLookup.GetComponentIndex(component);
 			if (index != -1)
 			{
-				entity.AddComponent(index, component);
+				entity.CopyComponentTo(component);
 			}
 			else
 			{

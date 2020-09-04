@@ -34,10 +34,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		public void Provide(Type type, ComponentData data)
 		{
 			var memberData = type.GetPublicMemberInfos()
-				.Select(
-					info => new MemberData(
-						info.type.ToCompilableString(),
-						info.name))
+				.Select(info => new MemberData(info.type, info.name))
 				.ToArray();
 
 			data.SetMemberData(memberData);

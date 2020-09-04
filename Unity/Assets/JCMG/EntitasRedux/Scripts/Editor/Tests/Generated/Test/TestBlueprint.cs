@@ -35,7 +35,7 @@ public partial class TestBlueprint : BlueprintBase, ITestBlueprint
 			var index = TestComponentsLookup.GetComponentIndex(component);
 			if (index != -1)
 			{
-				entity.AddComponent(index, component);
+				entity.CopyComponentTo(component);
 			}
 			else
 			{

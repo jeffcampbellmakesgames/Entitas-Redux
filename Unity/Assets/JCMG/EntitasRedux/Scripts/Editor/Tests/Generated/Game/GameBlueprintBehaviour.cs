@@ -35,7 +35,7 @@ public partial class GameBlueprintBehaviour : BlueprintBehaviourBase, IGameBluep
 			var index = GameComponentsLookup.GetComponentIndex(component);
 			if (index != -1)
 			{
-				entity.AddComponent(index, component);
+				entity.CopyComponentTo(component);
 			}
 			else
 			{

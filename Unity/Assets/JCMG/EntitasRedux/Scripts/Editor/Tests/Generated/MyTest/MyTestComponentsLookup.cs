@@ -22,15 +22,17 @@ public static class MyTestComponentsLookup {
     public const int ComponentD = 6;
     public const int ComponentE = 7;
     public const int ComponentF = 8;
-    public const int EntityIndexNoContext = 9;
-    public const int Inherited = 10;
-    public const int MultiplePrimaryEntityIndices = 11;
-    public const int NoContext = 12;
-    public const int Parent = 13;
-    public const int NameAge = 14;
-    public const int PrimaryEntityIndex = 15;
+    public const int DeepCopy = 9;
+    public const int EntityIndexNoContext = 10;
+    public const int Inherited = 11;
+    public const int MultiplePrimaryEntityIndices = 12;
+    public const int NoContext = 13;
+    public const int Parent = 14;
+    public const int NameAge = 15;
+    public const int PrimaryEntityIndex = 16;
+    public const int ShallowCopy = 17;
 
-    public const int TotalComponents = 16;
+    public const int TotalComponents = 18;
 
     public static readonly string[] ComponentNames = {
         "Array3d",
@@ -42,13 +44,15 @@ public static class MyTestComponentsLookup {
         "ComponentD",
         "ComponentE",
         "ComponentF",
+        "DeepCopy",
         "EntityIndexNoContext",
         "Inherited",
         "MultiplePrimaryEntityIndices",
         "NoContext",
         "Parent",
         "NameAge",
-        "PrimaryEntityIndex"
+        "PrimaryEntityIndex",
+        "ShallowCopy"
     };
 
     public static readonly System.Type[] ComponentTypes = {
@@ -61,13 +65,15 @@ public static class MyTestComponentsLookup {
         typeof(EntitasRedux.Tests.ComponentD),
         typeof(EntitasRedux.Tests.ComponentE),
         typeof(EntitasRedux.Tests.ComponentF),
+        typeof(EntitasRedux.Tests.DeepCopyComponent),
         typeof(EntitasRedux.Tests.EntityIndexNoContextComponent),
         typeof(EntitasRedux.Tests.InheritedComponent),
         typeof(EntitasRedux.Tests.MultiplePrimaryEntityIndicesComponent),
         typeof(EntitasRedux.Tests.NoContextComponent),
         typeof(EntitasRedux.Tests.ParentComponent),
         typeof(EntitasRedux.Tests.Performance.NameAgeComponent),
-        typeof(EntitasRedux.Tests.PrimaryEntityIndexComponent)
+        typeof(EntitasRedux.Tests.PrimaryEntityIndexComponent),
+        typeof(EntitasRedux.Tests.ShallowCopyComponent)
     };
 
 	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
@@ -81,13 +87,15 @@ public static class MyTestComponentsLookup {
         { typeof(EntitasRedux.Tests.ComponentD), 6 },
         { typeof(EntitasRedux.Tests.ComponentE), 7 },
         { typeof(EntitasRedux.Tests.ComponentF), 8 },
-        { typeof(EntitasRedux.Tests.EntityIndexNoContextComponent), 9 },
-        { typeof(EntitasRedux.Tests.InheritedComponent), 10 },
-        { typeof(EntitasRedux.Tests.MultiplePrimaryEntityIndicesComponent), 11 },
-        { typeof(EntitasRedux.Tests.NoContextComponent), 12 },
-        { typeof(EntitasRedux.Tests.ParentComponent), 13 },
-        { typeof(EntitasRedux.Tests.Performance.NameAgeComponent), 14 },
-        { typeof(EntitasRedux.Tests.PrimaryEntityIndexComponent), 15 }
+        { typeof(EntitasRedux.Tests.DeepCopyComponent), 9 },
+        { typeof(EntitasRedux.Tests.EntityIndexNoContextComponent), 10 },
+        { typeof(EntitasRedux.Tests.InheritedComponent), 11 },
+        { typeof(EntitasRedux.Tests.MultiplePrimaryEntityIndicesComponent), 12 },
+        { typeof(EntitasRedux.Tests.NoContextComponent), 13 },
+        { typeof(EntitasRedux.Tests.ParentComponent), 14 },
+        { typeof(EntitasRedux.Tests.Performance.NameAgeComponent), 15 },
+        { typeof(EntitasRedux.Tests.PrimaryEntityIndexComponent), 16 },
+        { typeof(EntitasRedux.Tests.ShallowCopyComponent), 17 }
 	};
 
 	/// <summary>

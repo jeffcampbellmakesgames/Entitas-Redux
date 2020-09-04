@@ -12,18 +12,20 @@ public partial class VisualDebugEntity {
     public ExampleContent.VisualDebugging.DictArrayComponent DictArray { get { return (ExampleContent.VisualDebugging.DictArrayComponent)GetComponent(VisualDebugComponentsLookup.DictArray); } }
     public bool HasDictArray { get { return HasComponent(VisualDebugComponentsLookup.DictArray); } }
 
-    public void AddDictArray(System.Collections.Generic.Dictionary<int, string[]> newDict, System.Collections.Generic.Dictionary<int, string[]>[] newDictArray) {
+    public void AddDictArray(System.Collections.Generic.Dictionary<int, string[]> newDict, System.Collections.Generic.Dictionary<int, ExampleContent.VisualDebugging.CustomObject[]> newDictRefArrayType, System.Collections.Generic.Dictionary<int, string[]>[] newDictArray) {
         var index = VisualDebugComponentsLookup.DictArray;
         var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
         component.dict = newDict;
+        component.dictRefArrayType = newDictRefArrayType;
         component.dictArray = newDictArray;
         AddComponent(index, component);
     }
 
-    public void ReplaceDictArray(System.Collections.Generic.Dictionary<int, string[]> newDict, System.Collections.Generic.Dictionary<int, string[]>[] newDictArray) {
+    public void ReplaceDictArray(System.Collections.Generic.Dictionary<int, string[]> newDict, System.Collections.Generic.Dictionary<int, ExampleContent.VisualDebugging.CustomObject[]> newDictRefArrayType, System.Collections.Generic.Dictionary<int, string[]>[] newDictArray) {
         var index = VisualDebugComponentsLookup.DictArray;
         var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
         component.dict = newDict;
+        component.dictRefArrayType = newDictRefArrayType;
         component.dictArray = newDictArray;
         ReplaceComponent(index, component);
     }
@@ -31,8 +33,9 @@ public partial class VisualDebugEntity {
 	public void CopyDictArrayTo(ExampleContent.VisualDebugging.DictArrayComponent copyComponent) {
         var index = VisualDebugComponentsLookup.DictArray;
         var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
-        component.dict = copyComponent.dict;
-        component.dictArray = copyComponent.dictArray;
+        component.dict = (System.Collections.Generic.Dictionary<int, string[]>)JCMG.EntitasRedux.DictionaryTools.DeepCopy(copyComponent.dict);
+        component.dictRefArrayType = (System.Collections.Generic.Dictionary<int, ExampleContent.VisualDebugging.CustomObject[]>)JCMG.EntitasRedux.DictionaryTools.DeepCopyArrayValue(copyComponent.dictRefArrayType);
+        component.dictArray = (System.Collections.Generic.Dictionary<int, string[]>[])copyComponent.dictArray.Clone();
         ReplaceComponent(index, component);
     }
 

@@ -29,7 +29,7 @@ public partial class VisualDebugEntity {
 	public void CopyDictionaryTo(ExampleContent.VisualDebugging.DictionaryComponent copyComponent) {
         var index = VisualDebugComponentsLookup.Dictionary;
         var component = (ExampleContent.VisualDebugging.DictionaryComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictionaryComponent));
-        component.dict = copyComponent.dict;
+        component.dict = (System.Collections.Generic.Dictionary<string, string>)JCMG.EntitasRedux.DictionaryTools.ShallowCopy(copyComponent.dict);
         ReplaceComponent(index, component);
     }
 

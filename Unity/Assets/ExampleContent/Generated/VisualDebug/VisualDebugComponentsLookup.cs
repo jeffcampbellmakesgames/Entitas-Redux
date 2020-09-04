@@ -24,50 +24,53 @@ public static class VisualDebugComponentsLookup {
     public const int Color = 8;
     public const int CustomFlag = 9;
     public const int CustomObject = 10;
-    public const int DateTime = 11;
-    public const int DictArray = 12;
-    public const int Dictionary = 13;
-    public const int DontDrawSimpleObject = 14;
-    public const int Flag = 15;
-    public const int GameObject = 16;
-    public const int HashSet = 17;
-    public const int JaggedArray = 18;
-    public const int ListArray = 19;
-    public const int List = 20;
-    public const int ManyMembers = 21;
-    public const int MonoBehaviourSubClass = 22;
-    public const int MyBool = 23;
-    public const int MyChar = 24;
-    public const int MyDouble = 25;
-    public const int MyEnum = 26;
-    public const int MyEvent = 27;
-    public const int MyFlags = 28;
-    public const int MyFloat = 29;
-    public const int MyHiddenInt = 30;
-    public const int MyInt = 31;
-    public const int MyString = 32;
-    public const int Person = 33;
-    public const int Property = 34;
-    public const int Rect = 35;
-    public const int SimpleObject = 36;
-    public const int SystemObject = 37;
-    public const int Texture2D = 38;
-    public const int Texture = 39;
-    public const int Unique = 40;
-    public const int UnityObject = 41;
-    public const int UnsupportedObject = 42;
-    public const int Vector2 = 43;
-    public const int Vector3 = 44;
-    public const int Vector4 = 45;
-    public const int ISomeInterface = 46;
-    public const int MyEventClass = 47;
-    public const int Position = 48;
-    public const int SomeClass = 49;
-    public const int SomeOtherClass = 50;
-    public const int SomeStruct = 51;
-    public const int Velocity = 52;
+    public const int CustomObjectDictionary = 11;
+    public const int CustomObjectList = 12;
+    public const int DateTime = 13;
+    public const int DictArray = 14;
+    public const int Dictionary = 15;
+    public const int DictList = 16;
+    public const int DontDrawSimpleObject = 17;
+    public const int Flag = 18;
+    public const int GameObject = 19;
+    public const int HashSet = 20;
+    public const int JaggedArray = 21;
+    public const int ListArray = 22;
+    public const int List = 23;
+    public const int ManyMembers = 24;
+    public const int MonoBehaviourSubClass = 25;
+    public const int MyBool = 26;
+    public const int MyChar = 27;
+    public const int MyDouble = 28;
+    public const int MyEnum = 29;
+    public const int MyEvent = 30;
+    public const int MyFlags = 31;
+    public const int MyFloat = 32;
+    public const int MyHiddenInt = 33;
+    public const int MyInt = 34;
+    public const int MyString = 35;
+    public const int Person = 36;
+    public const int Property = 37;
+    public const int Rect = 38;
+    public const int SimpleObject = 39;
+    public const int SystemObject = 40;
+    public const int Texture2D = 41;
+    public const int Texture = 42;
+    public const int Unique = 43;
+    public const int UnityObject = 44;
+    public const int UnsupportedObject = 45;
+    public const int Vector2 = 46;
+    public const int Vector3 = 47;
+    public const int Vector4 = 48;
+    public const int ISomeInterface = 49;
+    public const int MyEventClass = 50;
+    public const int Position = 51;
+    public const int SomeClass = 52;
+    public const int SomeOtherClass = 53;
+    public const int SomeStruct = 54;
+    public const int Velocity = 55;
 
-    public const int TotalComponents = 53;
+    public const int TotalComponents = 56;
 
     public static readonly string[] ComponentNames = {
         "AnyMyEventAddedListener",
@@ -81,9 +84,12 @@ public static class VisualDebugComponentsLookup {
         "Color",
         "CustomFlag",
         "CustomObject",
+        "CustomObjectDictionary",
+        "CustomObjectList",
         "DateTime",
         "DictArray",
         "Dictionary",
+        "DictList",
         "DontDrawSimpleObject",
         "Flag",
         "GameObject",
@@ -137,9 +143,12 @@ public static class VisualDebugComponentsLookup {
         typeof(ExampleContent.VisualDebugging.ColorComponent),
         typeof(ExampleContent.VisualDebugging.CustomFlagComponent),
         typeof(ExampleContent.VisualDebugging.CustomObjectComponent),
+        typeof(ExampleContent.VisualDebugging.CustomObjectDictionaryComponent),
+        typeof(ExampleContent.VisualDebugging.CustomObjectListComponent),
         typeof(ExampleContent.VisualDebugging.DateTimeComponent),
         typeof(ExampleContent.VisualDebugging.DictArrayComponent),
         typeof(ExampleContent.VisualDebugging.DictionaryComponent),
+        typeof(ExampleContent.VisualDebugging.DictListComponent),
         typeof(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent),
         typeof(ExampleContent.VisualDebugging.FlagComponent),
         typeof(ExampleContent.VisualDebugging.GameObjectComponent),
@@ -194,48 +203,51 @@ public static class VisualDebugComponentsLookup {
         { typeof(ExampleContent.VisualDebugging.ColorComponent), 8 },
         { typeof(ExampleContent.VisualDebugging.CustomFlagComponent), 9 },
         { typeof(ExampleContent.VisualDebugging.CustomObjectComponent), 10 },
-        { typeof(ExampleContent.VisualDebugging.DateTimeComponent), 11 },
-        { typeof(ExampleContent.VisualDebugging.DictArrayComponent), 12 },
-        { typeof(ExampleContent.VisualDebugging.DictionaryComponent), 13 },
-        { typeof(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent), 14 },
-        { typeof(ExampleContent.VisualDebugging.FlagComponent), 15 },
-        { typeof(ExampleContent.VisualDebugging.GameObjectComponent), 16 },
-        { typeof(ExampleContent.VisualDebugging.HashSetComponent), 17 },
-        { typeof(ExampleContent.VisualDebugging.JaggedArrayComponent), 18 },
-        { typeof(ExampleContent.VisualDebugging.ListArrayComponent), 19 },
-        { typeof(ExampleContent.VisualDebugging.ListComponent), 20 },
-        { typeof(ExampleContent.VisualDebugging.ManyMembersComponent), 21 },
-        { typeof(ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent), 22 },
-        { typeof(ExampleContent.VisualDebugging.MyBoolComponent), 23 },
-        { typeof(ExampleContent.VisualDebugging.MyCharComponent), 24 },
-        { typeof(ExampleContent.VisualDebugging.MyDoubleComponent), 25 },
-        { typeof(ExampleContent.VisualDebugging.MyEnumComponent), 26 },
-        { typeof(ExampleContent.VisualDebugging.MyEventComponent), 27 },
-        { typeof(ExampleContent.VisualDebugging.MyFlagsComponent), 28 },
-        { typeof(ExampleContent.VisualDebugging.MyFloatComponent), 29 },
-        { typeof(ExampleContent.VisualDebugging.MyHiddenIntComponent), 30 },
-        { typeof(ExampleContent.VisualDebugging.MyIntComponent), 31 },
-        { typeof(ExampleContent.VisualDebugging.MyStringComponent), 32 },
-        { typeof(ExampleContent.VisualDebugging.PersonComponent), 33 },
-        { typeof(ExampleContent.VisualDebugging.PropertyComponent), 34 },
-        { typeof(ExampleContent.VisualDebugging.RectComponent), 35 },
-        { typeof(ExampleContent.VisualDebugging.SimpleObjectComponent), 36 },
-        { typeof(ExampleContent.VisualDebugging.SystemObjectComponent), 37 },
-        { typeof(ExampleContent.VisualDebugging.Texture2DComponent), 38 },
-        { typeof(ExampleContent.VisualDebugging.TextureComponent), 39 },
-        { typeof(ExampleContent.VisualDebugging.UniqueComponent), 40 },
-        { typeof(ExampleContent.VisualDebugging.UnityObjectComponent), 41 },
-        { typeof(ExampleContent.VisualDebugging.UnsupportedObjectComponent), 42 },
-        { typeof(ExampleContent.VisualDebugging.Vector2Component), 43 },
-        { typeof(ExampleContent.VisualDebugging.Vector3Component), 44 },
-        { typeof(ExampleContent.VisualDebugging.Vector4Component), 45 },
-        { typeof(ISomeInterfaceComponent), 46 },
-        { typeof(MyEventClassComponent), 47 },
-        { typeof(PositionComponent), 48 },
-        { typeof(SomeClassComponent), 49 },
-        { typeof(SomeOtherClassComponent), 50 },
-        { typeof(SomeStructComponent), 51 },
-        { typeof(VelocityComponent), 52 }
+        { typeof(ExampleContent.VisualDebugging.CustomObjectDictionaryComponent), 11 },
+        { typeof(ExampleContent.VisualDebugging.CustomObjectListComponent), 12 },
+        { typeof(ExampleContent.VisualDebugging.DateTimeComponent), 13 },
+        { typeof(ExampleContent.VisualDebugging.DictArrayComponent), 14 },
+        { typeof(ExampleContent.VisualDebugging.DictionaryComponent), 15 },
+        { typeof(ExampleContent.VisualDebugging.DictListComponent), 16 },
+        { typeof(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent), 17 },
+        { typeof(ExampleContent.VisualDebugging.FlagComponent), 18 },
+        { typeof(ExampleContent.VisualDebugging.GameObjectComponent), 19 },
+        { typeof(ExampleContent.VisualDebugging.HashSetComponent), 20 },
+        { typeof(ExampleContent.VisualDebugging.JaggedArrayComponent), 21 },
+        { typeof(ExampleContent.VisualDebugging.ListArrayComponent), 22 },
+        { typeof(ExampleContent.VisualDebugging.ListComponent), 23 },
+        { typeof(ExampleContent.VisualDebugging.ManyMembersComponent), 24 },
+        { typeof(ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent), 25 },
+        { typeof(ExampleContent.VisualDebugging.MyBoolComponent), 26 },
+        { typeof(ExampleContent.VisualDebugging.MyCharComponent), 27 },
+        { typeof(ExampleContent.VisualDebugging.MyDoubleComponent), 28 },
+        { typeof(ExampleContent.VisualDebugging.MyEnumComponent), 29 },
+        { typeof(ExampleContent.VisualDebugging.MyEventComponent), 30 },
+        { typeof(ExampleContent.VisualDebugging.MyFlagsComponent), 31 },
+        { typeof(ExampleContent.VisualDebugging.MyFloatComponent), 32 },
+        { typeof(ExampleContent.VisualDebugging.MyHiddenIntComponent), 33 },
+        { typeof(ExampleContent.VisualDebugging.MyIntComponent), 34 },
+        { typeof(ExampleContent.VisualDebugging.MyStringComponent), 35 },
+        { typeof(ExampleContent.VisualDebugging.PersonComponent), 36 },
+        { typeof(ExampleContent.VisualDebugging.PropertyComponent), 37 },
+        { typeof(ExampleContent.VisualDebugging.RectComponent), 38 },
+        { typeof(ExampleContent.VisualDebugging.SimpleObjectComponent), 39 },
+        { typeof(ExampleContent.VisualDebugging.SystemObjectComponent), 40 },
+        { typeof(ExampleContent.VisualDebugging.Texture2DComponent), 41 },
+        { typeof(ExampleContent.VisualDebugging.TextureComponent), 42 },
+        { typeof(ExampleContent.VisualDebugging.UniqueComponent), 43 },
+        { typeof(ExampleContent.VisualDebugging.UnityObjectComponent), 44 },
+        { typeof(ExampleContent.VisualDebugging.UnsupportedObjectComponent), 45 },
+        { typeof(ExampleContent.VisualDebugging.Vector2Component), 46 },
+        { typeof(ExampleContent.VisualDebugging.Vector3Component), 47 },
+        { typeof(ExampleContent.VisualDebugging.Vector4Component), 48 },
+        { typeof(ISomeInterfaceComponent), 49 },
+        { typeof(MyEventClassComponent), 50 },
+        { typeof(PositionComponent), 51 },
+        { typeof(SomeClassComponent), 52 },
+        { typeof(SomeOtherClassComponent), 53 },
+        { typeof(SomeStructComponent), 54 },
+        { typeof(VelocityComponent), 55 }
 	};
 
 	/// <summary>

@@ -29,7 +29,7 @@ public partial class VisualDebugEntity {
 	public void CopySomeClassTo(SomeClassComponent copyComponent) {
         var index = VisualDebugComponentsLookup.SomeClass;
         var component = (SomeClassComponent)CreateComponent(index, typeof(SomeClassComponent));
-        component.value = copyComponent.value;
+        component.value = (ExampleContent.VisualDebugging.SomeClass)copyComponent.value.Clone();
         ReplaceComponent(index, component);
     }
 

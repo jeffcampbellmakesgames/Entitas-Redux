@@ -29,7 +29,7 @@ public partial class VisualDebugEntity {
 	public void CopyJaggedArrayTo(ExampleContent.VisualDebugging.JaggedArrayComponent copyComponent) {
         var index = VisualDebugComponentsLookup.JaggedArray;
         var component = (ExampleContent.VisualDebugging.JaggedArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.JaggedArrayComponent));
-        component.jaggedArray = copyComponent.jaggedArray;
+        component.jaggedArray = (string[][])JCMG.EntitasRedux.ArrayTools.DeepCopy(copyComponent.jaggedArray);
         ReplaceComponent(index, component);
     }
 

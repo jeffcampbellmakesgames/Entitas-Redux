@@ -250,7 +250,12 @@ namespace ExampleContent.VisualDebugging
 						}
 					}
 				};
-				e.AddDictArray(dict2, dictArray);
+				var dictComplexObject = new Dictionary<int, CustomObject[]>
+				{
+					{ 1, new []{ new CustomObject("John"), new CustomObject("Jane") }},
+					{ 2, new []{ new CustomObject("Jack"), new CustomObject("Jill") }}
+				};
+				e.AddDictArray(dict2, dictComplexObject, dictArray);
 				e.AddHashSet(
 					new HashSet<string>
 					{
@@ -318,8 +323,9 @@ namespace ExampleContent.VisualDebugging
 			Dictionary<string, string> dict = null;
 			e.AddDictionary(dict);
 			Dictionary<int, string[]> dict2 = null;
+			Dictionary<int, CustomObject[]> dictComplexObject = null;
 			Dictionary<int, string[]>[] dictArray = null;
-			e.AddDictArray(dict2, dictArray);
+			e.AddDictArray(dict2, dictComplexObject, dictArray);
 			HashSet<string> hashset = null;
 			e.AddHashSet(hashset);
 			char c = default;

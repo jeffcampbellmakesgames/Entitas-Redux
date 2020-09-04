@@ -35,7 +35,7 @@ public partial class Test2BlueprintBehaviour : BlueprintBehaviourBase, ITest2Blu
 			var index = Test2ComponentsLookup.GetComponentIndex(component);
 			if (index != -1)
 			{
-				entity.AddComponent(index, component);
+				entity.CopyComponentTo(component);
 			}
 			else
 			{

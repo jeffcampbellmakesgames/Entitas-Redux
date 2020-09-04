@@ -102,7 +102,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 						method.ReturnType.ToCompilableString(),
 						method.Name,
 						method.GetParameters()
-							.Select(p => new MemberData(p.ParameterType.ToCompilableString(), p.Name))
+							.Select(p => new MemberData(p.ParameterType, p.Name))
 							.ToArray()))
 				.ToArray();
 

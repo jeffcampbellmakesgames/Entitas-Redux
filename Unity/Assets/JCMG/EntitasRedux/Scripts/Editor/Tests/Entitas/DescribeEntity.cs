@@ -23,10 +23,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using JCMG.EntitasRedux;
 using NUnit.Framework;
+using UnityEngine;
 
 namespace EntitasRedux.Tests
 {
@@ -282,6 +284,140 @@ namespace EntitasRedux.Tests
 
 		#endregion
 
+		#region Copying Components
+
+		[NUnit.Framework.Test]
+		public void CopyingComponentToEntityAddsComponent()
+		{
+			var entity = _context.CreateEntity();
+			var newComponent = CreateShallowComponent();
+
+			Assert.IsFalse(entity.HasShallowCopy);
+
+			entity.CopyShallowCopyTo(newComponent);
+
+			Assert.IsTrue(entity.HasShallowCopy);
+
+			// Value types
+			Assert.AreEqual(42, entity.ShallowCopy.intValue);
+			Assert.AreEqual("42", entity.ShallowCopy.strValue);
+			Assert.AreEqual(Vector2.one, entity.ShallowCopy.vector2Value);
+
+			// UnityEngine.Object
+			Assert.IsNotNull(entity.ShallowCopy.testScriptableObject);
+
+			// The collection instances should be distinct, but the contents should be the same.
+			// Dictionary
+			Assert.AreNotEqual(newComponent.dictValue.GetHashCode(), entity.ShallowCopy.dictValue.GetHashCode());
+			Assert.AreEqual(newComponent.dictValue, entity.ShallowCopy.dictValue);
+
+			// List
+			Assert.AreNotEqual(newComponent.listValue.GetHashCode(), entity.ShallowCopy.listValue.GetHashCode());
+			Assert.AreEqual(newComponent.listValue, entity.ShallowCopy.listValue);
+
+			// IListInterface
+			Assert.AreNotEqual(newComponent.listValue.GetHashCode(), entity.ShallowCopy.listValue.GetHashCode());
+			Assert.AreEqual(newComponent.listValue, entity.ShallowCopy.listValue);
+
+			// All UnityEngine.Object instances should be shallow copied
+			Assert.AreEqual(newComponent.testScriptableObject, entity.ShallowCopy.testScriptableObject);
+		}
+
+		[NUnit.Framework.Test]
+		public void CopyingComponentToEntityReplacesComponent()
+		{
+			var entity = _context.CreateEntity();
+			entity.AddShallowCopy(0, "0", Vector2.zero, null, null, null, null);
+
+			var newComponent = CreateShallowComponent();
+
+			entity.CopyShallowCopyTo(newComponent);
+
+			// Value types
+			Assert.AreEqual(42, entity.ShallowCopy.intValue);
+			Assert.AreEqual("42", entity.ShallowCopy.strValue);
+			Assert.AreEqual(Vector2.one, entity.ShallowCopy.vector2Value);
+
+			// UnityEngine.Object
+			Assert.IsNotNull(entity.ShallowCopy.testScriptableObject);
+
+			// The collection instances should be distinct, but the contents should be the same.
+			// Dictionary
+			Assert.AreNotEqual(newComponent.dictValue.GetHashCode(), entity.ShallowCopy.dictValue.GetHashCode());
+			Assert.AreEqual(newComponent.dictValue, entity.ShallowCopy.dictValue);
+
+			// List
+			Assert.AreNotEqual(newComponent.listValue.GetHashCode(), entity.ShallowCopy.listValue.GetHashCode());
+			Assert.AreEqual(newComponent.listValue, entity.ShallowCopy.listValue);
+
+			// IListInterface
+			Assert.AreNotEqual(newComponent.listValue.GetHashCode(), entity.ShallowCopy.listValue.GetHashCode());
+			Assert.AreEqual(newComponent.listValue, entity.ShallowCopy.listValue);
+
+			// All UnityEngine.Object instances should be shallow copied
+			Assert.AreEqual(newComponent.testScriptableObject, entity.ShallowCopy.testScriptableObject);
+		}
+
+		[NUnit.Framework.Test]
+		public void ExpectedMembersAreCopiedAsShallow()
+		{
+			var entity = _context.CreateEntity();
+
+			// Add a version of the component to the entity
+			entity.AddShallowCopy(0, "0", Vector2.zero, null, null, null, null);
+
+			// Now copy this new component to the entity
+			var newComponent = CreateShallowComponent();
+			entity.CopyShallowCopyTo(newComponent);
+
+			Assert.AreNotEqual(entity.ShallowCopy, newComponent);
+
+			// All of these value types should be equal
+			Assert.AreEqual(newComponent.intValue, entity.ShallowCopy.intValue);
+			Assert.AreEqual(newComponent.strValue, entity.ShallowCopy.strValue);
+			Assert.AreEqual(newComponent.vector2Value, entity.ShallowCopy.vector2Value);
+
+			// The collection instances should be distinct, but the contents should be the same.
+			// Dictionary
+			Assert.AreNotEqual(newComponent.dictValue.GetHashCode(), entity.ShallowCopy.dictValue.GetHashCode());
+			Assert.AreEqual(newComponent.dictValue, entity.ShallowCopy.dictValue);
+
+			// List
+			Assert.AreNotEqual(newComponent.listValue.GetHashCode(), entity.ShallowCopy.listValue.GetHashCode());
+			Assert.AreEqual(newComponent.listValue, entity.ShallowCopy.listValue);
+
+			// IListInterface
+			Assert.AreNotEqual(newComponent.listValue.GetHashCode(), entity.ShallowCopy.listValue.GetHashCode());
+			Assert.AreEqual(newComponent.listValue, entity.ShallowCopy.listValue);
+
+			// All UnityEngine.Object instances should be shallow copied
+			Assert.AreEqual(newComponent.testScriptableObject, entity.ShallowCopy.testScriptableObject);
+		}
+
+		[NUnit.Framework.Test]
+		public void ExpectedMembersAreCopiedAsDeep()
+		{
+			var entity = _context.CreateEntity();
+			var deepComponent = CreateDeepComponent();
+			entity.CopyComponentTo(deepComponent);
+
+			// Any cloneable object should be deep cloned
+			Assert.AreNotEqual(deepComponent.value, entity.DeepCopy.value);
+
+			// The dictionary keys should be the same, but the content's distinct
+			Assert.AreNotEqual(deepComponent.dict.GetHashCode(), entity.DeepCopy.dict.GetHashCode());
+			Assert.AreNotEqual(deepComponent.dict, entity.DeepCopy.dict);
+			Assert.IsTrue(deepComponent.dict.Count == 1 && deepComponent.dict.Count == entity.DeepCopy.dict.Count);
+			Assert.AreEqual(deepComponent.dict.Keys.ToArray()[0], entity.DeepCopy.dict.Keys.ToArray()[0]);
+			Assert.AreNotEqual(deepComponent.dict.Values.ToArray()[0], entity.DeepCopy.dict.Values.ToArray()[0]);
+
+			// The list and it's contents should not be the same
+			Assert.AreNotEqual(deepComponent.list.GetHashCode(), entity.DeepCopy.list.GetHashCode());
+			Assert.AreNotEqual(deepComponent.list, entity.DeepCopy.list);
+		}
+
+		#endregion
+
 		#region ComponentPool
 
 		[NUnit.Framework.Test]
@@ -356,6 +492,59 @@ namespace EntitasRedux.Tests
 			_defaultEntity.OnComponentReplaced += delegate { Assert.Fail(); };
 
 			_defaultEntity.AddComponentA();
+
+			Assert.AreEqual(1, _didDispatch);
+		}
+
+		[NUnit.Framework.Test]
+		public void OnComponentCopiedAddedInvokedWhenNonePresent()
+		{
+			var entity = _context.CreateEntity();
+			entity.OnComponentAdded += (ent, index, component) =>
+			{
+				_didDispatch += 1;
+
+				Assert.AreEqual(entity, ent);
+				Assert.AreEqual(MyTestComponentsLookup.Parent, index);
+			};
+			entity.OnComponentRemoved += delegate
+			{
+				Assert.Fail();
+			};
+			entity.OnComponentReplaced += delegate
+			{
+				Assert.Fail();
+			};
+
+			entity.AddParent(5);
+
+			Assert.AreEqual(1, _didDispatch);
+		}
+
+		[NUnit.Framework.Test]
+		public void OnComponentCopiedReplacedInvokedWhenComponentPresent()
+		{
+			var entity = _context.CreateEntity();
+			entity.AddParent(5);
+			var newParentComponent = new ParentComponent();
+
+			entity.OnComponentReplaced += (ent, index, previousComponent, newComponent) =>
+			{
+				_didDispatch += 1;
+
+				Assert.AreEqual(entity, ent);
+				Assert.AreEqual(MyTestComponentsLookup.Parent, index);
+			};
+			entity.OnComponentAdded += delegate
+			{
+				Assert.Fail();
+			};
+			entity.OnComponentRemoved += delegate
+			{
+				Assert.Fail();
+			};
+
+			entity.CopyComponentTo(newParentComponent);
 
 			Assert.AreEqual(1, _didDispatch);
 		}
@@ -842,6 +1031,44 @@ namespace EntitasRedux.Tests
 		#endregion
 
 		#region Helpers
+
+		private ShallowCopyComponent CreateShallowComponent()
+		{
+			var testScriptableObject = ScriptableObject.CreateInstance<TestScriptableObject>();
+			return new ShallowCopyComponent
+			{
+				intValue = 42,
+				strValue = "42",
+				vector2Value = Vector2.one,
+				testScriptableObject = testScriptableObject,
+				dictValue = new Dictionary<int, TestScriptableObject>
+				{
+					{
+						42, testScriptableObject
+					}
+				},
+				listValue = new List<TestScriptableObject>
+				{
+					testScriptableObject
+				},
+				iListValue = new List<TestScriptableObject>()
+				{
+					testScriptableObject
+				}
+			};
+		}
+
+		private DeepCopyComponent CreateDeepComponent()
+		{
+			return new DeepCopyComponent
+			{
+				value = new CloneableObject(),
+				dict = new Dictionary<CloneableObject, CloneableObject>
+					{{new CloneableObject(), new CloneableObject()}},
+				list = new List<CloneableObject> {new CloneableObject()}
+
+			};
+		}
 
 		private void AssertHasComponentA(MyTestEntity e, IComponent componentA = null)
 		{

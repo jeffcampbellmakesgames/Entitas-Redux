@@ -29,7 +29,7 @@ public partial class VisualDebugEntity {
 	public void CopyAnArrayTo(ExampleContent.VisualDebugging.AnArrayComponent copyComponent) {
         var index = VisualDebugComponentsLookup.AnArray;
         var component = (ExampleContent.VisualDebugging.AnArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.AnArrayComponent));
-        component.array = copyComponent.array;
+        component.array = (string[])copyComponent.array.Clone();
         ReplaceComponent(index, component);
     }
 

@@ -68,7 +68,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 						{
 							memberData = new[]
 							{
-								new MemberData("bool", data.PrefixedComponentName())
+								new MemberData(typeof(bool), data.PrefixedComponentName())
 							};
 						}
 
