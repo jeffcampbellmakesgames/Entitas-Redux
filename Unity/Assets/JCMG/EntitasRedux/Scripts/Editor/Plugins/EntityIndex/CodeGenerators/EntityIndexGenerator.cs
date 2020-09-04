@@ -221,7 +221,7 @@ ${getIndices}
 							.Replace("${ContextName}", data.GetContextNames()[0])
 							.Replace(
 								"${methodArgs}",
-								string.Join(", ", m.parameters.Select(p => p.type + " " + p.name).ToArray()))
+								string.Join(", ", m.parameters.Select(p => p.compilableTypeString + " " + p.name).ToArray()))
 							.Replace("${IndexType}", data.GetEntityIndexType())
 							.Replace(
 								"${IndexName}",

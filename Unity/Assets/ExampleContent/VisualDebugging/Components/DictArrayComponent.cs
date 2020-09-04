@@ -7,6 +7,7 @@ namespace ExampleContent.VisualDebugging
 	public class DictArrayComponent : IComponent
 	{
 		public Dictionary<int, string[]> dict;
+		public Dictionary<int, CustomObject[]> dictRefArrayType;
 		public Dictionary<int, string[]>[] dictArray;
 	}
 }

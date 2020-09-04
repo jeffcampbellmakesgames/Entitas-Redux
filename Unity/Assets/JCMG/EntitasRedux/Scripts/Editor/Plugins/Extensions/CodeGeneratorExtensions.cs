@@ -128,6 +128,14 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 				.Replace("${EventType}", GetEventTypeSuffix(eventData));
 		}
 
+		public static string Replace(this string template, MemberData memberData)
+		{
+			return template
+				.Replace("${MemberName}", memberData.name)
+				.Replace("${MemberNameUpper}", memberData.name.UppercaseFirst())
+				.Replace("${MemberCompilableString}", memberData.compilableTypeString);
+		}
+
 		public static string PrefixedComponentName(this ComponentData data)
 		{
 			return data.GetFlagPrefix().UppercaseFirst() + data.ComponentName();
@@ -198,7 +206,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 				", ",
 				memberData
 					.Select(
-						info => info.type + (newPrefix ? " new" + info.name.UppercaseFirst() : " " + info.name.LowercaseFirst()))
+						info => info.compilableTypeString + (newPrefix ? " new" + info.name.UppercaseFirst() : " " + info.name.LowercaseFirst()))
 					.ToArray());
 		}
 
