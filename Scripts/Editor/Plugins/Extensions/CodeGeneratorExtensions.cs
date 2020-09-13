@@ -128,6 +128,14 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 				.Replace("${EventType}", GetEventTypeSuffix(eventData));
 		}
 
+		public static string Replace(this string template, MemberData memberData)
+		{
+			return template
+				.Replace("${MemberName}", memberData.name)
+				.Replace("${MemberNameUpper}", memberData.name.UppercaseFirst())
+				.Replace("${MemberCompilableString}", memberData.compilableTypeString);
+		}
+
 		public static string PrefixedComponentName(this ComponentData data)
 		{
 			return data.GetFlagPrefix().UppercaseFirst() + data.ComponentName();
@@ -168,12 +176,28 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 
 		public static string GetEventTypeSuffix(this EventData eventData)
 		{
-			return eventData.eventType == EventType.Removed ? "Removed" : string.Empty;
+			switch (eventData.eventType)
+			{
+				case EventType.Added:
+					return "Added";
+				case EventType.Removed:
+					return "Removed";
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
 		}
 
 		public static string GetEventPrefix(this EventData eventData)
 		{
-			return eventData.eventTarget == EventTarget.Any ? "Any" : string.Empty;
+			switch (eventData.eventTarget)
+			{
+				case EventTarget.Any:
+					return "Any";
+				case EventTarget.Self:
+					return string.Empty;
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
 		}
 
 		public static string GetMethodParameters(this MemberData[] memberData, bool newPrefix)
@@ -182,7 +206,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 				", ",
 				memberData
 					.Select(
-						info => info.type + (newPrefix ? " new" + info.name.UppercaseFirst() : " " + info.name.LowercaseFirst()))
+						info => info.compilableTypeString + (newPrefix ? " new" + info.name.UppercaseFirst() : " " + info.name.LowercaseFirst()))
 					.ToArray());
 		}
 

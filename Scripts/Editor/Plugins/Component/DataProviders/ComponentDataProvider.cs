@@ -109,7 +109,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 						data.SetMemberData(
 							new[]
 							{
-								new MemberData(type.ToCompilableString(), "value")
+								new MemberData(type, "value")
 							});
 
 						return data;
