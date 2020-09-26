@@ -30,8 +30,21 @@ namespace JCMG.EntitasRedux
 {
 	public partial class Matcher<TEntity>
 	{
-		private static readonly List<int> INDEX_BUFFER = new List<int>();
-		private static readonly HashSet<int> INDEX_SET_BUFFER = new HashSet<int>();
+		/// <summary>
+		/// Lazy-loaded index buffer (ThreadStatic)
+		/// </summary>
+		private static List<int> IndexBuffer => _indexBufferThreadStatic = _indexBufferThreadStatic ?? new List<int>();
+
+		/// <summary>
+		/// Lazy-loaded index set buffer (ThreadStatic)
+		/// </summary>
+		private static HashSet<int> IndexSetBuffer => _indexSetBufferThreadStatic = _indexSetBufferThreadStatic ?? new HashSet<int>();
+
+		[ThreadStatic]
+		private static List<int> _indexBufferThreadStatic = new List<int>();
+
+		[ThreadStatic]
+		private static HashSet<int> _indexSetBufferThreadStatic = new HashSet<int>();
 
 		public static IAllOfMatcher<TEntity> AllOf(params int[] indices)
 		{
@@ -65,22 +78,22 @@ namespace JCMG.EntitasRedux
 		{
 			if (allOfIndices != null)
 			{
-				INDEX_BUFFER.AddRange(allOfIndices);
+				IndexBuffer.AddRange(allOfIndices);
 			}
 
 			if (anyOfIndices != null)
 			{
-				INDEX_BUFFER.AddRange(anyOfIndices);
+				IndexBuffer.AddRange(anyOfIndices);
 			}
 
 			if (noneOfIndices != null)
 			{
-				INDEX_BUFFER.AddRange(noneOfIndices);
+				IndexBuffer.AddRange(noneOfIndices);
 			}
 
-			var mergedIndices = DistinctIndices(INDEX_BUFFER);
+			var mergedIndices = DistinctIndices(IndexBuffer);
 
-			INDEX_BUFFER.Clear();
+			IndexBuffer.Clear();
 
 			return mergedIndices;
 		}
@@ -128,14 +141,14 @@ namespace JCMG.EntitasRedux
 		{
 			foreach (var index in indices)
 			{
-				INDEX_SET_BUFFER.Add(index);
+				IndexSetBuffer.Add(index);
 			}
 
-			var uniqueIndices = new int[INDEX_SET_BUFFER.Count];
-			INDEX_SET_BUFFER.CopyTo(uniqueIndices);
+			var uniqueIndices = new int[IndexSetBuffer.Count];
+			IndexSetBuffer.CopyTo(uniqueIndices);
 			Array.Sort(uniqueIndices);
 
-			INDEX_SET_BUFFER.Clear();
+			IndexSetBuffer.Clear();
 
 			return uniqueIndices;
 		}
