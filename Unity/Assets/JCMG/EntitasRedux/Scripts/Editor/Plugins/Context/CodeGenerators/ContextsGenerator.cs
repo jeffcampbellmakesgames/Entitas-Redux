@@ -33,6 +33,26 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		private const string TEMPLATE =
 			@"public partial class Contexts : JCMG.EntitasRedux.IContexts {
 
+	#if UNITY_EDITOR
+
+	static Contexts()
+	{
+		UnityEditor.EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+	}
+
+	/// <summary>
+	/// Invoked when the Unity Editor has a <see cref=""UnityEditor.PlayModeStateChange""/> change.
+	/// </summary>
+	private static void OnPlayModeStateChanged(UnityEditor.PlayModeStateChange playModeStateChange)
+	{
+		// When entering edit-mode, reset all static state so that it does not interfere with the
+		// next play-mode session.
+		if (playModeStateChange == UnityEditor.PlayModeStateChange.EnteredEditMode)
+		{
+			_sharedInstance = null;
+		}
+	}
+
     public static Contexts SharedInstance {
         get {
             if (_sharedInstance == null) {
@@ -43,6 +63,8 @@ namespace JCMG.EntitasRedux.Editor.Plugins
         }
         set { _sharedInstance = value; }
     }
+
+	#endif
 
     static Contexts _sharedInstance;
 
