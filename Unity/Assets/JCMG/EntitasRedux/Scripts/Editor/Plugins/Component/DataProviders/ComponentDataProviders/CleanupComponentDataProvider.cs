@@ -25,6 +25,7 @@ THE SOFTWARE.
 
 using System;
 using System.Linq;
+using NUnit.Framework;
 
 namespace JCMG.EntitasRedux.Editor.Plugins
 {
@@ -75,6 +76,24 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		{
 			return data.ContainsKey(CLEANUP_DATA_KEY) &&
 			       ((CleanupMode[])data[CLEANUP_DATA_KEY]).Any(x => x == CleanupMode.DestroyEntity);
+		}
+
+		public static string GetCleanupRemoveSystemClassName(this ComponentData data, string contextName)
+		{
+			Assert.IsTrue(data.HasCleanupRemoveComponentData());
+
+			const string CLASS_NAME = "Remove${componentName}From${ContextName}EntitiesSystem";
+
+			return CLASS_NAME.Replace(contextName).Replace(data, contextName);
+		}
+
+		public static string GetCleanupDestroySystemClassName(this ComponentData data, string contextName)
+		{
+			Assert.IsTrue(data.HasCleanupDestroyEntityData());
+
+			const string CLASS_NAME = "Destroy${ContextName}EntitiesWith${componentName}System";
+
+			return CLASS_NAME.Replace(contextName).Replace(data, contextName);
 		}
 	}
 }

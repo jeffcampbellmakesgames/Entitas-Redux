@@ -28,7 +28,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace JCMG.EntitasRedux.Editor.Plugins.Cleanup.CodeGenerators
+namespace JCMG.EntitasRedux.Editor.Plugins
 {
 	/// <summary>
 	/// A code generator that creates a system for removing all of a specific type of component from any entity that has
@@ -46,12 +46,13 @@ namespace JCMG.EntitasRedux.Editor.Plugins.Cleanup.CodeGenerators
 
 		// Filename and path
 		private const string FILENAME = "Remove${componentName}From${ContextName}EntitiesSystem.cs";
-		private const string FILEPATH = "Cleanup/Systems/";
+		private const string FILEPATH = "${ContextName}/Systems/";
 
 		// Tokens
 		private const string REMOVE_COMPONENT_LOGIC = "${RemoveComponentLogic}";
 
 		// Template
+		private const string SYSTEM_CLASS_NAME = "{ClassName}";
 		private const string FLAG_REMOVE_LOGIC = "_entities[i].${prefixedComponentName} = false;";
 		private const string NON_FLAG_REMOVE_LOGIC = "_entities[i].Remove${componentName}();";
 
@@ -63,7 +64,7 @@ public sealed class Remove${componentName}From${ContextName}EntitiesSystem : ICl
 	private readonly IGroup<${ContextName}Entity> _group;
 	private readonly List<${ContextName}Entity> _entities;
 
-	public Remove${componentName}From${ContextName}EntitiesSystem(IContext<${ContextName}Entity> context)
+	public {ClassName}(IContext<${ContextName}Entity> context)
 	{
 		_group = context.GetGroup(${ContextName}Matcher.${componentName});
 		_entities = new List<${ContextName}Entity>();
@@ -82,7 +83,6 @@ public sealed class Remove${componentName}From${ContextName}EntitiesSystem : ICl
 	}
 }
 ";
-
 		public CodeGenFile[] Generate(CodeGeneratorData[] data)
 		{
 			return data
@@ -104,7 +104,7 @@ public sealed class Remove${componentName}From${ContextName}EntitiesSystem : ICl
 			var filename = FILENAME
 				.Replace(contextName)
 				.Replace(data, contextName);
-			var absoluteFilePath = Path.Combine(FILEPATH, filename);
+			var absoluteFilePath = Path.Combine(FILEPATH.Replace(contextName), filename);
 
 			var removeComponentLogic = data.IsFlag()
 				? FLAG_REMOVE_LOGIC.Replace(data, contextName)
@@ -112,7 +112,8 @@ public sealed class Remove${componentName}From${ContextName}EntitiesSystem : ICl
 
 			var fileContents = FILE_TEMPLATE
 				.Replace(data, contextName)
-				.Replace(REMOVE_COMPONENT_LOGIC, removeComponentLogic);
+				.Replace(REMOVE_COMPONENT_LOGIC, removeComponentLogic)
+				.Replace(SYSTEM_CLASS_NAME, data.GetCleanupRemoveSystemClassName(contextName));
 
 			return new CodeGenFile(absoluteFilePath, fileContents, NAME);
 		}

@@ -45,19 +45,20 @@ namespace JCMG.EntitasRedux.Editor.Plugins.Cleanup.CodeGenerators
 		private const bool DEFAULT_DRY_RUN_MODE = true;
 
 		// Filename and path
+		private const string SYSTEM_CLASS_NAME = "{ClassName}";
 		private const string FILENAME = "Destroy${ContextName}EntitiesWith${componentName}System.cs";
-		private const string FILEPATH = "Cleanup/Systems/";
+		private const string FILEPATH = "${ContextName}/Systems/";
 
 		// Template
 		private const string FILE_TEMPLATE = @"using System.Collections.Generic;
 using JCMG.EntitasRedux;
 
-public sealed class Destroy${ContextName}EntitiesWith${componentName}System : ICleanupSystem
+public sealed class {ClassName} : ICleanupSystem
 {
 	private readonly IGroup<${ContextName}Entity> _group;
 	private readonly List<${ContextName}Entity> _entities;
 
-	public Destroy${ContextName}EntitiesWith${componentName}System(IContext<${ContextName}Entity> context)
+	public {ClassName}(IContext<${ContextName}Entity> context)
 	{
 		_group = context.GetGroup(${ContextName}Matcher.${componentName});
 		_entities = new List<${ContextName}Entity>();
@@ -97,8 +98,10 @@ public sealed class Destroy${ContextName}EntitiesWith${componentName}System : IC
 			var filename = FILENAME
 				.Replace(contextName)
 				.Replace(data, contextName);
-			var absoluteFilePath = Path.Combine(FILEPATH, filename);
-			var fileContents = FILE_TEMPLATE.Replace(data, contextName);
+			var absoluteFilePath = Path.Combine(FILEPATH.Replace(contextName), filename);
+			var fileContents = FILE_TEMPLATE
+				.Replace(data, contextName)
+				.Replace(SYSTEM_CLASS_NAME, data.GetCleanupDestroySystemClassName(contextName));
 
 			return new CodeGenFile(absoluteFilePath, fileContents, NAME);
 		}
