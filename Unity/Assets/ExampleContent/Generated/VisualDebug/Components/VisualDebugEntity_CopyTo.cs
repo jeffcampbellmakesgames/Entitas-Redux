@@ -18,6 +18,14 @@ public partial class VisualDebugEntity
 		{
 			CopyAnArrayTo(AnArray);
 		}
+		else if (component is ExampleContent.VisualDebugging.AnCleanupDestroyEntityComponent AnCleanupDestroyEntity)
+		{
+			IsAnCleanupDestroyEntity = true;
+		}
+		else if (component is ExampleContent.VisualDebugging.AnCleanupRemoveComponent AnCleanupRemove)
+		{
+			IsAnCleanupRemove = true;
+		}
 		else if (component is ExampleContent.VisualDebugging.AnimationCurveComponent AnimationCurve)
 		{
 			CopyAnimationCurveTo(AnimationCurve);
