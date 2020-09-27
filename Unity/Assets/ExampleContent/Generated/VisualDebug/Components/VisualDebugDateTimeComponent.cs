@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.DateTime;
 		var component = (ExampleContent.VisualDebugging.DateTimeComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DateTimeComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.date = newDate;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.DateTime;
 		var component = (ExampleContent.VisualDebugging.DateTimeComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DateTimeComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.date = newDate;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.DateTime;
 		var component = (ExampleContent.VisualDebugging.DateTimeComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DateTimeComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.date = copyComponent.date;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

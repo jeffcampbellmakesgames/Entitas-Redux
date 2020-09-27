@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyBool;
 		var component = (ExampleContent.VisualDebugging.MyBoolComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyBoolComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myBool = newMyBool;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyBool;
 		var component = (ExampleContent.VisualDebugging.MyBoolComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyBoolComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myBool = newMyBool;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyBool;
 		var component = (ExampleContent.VisualDebugging.MyBoolComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyBoolComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myBool = copyComponent.myBool;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

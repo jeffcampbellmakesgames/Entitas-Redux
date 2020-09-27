@@ -16,8 +16,10 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.Position;
 		var component = (EntitasRedux.Tests.PositionComponent)CreateComponent(index, typeof(EntitasRedux.Tests.PositionComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.x = newX;
 		component.y = newY;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -25,8 +27,10 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.Position;
 		var component = (EntitasRedux.Tests.PositionComponent)CreateComponent(index, typeof(EntitasRedux.Tests.PositionComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.x = newX;
 		component.y = newY;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -34,8 +38,10 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.Position;
 		var component = (EntitasRedux.Tests.PositionComponent)CreateComponent(index, typeof(EntitasRedux.Tests.PositionComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.x = copyComponent.x;
 		component.y = copyComponent.y;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

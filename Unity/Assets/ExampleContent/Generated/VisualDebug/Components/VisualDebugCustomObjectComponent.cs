@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.CustomObject;
 		var component = (ExampleContent.VisualDebugging.CustomObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.customObject = newCustomObject;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.CustomObject;
 		var component = (ExampleContent.VisualDebugging.CustomObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.customObject = newCustomObject;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.CustomObject;
 		var component = (ExampleContent.VisualDebugging.CustomObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.customObject = (ExampleContent.VisualDebugging.CustomObject)copyComponent.customObject.Clone();
+		#endif
 		ReplaceComponent(index, component);
 	}
 

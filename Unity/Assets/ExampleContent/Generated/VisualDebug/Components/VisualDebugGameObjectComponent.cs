@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.GameObject;
 		var component = (ExampleContent.VisualDebugging.GameObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.GameObjectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.gameObject = newGameObject;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.GameObject;
 		var component = (ExampleContent.VisualDebugging.GameObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.GameObjectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.gameObject = newGameObject;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.GameObject;
 		var component = (ExampleContent.VisualDebugging.GameObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.GameObjectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.gameObject = copyComponent.gameObject;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

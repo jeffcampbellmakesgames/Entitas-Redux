@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.JaggedArray;
 		var component = (ExampleContent.VisualDebugging.JaggedArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.JaggedArrayComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.jaggedArray = newJaggedArray;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.JaggedArray;
 		var component = (ExampleContent.VisualDebugging.JaggedArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.JaggedArrayComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.jaggedArray = newJaggedArray;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.JaggedArray;
 		var component = (ExampleContent.VisualDebugging.JaggedArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.JaggedArrayComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.jaggedArray = (string[][])JCMG.EntitasRedux.ArrayTools.DeepCopy(copyComponent.jaggedArray);
+		#endif
 		ReplaceComponent(index, component);
 	}
 

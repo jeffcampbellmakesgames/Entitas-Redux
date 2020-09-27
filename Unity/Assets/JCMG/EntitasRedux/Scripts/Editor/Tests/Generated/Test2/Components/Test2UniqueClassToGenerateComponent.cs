@@ -24,12 +24,15 @@ public partial class Test2Context {
 				"You should check if the context already has a UniqueClassToGenerateEntity before setting it or use context.ReplaceUniqueClassToGenerate().");
 		}
 		var entity = CreateEntity();
+		#if !ENTITAS_REDUX_NO_IMPL
 		entity.AddUniqueClassToGenerate(newValue);
+		#endif
 		return entity;
 	}
 
 	public void ReplaceUniqueClassToGenerate(EntitasRedux.Tests.UniqueClassToGenerate newValue)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		var entity = UniqueClassToGenerateEntity;
 		if (entity == null)
 		{
@@ -39,6 +42,7 @@ public partial class Test2Context {
 		{
 			entity.ReplaceUniqueClassToGenerate(newValue);
 		}
+		#endif
 	}
 
 	public void RemoveUniqueClassToGenerate()
@@ -65,7 +69,9 @@ public partial class Test2Entity
 	{
 		var index = Test2ComponentsLookup.UniqueClassToGenerate;
 		var component = (UniqueClassToGenerateComponent)CreateComponent(index, typeof(UniqueClassToGenerateComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -73,7 +79,9 @@ public partial class Test2Entity
 	{
 		var index = Test2ComponentsLookup.UniqueClassToGenerate;
 		var component = (UniqueClassToGenerateComponent)CreateComponent(index, typeof(UniqueClassToGenerateComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -81,7 +89,9 @@ public partial class Test2Entity
 	{
 		var index = Test2ComponentsLookup.UniqueClassToGenerate;
 		var component = (UniqueClassToGenerateComponent)CreateComponent(index, typeof(UniqueClassToGenerateComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = copyComponent.value;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

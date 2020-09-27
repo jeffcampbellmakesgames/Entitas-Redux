@@ -16,8 +16,10 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.MultipleEntityIndices;
 		var component = (EntitasRedux.Tests.MultipleEntityIndicesComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MultipleEntityIndicesComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
 		component.value2 = newValue2;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -25,8 +27,10 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.MultipleEntityIndices;
 		var component = (EntitasRedux.Tests.MultipleEntityIndicesComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MultipleEntityIndicesComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
 		component.value2 = newValue2;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -34,8 +38,10 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.MultipleEntityIndices;
 		var component = (EntitasRedux.Tests.MultipleEntityIndicesComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MultipleEntityIndicesComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = copyComponent.value;
 		component.value2 = copyComponent.value2;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

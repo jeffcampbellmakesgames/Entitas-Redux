@@ -24,12 +24,15 @@ public partial class TestContext {
 				"You should check if the context already has a UniqueEventEntity before setting it or use context.ReplaceUniqueEvent().");
 		}
 		var entity = CreateEntity();
+		#if !ENTITAS_REDUX_NO_IMPL
 		entity.AddUniqueEvent(newValue);
+		#endif
 		return entity;
 	}
 
 	public void ReplaceUniqueEvent(string newValue)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		var entity = UniqueEventEntity;
 		if (entity == null)
 		{
@@ -39,6 +42,7 @@ public partial class TestContext {
 		{
 			entity.ReplaceUniqueEvent(newValue);
 		}
+		#endif
 	}
 
 	public void RemoveUniqueEvent()
@@ -65,7 +69,9 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.UniqueEvent;
 		var component = (EntitasRedux.Tests.UniqueEventComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueEventComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -73,7 +79,9 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.UniqueEvent;
 		var component = (EntitasRedux.Tests.UniqueEventComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueEventComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -81,7 +89,9 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.UniqueEvent;
 		var component = (EntitasRedux.Tests.UniqueEventComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueEventComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = copyComponent.value;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

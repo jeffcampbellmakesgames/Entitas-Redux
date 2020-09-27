@@ -16,8 +16,10 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.Size;
 		var component = (EntitasRedux.Tests.SizeComponent)CreateComponent(index, typeof(EntitasRedux.Tests.SizeComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.width = newWidth;
 		component.height = newHeight;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -25,8 +27,10 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.Size;
 		var component = (EntitasRedux.Tests.SizeComponent)CreateComponent(index, typeof(EntitasRedux.Tests.SizeComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.width = newWidth;
 		component.height = newHeight;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -34,8 +38,10 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.Size;
 		var component = (EntitasRedux.Tests.SizeComponent)CreateComponent(index, typeof(EntitasRedux.Tests.SizeComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.width = copyComponent.width;
 		component.height = copyComponent.height;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

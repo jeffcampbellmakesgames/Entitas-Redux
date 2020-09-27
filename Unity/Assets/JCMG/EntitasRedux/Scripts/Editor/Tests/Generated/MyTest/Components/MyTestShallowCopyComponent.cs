@@ -16,6 +16,7 @@ public partial class MyTestEntity
 	{
 		var index = MyTestComponentsLookup.ShallowCopy;
 		var component = (EntitasRedux.Tests.ShallowCopyComponent)CreateComponent(index, typeof(EntitasRedux.Tests.ShallowCopyComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.intValue = newIntValue;
 		component.strValue = newStrValue;
 		component.vector2Value = newVector2Value;
@@ -23,6 +24,7 @@ public partial class MyTestEntity
 		component.dictValue = newDictValue;
 		component.listValue = newListValue;
 		component.iListValue = newIListValue;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -30,6 +32,7 @@ public partial class MyTestEntity
 	{
 		var index = MyTestComponentsLookup.ShallowCopy;
 		var component = (EntitasRedux.Tests.ShallowCopyComponent)CreateComponent(index, typeof(EntitasRedux.Tests.ShallowCopyComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.intValue = newIntValue;
 		component.strValue = newStrValue;
 		component.vector2Value = newVector2Value;
@@ -37,6 +40,7 @@ public partial class MyTestEntity
 		component.dictValue = newDictValue;
 		component.listValue = newListValue;
 		component.iListValue = newIListValue;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -44,6 +48,7 @@ public partial class MyTestEntity
 	{
 		var index = MyTestComponentsLookup.ShallowCopy;
 		var component = (EntitasRedux.Tests.ShallowCopyComponent)CreateComponent(index, typeof(EntitasRedux.Tests.ShallowCopyComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.intValue = copyComponent.intValue;
 		component.strValue = copyComponent.strValue;
 		component.vector2Value = copyComponent.vector2Value;
@@ -51,6 +56,7 @@ public partial class MyTestEntity
 		component.dictValue = (System.Collections.Generic.Dictionary<int, EntitasRedux.Tests.TestScriptableObject>)JCMG.EntitasRedux.DictionaryTools.ShallowCopy(copyComponent.dictValue);
 		component.listValue = (System.Collections.Generic.List<EntitasRedux.Tests.TestScriptableObject>)JCMG.EntitasRedux.ListTools.ShallowCopy(copyComponent.listValue);
 		component.iListValue = copyComponent.iListValue;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

@@ -16,7 +16,9 @@ public partial class MyTestEntity
 	{
 		var index = MyTestComponentsLookup.Array3d;
 		var component = (EntitasRedux.Tests.Array3dComponent)CreateComponent(index, typeof(EntitasRedux.Tests.Array3dComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class MyTestEntity
 	{
 		var index = MyTestComponentsLookup.Array3d;
 		var component = (EntitasRedux.Tests.Array3dComponent)CreateComponent(index, typeof(EntitasRedux.Tests.Array3dComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class MyTestEntity
 	{
 		var index = MyTestComponentsLookup.Array3d;
 		var component = (EntitasRedux.Tests.Array3dComponent)CreateComponent(index, typeof(EntitasRedux.Tests.Array3dComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = (int[,,])copyComponent.value.Clone();
+		#endif
 		ReplaceComponent(index, component);
 	}
 

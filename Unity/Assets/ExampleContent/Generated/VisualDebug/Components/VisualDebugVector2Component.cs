@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Vector2;
 		var component = (ExampleContent.VisualDebugging.Vector2Component)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Vector2Component));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.vector2 = newVector2;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Vector2;
 		var component = (ExampleContent.VisualDebugging.Vector2Component)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Vector2Component));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.vector2 = newVector2;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Vector2;
 		var component = (ExampleContent.VisualDebugging.Vector2Component)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Vector2Component));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.vector2 = copyComponent.vector2;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

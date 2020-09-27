@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Color;
 		var component = (ExampleContent.VisualDebugging.ColorComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.ColorComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.color = newColor;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Color;
 		var component = (ExampleContent.VisualDebugging.ColorComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.ColorComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.color = newColor;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Color;
 		var component = (ExampleContent.VisualDebugging.ColorComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.ColorComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.color = copyComponent.color;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

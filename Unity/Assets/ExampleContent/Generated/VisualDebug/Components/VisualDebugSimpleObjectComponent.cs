@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.SimpleObject;
 		var component = (ExampleContent.VisualDebugging.SimpleObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.SimpleObjectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.simpleObject = newSimpleObject;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.SimpleObject;
 		var component = (ExampleContent.VisualDebugging.SimpleObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.SimpleObjectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.simpleObject = newSimpleObject;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.SimpleObject;
 		var component = (ExampleContent.VisualDebugging.SimpleObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.SimpleObjectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.simpleObject = copyComponent.simpleObject;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

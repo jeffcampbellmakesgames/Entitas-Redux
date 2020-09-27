@@ -24,12 +24,15 @@ public partial class VisualDebugContext {
 				"You should check if the context already has a ISomeInterfaceEntity before setting it or use context.ReplaceISomeInterface().");
 		}
 		var entity = CreateEntity();
+		#if !ENTITAS_REDUX_NO_IMPL
 		entity.AddISomeInterface(newValue);
+		#endif
 		return entity;
 	}
 
 	public void ReplaceISomeInterface(ExampleContent.VisualDebugging.ISomeInterface newValue)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		var entity = ISomeInterfaceEntity;
 		if (entity == null)
 		{
@@ -39,6 +42,7 @@ public partial class VisualDebugContext {
 		{
 			entity.ReplaceISomeInterface(newValue);
 		}
+		#endif
 	}
 
 	public void RemoveISomeInterface()
@@ -65,7 +69,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.ISomeInterface;
 		var component = (ISomeInterfaceComponent)CreateComponent(index, typeof(ISomeInterfaceComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -73,7 +79,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.ISomeInterface;
 		var component = (ISomeInterfaceComponent)CreateComponent(index, typeof(ISomeInterfaceComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -81,7 +89,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.ISomeInterface;
 		var component = (ISomeInterfaceComponent)CreateComponent(index, typeof(ISomeInterfaceComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = copyComponent.value;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

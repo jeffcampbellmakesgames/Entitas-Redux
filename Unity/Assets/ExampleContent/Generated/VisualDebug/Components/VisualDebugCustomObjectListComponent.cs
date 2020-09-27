@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.CustomObjectList;
 		var component = (ExampleContent.VisualDebugging.CustomObjectListComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectListComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.CustomObjectList;
 		var component = (ExampleContent.VisualDebugging.CustomObjectListComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectListComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.CustomObjectList;
 		var component = (ExampleContent.VisualDebugging.CustomObjectListComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectListComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = (System.Collections.Generic.List<ExampleContent.VisualDebugging.CustomObject>)JCMG.EntitasRedux.ListTools.DeepCopy(copyComponent.value);
+		#endif
 		ReplaceComponent(index, component);
 	}
 

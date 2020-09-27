@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.SomeOtherClass;
 		var component = (SomeOtherClassComponent)CreateComponent(index, typeof(SomeOtherClassComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.SomeOtherClass;
 		var component = (SomeOtherClassComponent)CreateComponent(index, typeof(SomeOtherClassComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.SomeOtherClass;
 		var component = (SomeOtherClassComponent)CreateComponent(index, typeof(SomeOtherClassComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = (ExampleContent.VisualDebugging.SomeOtherClass)copyComponent.value.Clone();
+		#endif
 		ReplaceComponent(index, component);
 	}
 

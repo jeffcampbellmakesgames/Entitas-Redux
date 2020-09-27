@@ -17,6 +17,7 @@ public partial class ExampleEntity
 	/// </summary>
 	public void CopyComponentTo(IComponent component)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		if (component is ExampleContent.VisualDebugging.AnCleanupDestroyEntityComponent AnCleanupDestroyEntity)
 		{
 			IsAnCleanupDestroyEntity = true;
@@ -29,6 +30,7 @@ public partial class ExampleEntity
 		{
 			IsNoContext = true;
 		}
+		#endif
 	}
 
 	/// <summary>

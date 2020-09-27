@@ -17,6 +17,7 @@ public partial class MyTestEntity
 	/// </summary>
 	public void CopyComponentTo(IComponent component)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		if (component is EntitasRedux.Tests.ComponentA ComponentA)
 		{
 			IsComponentA = true;
@@ -89,6 +90,7 @@ public partial class MyTestEntity
 		{
 			CopyShallowCopyTo(ShallowCopy);
 		}
+		#endif
 	}
 
 	/// <summary>

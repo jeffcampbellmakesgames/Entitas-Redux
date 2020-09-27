@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyFloat;
 		var component = (ExampleContent.VisualDebugging.MyFloatComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyFloatComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myFloat = newMyFloat;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyFloat;
 		var component = (ExampleContent.VisualDebugging.MyFloatComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyFloatComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myFloat = newMyFloat;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyFloat;
 		var component = (ExampleContent.VisualDebugging.MyFloatComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyFloatComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myFloat = copyComponent.myFloat;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

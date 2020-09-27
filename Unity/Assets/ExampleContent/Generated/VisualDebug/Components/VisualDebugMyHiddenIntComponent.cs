@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyHiddenInt;
 		var component = (ExampleContent.VisualDebugging.MyHiddenIntComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyHiddenIntComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myInt = newMyInt;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyHiddenInt;
 		var component = (ExampleContent.VisualDebugging.MyHiddenIntComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyHiddenIntComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myInt = newMyInt;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyHiddenInt;
 		var component = (ExampleContent.VisualDebugging.MyHiddenIntComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyHiddenIntComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myInt = copyComponent.myInt;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

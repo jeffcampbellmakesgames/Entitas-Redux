@@ -16,9 +16,11 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.DictArray;
 		var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.dict = newDict;
 		component.dictRefArrayType = newDictRefArrayType;
 		component.dictArray = newDictArray;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -26,9 +28,11 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.DictArray;
 		var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.dict = newDict;
 		component.dictRefArrayType = newDictRefArrayType;
 		component.dictArray = newDictArray;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -36,9 +40,11 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.DictArray;
 		var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.dict = (System.Collections.Generic.Dictionary<int, string[]>)JCMG.EntitasRedux.DictionaryTools.DeepCopy(copyComponent.dict);
 		component.dictRefArrayType = (System.Collections.Generic.Dictionary<int, ExampleContent.VisualDebugging.CustomObject[]>)JCMG.EntitasRedux.DictionaryTools.DeepCopyArrayValue(copyComponent.dictRefArrayType);
 		component.dictArray = (System.Collections.Generic.Dictionary<int, string[]>[])copyComponent.dictArray.Clone();
+		#endif
 		ReplaceComponent(index, component);
 	}
 

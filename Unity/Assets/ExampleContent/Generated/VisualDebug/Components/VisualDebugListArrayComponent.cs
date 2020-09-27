@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.ListArray;
 		var component = (ExampleContent.VisualDebugging.ListArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.ListArrayComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.listArray = newListArray;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.ListArray;
 		var component = (ExampleContent.VisualDebugging.ListArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.ListArrayComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.listArray = newListArray;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.ListArray;
 		var component = (ExampleContent.VisualDebugging.ListArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.ListArrayComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.listArray = (System.Collections.Generic.List<string>[])copyComponent.listArray.Clone();
+		#endif
 		ReplaceComponent(index, component);
 	}
 

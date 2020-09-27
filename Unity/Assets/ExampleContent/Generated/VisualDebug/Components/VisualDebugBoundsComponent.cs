@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Bounds;
 		var component = (ExampleContent.VisualDebugging.BoundsComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.BoundsComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.bounds = newBounds;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Bounds;
 		var component = (ExampleContent.VisualDebugging.BoundsComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.BoundsComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.bounds = newBounds;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Bounds;
 		var component = (ExampleContent.VisualDebugging.BoundsComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.BoundsComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.bounds = copyComponent.bounds;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Dictionary;
 		var component = (ExampleContent.VisualDebugging.DictionaryComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictionaryComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.dict = newDict;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Dictionary;
 		var component = (ExampleContent.VisualDebugging.DictionaryComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictionaryComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.dict = newDict;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Dictionary;
 		var component = (ExampleContent.VisualDebugging.DictionaryComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictionaryComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.dict = (System.Collections.Generic.Dictionary<string, string>)JCMG.EntitasRedux.DictionaryTools.ShallowCopy(copyComponent.dict);
+		#endif
 		ReplaceComponent(index, component);
 	}
 

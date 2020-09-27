@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.AnimationCurve;
 		var component = (ExampleContent.VisualDebugging.AnimationCurveComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.AnimationCurveComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.animationCurve = newAnimationCurve;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.AnimationCurve;
 		var component = (ExampleContent.VisualDebugging.AnimationCurveComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.AnimationCurveComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.animationCurve = newAnimationCurve;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.AnimationCurve;
 		var component = (ExampleContent.VisualDebugging.AnimationCurveComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.AnimationCurveComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.animationCurve = copyComponent.animationCurve;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

@@ -16,8 +16,10 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.ComponentWithFieldsAndProperties;
 		var component = (EntitasRedux.Tests.ComponentWithFieldsAndProperties)CreateComponent(index, typeof(EntitasRedux.Tests.ComponentWithFieldsAndProperties));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.publicField = newPublicField;
 		component.publicProperty = newPublicProperty;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -25,8 +27,10 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.ComponentWithFieldsAndProperties;
 		var component = (EntitasRedux.Tests.ComponentWithFieldsAndProperties)CreateComponent(index, typeof(EntitasRedux.Tests.ComponentWithFieldsAndProperties));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.publicField = newPublicField;
 		component.publicProperty = newPublicProperty;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -34,8 +38,10 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.ComponentWithFieldsAndProperties;
 		var component = (EntitasRedux.Tests.ComponentWithFieldsAndProperties)CreateComponent(index, typeof(EntitasRedux.Tests.ComponentWithFieldsAndProperties));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.publicField = copyComponent.publicField;
 		component.publicProperty = copyComponent.publicProperty;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

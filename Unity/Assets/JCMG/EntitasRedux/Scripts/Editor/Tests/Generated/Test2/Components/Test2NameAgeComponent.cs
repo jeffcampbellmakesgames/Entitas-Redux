@@ -16,8 +16,10 @@ public partial class Test2Entity
 	{
 		var index = Test2ComponentsLookup.NameAge;
 		var component = (EntitasRedux.Tests.NameAgeComponent)CreateComponent(index, typeof(EntitasRedux.Tests.NameAgeComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.name = newName;
 		component.age = newAge;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -25,8 +27,10 @@ public partial class Test2Entity
 	{
 		var index = Test2ComponentsLookup.NameAge;
 		var component = (EntitasRedux.Tests.NameAgeComponent)CreateComponent(index, typeof(EntitasRedux.Tests.NameAgeComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.name = newName;
 		component.age = newAge;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -34,8 +38,10 @@ public partial class Test2Entity
 	{
 		var index = Test2ComponentsLookup.NameAge;
 		var component = (EntitasRedux.Tests.NameAgeComponent)CreateComponent(index, typeof(EntitasRedux.Tests.NameAgeComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.name = copyComponent.name;
 		component.age = copyComponent.age;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

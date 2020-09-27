@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyFlags;
 		var component = (ExampleContent.VisualDebugging.MyFlagsComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyFlagsComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myFlags = newMyFlags;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyFlags;
 		var component = (ExampleContent.VisualDebugging.MyFlagsComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyFlagsComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myFlags = newMyFlags;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyFlags;
 		var component = (ExampleContent.VisualDebugging.MyFlagsComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyFlagsComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myFlags = copyComponent.myFlags;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

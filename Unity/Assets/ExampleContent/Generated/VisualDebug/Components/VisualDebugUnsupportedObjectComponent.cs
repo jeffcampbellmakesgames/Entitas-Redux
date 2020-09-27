@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.UnsupportedObject;
 		var component = (ExampleContent.VisualDebugging.UnsupportedObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.UnsupportedObjectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.unsupportedObject = newUnsupportedObject;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.UnsupportedObject;
 		var component = (ExampleContent.VisualDebugging.UnsupportedObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.UnsupportedObjectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.unsupportedObject = newUnsupportedObject;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.UnsupportedObject;
 		var component = (ExampleContent.VisualDebugging.UnsupportedObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.UnsupportedObjectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.unsupportedObject = (ExampleContent.VisualDebugging.UnsupportedObject)copyComponent.unsupportedObject.Clone();
+		#endif
 		ReplaceComponent(index, component);
 	}
 

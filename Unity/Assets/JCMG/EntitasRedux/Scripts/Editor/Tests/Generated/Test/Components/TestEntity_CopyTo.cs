@@ -17,6 +17,7 @@ public partial class TestEntity
 	/// </summary>
 	public void CopyComponentTo(IComponent component)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		if (component is EntitasRedux.Tests.BaseComponent Base)
 		{
 			CopyBaseTo(Base);
@@ -205,6 +206,7 @@ public partial class TestEntity
 		{
 			CopyTestAnyEventToGenerateAddedListenerTo(TestAnyEventToGenerateAddedListener);
 		}
+		#endif
 	}
 
 	/// <summary>

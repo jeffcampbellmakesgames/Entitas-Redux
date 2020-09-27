@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Texture2D;
 		var component = (ExampleContent.VisualDebugging.Texture2DComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Texture2DComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.texture2D = newTexture2D;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Texture2D;
 		var component = (ExampleContent.VisualDebugging.Texture2DComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Texture2DComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.texture2D = newTexture2D;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Texture2D;
 		var component = (ExampleContent.VisualDebugging.Texture2DComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Texture2DComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.texture2D = copyComponent.texture2D;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

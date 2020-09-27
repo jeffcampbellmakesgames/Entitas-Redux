@@ -16,9 +16,11 @@ public partial class MyTestEntity
 	{
 		var index = MyTestComponentsLookup.DeepCopy;
 		var component = (EntitasRedux.Tests.DeepCopyComponent)CreateComponent(index, typeof(EntitasRedux.Tests.DeepCopyComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
 		component.list = newList;
 		component.dict = newDict;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -26,9 +28,11 @@ public partial class MyTestEntity
 	{
 		var index = MyTestComponentsLookup.DeepCopy;
 		var component = (EntitasRedux.Tests.DeepCopyComponent)CreateComponent(index, typeof(EntitasRedux.Tests.DeepCopyComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
 		component.list = newList;
 		component.dict = newDict;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -36,9 +40,11 @@ public partial class MyTestEntity
 	{
 		var index = MyTestComponentsLookup.DeepCopy;
 		var component = (EntitasRedux.Tests.DeepCopyComponent)CreateComponent(index, typeof(EntitasRedux.Tests.DeepCopyComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = (EntitasRedux.Tests.CloneableObject)copyComponent.value.Clone();
 		component.list = (System.Collections.Generic.List<EntitasRedux.Tests.CloneableObject>)JCMG.EntitasRedux.ListTools.DeepCopy(copyComponent.list);
 		component.dict = (System.Collections.Generic.Dictionary<EntitasRedux.Tests.CloneableObject, EntitasRedux.Tests.CloneableObject>)JCMG.EntitasRedux.DictionaryTools.DeepCopy(copyComponent.dict);
+		#endif
 		ReplaceComponent(index, component);
 	}
 

@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Rect;
 		var component = (ExampleContent.VisualDebugging.RectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.RectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.rect = newRect;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Rect;
 		var component = (ExampleContent.VisualDebugging.RectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.RectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.rect = newRect;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Rect;
 		var component = (ExampleContent.VisualDebugging.RectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.RectComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.rect = copyComponent.rect;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

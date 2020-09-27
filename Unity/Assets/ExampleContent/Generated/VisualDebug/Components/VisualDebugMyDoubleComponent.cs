@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyDouble;
 		var component = (ExampleContent.VisualDebugging.MyDoubleComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyDoubleComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myDouble = newMyDouble;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyDouble;
 		var component = (ExampleContent.VisualDebugging.MyDoubleComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyDoubleComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myDouble = newMyDouble;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyDouble;
 		var component = (ExampleContent.VisualDebugging.MyDoubleComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyDoubleComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myDouble = copyComponent.myDouble;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Array2D;
 		var component = (ExampleContent.VisualDebugging.Array2DComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Array2DComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.array2d = newArray2d;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Array2D;
 		var component = (ExampleContent.VisualDebugging.Array2DComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Array2DComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.array2d = newArray2d;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Array2D;
 		var component = (ExampleContent.VisualDebugging.Array2DComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Array2DComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.array2d = (string[,])copyComponent.array2d.Clone();
+		#endif
 		ReplaceComponent(index, component);
 	}
 

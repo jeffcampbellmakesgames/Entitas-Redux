@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyEnum;
 		var component = (ExampleContent.VisualDebugging.MyEnumComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyEnumComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myEnum = newMyEnum;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyEnum;
 		var component = (ExampleContent.VisualDebugging.MyEnumComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyEnumComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myEnum = newMyEnum;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyEnum;
 		var component = (ExampleContent.VisualDebugging.MyEnumComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyEnumComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myEnum = copyComponent.myEnum;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

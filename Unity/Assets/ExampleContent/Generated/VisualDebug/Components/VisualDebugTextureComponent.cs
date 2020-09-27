@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Texture;
 		var component = (ExampleContent.VisualDebugging.TextureComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.TextureComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.texture = newTexture;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Texture;
 		var component = (ExampleContent.VisualDebugging.TextureComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.TextureComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.texture = newTexture;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Texture;
 		var component = (ExampleContent.VisualDebugging.TextureComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.TextureComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.texture = copyComponent.texture;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

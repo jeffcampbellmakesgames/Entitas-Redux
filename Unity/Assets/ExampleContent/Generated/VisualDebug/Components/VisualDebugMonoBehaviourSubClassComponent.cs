@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MonoBehaviourSubClass;
 		var component = (ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.monoBehaviour = newMonoBehaviour;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MonoBehaviourSubClass;
 		var component = (ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.monoBehaviour = newMonoBehaviour;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MonoBehaviourSubClass;
 		var component = (ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MonoBehaviourSubClassComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.monoBehaviour = copyComponent.monoBehaviour;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

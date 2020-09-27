@@ -16,8 +16,10 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.DictList;
 		var component = (ExampleContent.VisualDebugging.DictListComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictListComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.dictRefListType = newDictRefListType;
 		component.dictRefNestedListType = newDictRefNestedListType;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -25,8 +27,10 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.DictList;
 		var component = (ExampleContent.VisualDebugging.DictListComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictListComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.dictRefListType = newDictRefListType;
 		component.dictRefNestedListType = newDictRefNestedListType;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -34,8 +38,10 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.DictList;
 		var component = (ExampleContent.VisualDebugging.DictListComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictListComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.dictRefListType = (System.Collections.Generic.Dictionary<int, System.Collections.Generic.List<ExampleContent.VisualDebugging.CustomObject>>)JCMG.EntitasRedux.DictionaryTools.DeepCopyListValue(copyComponent.dictRefListType);
 		component.dictRefNestedListType = (System.Collections.Generic.Dictionary<int, System.Collections.Generic.List<System.Collections.Generic.List<ExampleContent.VisualDebugging.CustomObject>>>)JCMG.EntitasRedux.DictionaryTools.ShallowCopy(copyComponent.dictRefNestedListType);
+		#endif
 		ReplaceComponent(index, component);
 	}
 

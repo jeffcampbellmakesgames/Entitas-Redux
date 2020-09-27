@@ -24,12 +24,15 @@ public partial class TestContext {
 				"You should check if the context already has a UniqueMyNamespaceEntity before setting it or use context.ReplaceUniqueMyNamespace().");
 		}
 		var entity = CreateEntity();
+		#if !ENTITAS_REDUX_NO_IMPL
 		entity.AddUniqueMyNamespace(newValue);
+		#endif
 		return entity;
 	}
 
 	public void ReplaceUniqueMyNamespace(string newValue)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		var entity = UniqueMyNamespaceEntity;
 		if (entity == null)
 		{
@@ -39,6 +42,7 @@ public partial class TestContext {
 		{
 			entity.ReplaceUniqueMyNamespace(newValue);
 		}
+		#endif
 	}
 
 	public void RemoveUniqueMyNamespace()
@@ -65,7 +69,9 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.UniqueMyNamespace;
 		var component = (EntitasRedux.Tests.UniqueMyNamespaceComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueMyNamespaceComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -73,7 +79,9 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.UniqueMyNamespace;
 		var component = (EntitasRedux.Tests.UniqueMyNamespaceComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueMyNamespaceComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -81,7 +89,9 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.UniqueMyNamespace;
 		var component = (EntitasRedux.Tests.UniqueMyNamespaceComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueMyNamespaceComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = copyComponent.value;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

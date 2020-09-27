@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Array3D;
 		var component = (ExampleContent.VisualDebugging.Array3DComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Array3DComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.array3d = newArray3d;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Array3D;
 		var component = (ExampleContent.VisualDebugging.Array3DComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Array3DComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.array3d = newArray3d;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Array3D;
 		var component = (ExampleContent.VisualDebugging.Array3DComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.Array3DComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.array3d = (string[,,])copyComponent.array3d.Clone();
+		#endif
 		ReplaceComponent(index, component);
 	}
 

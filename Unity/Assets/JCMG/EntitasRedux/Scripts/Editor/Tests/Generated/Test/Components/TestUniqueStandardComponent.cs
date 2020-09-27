@@ -24,12 +24,15 @@ public partial class TestContext {
 				"You should check if the context already has a UniqueStandardEntity before setting it or use context.ReplaceUniqueStandard().");
 		}
 		var entity = CreateEntity();
+		#if !ENTITAS_REDUX_NO_IMPL
 		entity.AddUniqueStandard(newValue);
+		#endif
 		return entity;
 	}
 
 	public void ReplaceUniqueStandard(string newValue)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		var entity = UniqueStandardEntity;
 		if (entity == null)
 		{
@@ -39,6 +42,7 @@ public partial class TestContext {
 		{
 			entity.ReplaceUniqueStandard(newValue);
 		}
+		#endif
 	}
 
 	public void RemoveUniqueStandard()
@@ -65,7 +69,9 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.UniqueStandard;
 		var component = (EntitasRedux.Tests.UniqueStandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueStandardComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -73,7 +79,9 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.UniqueStandard;
 		var component = (EntitasRedux.Tests.UniqueStandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueStandardComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -81,7 +89,9 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.UniqueStandard;
 		var component = (EntitasRedux.Tests.UniqueStandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueStandardComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = copyComponent.value;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

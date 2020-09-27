@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyChar;
 		var component = (ExampleContent.VisualDebugging.MyCharComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyCharComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myChar = newMyChar;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyChar;
 		var component = (ExampleContent.VisualDebugging.MyCharComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyCharComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myChar = newMyChar;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.MyChar;
 		var component = (ExampleContent.VisualDebugging.MyCharComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyCharComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.myChar = copyComponent.myChar;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

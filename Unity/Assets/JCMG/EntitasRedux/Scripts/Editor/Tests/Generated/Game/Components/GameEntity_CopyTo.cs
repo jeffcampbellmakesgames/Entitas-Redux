@@ -17,10 +17,12 @@ public partial class GameEntity
 	/// </summary>
 	public void CopyComponentTo(IComponent component)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		if (component is EntitasRedux.Tests.GeneratedContextComponent GeneratedContext)
 		{
 			IsGeneratedContext = true;
 		}
+		#endif
 	}
 
 	/// <summary>

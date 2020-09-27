@@ -16,6 +16,7 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.ManyMembers;
 		var component = (ExampleContent.VisualDebugging.ManyMembersComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.ManyMembersComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.field1 = newField1;
 		component.field10 = newField10;
 		component.field11 = newField11;
@@ -28,6 +29,7 @@ public partial class VisualDebugEntity
 		component.field7 = newField7;
 		component.field8 = newField8;
 		component.field9 = newField9;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -35,6 +37,7 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.ManyMembers;
 		var component = (ExampleContent.VisualDebugging.ManyMembersComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.ManyMembersComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.field1 = newField1;
 		component.field10 = newField10;
 		component.field11 = newField11;
@@ -47,6 +50,7 @@ public partial class VisualDebugEntity
 		component.field7 = newField7;
 		component.field8 = newField8;
 		component.field9 = newField9;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -54,6 +58,7 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.ManyMembers;
 		var component = (ExampleContent.VisualDebugging.ManyMembersComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.ManyMembersComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.field1 = copyComponent.field1;
 		component.field10 = copyComponent.field10;
 		component.field11 = copyComponent.field11;
@@ -66,6 +71,7 @@ public partial class VisualDebugEntity
 		component.field7 = copyComponent.field7;
 		component.field8 = copyComponent.field8;
 		component.field9 = copyComponent.field9;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

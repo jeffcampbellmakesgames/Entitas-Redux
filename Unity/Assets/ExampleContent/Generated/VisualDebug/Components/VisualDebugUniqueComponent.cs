@@ -24,12 +24,15 @@ public partial class VisualDebugContext {
 				"You should check if the context already has a UniqueEntity before setting it or use context.ReplaceUnique().");
 		}
 		var entity = CreateEntity();
+		#if !ENTITAS_REDUX_NO_IMPL
 		entity.AddUnique(newValue);
+		#endif
 		return entity;
 	}
 
 	public void ReplaceUnique(string newValue)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		var entity = UniqueEntity;
 		if (entity == null)
 		{
@@ -39,6 +42,7 @@ public partial class VisualDebugContext {
 		{
 			entity.ReplaceUnique(newValue);
 		}
+		#endif
 	}
 
 	public void RemoveUnique()
@@ -65,7 +69,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Unique;
 		var component = (ExampleContent.VisualDebugging.UniqueComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.UniqueComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -73,7 +79,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Unique;
 		var component = (ExampleContent.VisualDebugging.UniqueComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.UniqueComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -81,7 +89,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Unique;
 		var component = (ExampleContent.VisualDebugging.UniqueComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.UniqueComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = copyComponent.value;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

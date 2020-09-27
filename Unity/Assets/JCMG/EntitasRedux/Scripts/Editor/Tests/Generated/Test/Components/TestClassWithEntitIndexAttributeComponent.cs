@@ -16,7 +16,9 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.ClassWithEntitIndexAttribute;
 		var component = (ClassWithEntitIndexAttributeComponent)CreateComponent(index, typeof(ClassWithEntitIndexAttributeComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.ClassWithEntitIndexAttribute;
 		var component = (ClassWithEntitIndexAttributeComponent)CreateComponent(index, typeof(ClassWithEntitIndexAttributeComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = newValue;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class TestEntity
 	{
 		var index = TestComponentsLookup.ClassWithEntitIndexAttribute;
 		var component = (ClassWithEntitIndexAttributeComponent)CreateComponent(index, typeof(ClassWithEntitIndexAttributeComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.value = copyComponent.value;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

@@ -16,8 +16,10 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Person;
 		var component = (ExampleContent.VisualDebugging.PersonComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.PersonComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.gender = newGender;
 		component.name = newName;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -25,8 +27,10 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Person;
 		var component = (ExampleContent.VisualDebugging.PersonComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.PersonComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.gender = newGender;
 		component.name = newName;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -34,8 +38,10 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.Person;
 		var component = (ExampleContent.VisualDebugging.PersonComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.PersonComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.gender = copyComponent.gender;
 		component.name = copyComponent.name;
+		#endif
 		ReplaceComponent(index, component);
 	}
 

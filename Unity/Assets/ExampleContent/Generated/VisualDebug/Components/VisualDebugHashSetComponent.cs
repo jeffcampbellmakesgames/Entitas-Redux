@@ -16,7 +16,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.HashSet;
 		var component = (ExampleContent.VisualDebugging.HashSetComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.HashSetComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.hashset = newHashset;
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -24,7 +26,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.HashSet;
 		var component = (ExampleContent.VisualDebugging.HashSetComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.HashSetComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.hashset = newHashset;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -32,7 +36,9 @@ public partial class VisualDebugEntity
 	{
 		var index = VisualDebugComponentsLookup.HashSet;
 		var component = (ExampleContent.VisualDebugging.HashSetComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.HashSetComponent));
+		#if !ENTITAS_REDUX_NO_IMPL
 		component.hashset = copyComponent.hashset;
+		#endif
 		ReplaceComponent(index, component);
 	}
 
