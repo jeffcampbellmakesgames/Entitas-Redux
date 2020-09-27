@@ -32,10 +32,9 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 	internal sealed class ContextAttributeGenerator : ICodeGenerator
 	{
 		private const string TEMPLATE =
-			@"public sealed class ${ContextName}Attribute : JCMG.EntitasRedux.ContextAttribute {
-
-    public ${ContextName}Attribute() : base(""${ContextName}"") {
-    }
+@"public sealed class ${ContextName}Attribute : JCMG.EntitasRedux.ContextAttribute
+{
+	public ${ContextName}Attribute() : base(""${ContextName}"")	{ }
 }
 ";
 

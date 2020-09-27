@@ -4,7 +4,7 @@ using JCMG.EntitasRedux;
 namespace ExampleContent.VisualDebugging
 {
 	public class SomeInitializeReactiveSystem : ReactiveSystem<VisualDebugEntity>,
-	                                            IInitializeSystem
+												IInitializeSystem
 	{
 		public SomeInitializeReactiveSystem(Contexts contexts) : base(contexts.VisualDebug)
 		{

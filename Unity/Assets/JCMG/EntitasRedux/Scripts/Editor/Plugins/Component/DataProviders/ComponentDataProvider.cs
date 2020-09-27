@@ -32,8 +32,8 @@ using UnityEngine;
 namespace JCMG.EntitasRedux.Editor.Plugins
 {
 	internal sealed class ComponentDataProvider : IDataProvider,
-	                                              IConfigurable,
-	                                              ICacheable
+												  IConfigurable,
+												  ICacheable
 	{
 		private readonly IComponentDataProvider[] _dataProviders;
 		private readonly ContextsComponentDataProvider _contextsComponentDataProvider;

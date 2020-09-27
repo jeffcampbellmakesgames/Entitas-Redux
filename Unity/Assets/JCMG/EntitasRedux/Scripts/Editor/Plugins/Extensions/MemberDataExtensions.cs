@@ -35,37 +35,37 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 	{
 		// Code templates
 		private const string MEMBER_ASSIGNMENT
-			= "        component.${MemberName} = new${MemberNameUpper};";
+			= "		component.${MemberName} = new${MemberNameUpper};";
 
 		private const string DEFAULT_MEMBER_COPY_ASSIGNMENT
-			= "        component.${MemberName} = copyComponent.${MemberName};";
+			= "		component.${MemberName} = copyComponent.${MemberName};";
 
 		private const string MEMBER_CLONE_ASSIGNMENT
-			= "        component.${MemberName} = (${MemberCompilableString})copyComponent.${MemberName}.Clone();";
+			= "		component.${MemberName} = (${MemberCompilableString})copyComponent.${MemberName}.Clone();";
 
 		private const string LIST_MEMBER_DEEP_COPY_ASSIGNMENT
-			= "        component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.ListTools.DeepCopy(copyComponent.${MemberName});";
+			= "		component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.ListTools.DeepCopy(copyComponent.${MemberName});";
 
 		private const string LIST_MEMBER_SHALLOW_COPY_ASSIGNMENT
-			= "        component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.ListTools.ShallowCopy(copyComponent.${MemberName});";
+			= "		component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.ListTools.ShallowCopy(copyComponent.${MemberName});";
 
 		private const string DICTIONARY_MEMBER_SHALLOW_COPY_ASSIGNMENT
-			= "        component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.DictionaryTools.ShallowCopy(copyComponent.${MemberName});";
+			= "		component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.DictionaryTools.ShallowCopy(copyComponent.${MemberName});";
 
 		private const string DICTIONARY_MEMBER_DEEP_COPY_ASSIGNMENT
-			= "        component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.DictionaryTools.DeepCopy(copyComponent.${MemberName});";
+			= "		component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.DictionaryTools.DeepCopy(copyComponent.${MemberName});";
 
 		private const string DICTIONARY_MEMBER_LIST_DEEP_COPY_ASSIGNMENT
-			= "        component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.DictionaryTools.DeepCopyListValue(copyComponent.${MemberName});";
+			= "		component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.DictionaryTools.DeepCopyListValue(copyComponent.${MemberName});";
 
 		private const string DICTIONARY_MEMBER_ARRAY_DEEP_COPY_ASSIGNMENT
-			= "        component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.DictionaryTools.DeepCopyArrayValue(copyComponent.${MemberName});";
+			= "		component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.DictionaryTools.DeepCopyArrayValue(copyComponent.${MemberName});";
 
 		private const string ARRAY_MEMBER_DEEP_COPY_ASSIGNMENT
-			= "        component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.ArrayTools.DeepCopy(copyComponent.${MemberName});";
+			= "		component.${MemberName} = (${MemberCompilableString})JCMG.EntitasRedux.ArrayTools.DeepCopy(copyComponent.${MemberName});";
 
 		private const string ARRAY_MEMBER_SHALLOW_COPY_ASSIGNMENT
-			= "        component.${MemberName} = (${MemberCompilableString})copyComponent.${MemberName}.Clone();";
+			= "		component.${MemberName} = (${MemberCompilableString})copyComponent.${MemberName}.Clone();";
 
 		/// <summary>
 		/// Returns a snippet of code for direct member assignment for <paramref name="memberData"/> from a parameter.
@@ -103,7 +103,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 					result = GetListMemberCopyAssignment(memberData, genericType);
 				}
 				else if (memberType.IsDictionary(out var genericKeyType, out var genericValueType) &&
-				         hasDefaultConstructor)
+						 hasDefaultConstructor)
 				{
 					result = GetDictionaryMemberCopyAssignment(memberData, genericKeyType, genericValueType);
 				}
@@ -151,8 +151,8 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 			var result = string.Empty;
 			// Check for more specific deep copy implementation potential
 			if (genericValueType.IsList(out var genericListType) &&
-			    genericListType.IsMutableReferenceType() &&
-			    genericListType.ImplementsInterface<ICloneable>())
+				genericListType.IsMutableReferenceType() &&
+				genericListType.ImplementsInterface<ICloneable>())
 			{
 				result = DICTIONARY_MEMBER_LIST_DEEP_COPY_ASSIGNMENT.Replace(memberData);
 			}
@@ -170,7 +170,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 			{
 				// ...and the value type is capable of deep copy, use a 1-level deep copy,...
 				if (genericValueType.IsMutableReferenceType() &&
-				    genericValueType.ImplementsInterface<ICloneable>())
+					genericValueType.ImplementsInterface<ICloneable>())
 				{
 					result = DICTIONARY_MEMBER_DEEP_COPY_ASSIGNMENT.Replace(memberData);
 				}

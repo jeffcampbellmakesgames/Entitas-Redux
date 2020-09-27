@@ -27,10 +27,10 @@ using JCMG.EntitasRedux;
 
 namespace EntitasRedux.Tests {
 
-    [Test, Test2]
-    public class EntityIndexComponent : IComponent {
+	[Test, Test2]
+	public class EntityIndexComponent : IComponent {
 
-        [EntityIndex]
-        public string value;
-    }
+		[EntityIndex]
+		public string value;
+	}
 }

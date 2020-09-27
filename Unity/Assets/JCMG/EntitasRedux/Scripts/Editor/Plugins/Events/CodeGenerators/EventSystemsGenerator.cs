@@ -43,15 +43,16 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		private const string NAME = "Event (Systems)";
 
 		private const string TEMPLATE =
-			@"public sealed class ${ContextName}EventSystems : Feature {
-
-    public ${ContextName}EventSystems(Contexts contexts) {
+@"public sealed class ${ContextName}EventSystems : Feature
+{
+	public ${ContextName}EventSystems(Contexts contexts)
+	{
 ${systemsList}
-    }
+	}
 }
 ";
 
-		private const string SYSTEM_ADD_TEMPLATE = @"        Add(new ${Event}EventSystem(contexts)); // priority: ${priority}";
+		private const string SYSTEM_ADD_TEMPLATE = @"		Add(new ${Event}EventSystem(contexts)); // priority: ${priority}";
 
 		public override CodeGenFile[] Generate(CodeGeneratorData[] data)
 		{

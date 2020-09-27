@@ -27,8 +27,8 @@ using JCMG.EntitasRedux;
 
 namespace EntitasRedux.Tests {
 
-    [Context("Test"), Context("Test2")]
-    public sealed class MyNamespaceComponent : IComponent {
-        public string value;
-    }
+	[Context("Test"), Context("Test2")]
+	public sealed class MyNamespaceComponent : IComponent {
+		public string value;
+	}
 }

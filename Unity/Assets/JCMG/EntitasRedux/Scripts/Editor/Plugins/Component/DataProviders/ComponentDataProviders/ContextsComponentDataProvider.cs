@@ -30,7 +30,7 @@ using JCMG.Genesis.Editor;
 namespace JCMG.EntitasRedux.Editor.Plugins
 {
 	internal sealed class ContextsComponentDataProvider : IComponentDataProvider,
-	                                                      IConfigurable
+														  IConfigurable
 	{
 		private readonly ContextSettingsConfig _contextSettingsConfig = new ContextSettingsConfig();
 

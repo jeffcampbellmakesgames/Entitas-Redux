@@ -3,9 +3,9 @@
 namespace ExampleContent.VisualDebugging
 {
 	public class MixedSystem : IInitializeSystem,
-	                           IUpdateSystem,
-	                           ICleanupSystem,
-	                           ITearDownSystem
+							   IUpdateSystem,
+							   ICleanupSystem,
+							   ITearDownSystem
 	{
 		public void Cleanup()
 		{

@@ -27,8 +27,8 @@ using JCMG.EntitasRedux;
 
 namespace EntitasRedux.Tests {
 
-    [Context("Test"), Context("Test2"), Event(EventTarget.Any)]
-    public sealed class EventToGenerate {
-        public string value;
-    }
+	[Context("Test"), Context("Test2"), Event(EventTarget.Any)]
+	public sealed class EventToGenerate {
+		public string value;
+	}
 }

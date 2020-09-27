@@ -36,9 +36,10 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		private const string NAME = "Event (Listener Component)";
 
 		private const string TEMPLATE =
-			@"[JCMG.EntitasRedux.DontGenerate(false)]
-public sealed class ${EventListenerComponent} : JCMG.EntitasRedux.IComponent {
-    public System.Collections.Generic.List<I${EventListener}> value;
+@"[JCMG.EntitasRedux.DontGenerate(false)]
+public sealed class ${EventListenerComponent} : JCMG.EntitasRedux.IComponent
+{
+	public System.Collections.Generic.List<I${EventListener}> value;
 }
 ";
 

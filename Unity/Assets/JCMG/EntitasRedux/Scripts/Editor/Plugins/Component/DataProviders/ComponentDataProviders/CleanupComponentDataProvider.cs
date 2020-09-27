@@ -69,13 +69,13 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		public static bool HasCleanupRemoveComponentData(this ComponentData data)
 		{
 			return data.ContainsKey(CLEANUP_DATA_KEY) &&
-			       ((CleanupMode[])data[CLEANUP_DATA_KEY]).Any(x => x == CleanupMode.RemoveComponent);
+				   ((CleanupMode[])data[CLEANUP_DATA_KEY]).Any(x => x == CleanupMode.RemoveComponent);
 		}
 
 		public static bool HasCleanupDestroyEntityData(this ComponentData data)
 		{
 			return data.ContainsKey(CLEANUP_DATA_KEY) &&
-			       ((CleanupMode[])data[CLEANUP_DATA_KEY]).Any(x => x == CleanupMode.DestroyEntity);
+				   ((CleanupMode[])data[CLEANUP_DATA_KEY]).Any(x => x == CleanupMode.DestroyEntity);
 		}
 
 		public static string GetCleanupRemoveSystemClassName(this ComponentData data, string contextName)

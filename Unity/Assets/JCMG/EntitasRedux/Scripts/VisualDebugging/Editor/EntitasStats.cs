@@ -127,12 +127,12 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 		private static bool IsSystem(Type type)
 		{
 			return type.ImplementsInterface<ISystem>() &&
-			       type != typeof(ReactiveSystem<>) &&
-			       type != typeof(MultiReactiveSystem<,>) &&
-			       type != typeof(Systems) &&
-			       type != typeof(DebugSystems) &&
-			       type != typeof(JobSystem<>) &&
-			       type.FullName != "Feature";
+				   type != typeof(ReactiveSystem<>) &&
+				   type != typeof(MultiReactiveSystem<,>) &&
+				   type != typeof(Systems) &&
+				   type != typeof(DebugSystems) &&
+				   type != typeof(JobSystem<>) &&
+				   type.FullName != "Feature";
 		}
 	}
 }

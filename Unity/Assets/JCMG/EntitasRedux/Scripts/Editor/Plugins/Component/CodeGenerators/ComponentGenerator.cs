@@ -32,9 +32,10 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 	internal sealed class ComponentGenerator : ICodeGenerator
 	{
 		private const string COMPONENT_TEMPLATE =
-			@"[JCMG.EntitasRedux.DontGenerate(false)]
-public sealed class ${FullComponentName} : JCMG.EntitasRedux.IComponent {
-    public ${Type} value;
+@"[JCMG.EntitasRedux.DontGenerate(false)]
+public sealed class ${FullComponentName} : JCMG.EntitasRedux.IComponent
+{
+	public ${Type} value;
 }
 ";
 

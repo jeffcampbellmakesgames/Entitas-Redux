@@ -37,20 +37,21 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		}
 
 		private const string STANDARD_TEMPLATE =
-			@"public partial interface I${ComponentName}Entity {
+@"public partial interface I${ComponentName}Entity
+{
+	${ComponentType} ${validComponentName} { get; }
+	bool Has${ComponentName} { get; }
 
-    ${ComponentType} ${validComponentName} { get; }
-    bool Has${ComponentName} { get; }
-
-    void Add${ComponentName}(${newMethodParameters});
-    void Replace${ComponentName}(${newMethodParameters});
-    void Remove${ComponentName}();
+	void Add${ComponentName}(${newMethodParameters});
+	void Replace${ComponentName}(${newMethodParameters});
+	void Remove${ComponentName}();
 }
 ";
 
 		private const string FLAG_TEMPLATE =
-			@"public partial interface I${ComponentName}Entity {
-    bool ${prefixedComponentName} { get; set; }
+@"public partial interface I${ComponentName}Entity
+{
+	bool ${prefixedComponentName} { get; set; }
 }
 ";
 

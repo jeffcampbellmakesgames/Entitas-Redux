@@ -129,7 +129,7 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 		private const string PERFORMANCE_DESCRIPTION = "All performance statistics are meausured in milliseconds (ms).";
 
 		private const string SYSTEMS_DESCRIPTION = "These are all systems running as a part of this Feature. Toggles " +
-		                                           "are available to selectively filter which systems are running.";
+												   "are available to selectively filter which systems are running.";
 
 		static DebugSystemsBehaviourInspector()
 		{
@@ -365,9 +365,9 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 		}
 
 		private void DrawSystemSection(string header,
-		                               ref bool showSystems,
-		                               DebugSystems systems,
-		                               SystemInterfaceFlags systemInterfaceFlags)
+									   ref bool showSystems,
+									   DebugSystems systems,
+									   SystemInterfaceFlags systemInterfaceFlags)
 		{
 			showSystems = EditorGUILayoutTools.DrawSectionHeaderToggle(header, showSystems);
 			if (showSystems && ShouldShowSystems(systems, systemInterfaceFlags))
@@ -639,31 +639,31 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 				: style.normal.textColor;
 
 			if (systemFlag == SystemInterfaceFlags.FixedUpdateSystem &&
-			    systemInfo.AverageFixedUpdateDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
+				systemInfo.AverageFixedUpdateDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
 			{
 				color = Color.red;
 			}
 
 			if (systemFlag == SystemInterfaceFlags.UpdateSystem &&
-			    systemInfo.AverageUpdateDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
+				systemInfo.AverageUpdateDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
 			{
 				color = Color.red;
 			}
 
 			if (systemFlag == SystemInterfaceFlags.LateUpdateSystem &&
-			    systemInfo.AverageLateUpdateDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
+				systemInfo.AverageLateUpdateDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
 			{
 				color = Color.red;
 			}
 
 			if (systemFlag == SystemInterfaceFlags.ReactiveSystem &&
-			    systemInfo.AverageReactiveDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
+				systemInfo.AverageReactiveDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
 			{
 				color = Color.red;
 			}
 
 			if (systemFlag == SystemInterfaceFlags.CleanupSystem &&
-			    systemInfo.AverageCleanupDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
+				systemInfo.AverageCleanupDuration >= VisualDebuggingPreferences.SystemWarningThreshold)
 			{
 				color = Color.red;
 			}

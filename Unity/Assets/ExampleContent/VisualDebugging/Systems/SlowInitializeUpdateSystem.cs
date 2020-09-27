@@ -4,7 +4,7 @@ using JCMG.EntitasRedux;
 namespace ExampleContent.VisualDebugging
 {
 	public class SlowInitializeUpdateSystem : IInitializeSystem,
-	                                           IUpdateSystem
+											   IUpdateSystem
 	{
 		public void Update()
 		{

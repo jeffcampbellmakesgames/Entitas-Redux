@@ -54,9 +54,9 @@ namespace JCMG.EntitasRedux.Editor
 		private const string TWITTER_URL = "https://twitter.com/StampyTurtle";
 
 		private const string SHARE_MESSAGE = "Hi there! My name is Jeff Campbell and I make open source tools for game " +
-		                                     "developers.\n\nIf you enjoy using this tool and want to support its development " +
-		                                     "and other high-quality, free open-source tools, follow me on Twitter, " +
-		                                     "GitHub, and consider buying me a coffee on Ko-Fi.";
+											 "developers.\n\nIf you enjoy using this tool and want to support its development " +
+											 "and other high-quality, free open-source tools, follow me on Twitter, " +
+											 "GitHub, and consider buying me a coffee on Ko-Fi.";
 
 		public static void View()
 		{

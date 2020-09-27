@@ -27,8 +27,8 @@ using JCMG.EntitasRedux;
 
 namespace EntitasRedux.Tests {
 
-    [Context("Test"), Context("Test2"), Unique]
-    public sealed class UniqueClassToGenerate {
-        public string value;
-    }
+	[Context("Test"), Context("Test2"), Unique]
+	public sealed class UniqueClassToGenerate {
+		public string value;
+	}
 }

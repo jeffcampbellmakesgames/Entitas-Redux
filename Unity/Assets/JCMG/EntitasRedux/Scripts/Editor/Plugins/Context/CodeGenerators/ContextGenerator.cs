@@ -34,27 +34,26 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		private const string TEMPLATE =
 @"public sealed partial class ${ContextType} : JCMG.EntitasRedux.Context<${EntityType}>
 {
-
-    public ${ContextType}()
-        : base(
-            ${Lookup}.TotalComponents,
-            0,
-            new JCMG.EntitasRedux.ContextInfo(
-                ""${ContextName}"",
-                ${Lookup}.ComponentNames,
-                ${Lookup}.ComponentTypes
-            ),
-            (entity) =>
+	public ${ContextType}()
+		: base(
+			${Lookup}.TotalComponents,
+			0,
+			new JCMG.EntitasRedux.ContextInfo(
+				""${ContextName}"",
+				${Lookup}.ComponentNames,
+				${Lookup}.ComponentTypes
+			),
+			(entity) =>
 
 #if (ENTITAS_FAST_AND_UNSAFE)
-                new JCMG.EntitasRedux.UnsafeAERC(),
+				new JCMG.EntitasRedux.UnsafeAERC(),
 #else
-                new JCMG.EntitasRedux.SafeAERC(entity),
+				new JCMG.EntitasRedux.SafeAERC(entity),
 #endif
-            () => new ${EntityType}()
-        )
+			() => new ${EntityType}()
+		)
 	{
-    }
+	}
 
 	/// <summary>
 	/// Creates a new entity and adds copies of all specified components to it. If replaceExisting is true, it will

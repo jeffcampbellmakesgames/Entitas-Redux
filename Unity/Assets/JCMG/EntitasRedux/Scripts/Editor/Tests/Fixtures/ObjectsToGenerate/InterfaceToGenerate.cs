@@ -27,8 +27,8 @@ using JCMG.EntitasRedux;
 
 namespace EntitasRedux.Tests {
 
-    [Context("Test")]
-    public interface InterfaceToGenerate {
-        string value { get; set; }
-    }
+	[Context("Test")]
+	public interface InterfaceToGenerate {
+		string value { get; set; }
+	}
 }

@@ -38,23 +38,25 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		}
 
 		private const string TEMPLATE =
-			@"using System;
+@"using System;
 using System.Collections.Generic;
 using JCMG.EntitasRedux;
 
-public static class ${Lookup} {
-
+public static class ${Lookup}
+{
 ${componentConstantsList}
 
 ${totalComponentsConstant}
 
-    public static readonly string[] ComponentNames = {
+	public static readonly string[] ComponentNames =
+	{
 ${componentNamesList}
-    };
+	};
 
-    public static readonly System.Type[] ComponentTypes = {
+	public static readonly System.Type[] ComponentTypes =
+	{
 ${componentTypesList}
-    };
+	};
 
 	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
 	{
@@ -83,11 +85,11 @@ ${componentTypeToIndexLookup}
 }
 ";
 
-		private const string COMPONENT_CONSTANT_TEMPLATE = @"    public const int ${ComponentName} = ${Index};";
-		private const string TOTAL_COMPONENTS_CONSTANT_TEMPLATE = @"    public const int TotalComponents = ${totalComponents};";
-		private const string COMPONENT_NAME_TEMPLATE = @"        ""${ComponentName}""";
-		private const string COMPONENT_TYPE_TEMPLATE = @"        typeof(${ComponentType})";
-		private const string COMPONENT_TYPE_TO_INDEX_TEMPLATE = "        { typeof(${ComponentType}), ${Index} }";
+		private const string COMPONENT_CONSTANT_TEMPLATE = @"	public const int ${ComponentName} = ${Index};";
+		private const string TOTAL_COMPONENTS_CONSTANT_TEMPLATE = @"	public const int TotalComponents = ${totalComponents};";
+		private const string COMPONENT_NAME_TEMPLATE = @"		""${ComponentName}""";
+		private const string COMPONENT_TYPE_TEMPLATE = @"		typeof(${ComponentType})";
+		private const string COMPONENT_TYPE_TO_INDEX_TEMPLATE = "		{ typeof(${ComponentType}), ${Index} }";
 
 		public override CodeGenFile[] Generate(CodeGeneratorData[] data)
 		{
