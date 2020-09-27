@@ -43,7 +43,7 @@ namespace EntitasRedux.Tests
 		[SetUp]
 		public void Setup()
 		{
-			_groupA = new Group<MyTestEntity>(Matcher<MyTestEntity>.AllOf(CID.ComponentA));
+			_groupA = new Group<MyTestEntity>(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA));
 			_entityWithAComponent1 = TestTools.CreateEntity().AddComponentA();
 			_entityWithAComponent2 = TestTools.CreateEntity().AddComponentA();
 			_didDispatch = 0;
@@ -224,7 +224,7 @@ namespace EntitasRedux.Tests
 
 				Assert.AreEqual(_groupA, group);
 				Assert.AreEqual(_entityWithAComponent1, entity);
-				Assert.AreEqual(CID.ComponentA, index);
+				Assert.AreEqual(MyTestComponentsLookup.ComponentA, index);
 				Assert.AreEqual(Component.A, component);
 			};
 			_groupA.OnEntityRemoved += delegate { Assert.Fail(); };
@@ -269,7 +269,7 @@ namespace EntitasRedux.Tests
 
 				Assert.AreEqual(_groupA, group);
 				Assert.AreEqual(_entityWithAComponent1, entity);
-				Assert.AreEqual(CID.ComponentA, index);
+				Assert.AreEqual(MyTestComponentsLookup.ComponentA, index);
 				Assert.AreEqual(Component.A, component);
 			};
 			_groupA.OnEntityAdded += delegate { Assert.Fail(); };
@@ -306,7 +306,7 @@ namespace EntitasRedux.Tests
 				removed += 1;
 				Assert.AreEqual(_groupA, group);
 				Assert.AreEqual(_entityWithAComponent1, entity);
-				Assert.AreEqual(CID.ComponentA, index);
+				Assert.AreEqual(MyTestComponentsLookup.ComponentA, index);
 				Assert.AreEqual(Component.A, component);
 			};
 			_groupA.OnEntityAdded += (group, entity, index, component) =>
@@ -315,7 +315,7 @@ namespace EntitasRedux.Tests
 
 				Assert.AreEqual(_groupA, group);
 				Assert.AreEqual(_entityWithAComponent1, entity);
-				Assert.AreEqual(CID.ComponentA, index);
+				Assert.AreEqual(MyTestComponentsLookup.ComponentA, index);
 				Assert.AreEqual(newComponentA, component);
 			};
 			_groupA.OnEntityUpdated += (group, entity, index, previousComponent, newComponent) =>
@@ -324,7 +324,7 @@ namespace EntitasRedux.Tests
 
 				Assert.AreEqual(_groupA, group);
 				Assert.AreEqual(_entityWithAComponent1, entity);
-				Assert.AreEqual(CID.ComponentA, index);
+				Assert.AreEqual(MyTestComponentsLookup.ComponentA, index);
 				Assert.AreEqual(Component.A, previousComponent);
 				Assert.AreEqual(newComponentA, newComponent);
 			};
@@ -652,24 +652,24 @@ namespace EntitasRedux.Tests
 
 		private void HandleAddEntityWithAComponent(MyTestEntity entity)
 		{
-			Handle(entity, CID.ComponentA, entity.GetComponentA());
+			Handle(entity, MyTestComponentsLookup.ComponentA, entity.GetComponentA());
 		}
 
 		private void HandleAddEntityWithBComponent(MyTestEntity entity)
 		{
-			Handle(entity, CID.ComponentB, entity.GetComponentB());
+			Handle(entity, MyTestComponentsLookup.ComponentB, entity.GetComponentB());
 		}
 
 		private void HandleRemoveEntityWithAComponent(MyTestEntity entity, IComponent component)
 		{
-			Handle(entity, CID.ComponentA, component);
+			Handle(entity, MyTestComponentsLookup.ComponentA, component);
 		}
 
 		private void HandleUpdateEntityWithAComponent(MyTestEntity entity, IComponent component)
 		{
 			_groupA.UpdateEntity(
 				entity,
-				CID.ComponentA,
+				MyTestComponentsLookup.ComponentA,
 				Component.A,
 				component);
 		}

@@ -70,20 +70,20 @@ namespace EntitasRedux.Tests
 		{
 			SetupAllOfMatcher();
 
-			AssertIndicesContain(_allOfMatcher.Indices, CID.ComponentA, CID.ComponentB);
-			AssertIndicesContain(_allOfMatcher.AllOfIndices, CID.ComponentA, CID.ComponentB);
+			AssertIndicesContain(_allOfMatcher.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
+			AssertIndicesContain(_allOfMatcher.AllOfIndices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
 		}
 
 		[NUnit.Framework.Test]
 		public void HasCorrectIndicesForAllOfWithoutDuplicates()
 		{
 			_allOfMatcher = Matcher<MyTestEntity>.AllOf(
-				CID.ComponentA,
-				CID.ComponentA,
-				CID.ComponentB,
-				CID.ComponentB);
-			AssertIndicesContain(_allOfMatcher.Indices, CID.ComponentA, CID.ComponentB);
-			AssertIndicesContain(_allOfMatcher.AllOfIndices, CID.ComponentA, CID.ComponentB);
+				MyTestComponentsLookup.ComponentA,
+				MyTestComponentsLookup.ComponentA,
+				MyTestComponentsLookup.ComponentB,
+				MyTestComponentsLookup.ComponentB);
+			AssertIndicesContain(_allOfMatcher.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
+			AssertIndicesContain(_allOfMatcher.AllOfIndices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
 		}
 
 		[NUnit.Framework.Test]
@@ -106,31 +106,31 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void AllOfMergedMatchersHaveCorrectIndices()
 		{
-			var m1 = Matcher<TestEntity>.AllOf(CID.ComponentA);
-			var m2 = Matcher<TestEntity>.AllOf(CID.ComponentB);
-			var m3 = Matcher<TestEntity>.AllOf(CID.ComponentC);
+			var m1 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
+			var m2 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentB);
+			var m3 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentC);
 			var mergedMatcher = Matcher<TestEntity>.AllOf(m1, m2, m3);
 
-			AssertIndicesContain(mergedMatcher.Indices, CID.ComponentA, CID.ComponentB, CID.ComponentC);
-			AssertIndicesContain(mergedMatcher.AllOfIndices, CID.ComponentA, CID.ComponentB, CID.ComponentC);
+			AssertIndicesContain(mergedMatcher.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB, MyTestComponentsLookup.ComponentC);
+			AssertIndicesContain(mergedMatcher.AllOfIndices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB, MyTestComponentsLookup.ComponentC);
 		}
 
 		[NUnit.Framework.Test]
 		public void AllOfMergedMatchersHaveZeroDuplicateIndices()
 		{
-			var m1 = Matcher<TestEntity>.AllOf(CID.ComponentA);
-            var m2 = Matcher<TestEntity>.AllOf(CID.ComponentA);
-            var m3 = Matcher<TestEntity>.AllOf(CID.ComponentB);
+			var m1 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
+            var m2 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
+            var m3 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentB);
             var mergedMatcher = Matcher<TestEntity>.AllOf(m1, m2, m3);
 
-			AssertIndicesContain(mergedMatcher.Indices, CID.ComponentA, CID.ComponentB);
-			AssertIndicesContain(mergedMatcher.AllOfIndices, CID.ComponentA, CID.ComponentB);
+			AssertIndicesContain(mergedMatcher.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
+			AssertIndicesContain(mergedMatcher.AllOfIndices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
 		}
 
 		[NUnit.Framework.Test]
 		public void ThrowsWhenMergingMatcherWithMoreThanOneIndex()
 		{
-			var m1 = Matcher<TestEntity>.AllOf(CID.ComponentA, CID.ComponentB);
+			var m1 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
 
 			Assert.Throws<MatcherException>(() => Matcher<TestEntity>.AllOf(m1));
 		}
@@ -140,7 +140,7 @@ namespace EntitasRedux.Tests
 		{
 			SetupAllOfMatcher();
 
-			Assert.AreEqual("AllOf(1, 2)", _allOfMatcher.ToString());
+			Assert.AreEqual("AllOf(3, 4)", _allOfMatcher.ToString());
 		}
 
 		[NUnit.Framework.Test]
@@ -149,23 +149,23 @@ namespace EntitasRedux.Tests
 			SetupAllOfMatcher();
 
 			var matcher = (Matcher<MyTestEntity>)_allOfMatcher;
-			matcher.ComponentNames = new[] { "one", "two", "three" };
+			matcher.ComponentNames = new[] { "zero", "one", "two", "three", "four", "five" };
 
-			Assert.AreEqual("AllOf(two, three)", matcher.ToString());
+			Assert.AreEqual("AllOf(three, four)", matcher.ToString());
 		}
 
 		[NUnit.Framework.Test]
 		public void ValidateMergedAllOfMatcherToStringUsesComponentNames()
 		{
-			var m1 = (Matcher<MyTestEntity>)Matcher<MyTestEntity>.AllOf(CID.ComponentA);
-			var m2 = (Matcher<MyTestEntity>)Matcher<MyTestEntity>.AllOf(CID.ComponentB);
-			var m3 = (Matcher<MyTestEntity>)Matcher<MyTestEntity>.AllOf(CID.ComponentC);
+			var m1 = (Matcher<MyTestEntity>)Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
+			var m2 = (Matcher<MyTestEntity>)Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentB);
+			var m3 = (Matcher<MyTestEntity>)Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentC);
 
-			m2.ComponentNames = new[] { "m_0", "m_1", "m_2", "m_3" };
+			m2.ComponentNames = new[] { "m_0", "m_1", "m_2", "m_3", "m_4", "m_5" };
 
 			var mergedMatcher = Matcher<MyTestEntity>.AllOf(m1, m2, m3);
 
-			Assert.AreEqual("AllOf(m_1, m_2, m_3)", mergedMatcher.ToString());
+			Assert.AreEqual("AllOf(m_3, m_4, m_5)", mergedMatcher.ToString());
 		}
 
 		#endregion
@@ -177,21 +177,21 @@ namespace EntitasRedux.Tests
 		{
 			SetupAnyOfMatcher();
 
-			AssertIndicesContain(_anyOfMatcher.Indices, CID.ComponentA, CID.ComponentB);
-			AssertIndicesContain(_anyOfMatcher.AnyOfIndices, CID.ComponentA, CID.ComponentB);
+			AssertIndicesContain(_anyOfMatcher.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
+			AssertIndicesContain(_anyOfMatcher.AnyOfIndices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
 		}
 
 		[NUnit.Framework.Test]
 		public void AnyOfMatcherHasAllIndicesWithoutDuplicates()
 		{
 			_anyOfMatcher = Matcher<MyTestEntity>.AnyOf(
-				CID.ComponentA,
-				CID.ComponentA,
-				CID.ComponentB,
-				CID.ComponentB);
+				MyTestComponentsLookup.ComponentA,
+				MyTestComponentsLookup.ComponentA,
+				MyTestComponentsLookup.ComponentB,
+				MyTestComponentsLookup.ComponentB);
 
-			AssertIndicesContain(_anyOfMatcher.Indices, CID.ComponentA, CID.ComponentB);
-			AssertIndicesContain(_anyOfMatcher.AnyOfIndices, CID.ComponentA, CID.ComponentB);
+			AssertIndicesContain(_anyOfMatcher.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
+			AssertIndicesContain(_anyOfMatcher.AnyOfIndices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
 		}
 
 		[NUnit.Framework.Test]
@@ -223,31 +223,31 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void AnyOfMergesMatchersToNewMatcher()
 		{
-			var m1 = Matcher<TestEntity>.AnyOf(CID.ComponentA);
-			var m2 = Matcher<TestEntity>.AnyOf(CID.ComponentB);
-			var m3 = Matcher<TestEntity>.AnyOf(CID.ComponentC);
+			var m1 = Matcher<TestEntity>.AnyOf(MyTestComponentsLookup.ComponentA);
+			var m2 = Matcher<TestEntity>.AnyOf(MyTestComponentsLookup.ComponentB);
+			var m3 = Matcher<TestEntity>.AnyOf(MyTestComponentsLookup.ComponentC);
 			var mergedMatcher = Matcher<TestEntity>.AnyOf(m1, m2, m3);
 
-			AssertIndicesContain(mergedMatcher.Indices, CID.ComponentA, CID.ComponentB, CID.ComponentC);
-			AssertIndicesContain(mergedMatcher.AnyOfIndices, CID.ComponentA, CID.ComponentB, CID.ComponentC);
+			AssertIndicesContain(mergedMatcher.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB, MyTestComponentsLookup.ComponentC);
+			AssertIndicesContain(mergedMatcher.AnyOfIndices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB, MyTestComponentsLookup.ComponentC);
 		}
 
 		[NUnit.Framework.Test]
 		public void AnyOfMergesMatchersToNewMatcherWithoutDuplicates()
 		{
-			var m1 = Matcher<TestEntity>.AnyOf(CID.ComponentA);
-			var m2 = Matcher<TestEntity>.AnyOf(CID.ComponentB);
-			var m3 = Matcher<TestEntity>.AnyOf(CID.ComponentC);
+			var m1 = Matcher<TestEntity>.AnyOf(MyTestComponentsLookup.ComponentA);
+			var m2 = Matcher<TestEntity>.AnyOf(MyTestComponentsLookup.ComponentB);
+			var m3 = Matcher<TestEntity>.AnyOf(MyTestComponentsLookup.ComponentC);
 			var mergedMatcher = Matcher<TestEntity>.AnyOf(m1, m2, m3);
 
-			AssertIndicesContain(mergedMatcher.Indices, CID.ComponentA, CID.ComponentB, CID.ComponentC);
-			AssertIndicesContain(mergedMatcher.AnyOfIndices, CID.ComponentA, CID.ComponentB, CID.ComponentC);
+			AssertIndicesContain(mergedMatcher.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB, MyTestComponentsLookup.ComponentC);
+			AssertIndicesContain(mergedMatcher.AnyOfIndices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB, MyTestComponentsLookup.ComponentC);
 		}
 
 		[NUnit.Framework.Test]
 		public void AnyOfThrowsWhenMergingMatcherWithMoreThanOneIndex()
 		{
-			var m1 = Matcher<TestEntity>.AnyOf(CID.ComponentA, CID.ComponentB);
+			var m1 = Matcher<TestEntity>.AnyOf(MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
 
 			Assert.Throws<MatcherException>(() => Matcher<TestEntity>.AnyOf(m1));
 		}
@@ -257,7 +257,7 @@ namespace EntitasRedux.Tests
 		{
 			SetupAnyOfMatcher();
 
-			Assert.AreEqual(_anyOfMatcher.ToString(), "AnyOf(1, 2)");
+			Assert.AreEqual(_anyOfMatcher.ToString(), "AnyOf(3, 4)");
 		}
 
 		#endregion
@@ -269,9 +269,9 @@ namespace EntitasRedux.Tests
 		{
 			SetupCompoundMatcher();
 
-			AssertIndicesContain(_compoundMatcher.Indices, CID.ComponentA, CID.ComponentB, CID.ComponentC, CID.ComponentD);
-			AssertIndicesContain(_compoundMatcher.AllOfIndices, CID.ComponentA, CID.ComponentB);
-			AssertIndicesContain(_compoundMatcher.NoneOfIndices, CID.ComponentC, CID.ComponentD);
+			AssertIndicesContain(_compoundMatcher.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB, MyTestComponentsLookup.ComponentC, MyTestComponentsLookup.ComponentD);
+			AssertIndicesContain(_compoundMatcher.AllOfIndices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
+			AssertIndicesContain(_compoundMatcher.NoneOfIndices, MyTestComponentsLookup.ComponentC, MyTestComponentsLookup.ComponentD);
 		}
 
 		[NUnit.Framework.Test]
@@ -279,13 +279,13 @@ namespace EntitasRedux.Tests
 		{
 			_compoundMatcher = Matcher<MyTestEntity>
 				.AllOf(
-					CID.ComponentA, CID.ComponentA,
-					CID.ComponentB)
-				.NoneOf(CID.ComponentB, CID.ComponentC, CID.ComponentC);
+					MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentA,
+					MyTestComponentsLookup.ComponentB)
+				.NoneOf(MyTestComponentsLookup.ComponentB, MyTestComponentsLookup.ComponentC, MyTestComponentsLookup.ComponentC);
 
-			AssertIndicesContain(_compoundMatcher.Indices, CID.ComponentA, CID.ComponentB, CID.ComponentC);
-			AssertIndicesContain(_compoundMatcher.AllOfIndices, CID.ComponentA, CID.ComponentB);
-			AssertIndicesContain(_compoundMatcher.NoneOfIndices, CID.ComponentB, CID.ComponentC);
+			AssertIndicesContain(_compoundMatcher.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB, MyTestComponentsLookup.ComponentC);
+			AssertIndicesContain(_compoundMatcher.AllOfIndices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
+			AssertIndicesContain(_compoundMatcher.NoneOfIndices, MyTestComponentsLookup.ComponentB, MyTestComponentsLookup.ComponentC);
 		}
 
 		[NUnit.Framework.Test]
@@ -315,29 +315,29 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void CompoundMatcherMutatesExistingMatcher()
 		{
-			var m1 = Matcher<TestEntity>.AllOf(CID.ComponentA);
-			var m2 = m1.NoneOf(CID.ComponentB);
+			var m1 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
+			var m2 = m1.NoneOf(MyTestComponentsLookup.ComponentB);
 
 			Assert.AreEqual(m2, m1);
 
-			AssertIndicesContain(m1.Indices, CID.ComponentA, CID.ComponentB);
-			AssertIndicesContain(m1.AllOfIndices, CID.ComponentA);
-			AssertIndicesContain(m1.NoneOfIndices, CID.ComponentB);
+			AssertIndicesContain(m1.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
+			AssertIndicesContain(m1.AllOfIndices, MyTestComponentsLookup.ComponentA);
+			AssertIndicesContain(m1.NoneOfIndices, MyTestComponentsLookup.ComponentB);
 		}
 
 		[NUnit.Framework.Test]
 		public void CompoundMatcherMutatesExistingMergedMatcher()
 		{
-			var m1 = Matcher<TestEntity>.AllOf(CID.ComponentA);
-			var m2 = Matcher<TestEntity>.AllOf(CID.ComponentB);
+			var m1 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
+			var m2 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentB);
 			var m3 = Matcher<TestEntity>.AllOf(m1);
 			var m4 = m3.NoneOf(m2);
 
 			Assert.AreEqual(m4, m3);
 
-			AssertIndicesContain(m3.Indices, CID.ComponentA, CID.ComponentB);
-			AssertIndicesContain(m3.AllOfIndices, CID.ComponentA);
-			AssertIndicesContain(m3.NoneOfIndices, CID.ComponentB);
+			AssertIndicesContain(m3.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
+			AssertIndicesContain(m3.AllOfIndices, MyTestComponentsLookup.ComponentA);
+			AssertIndicesContain(m3.NoneOfIndices, MyTestComponentsLookup.ComponentB);
 		}
 
 		[NUnit.Framework.Test]
@@ -345,7 +345,7 @@ namespace EntitasRedux.Tests
 		{
 			SetupCompoundMatcher();
 
-			Assert.AreEqual(_compoundMatcher.ToString(), "AllOf(1, 2).NoneOf(3, 4)");
+			Assert.AreEqual("AllOf(3, 4).NoneOf(5, 6)", _compoundMatcher.ToString());
 		}
 
 		[NUnit.Framework.Test]
@@ -354,9 +354,9 @@ namespace EntitasRedux.Tests
 			SetupCompoundMatcher();
 
 			var matcher = (Matcher<MyTestEntity>)_compoundMatcher;
-			matcher.ComponentNames = new[] { "one", "two", "three", "four", "five" };
+			matcher.ComponentNames =new[] { "zero", "one", "two", "three", "four", "five", "six" };
 
-			Assert.AreEqual(matcher.ToString(), "AllOf(two, three).NoneOf(four, five)");
+			Assert.AreEqual("AllOf(three, four).NoneOf(five, six)", matcher.ToString());
 		}
 
 		#endregion
@@ -366,9 +366,9 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void MatcherIndicesCacheInvalidatedWhenCallingAnyOf()
 		{
-			var m = Matcher<TestEntity>.AllOf(CID.ComponentA);
+			var m = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
 			var cache = m.Indices;
-			m.AnyOf(CID.ComponentB);
+			m.AnyOf(MyTestComponentsLookup.ComponentB);
 
 			Assert.AreNotEqual(cache, m.Indices);
 		}
@@ -377,9 +377,9 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void MatcherIndicesCacheInvalidatedWhenCallingNoneOf()
 		{
-			var m = Matcher<TestEntity>.AllOf(CID.ComponentA);
+			var m = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
 			var cache = m.Indices;
-			m.NoneOf(CID.ComponentB);
+			m.NoneOf(MyTestComponentsLookup.ComponentB);
 
 			Assert.AreNotEqual(cache, m.Indices);
 		}
@@ -430,8 +430,8 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void MergedMatcherEquals()
 		{
-			var m1 = Matcher<TestEntity>.AllOf(CID.ComponentA);
-			var m2 = Matcher<TestEntity>.AllOf(CID.ComponentB);
+			var m1 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
+			var m2 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentB);
 			var m3 = AllOfBa();
 
 			var mergedMatcher = Matcher<TestEntity>.AllOf(m1, m2);
@@ -443,7 +443,7 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void DifferentAllMatcherDoesNotEqual()
 		{
-			var m1 = Matcher<TestEntity>.AllOf(CID.ComponentA);
+			var m1 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
 			var m2 = AllOfAb();
 
 			Assert.AreNotEqual(m2, m1);
@@ -453,8 +453,8 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void AllOfDoesNotEqualAnyOfWithSameIndices()
 		{
-			var m1 = Matcher<TestEntity>.AllOf(CID.ComponentA);
-			var m2 = Matcher<TestEntity>.AnyOf(CID.ComponentA);
+			var m1 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
+			var m2 = Matcher<TestEntity>.AnyOf(MyTestComponentsLookup.ComponentA);
 
 			Assert.AreNotEqual(m2, m1);
 			Assert.AreNotEqual(m2.GetHashCode(), m1.GetHashCode());
@@ -463,8 +463,8 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void DifferentTypeMatchersWithSameIndicesAreNotEqual()
 		{
-			var m1 = Matcher<TestEntity>.AllOf(CID.ComponentA);
-			var m2 = Matcher<TestEntity>.AllOf(CID.ComponentB);
+			var m1 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
+			var m2 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentB);
 
 			var m3 = Matcher<TestEntity>.AllOf(m1, m2);
 			var m4 = Matcher<TestEntity>.AnyOf(m1, m2);
@@ -476,10 +476,10 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void CompoundMatchersCanEqual()
 		{
-			var m1 = Matcher<TestEntity>.AllOf(CID.ComponentA);
-			var m2 = Matcher<TestEntity>.AnyOf(CID.ComponentB);
-			var m3 = Matcher<TestEntity>.AnyOf(CID.ComponentC);
-			var m4 = Matcher<TestEntity>.AnyOf(CID.ComponentD);
+			var m1 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
+			var m2 = Matcher<TestEntity>.AnyOf(MyTestComponentsLookup.ComponentB);
+			var m3 = Matcher<TestEntity>.AnyOf(MyTestComponentsLookup.ComponentC);
+			var m4 = Matcher<TestEntity>.AnyOf(MyTestComponentsLookup.ComponentD);
 
 			var mX = Matcher<TestEntity>.AllOf(m1, m2).AnyOf(m3, m4);
 			var mY = Matcher<TestEntity>.AllOf(m1, m2).AnyOf(m3, m4);
@@ -494,19 +494,19 @@ namespace EntitasRedux.Tests
 
 		private void SetupAllOfMatcher()
 		{
-			_allOfMatcher = Matcher<MyTestEntity>.AllOf(CID.ComponentA, CID.ComponentB);
+			_allOfMatcher = Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
 		}
 
 		private void SetupAnyOfMatcher()
 		{
-			_anyOfMatcher = Matcher<MyTestEntity>.AnyOf(CID.ComponentA, CID.ComponentB);
+			_anyOfMatcher = Matcher<MyTestEntity>.AnyOf(MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
 		}
 
 		private void SetupCompoundMatcher()
 		{
 			_compoundMatcher = Matcher<MyTestEntity>
-				.AllOf(CID.ComponentA, CID.ComponentB)
-				.NoneOf(CID.ComponentC, CID.ComponentD);
+				.AllOf(MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB)
+				.NoneOf(MyTestComponentsLookup.ComponentC, MyTestComponentsLookup.ComponentD);
 		}
 
 		private static void AssertIndicesContain(int[] indices, params int[] expectedIndices)
@@ -521,12 +521,12 @@ namespace EntitasRedux.Tests
 
 		private static IAllOfMatcher<TestEntity> AllOfAb()
 		{
-			return Matcher<TestEntity>.AllOf(CID.ComponentA, CID.ComponentB);
+			return Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
 		}
 
 		private static IAllOfMatcher<TestEntity> AllOfBa()
 		{
-			return Matcher<TestEntity>.AllOf(CID.ComponentB, CID.ComponentA);
+			return Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentB, MyTestComponentsLookup.ComponentA);
 		}
 
 		#endregion

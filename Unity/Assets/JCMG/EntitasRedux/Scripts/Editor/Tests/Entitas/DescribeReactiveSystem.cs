@@ -36,7 +36,7 @@ namespace EntitasRedux.Tests
 		private IContext<MyTestEntity> _context2;
 		private ReactiveSystemSpy _system;
 
-		private readonly IMatcher<MyTestEntity> _matcherAb = Matcher<MyTestEntity>.AllOf(CID.ComponentA, CID.ComponentB);
+		private readonly IMatcher<MyTestEntity> _matcherAb = Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
 
 		[SetUp]
 		public void Setup()
@@ -302,7 +302,7 @@ namespace EntitasRedux.Tests
 		public void FiltersEntities()
 		{
 			_system = new ReactiveSystemSpy(_context.CreateCollector(_matcherAb),
-							e => ((NameAgeComponent)e.GetComponent(CID.ComponentA)).age > 42);
+							e => ((NameAgeComponent)e.GetComponent(MyTestComponentsLookup.ComponentA)).age > 42);
 
 			_context.CreateEntity()
 				.AddComponentA()
@@ -310,11 +310,11 @@ namespace EntitasRedux.Tests
 
 			var eAb1 = _context.CreateEntity();
 			eAb1.AddComponentB();
-			eAb1.AddComponent(CID.ComponentA, new NameAgeComponent { age = 10 });
+			eAb1.AddComponent(MyTestComponentsLookup.ComponentA, new NameAgeComponent { age = 10 });
 
 			var eAb2 = _context.CreateEntity();
 			eAb2.AddComponentB();
-			eAb2.AddComponent(CID.ComponentA, new NameAgeComponent { age = 50 });
+			eAb2.AddComponent(MyTestComponentsLookup.ComponentA, new NameAgeComponent { age = 50 });
 
 			var didExecute = 0;
 			_system.executeAction = entities =>
@@ -381,8 +381,8 @@ namespace EntitasRedux.Tests
 			_context1 = new MyTestContext();
 			_context2 = new MyTestContext();
 
-			var groupA = _context1.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentA));
-			var groupB = _context2.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentB));
+			var groupA = _context1.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA));
+			var groupB = _context2.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentB));
 
 			var groups = new[] { groupA, groupB };
 			var groupEvents = new[] {

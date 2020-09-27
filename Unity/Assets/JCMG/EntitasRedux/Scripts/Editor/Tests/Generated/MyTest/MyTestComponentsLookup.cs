@@ -26,9 +26,9 @@ public static class MyTestComponentsLookup {
     public const int EntityIndexNoContext = 10;
     public const int Inherited = 11;
     public const int MultiplePrimaryEntityIndices = 12;
-    public const int NoContext = 13;
-    public const int Parent = 14;
-    public const int NameAge = 15;
+    public const int NameAge = 13;
+    public const int NoContext = 14;
+    public const int Parent = 15;
     public const int PrimaryEntityIndex = 16;
     public const int ShallowCopy = 17;
 
@@ -48,9 +48,9 @@ public static class MyTestComponentsLookup {
         "EntityIndexNoContext",
         "Inherited",
         "MultiplePrimaryEntityIndices",
+        "NameAge",
         "NoContext",
         "Parent",
-        "NameAge",
         "PrimaryEntityIndex",
         "ShallowCopy"
     };
@@ -69,9 +69,9 @@ public static class MyTestComponentsLookup {
         typeof(EntitasRedux.Tests.EntityIndexNoContextComponent),
         typeof(EntitasRedux.Tests.InheritedComponent),
         typeof(EntitasRedux.Tests.MultiplePrimaryEntityIndicesComponent),
+        typeof(EntitasRedux.Tests.NameAgeComponent),
         typeof(EntitasRedux.Tests.NoContextComponent),
         typeof(EntitasRedux.Tests.ParentComponent),
-        typeof(EntitasRedux.Tests.Performance.NameAgeComponent),
         typeof(EntitasRedux.Tests.PrimaryEntityIndexComponent),
         typeof(EntitasRedux.Tests.ShallowCopyComponent)
     };
@@ -91,9 +91,9 @@ public static class MyTestComponentsLookup {
         { typeof(EntitasRedux.Tests.EntityIndexNoContextComponent), 10 },
         { typeof(EntitasRedux.Tests.InheritedComponent), 11 },
         { typeof(EntitasRedux.Tests.MultiplePrimaryEntityIndicesComponent), 12 },
-        { typeof(EntitasRedux.Tests.NoContextComponent), 13 },
-        { typeof(EntitasRedux.Tests.ParentComponent), 14 },
-        { typeof(EntitasRedux.Tests.Performance.NameAgeComponent), 15 },
+        { typeof(EntitasRedux.Tests.NameAgeComponent), 13 },
+        { typeof(EntitasRedux.Tests.NoContextComponent), 14 },
+        { typeof(EntitasRedux.Tests.ParentComponent), 15 },
         { typeof(EntitasRedux.Tests.PrimaryEntityIndexComponent), 16 },
         { typeof(EntitasRedux.Tests.ShallowCopyComponent), 17 }
 	};

@@ -41,9 +41,9 @@ namespace EntitasRedux.Tests
 		public void Setup()
 		{
 			_context = new MyTestContext();
-			_matcherA = Matcher<MyTestEntity>.AllOf(CID.ComponentA);
+			_matcherA = Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
 			_groupA = _context.GetGroup(_matcherA);
-			_groupB = _context.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentB));
+			_groupB = _context.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentB));
 		}
 
 		#region Collector Group Added
@@ -207,7 +207,7 @@ namespace EntitasRedux.Tests
 		{
 			_collectorA = new Collector<MyTestEntity>(_groupA, GroupEvent.Added);
 
-			Assert.AreEqual(_collectorA.ToString(), "Collector(Group(AllOf(1)))");
+			Assert.AreEqual("Collector(Group(AllOf(3)))", _collectorA.ToString());
 		}
 
 		[NUnit.Framework.Test]
@@ -361,7 +361,7 @@ namespace EntitasRedux.Tests
 					GroupEvent.Added
 				});
 
-			Assert.AreEqual(_collectorA.ToString(), "Collector(Group(AllOf(1)), Group(AllOf(2)))");
+			Assert.AreEqual("Collector(Group(AllOf(3)), Group(AllOf(4)))", _collectorA.ToString());
 		}
 
 		[NUnit.Framework.Test]

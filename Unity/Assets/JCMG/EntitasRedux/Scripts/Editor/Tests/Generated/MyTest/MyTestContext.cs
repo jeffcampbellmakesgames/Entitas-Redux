@@ -7,7 +7,8 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class MyTestContext : JCMG.EntitasRedux.Context<MyTestEntity> {
+public sealed partial class MyTestContext : JCMG.EntitasRedux.Context<MyTestEntity>
+{
 
     public MyTestContext()
         : base(
@@ -26,6 +27,18 @@ public sealed partial class MyTestContext : JCMG.EntitasRedux.Context<MyTestEnti
                 new JCMG.EntitasRedux.SafeAERC(entity),
 #endif
             () => new MyTestEntity()
-        ) {
+        )
+	{
     }
+
+	/// <summary>
+	/// Creates a new entity and adds copies of all specified components to it. If replaceExisting is true, it will
+	/// replace existing components.
+	/// </summary>
+	public MyTestEntity CloneEntity(MyTestEntity entity, bool replaceExisting = false, params int[] indices)
+	{
+		var target = CreateEntity();
+		entity.CopyTo(target, replaceExisting, indices);
+		return target;
+	}
 }

@@ -30,49 +30,45 @@ namespace EntitasRedux.Tests
 	// These classes are used to simplify some unit tests by focusing more on how components are handled rather
 	// than the components themselves.
 
-	public class ComponentA : IComponent {}
-	public class ComponentB : IComponent {}
-	public class ComponentC : IComponent {}
-	public class ComponentD : IComponent {}
-	public class ComponentE : IComponent {}
-	public class ComponentF : IComponent {}
+	[MyTest] public class ComponentA : IComponent { }
 
-	public static class Component {
+	[MyTest] public class ComponentB : IComponent { }
+
+	[MyTest] public class ComponentC : IComponent { }
+
+	[MyTest] public class ComponentD : IComponent { }
+
+	[MyTest] public class ComponentE : IComponent { }
+
+	[MyTest] public class ComponentF : IComponent { }
+
+	public static class Component
+	{
 		public static readonly ComponentA A = new ComponentA();
 		public static readonly ComponentB B = new ComponentB();
 		public static readonly ComponentC C = new ComponentC();
 	}
 
-	public static class CID {
+	public static class EntityTestExtensions
+	{
+		public static MyTestEntity AddComponentA(this IEntity e) { e.AddComponent(MyTestComponentsLookup.ComponentA, Component.A); return (MyTestEntity)e; }
+		public static MyTestEntity AddComponentB(this IEntity e) { e.AddComponent(MyTestComponentsLookup.ComponentB, Component.B); return (MyTestEntity)e; }
+		public static MyTestEntity AddComponentC(this IEntity e) { e.AddComponent(MyTestComponentsLookup.ComponentC, Component.C); return (MyTestEntity)e; }
 
-		public const int ComponentA = 1;
-		public const int ComponentB = 2;
-		public const int ComponentC = 3;
-		public const int ComponentD = 4;
+		public static bool HasComponentA(this IEntity e) { return e.HasComponent(MyTestComponentsLookup.ComponentA); }
+		public static bool HasComponentB(this IEntity e) { return e.HasComponent(MyTestComponentsLookup.ComponentB); }
+		public static bool HasComponentC(this IEntity e) { return e.HasComponent(MyTestComponentsLookup.ComponentC); }
 
-		public const int TotalComponents = 5;
-	}
+		public static MyTestEntity RemoveComponentA(this IEntity e) { e.RemoveComponent(MyTestComponentsLookup.ComponentA); return (MyTestEntity)e; }
+		public static MyTestEntity RemoveComponentB(this IEntity e) { e.RemoveComponent(MyTestComponentsLookup.ComponentB); return (MyTestEntity)e; }
+		public static MyTestEntity RemoveComponentC(this IEntity e) { e.RemoveComponent(MyTestComponentsLookup.ComponentC); return (MyTestEntity)e; }
 
-	public static class EntityTestExtensions {
+		public static ComponentA GetComponentA(this IEntity e) { return (ComponentA)e.GetComponent(MyTestComponentsLookup.ComponentA); }
+		public static ComponentB GetComponentB(this IEntity e) { return (ComponentB)e.GetComponent(MyTestComponentsLookup.ComponentB); }
+		public static ComponentC GetComponentC(this IEntity e) { return (ComponentC)e.GetComponent(MyTestComponentsLookup.ComponentC); }
 
-		public static MyTestEntity AddComponentA(this IEntity e) { e.AddComponent(CID.ComponentA, Component.A); return (MyTestEntity)e; }
-		public static MyTestEntity AddComponentB(this IEntity e) { e.AddComponent(CID.ComponentB, Component.B); return (MyTestEntity)e; }
-		public static MyTestEntity AddComponentC(this IEntity e) { e.AddComponent(CID.ComponentC, Component.C); return (MyTestEntity)e; }
-
-		public static bool HasComponentA(this IEntity e) { return e.HasComponent(CID.ComponentA); }
-		public static bool HasComponentB(this IEntity e) { return e.HasComponent(CID.ComponentB); }
-		public static bool HasComponentC(this IEntity e) { return e.HasComponent(CID.ComponentC); }
-
-		public static MyTestEntity RemoveComponentA(this IEntity e) { e.RemoveComponent(CID.ComponentA); return (MyTestEntity)e; }
-		public static MyTestEntity RemoveComponentB(this IEntity e) { e.RemoveComponent(CID.ComponentB); return (MyTestEntity)e; }
-		public static MyTestEntity RemoveComponentC(this IEntity e) { e.RemoveComponent(CID.ComponentC); return (MyTestEntity)e; }
-
-		public static ComponentA GetComponentA(this IEntity e) { return (ComponentA)e.GetComponent(CID.ComponentA); }
-		public static ComponentB GetComponentB(this IEntity e) { return (ComponentB)e.GetComponent(CID.ComponentB); }
-		public static ComponentC GetComponentC(this IEntity e) { return (ComponentC)e.GetComponent(CID.ComponentC); }
-
-		public static MyTestEntity ReplaceComponentA(this IEntity e, ComponentA component) { e.ReplaceComponent(CID.ComponentA, component); return (MyTestEntity)e; }
-		public static MyTestEntity ReplaceComponentB(this IEntity e, ComponentB component) { e.ReplaceComponent(CID.ComponentB, component); return (MyTestEntity)e; }
-		public static MyTestEntity ReplaceComponentC(this IEntity e, ComponentC component) { e.ReplaceComponent(CID.ComponentC, component); return (MyTestEntity)e; }
+		public static MyTestEntity ReplaceComponentA(this IEntity e, ComponentA component) { e.ReplaceComponent(MyTestComponentsLookup.ComponentA, component); return (MyTestEntity)e; }
+		public static MyTestEntity ReplaceComponentB(this IEntity e, ComponentB component) { e.ReplaceComponent(MyTestComponentsLookup.ComponentB, component); return (MyTestEntity)e; }
+		public static MyTestEntity ReplaceComponentC(this IEntity e, ComponentC component) { e.ReplaceComponent(MyTestComponentsLookup.ComponentC, component); return (MyTestEntity)e; }
 	}
 }

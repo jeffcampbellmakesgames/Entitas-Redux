@@ -27,7 +27,7 @@ using JCMG.EntitasRedux;
 
 namespace EntitasRedux.Tests
 {
-	[Context("Test"), Context("Test2")]
+	[Context("MyTest"), Context("Test"), Context("Test2")]
 	public sealed class NameAgeComponent : IComponent {
 
 		public string name;

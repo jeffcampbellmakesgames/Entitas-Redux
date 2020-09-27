@@ -23,7 +23,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using JCMG.EntitasRedux;
@@ -34,11 +33,14 @@ namespace EntitasRedux.Tests
 {
 	internal class DescribeEntity
 	{
-		private readonly int[] _indicesA = { CID.ComponentA };
-		private readonly int[] _indicesAB = { CID.ComponentA, CID.ComponentB };
+		private readonly int[] _indicesA = { MyTestComponentsLookup.ComponentA };
+		private readonly int[] _indicesAB = { MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB };
 
 		private MyTestContext _context;
 		private MyTestEntity _defaultEntity;
+		private MyTestEntity _originalEntity;
+		private MyTestEntity _targetEntity;
+		private NameAgeComponent _nameAge;
 		private int _didDispatch;
 		private IComponent[] _componentCache;
 		private int[] _componentIndicesCache;
@@ -49,6 +51,12 @@ namespace EntitasRedux.Tests
 		{
 			_context = new MyTestContext();
 			_defaultEntity = TestTools.CreateEntity();
+			_originalEntity = _context.CreateEntity();
+			_targetEntity = _context.CreateEntity();
+			_nameAge = new NameAgeComponent
+			{
+				name = "Max", age = 42
+			};
 			_didDispatch = 0;
 		}
 
@@ -58,7 +66,7 @@ namespace EntitasRedux.Tests
 		public void EntityHasDefaultContextInfo()
 		{
 			Assert.AreEqual("No Context", _defaultEntity.ContextInfo.name);
-			Assert.AreEqual(CID.TotalComponents, _defaultEntity.ContextInfo.componentNames.Length);
+			Assert.AreEqual(MyTestComponentsLookup.TotalComponents, _defaultEntity.ContextInfo.componentNames.Length);
 			Assert.IsNull(_defaultEntity.ContextInfo.componentTypes);
 
 			for (var i = 0; i < _defaultEntity.ContextInfo.componentNames.Length; i++)
@@ -112,7 +120,7 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void ValidateTotalComponentCount()
 		{
-			Assert.AreEqual(CID.TotalComponents, _defaultEntity.TotalComponents);
+			Assert.AreEqual(MyTestComponentsLookup.TotalComponents, _defaultEntity.TotalComponents);
 		}
 
 		[NUnit.Framework.Test]
@@ -418,12 +426,103 @@ namespace EntitasRedux.Tests
 
 		#endregion
 
+		#region Copying Entity To Another
+
+		[NUnit.Framework.Test]
+		public void EntityIsNotChangedIfOriginalDoesNotHaveComponents()
+		{
+			_originalEntity.CopyTo(_targetEntity);
+
+			Assert.AreEqual(0, _originalEntity.CreationIndex);
+			Assert.AreEqual(1, _targetEntity.CreationIndex);
+			Assert.IsEmpty(_targetEntity.GetComponents());
+		}
+
+		[NUnit.Framework.Test]
+		public void CopiesOfAllComponentsAddedToTargetEntity()
+		{
+			_originalEntity.AddComponentA();
+			_originalEntity.AddComponent(MyTestComponentsLookup.NameAge, _nameAge);
+			_originalEntity.CopyTo(_targetEntity);
+
+			Assert.AreEqual(2, _targetEntity.GetComponents().Length);
+			Assert.IsTrue(_targetEntity.HasComponentA());
+			Assert.IsTrue(_targetEntity.HasNameAge);
+			Assert.AreNotEqual(Component.A, _targetEntity.GetComponentA());
+			Assert.AreNotEqual(_nameAge, _targetEntity.NameAge);
+
+			var clonedComponent = (NameAgeComponent)_targetEntity.GetComponent(MyTestComponentsLookup.NameAge);
+
+			Assert.AreEqual(_nameAge.name, clonedComponent.name);
+			Assert.AreEqual(_nameAge.age, clonedComponent.age);
+		}
+
+		[NUnit.Framework.Test]
+		public void ThrowsWhenTargetAlreadyHasComponent()
+		{
+			_originalEntity.AddComponentA();
+			_originalEntity.AddComponent(MyTestComponentsLookup.ComponentB, _nameAge);
+			var component = new NameAgeComponent();
+			_targetEntity.AddComponent(MyTestComponentsLookup.ComponentB, component);
+
+			Assert.Throws<EntityAlreadyHasComponentException>(() => _originalEntity.CopyTo(_targetEntity));
+		}
+
+		[NUnit.Framework.Test]
+		public void ReplacesExistingComponentWhenOverwriteIsSet()
+		{
+			_originalEntity.AddComponentA();
+			_originalEntity.AddComponent(MyTestComponentsLookup.NameAge, _nameAge);
+			var component = new NameAgeComponent();
+			_targetEntity.AddComponent(MyTestComponentsLookup.NameAge, component);
+			_originalEntity.CopyTo(_targetEntity, true);
+
+			var copy = _targetEntity.GetComponent(MyTestComponentsLookup.NameAge);
+
+			Assert.AreNotEqual(_nameAge, copy);
+			Assert.AreNotEqual(component, copy);
+
+			Assert.AreEqual(_nameAge.name, ((NameAgeComponent)copy).name);
+			Assert.AreEqual(_nameAge.age, ((NameAgeComponent)copy).age);
+		}
+
+		[NUnit.Framework.Test]
+		public void OnlyAddsCopiesOfSpecifiedComponentsToTargetEntity()
+		{
+			_originalEntity.AddComponentA();
+			_originalEntity.AddComponentB();
+			_originalEntity.AddComponentC();
+			_originalEntity.CopyTo(
+				_targetEntity,
+				false,
+				MyTestComponentsLookup.ComponentB,
+				MyTestComponentsLookup.ComponentC);
+
+			Assert.AreEqual(2, _targetEntity.GetComponents().Length);
+			Assert.IsTrue(_targetEntity.HasComponentB());
+			Assert.IsTrue(_targetEntity.HasComponentC());
+		}
+
+		[NUnit.Framework.Test]
+		public void UsesComponentPoolWhenCopyingComponents()
+		{
+			_originalEntity.AddComponentA();
+
+			var component = new ComponentA();
+			_targetEntity.GetComponentPool(MyTestComponentsLookup.ComponentA).Push(component);
+			_originalEntity.CopyTo(_targetEntity);
+
+			Assert.AreEqual(component, _targetEntity.GetComponentA());
+		}
+
+		#endregion
+
 		#region ComponentPool
 
 		[NUnit.Framework.Test]
 		public void ComponentPoolCanBeRetrieved()
 		{
-			var componentPool = _defaultEntity.GetComponentPool(CID.ComponentA);
+			var componentPool = _defaultEntity.GetComponentPool(MyTestComponentsLookup.ComponentA);
 			Assert.AreEqual(0, componentPool.Count);
 		}
 
@@ -431,8 +530,8 @@ namespace EntitasRedux.Tests
 		public void ComponentPoolRetrievedIsSameInstance()
 		{
 			Assert.AreEqual(
-				_defaultEntity.GetComponentPool(CID.ComponentA),
-				_defaultEntity.GetComponentPool(CID.ComponentA));
+				_defaultEntity.GetComponentPool(MyTestComponentsLookup.ComponentA),
+				_defaultEntity.GetComponentPool(MyTestComponentsLookup.ComponentA));
 		}
 
 		[NUnit.Framework.Test]
@@ -442,7 +541,7 @@ namespace EntitasRedux.Tests
 			var component = _defaultEntity.GetComponentA();
 			_defaultEntity.RemoveComponentA();
 
-			var componentPool = _defaultEntity.GetComponentPool(CID.ComponentA);
+			var componentPool = _defaultEntity.GetComponentPool(MyTestComponentsLookup.ComponentA);
 			Assert.AreEqual(1, componentPool.Count);
 			Assert.AreEqual(component, componentPool.Pop());
 		}
@@ -485,7 +584,7 @@ namespace EntitasRedux.Tests
 				_didDispatch += 1;
 
 				Assert.AreEqual(_defaultEntity, entity);
-				Assert.AreEqual(CID.ComponentA, index);
+				Assert.AreEqual(MyTestComponentsLookup.ComponentA, index);
 				Assert.AreEqual(Component.A, component);
 			};
 			_defaultEntity.OnComponentRemoved += delegate { Assert.Fail(); };
@@ -559,7 +658,7 @@ namespace EntitasRedux.Tests
 				_didDispatch += 1;
 
 				Assert.AreEqual(_defaultEntity, entity);
-				Assert.AreEqual(CID.ComponentA, index);
+				Assert.AreEqual(MyTestComponentsLookup.ComponentA, index);
 				Assert.AreEqual(Component.A, component);
 			};
 			_defaultEntity.OnComponentAdded += delegate { Assert.Fail(); };
@@ -595,7 +694,7 @@ namespace EntitasRedux.Tests
 				_didDispatch += 1;
 
 				Assert.AreEqual(_defaultEntity, entity);
-				Assert.AreEqual(CID.ComponentA, index);
+				Assert.AreEqual(MyTestComponentsLookup.ComponentA, index);
 				Assert.AreEqual(Component.A, previousComponent);;
 				Assert.AreEqual(newComponentA, newComponent);
 			};
@@ -622,8 +721,8 @@ namespace EntitasRedux.Tests
 				Assert.AreEqual(newComp, newComponent);
 			};
 
-			_defaultEntity.AddComponent(CID.ComponentA, prevComp);
-			_defaultEntity.ReplaceComponent(CID.ComponentA, newComp);
+			_defaultEntity.AddComponent(MyTestComponentsLookup.ComponentA, prevComp);
+			_defaultEntity.ReplaceComponent(MyTestComponentsLookup.ComponentA, newComp);
 
 			Assert.AreEqual(1, _didDispatch);
 		}
@@ -666,7 +765,7 @@ namespace EntitasRedux.Tests
 				_didDispatch += 1;
 
 				Assert.AreEqual(_defaultEntity, entity);
-				Assert.AreEqual(CID.ComponentA, index);
+				Assert.AreEqual(MyTestComponentsLookup.ComponentA, index);
 				Assert.AreEqual(newComponentA, component);
 			};
 			_defaultEntity.OnComponentReplaced += delegate { Assert.Fail(); };
@@ -1087,7 +1186,7 @@ namespace EntitasRedux.Tests
 			var indices = e.GetComponentIndices();
 
 			Assert.AreEqual(1, indices.Length);
-			Assert.Contains(CID.ComponentA, indices);
+			Assert.Contains(MyTestComponentsLookup.ComponentA, indices);
 
 			Assert.IsTrue(e.HasComponentA());
 			Assert.IsTrue(e.HasComponents(_indicesA));

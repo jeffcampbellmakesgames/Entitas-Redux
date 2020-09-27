@@ -118,7 +118,7 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void InitializesExecutesCleansUpAndTearsDownSystem()
 		{
-			var system = new ReactiveSystemSpy(_ctx.CreateCollector(Matcher<MyTestEntity>.AllOf(CID.ComponentA)));
+			var system = new ReactiveSystemSpy(_ctx.CreateCollector(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA)));
 			_ctx.CreateEntity().AddComponentA();
 
 			Assert.AreEqual(0, system.DidInitialize);
@@ -201,7 +201,7 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void WrapsReactiveSystemInIReactiveSystem()
 		{
-			var system = new ReactiveSystemSpy(_ctx.CreateCollector(Matcher<MyTestEntity>.AllOf(CID.ComponentA)));
+			var system = new ReactiveSystemSpy(_ctx.CreateCollector(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA)));
 			_systems.Add(system);
 			_ctx.CreateEntity().AddComponentA();
 			_systems.Execute();
@@ -212,7 +212,7 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void AddsReactiveSystem()
 		{
-			var system = new ReactiveSystemSpy(_ctx.CreateCollector(Matcher<MyTestEntity>.AllOf(CID.ComponentA)));
+			var system = new ReactiveSystemSpy(_ctx.CreateCollector(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA)));
 			_systems.Add(system);
 			_ctx.CreateEntity().AddComponentA();
 			_systems.Execute();
@@ -233,7 +233,7 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void InitializesExecutesCleansUpAndTearsDownInterfacesOfReactiveSystemSpy()
 		{
-			var system = new ReactiveSystemSpy(_ctx.CreateCollector(Matcher<MyTestEntity>.AllOf(CID.ComponentA)));
+			var system = new ReactiveSystemSpy(_ctx.CreateCollector(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA)));
 			_ctx.CreateEntity().AddComponentA();
 
 			_systems.Add(system);
@@ -435,7 +435,7 @@ namespace EntitasRedux.Tests
 
 		private static ReactiveSystemSpy CreateReactiveSystem(MyTestContext context)
 		{
-			var system = new ReactiveSystemSpy(context.CreateCollector(Matcher<MyTestEntity>.AllOf(CID.ComponentA)));
+			var system = new ReactiveSystemSpy(context.CreateCollector(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA)));
 			context.CreateEntity().AddComponentA();
 
 			return system;

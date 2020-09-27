@@ -82,7 +82,7 @@ namespace EntitasRedux.Tests
 				{
 					return c is NameAgeComponent nameAge
 						? nameAge.name
-						: ((NameAgeComponent)e.GetComponent(CID.ComponentA)).name;
+						: ((NameAgeComponent)e.GetComponent(MyTestComponentsLookup.ComponentA)).name;
 				});
 
 			Assert.AreEqual(_entity, newIndex.GetEntity(NAME));
@@ -93,7 +93,7 @@ namespace EntitasRedux.Tests
 		{
 			SetupActivatedPrimaryEntityIndex();
 
-			_entity.RemoveComponent(CID.ComponentA);
+			_entity.RemoveComponent(MyTestComponentsLookup.ComponentA);
 
 			Assert.IsNull(_primaryIndex.GetEntity(NAME));
 			Assert.AreEqual(1, _entity.RetainCount); // Context
@@ -108,7 +108,7 @@ namespace EntitasRedux.Tests
 			nameAgeComponent.name = NAME;
 			_entity = _context.CreateEntity();
 
-			Assert.Throws<EntityIndexException>(() => _entity.AddComponent(CID.ComponentA, nameAgeComponent));
+			Assert.Throws<EntityIndexException>(() => _entity.AddComponent(MyTestComponentsLookup.ComponentA, nameAgeComponent));
 		}
 
 		[NUnit.Framework.Test]
@@ -139,7 +139,7 @@ namespace EntitasRedux.Tests
 
 			var nameAgeComponent = new NameAgeComponent();
 			nameAgeComponent.name = NAME;
-			_context.CreateEntity().AddComponent(CID.ComponentA, nameAgeComponent);
+			_context.CreateEntity().AddComponent(MyTestComponentsLookup.ComponentA, nameAgeComponent);
 
 			Assert.IsNull(_primaryIndex.GetEntity(NAME));
 		}
@@ -164,7 +164,7 @@ namespace EntitasRedux.Tests
 			var nameAgeComponent = new NameAgeComponent();
 			nameAgeComponent.name = "Jack";
 			_entity = _context.CreateEntity();
-			_entity.AddComponent(CID.ComponentA, nameAgeComponent);
+			_entity.AddComponent(MyTestComponentsLookup.ComponentA, nameAgeComponent);
 
 			Assert.AreEqual(_entity, _primaryIndex.GetEntity("Jack"));
 		}
@@ -200,7 +200,7 @@ namespace EntitasRedux.Tests
 		{
 			SetupMultipleKeyPrimaryEntityIndex();
 
-			_entity.RemoveComponent(CID.ComponentA);
+			_entity.RemoveComponent(MyTestComponentsLookup.ComponentA);
 
 			Assert.IsNull(_primaryIndex.GetEntity(NAME + "1"));
 			Assert.IsNull(_primaryIndex.GetEntity(NAME + "2"));
@@ -267,7 +267,7 @@ namespace EntitasRedux.Tests
 			{
 				return c is NameAgeComponent nameAge
 					? nameAge.name
-					: ((NameAgeComponent)e.GetComponent(CID.ComponentA)).name;
+					: ((NameAgeComponent)e.GetComponent(MyTestComponentsLookup.ComponentA)).name;
 			});
 
 			Assert.AreEqual(2, newIndex.GetEntities(NAME).Count);
@@ -278,7 +278,7 @@ namespace EntitasRedux.Tests
 		{
 			SetupActivatedSingleKeyEntityIndex();
 
-			_entity1.RemoveComponent(CID.ComponentA);
+			_entity1.RemoveComponent(MyTestComponentsLookup.ComponentA);
 
 			Assert.AreEqual(1, _index.GetEntities(NAME).Count);
 			Assert.AreEqual(1, _entity1.RetainCount); // Context
@@ -311,7 +311,7 @@ namespace EntitasRedux.Tests
 		{
 			SetupDeactivatedSingleKeyEntityIndex();
 
-			_context.CreateEntity().AddComponent(CID.ComponentA, _nameAgeComponent);
+			_context.CreateEntity().AddComponent(MyTestComponentsLookup.ComponentA, _nameAgeComponent);
 
 			Assert.IsEmpty(_index.GetEntities(NAME));
 		}
@@ -338,7 +338,7 @@ namespace EntitasRedux.Tests
 			SetupReactivatedSingleKeyEntityIndex();
 
 			var entity3 = _context.CreateEntity();
-			entity3.AddComponent(CID.ComponentA, _nameAgeComponent);
+			entity3.AddComponent(MyTestComponentsLookup.ComponentA, _nameAgeComponent);
 
 			var entities = _index.GetEntities(NAME);
 
@@ -391,7 +391,7 @@ namespace EntitasRedux.Tests
 		{
 			SetupMultipleKeyEntityIndex();
 
-			_entity1.RemoveComponent(CID.ComponentA);
+			_entity1.RemoveComponent(MyTestComponentsLookup.ComponentA);
 
 			Assert.AreEqual(0, _index.GetEntities("1").Count);
 			Assert.AreEqual(1, _index.GetEntities("2").Count);
@@ -436,7 +436,7 @@ namespace EntitasRedux.Tests
 
 			IComponent receivedComponent = null;
 
-			_group = _context.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentA, CID.ComponentB));
+			_group = _context.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB));
 			_index = new EntityIndex<MyTestEntity, string>("TestIndex", _group, (e, c) =>
 			{
 				receivedComponent = c;
@@ -450,8 +450,8 @@ namespace EntitasRedux.Tests
 			nameAgeComponent2.name = "Jack";
 
 			var entity = _context.CreateEntity();
-			entity.AddComponent(CID.ComponentA, nameAgeComponent1);
-			entity.AddComponent(CID.ComponentB, nameAgeComponent2);
+			entity.AddComponent(MyTestComponentsLookup.ComponentA, nameAgeComponent1);
+			entity.AddComponent(MyTestComponentsLookup.ComponentB, nameAgeComponent2);
 
 			Assert.AreEqual(nameAgeComponent2, receivedComponent);
 		}
@@ -469,7 +469,7 @@ namespace EntitasRedux.Tests
 			var nameAgeComponent2 = new NameAgeComponent();
 			nameAgeComponent2.name = "Jack";
 
-			_group = _context.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentA).NoneOf(CID.ComponentB));
+			_group = _context.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA).NoneOf(MyTestComponentsLookup.ComponentB));
 			_index = new EntityIndex<MyTestEntity, string>("TestIndex", _group, (e, c) =>
 			{
 				receivedComponents.Add(c);
@@ -479,12 +479,12 @@ namespace EntitasRedux.Tests
 					return ((NameAgeComponent)c).name;
 				}
 
-				return ((NameAgeComponent)e.GetComponent(CID.ComponentA)).name;
+				return ((NameAgeComponent)e.GetComponent(MyTestComponentsLookup.ComponentA)).name;
 			});
 
 			var entity = _context.CreateEntity();
-			entity.AddComponent(CID.ComponentA, nameAgeComponent1);
-			entity.AddComponent(CID.ComponentB, nameAgeComponent2);
+			entity.AddComponent(MyTestComponentsLookup.ComponentA, nameAgeComponent1);
+			entity.AddComponent(MyTestComponentsLookup.ComponentB, nameAgeComponent2);
 
 			Assert.AreEqual(2, receivedComponents.Count);
 			Assert.AreEqual(nameAgeComponent1, receivedComponents[0]);
@@ -498,7 +498,7 @@ namespace EntitasRedux.Tests
 		public void SetupActivatedPrimaryEntityIndex()
 		{
 			_context = new MyTestContext();
-			_group = _context.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentA));
+			_group = _context.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA));
 			_primaryIndex = new PrimaryEntityIndex<MyTestEntity, string>(
 				"TestIndex",
 				_group,
@@ -506,14 +506,14 @@ namespace EntitasRedux.Tests
 				{
 					return c is NameAgeComponent nameAge
 						? nameAge.name
-						: ((NameAgeComponent)e.GetComponent(CID.ComponentA)).name;
+						: ((NameAgeComponent)e.GetComponent(MyTestComponentsLookup.ComponentA)).name;
 				});
 
 			var nameAgeComponent = new NameAgeComponent();
 			nameAgeComponent.name = NAME;
 
 			_entity = _context.CreateEntity();
-			_entity.AddComponent(CID.ComponentA, nameAgeComponent);
+			_entity.AddComponent(MyTestComponentsLookup.ComponentA, nameAgeComponent);
 		}
 
 		public void SetupDeactivatedPrimaryEntityIndex()
@@ -533,37 +533,37 @@ namespace EntitasRedux.Tests
 		public void SetupMultipleKeyPrimaryEntityIndex()
 		{
 			_context = new MyTestContext();
-			_group = _context.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentA));
+			_group = _context.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA));
 			_primaryIndex = new PrimaryEntityIndex<MyTestEntity, string>("TestIndex", _group, (e, c) =>
 			{
 				return c is NameAgeComponent nameAge
 					? new[] { nameAge.name + "1", nameAge.name + "2" }
-					: new[] { ((NameAgeComponent)e.GetComponent(CID.ComponentA)).name + "1", ((NameAgeComponent)e.GetComponent(CID.ComponentA)).name + "2" };
+					: new[] { ((NameAgeComponent)e.GetComponent(MyTestComponentsLookup.ComponentA)).name + "1", ((NameAgeComponent)e.GetComponent(MyTestComponentsLookup.ComponentA)).name + "2" };
 			});
 
 			var nameAgeComponent = new NameAgeComponent();
 			nameAgeComponent.name = NAME;
 			_entity = _context.CreateEntity();
-			_entity.AddComponent(CID.ComponentA, nameAgeComponent);
+			_entity.AddComponent(MyTestComponentsLookup.ComponentA, nameAgeComponent);
 		}
 
 		public void SetupActivatedSingleKeyEntityIndex()
 		{
 			_context = new MyTestContext();
-			_group = _context.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentA));
+			_group = _context.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA));
 			_index = new EntityIndex<MyTestEntity, string>("TestIndex", _group, (e, c) =>
 			{
 				return c is NameAgeComponent nameAge
 					? nameAge.name
-					: ((NameAgeComponent)e.GetComponent(CID.ComponentA)).name;
+					: ((NameAgeComponent)e.GetComponent(MyTestComponentsLookup.ComponentA)).name;
 			});
 
 			_nameAgeComponent = new NameAgeComponent();
 			_nameAgeComponent.name = NAME;
 			_entity1 = _context.CreateEntity();
-			_entity1.AddComponent(CID.ComponentA, _nameAgeComponent);
+			_entity1.AddComponent(MyTestComponentsLookup.ComponentA, _nameAgeComponent);
 			_entity2 = _context.CreateEntity();
-			_entity2.AddComponent(CID.ComponentA, _nameAgeComponent);
+			_entity2.AddComponent(MyTestComponentsLookup.ComponentA, _nameAgeComponent);
 		}
 
 		public void SetupDeactivatedSingleKeyEntityIndex()
@@ -583,7 +583,7 @@ namespace EntitasRedux.Tests
 		public void SetupMultipleKeyEntityIndex()
 		{
 			_context = new MyTestContext();
-			_group = _context.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentA));
+			_group = _context.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA));
 			_index = new EntityIndex<MyTestEntity, string>("TestIndex", _group, (e, c) =>
 			{
 				return e == _entity1

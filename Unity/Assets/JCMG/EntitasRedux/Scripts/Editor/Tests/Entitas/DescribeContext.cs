@@ -53,8 +53,8 @@ namespace EntitasRedux.Tests
 			matcherAB = Matcher<MyTestEntity>.AllOf(
 				new[]
 				{
-					CID.ComponentA,
-					CID.ComponentB
+					MyTestComponentsLookup.ComponentA,
+					MyTestComponentsLookup.ComponentB
 				});
 		}
 
@@ -593,7 +593,7 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void ValidateThatGroupIsEmptyWhenZeroEntitiesAreCreated()
 		{
-			var group = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentA));
+			var group = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA));
 			Assert.IsNotNull(group);
 			Assert.IsEmpty(group.GetEntities());
 		}
@@ -661,7 +661,7 @@ namespace EntitasRedux.Tests
 			{
 				Assert.AreEqual(g, group);
 				Assert.AreEqual(eAB1, entity);
-				Assert.AreEqual(CID.ComponentA, index);
+				Assert.AreEqual(MyTestComponentsLookup.ComponentA, index);
 				Assert.AreEqual(Component.A, component);
 
 				didDispatchRemoved++;
@@ -671,7 +671,7 @@ namespace EntitasRedux.Tests
 			{
 				Assert.AreEqual(g, group);
 				Assert.AreEqual(eAB1, entity);
-				Assert.AreEqual(CID.ComponentA, index);
+				Assert.AreEqual(MyTestComponentsLookup.ComponentA, index);
 				Assert.AreEqual(componentA, component);
 
 				didDispatchAdded++;
@@ -689,21 +689,21 @@ namespace EntitasRedux.Tests
 
 			var updated = 0;
 
-			var prevComp = eA.GetComponent(CID.ComponentA);
+			var prevComp = eA.GetComponent(MyTestComponentsLookup.ComponentA);
 			var newComp = new ComponentA();
-			var g = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentA));
+			var g = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA));
 			g.OnEntityUpdated += (group, entity, index, previousComponent, newComponent) =>
 			{
 				updated += 1;
 
 				Assert.AreEqual(g, group);
 				Assert.AreEqual(eA, entity);
-				Assert.AreEqual(CID.ComponentA, index);
+				Assert.AreEqual(MyTestComponentsLookup.ComponentA, index);
 				Assert.AreEqual(prevComp, previousComponent);
 				Assert.AreEqual(newComp, newComponent);
 			};
 
-			eA.ReplaceComponent(CID.ComponentA, newComp);
+			eA.ReplaceComponent(MyTestComponentsLookup.ComponentA, newComp);
 
 			Assert.AreEqual(1, updated);
 		}
@@ -715,7 +715,7 @@ namespace EntitasRedux.Tests
 				.AddComponentA()
 				.AddComponentB();
 
-			var matcher = Matcher<MyTestEntity>.AllOf(CID.ComponentB).NoneOf(CID.ComponentA);
+			var matcher = Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentB).NoneOf(MyTestComponentsLookup.ComponentA);
 			var g = _defaultContext.GetGroup(matcher);
 			g.OnEntityAdded += delegate { Assert.Fail(); };
 			e.Destroy();
@@ -728,8 +728,8 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void OnEntityAddedIsInvokedAfterAllGroupsAreUpdated()
 		{
-			var groupA = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentA, CID.ComponentB));
-			var groupB = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentB));
+			var groupA = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB));
+			var groupB = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentB));
 
 			groupA.OnEntityAdded += delegate
 			{
@@ -744,8 +744,8 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void OnEntityRemovedIsInvokedAfterAllGroupsAreUpdated()
 		{
-			var groupB = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentB));
-			var groupAB = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentA, CID.ComponentB));
+			var groupB = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentB));
+			var groupAB = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB));
 
 			groupB.OnEntityRemoved += delegate
 			{
@@ -867,13 +867,13 @@ namespace EntitasRedux.Tests
 		{
 			SetupComponentPools();
 
-			Assert.AreEqual(1, _defaultContext.ComponentPools[CID.ComponentA].Count);
-			Assert.AreEqual(1, _defaultContext.ComponentPools[CID.ComponentB].Count);
+			Assert.AreEqual(1, _defaultContext.ComponentPools[MyTestComponentsLookup.ComponentA].Count);
+			Assert.AreEqual(1, _defaultContext.ComponentPools[MyTestComponentsLookup.ComponentB].Count);
 
 			_defaultContext.ClearComponentPools();
 
-			Assert.AreEqual(0, _defaultContext.ComponentPools[CID.ComponentA].Count);
-			Assert.AreEqual(0, _defaultContext.ComponentPools[CID.ComponentB].Count);
+			Assert.AreEqual(0, _defaultContext.ComponentPools[MyTestComponentsLookup.ComponentA].Count);
+			Assert.AreEqual(0, _defaultContext.ComponentPools[MyTestComponentsLookup.ComponentB].Count);
 		}
 
 		[NUnit.Framework.Test]
@@ -881,10 +881,10 @@ namespace EntitasRedux.Tests
 		{
 			SetupComponentPools();
 
-			_defaultContext.ClearComponentPool(CID.ComponentB);
+			_defaultContext.ClearComponentPool(MyTestComponentsLookup.ComponentB);
 
-			Assert.AreEqual(1, _defaultContext.ComponentPools[CID.ComponentA].Count);
-			Assert.AreEqual(0, _defaultContext.ComponentPools[CID.ComponentB].Count);
+			Assert.AreEqual(1, _defaultContext.ComponentPools[MyTestComponentsLookup.ComponentA].Count);
+			Assert.AreEqual(0, _defaultContext.ComponentPools[MyTestComponentsLookup.ComponentB].Count);
 		}
 
 		[NUnit.Framework.Test]
@@ -892,7 +892,7 @@ namespace EntitasRedux.Tests
 		{
 			SetupComponentPools();
 
-			_defaultContext.ClearComponentPool(CID.ComponentC);
+			_defaultContext.ClearComponentPool(MyTestComponentsLookup.ComponentC);
 		}
 
 		#endregion
@@ -902,9 +902,9 @@ namespace EntitasRedux.Tests
 		[NUnit.Framework.Test]
 		public void NewListAllocatedFromPoolPerGroup()
 		{
-			var groupA = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(CID.ComponentA));
-			var groupAB = _defaultContext.GetGroup(Matcher<MyTestEntity>.AnyOf(CID.ComponentA, CID.ComponentB));
-			var groupABC = _defaultContext.GetGroup(Matcher<MyTestEntity>.AnyOf(CID.ComponentA, CID.ComponentB, CID.ComponentC));
+			var groupA = _defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA));
+			var groupAB = _defaultContext.GetGroup(Matcher<MyTestEntity>.AnyOf(MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB));
+			var groupABC = _defaultContext.GetGroup(Matcher<MyTestEntity>.AnyOf(MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB, MyTestComponentsLookup.ComponentC));
 
 			groupA.OnEntityAdded += (g, entity, index, component) =>
 			{

@@ -7,7 +7,8 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class VisualDebugContext : JCMG.EntitasRedux.Context<VisualDebugEntity> {
+public sealed partial class VisualDebugContext : JCMG.EntitasRedux.Context<VisualDebugEntity>
+{
 
     public VisualDebugContext()
         : base(
@@ -26,6 +27,18 @@ public sealed partial class VisualDebugContext : JCMG.EntitasRedux.Context<Visua
                 new JCMG.EntitasRedux.SafeAERC(entity),
 #endif
             () => new VisualDebugEntity()
-        ) {
+        )
+	{
     }
+
+	/// <summary>
+	/// Creates a new entity and adds copies of all specified components to it. If replaceExisting is true, it will
+	/// replace existing components.
+	/// </summary>
+	public VisualDebugEntity CloneEntity(VisualDebugEntity entity, bool replaceExisting = false, params int[] indices)
+	{
+		var target = CreateEntity();
+		entity.CopyTo(target, replaceExisting, indices);
+		return target;
+	}
 }

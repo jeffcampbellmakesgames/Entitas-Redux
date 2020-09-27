@@ -39,7 +39,10 @@ namespace EntitasRedux.Tests
 		public static MyTestEntity CreateEntity()
 		{
 			var entity = new MyTestEntity();
-			entity.Initialize(0, CID.TotalComponents, new Stack<IComponent>[CID.TotalComponents]);
+			entity.Initialize(
+				0,
+				MyTestComponentsLookup.TotalComponents,
+				new Stack<IComponent>[MyTestComponentsLookup.TotalComponents]);
 			return entity;
 		}
 

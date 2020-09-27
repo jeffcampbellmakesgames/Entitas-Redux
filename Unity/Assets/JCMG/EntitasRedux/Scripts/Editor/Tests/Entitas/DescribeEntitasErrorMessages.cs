@@ -84,7 +84,7 @@ namespace EntitasRedux.Tests
 			_context.CreateEntity().AddComponentA();
 			_context.CreateEntity().AddComponentA();
 
-			var matcher = (Matcher<MyTestEntity>)Matcher<MyTestEntity>.AllOf(CID.ComponentA);
+			var matcher = (Matcher<MyTestEntity>)Matcher<MyTestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
 			var group = _context.GetGroup(matcher);
 
 			Assert.Throws<GroupSingleEntityException<MyTestEntity>>(() => group.GetSingleEntity());
