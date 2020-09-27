@@ -7,35 +7,39 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class VisualDebugEntity {
+public partial class VisualDebugEntity
+{
+	public ExampleContent.VisualDebugging.MyCharComponent MyChar { get { return (ExampleContent.VisualDebugging.MyCharComponent)GetComponent(VisualDebugComponentsLookup.MyChar); } }
+	public bool HasMyChar { get { return HasComponent(VisualDebugComponentsLookup.MyChar); } }
 
-    public ExampleContent.VisualDebugging.MyCharComponent MyChar { get { return (ExampleContent.VisualDebugging.MyCharComponent)GetComponent(VisualDebugComponentsLookup.MyChar); } }
-    public bool HasMyChar { get { return HasComponent(VisualDebugComponentsLookup.MyChar); } }
+	public void AddMyChar(char newMyChar)
+	{
+		var index = VisualDebugComponentsLookup.MyChar;
+		var component = (ExampleContent.VisualDebugging.MyCharComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyCharComponent));
+		component.myChar = newMyChar;
+		AddComponent(index, component);
+	}
 
-    public void AddMyChar(char newMyChar) {
-        var index = VisualDebugComponentsLookup.MyChar;
-        var component = (ExampleContent.VisualDebugging.MyCharComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyCharComponent));
-        component.myChar = newMyChar;
-        AddComponent(index, component);
-    }
+	public void ReplaceMyChar(char newMyChar)
+	{
+		var index = VisualDebugComponentsLookup.MyChar;
+		var component = (ExampleContent.VisualDebugging.MyCharComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyCharComponent));
+		component.myChar = newMyChar;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceMyChar(char newMyChar) {
-        var index = VisualDebugComponentsLookup.MyChar;
-        var component = (ExampleContent.VisualDebugging.MyCharComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyCharComponent));
-        component.myChar = newMyChar;
-        ReplaceComponent(index, component);
-    }
+	public void CopyMyCharTo(ExampleContent.VisualDebugging.MyCharComponent copyComponent)
+	{
+		var index = VisualDebugComponentsLookup.MyChar;
+		var component = (ExampleContent.VisualDebugging.MyCharComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyCharComponent));
+		component.myChar = copyComponent.myChar;
+		ReplaceComponent(index, component);
+	}
 
-	public void CopyMyCharTo(ExampleContent.VisualDebugging.MyCharComponent copyComponent) {
-        var index = VisualDebugComponentsLookup.MyChar;
-        var component = (ExampleContent.VisualDebugging.MyCharComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyCharComponent));
-        component.myChar = copyComponent.myChar;
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveMyChar() {
-        RemoveComponent(VisualDebugComponentsLookup.MyChar);
-    }
+	public void RemoveMyChar()
+	{
+		RemoveComponent(VisualDebugComponentsLookup.MyChar);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -47,19 +51,22 @@ public partial class VisualDebugEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class VisualDebugMatcher {
+public sealed partial class VisualDebugMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherMyChar;
 
-    static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherMyChar;
+	public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> MyChar
+	{
+		get
+		{
+			if (_matcherMyChar == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.MyChar);
+				matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
+				_matcherMyChar = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> MyChar {
-        get {
-            if (_matcherMyChar == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.MyChar);
-                matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
-                _matcherMyChar = matcher;
-            }
-
-            return _matcherMyChar;
-        }
-    }
+			return _matcherMyChar;
+		}
+	}
 }

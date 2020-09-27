@@ -7,12 +7,12 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial interface IMultipleEntityIndicesEntity {
+public partial interface IMultipleEntityIndicesEntity
+{
+	EntitasRedux.Tests.MultipleEntityIndicesComponent MultipleEntityIndices { get; }
+	bool HasMultipleEntityIndices { get; }
 
-    EntitasRedux.Tests.MultipleEntityIndicesComponent MultipleEntityIndices { get; }
-    bool HasMultipleEntityIndices { get; }
-
-    void AddMultipleEntityIndices(string newValue, string newValue2);
-    void ReplaceMultipleEntityIndices(string newValue, string newValue2);
-    void RemoveMultipleEntityIndices();
+	void AddMultipleEntityIndices(string newValue, string newValue2);
+	void ReplaceMultipleEntityIndices(string newValue, string newValue2);
+	void RemoveMultipleEntityIndices();
 }

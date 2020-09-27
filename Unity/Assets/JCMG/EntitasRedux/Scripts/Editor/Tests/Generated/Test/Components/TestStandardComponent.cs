@@ -7,35 +7,39 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class TestEntity {
+public partial class TestEntity
+{
+	public EntitasRedux.Tests.StandardComponent Standard { get { return (EntitasRedux.Tests.StandardComponent)GetComponent(TestComponentsLookup.Standard); } }
+	public bool HasStandard { get { return HasComponent(TestComponentsLookup.Standard); } }
 
-    public EntitasRedux.Tests.StandardComponent Standard { get { return (EntitasRedux.Tests.StandardComponent)GetComponent(TestComponentsLookup.Standard); } }
-    public bool HasStandard { get { return HasComponent(TestComponentsLookup.Standard); } }
+	public void AddStandard(string newValue)
+	{
+		var index = TestComponentsLookup.Standard;
+		var component = (EntitasRedux.Tests.StandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.StandardComponent));
+		component.value = newValue;
+		AddComponent(index, component);
+	}
 
-    public void AddStandard(string newValue) {
-        var index = TestComponentsLookup.Standard;
-        var component = (EntitasRedux.Tests.StandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.StandardComponent));
-        component.value = newValue;
-        AddComponent(index, component);
-    }
+	public void ReplaceStandard(string newValue)
+	{
+		var index = TestComponentsLookup.Standard;
+		var component = (EntitasRedux.Tests.StandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.StandardComponent));
+		component.value = newValue;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceStandard(string newValue) {
-        var index = TestComponentsLookup.Standard;
-        var component = (EntitasRedux.Tests.StandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.StandardComponent));
-        component.value = newValue;
-        ReplaceComponent(index, component);
-    }
+	public void CopyStandardTo(EntitasRedux.Tests.StandardComponent copyComponent)
+	{
+		var index = TestComponentsLookup.Standard;
+		var component = (EntitasRedux.Tests.StandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.StandardComponent));
+		component.value = copyComponent.value;
+		ReplaceComponent(index, component);
+	}
 
-	public void CopyStandardTo(EntitasRedux.Tests.StandardComponent copyComponent) {
-        var index = TestComponentsLookup.Standard;
-        var component = (EntitasRedux.Tests.StandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.StandardComponent));
-        component.value = copyComponent.value;
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveStandard() {
-        RemoveComponent(TestComponentsLookup.Standard);
-    }
+	public void RemoveStandard()
+	{
+		RemoveComponent(TestComponentsLookup.Standard);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -47,19 +51,22 @@ public partial class TestEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class TestMatcher {
+public sealed partial class TestMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<TestEntity> _matcherStandard;
 
-    static JCMG.EntitasRedux.IMatcher<TestEntity> _matcherStandard;
+	public static JCMG.EntitasRedux.IMatcher<TestEntity> Standard
+	{
+		get
+		{
+			if (_matcherStandard == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<TestEntity>)JCMG.EntitasRedux.Matcher<TestEntity>.AllOf(TestComponentsLookup.Standard);
+				matcher.ComponentNames = TestComponentsLookup.ComponentNames;
+				_matcherStandard = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<TestEntity> Standard {
-        get {
-            if (_matcherStandard == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<TestEntity>)JCMG.EntitasRedux.Matcher<TestEntity>.AllOf(TestComponentsLookup.Standard);
-                matcher.ComponentNames = TestComponentsLookup.ComponentNames;
-                _matcherStandard = matcher;
-            }
-
-            return _matcherStandard;
-        }
-    }
+			return _matcherStandard;
+		}
+	}
 }

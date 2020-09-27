@@ -7,5 +7,4 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class ExampleEntity : JCMG.EntitasRedux.Entity {
-}
+public sealed partial class ExampleEntity : JCMG.EntitasRedux.Entity { }

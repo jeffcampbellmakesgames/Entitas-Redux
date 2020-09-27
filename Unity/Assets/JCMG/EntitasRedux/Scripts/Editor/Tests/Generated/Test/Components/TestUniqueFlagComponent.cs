@@ -7,23 +7,29 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class TestContext {
+public partial class TestContext
+{
+	public TestEntity UniqueFlagEntity { get { return GetGroup(TestMatcher.UniqueFlag).GetSingleEntity(); } }
 
-    public TestEntity UniqueFlagEntity { get { return GetGroup(TestMatcher.UniqueFlag).GetSingleEntity(); } }
-
-    public bool IsUniqueFlag {
-        get { return UniqueFlagEntity != null; }
-        set {
-            var entity = UniqueFlagEntity;
-            if (value != (entity != null)) {
-                if (value) {
-                    CreateEntity().IsUniqueFlag = true;
-                } else {
-                    entity.Destroy();
-                }
-            }
-        }
-    }
+	public bool IsUniqueFlag
+	{
+		get { return UniqueFlagEntity != null; }
+		set
+		{
+			var entity = UniqueFlagEntity;
+			if (value != (entity != null))
+			{
+				if (value)
+				{
+					CreateEntity().IsUniqueFlag = true;
+				}
+				else
+				{
+					entity.Destroy();
+				}
+			}
+		}
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -35,28 +41,34 @@ public partial class TestContext {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class TestEntity {
+public partial class TestEntity
+{
+	static readonly EntitasRedux.Tests.UniqueFlagComponent UniqueFlagComponent = new EntitasRedux.Tests.UniqueFlagComponent();
 
-    static readonly EntitasRedux.Tests.UniqueFlagComponent UniqueFlagComponent = new EntitasRedux.Tests.UniqueFlagComponent();
+	public bool IsUniqueFlag
+	{
+		get { return HasComponent(TestComponentsLookup.UniqueFlag); }
+		set
+		{
+			if (value != IsUniqueFlag)
+			{
+				var index = TestComponentsLookup.UniqueFlag;
+				if (value)
+				{
+					var componentPool = GetComponentPool(index);
+					var component = componentPool.Count > 0
+							? componentPool.Pop()
+							: UniqueFlagComponent;
 
-    public bool IsUniqueFlag {
-        get { return HasComponent(TestComponentsLookup.UniqueFlag); }
-        set {
-            if (value != IsUniqueFlag) {
-                var index = TestComponentsLookup.UniqueFlag;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : UniqueFlagComponent;
-
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
-    }
+					AddComponent(index, component);
+				}
+				else
+				{
+					RemoveComponent(index);
+				}
+			}
+		}
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -68,19 +80,22 @@ public partial class TestEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class TestMatcher {
+public sealed partial class TestMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<TestEntity> _matcherUniqueFlag;
 
-    static JCMG.EntitasRedux.IMatcher<TestEntity> _matcherUniqueFlag;
+	public static JCMG.EntitasRedux.IMatcher<TestEntity> UniqueFlag
+	{
+		get
+		{
+			if (_matcherUniqueFlag == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<TestEntity>)JCMG.EntitasRedux.Matcher<TestEntity>.AllOf(TestComponentsLookup.UniqueFlag);
+				matcher.ComponentNames = TestComponentsLookup.ComponentNames;
+				_matcherUniqueFlag = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<TestEntity> UniqueFlag {
-        get {
-            if (_matcherUniqueFlag == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<TestEntity>)JCMG.EntitasRedux.Matcher<TestEntity>.AllOf(TestComponentsLookup.UniqueFlag);
-                matcher.ComponentNames = TestComponentsLookup.ComponentNames;
-                _matcherUniqueFlag = matcher;
-            }
-
-            return _matcherUniqueFlag;
-        }
-    }
+			return _matcherUniqueFlag;
+		}
+	}
 }

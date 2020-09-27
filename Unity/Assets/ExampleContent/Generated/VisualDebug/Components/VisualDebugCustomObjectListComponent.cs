@@ -7,35 +7,39 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class VisualDebugEntity {
+public partial class VisualDebugEntity
+{
+	public ExampleContent.VisualDebugging.CustomObjectListComponent CustomObjectList { get { return (ExampleContent.VisualDebugging.CustomObjectListComponent)GetComponent(VisualDebugComponentsLookup.CustomObjectList); } }
+	public bool HasCustomObjectList { get { return HasComponent(VisualDebugComponentsLookup.CustomObjectList); } }
 
-    public ExampleContent.VisualDebugging.CustomObjectListComponent CustomObjectList { get { return (ExampleContent.VisualDebugging.CustomObjectListComponent)GetComponent(VisualDebugComponentsLookup.CustomObjectList); } }
-    public bool HasCustomObjectList { get { return HasComponent(VisualDebugComponentsLookup.CustomObjectList); } }
+	public void AddCustomObjectList(System.Collections.Generic.List<ExampleContent.VisualDebugging.CustomObject> newValue)
+	{
+		var index = VisualDebugComponentsLookup.CustomObjectList;
+		var component = (ExampleContent.VisualDebugging.CustomObjectListComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectListComponent));
+		component.value = newValue;
+		AddComponent(index, component);
+	}
 
-    public void AddCustomObjectList(System.Collections.Generic.List<ExampleContent.VisualDebugging.CustomObject> newValue) {
-        var index = VisualDebugComponentsLookup.CustomObjectList;
-        var component = (ExampleContent.VisualDebugging.CustomObjectListComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectListComponent));
-        component.value = newValue;
-        AddComponent(index, component);
-    }
+	public void ReplaceCustomObjectList(System.Collections.Generic.List<ExampleContent.VisualDebugging.CustomObject> newValue)
+	{
+		var index = VisualDebugComponentsLookup.CustomObjectList;
+		var component = (ExampleContent.VisualDebugging.CustomObjectListComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectListComponent));
+		component.value = newValue;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceCustomObjectList(System.Collections.Generic.List<ExampleContent.VisualDebugging.CustomObject> newValue) {
-        var index = VisualDebugComponentsLookup.CustomObjectList;
-        var component = (ExampleContent.VisualDebugging.CustomObjectListComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectListComponent));
-        component.value = newValue;
-        ReplaceComponent(index, component);
-    }
+	public void CopyCustomObjectListTo(ExampleContent.VisualDebugging.CustomObjectListComponent copyComponent)
+	{
+		var index = VisualDebugComponentsLookup.CustomObjectList;
+		var component = (ExampleContent.VisualDebugging.CustomObjectListComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectListComponent));
+		component.value = (System.Collections.Generic.List<ExampleContent.VisualDebugging.CustomObject>)JCMG.EntitasRedux.ListTools.DeepCopy(copyComponent.value);
+		ReplaceComponent(index, component);
+	}
 
-	public void CopyCustomObjectListTo(ExampleContent.VisualDebugging.CustomObjectListComponent copyComponent) {
-        var index = VisualDebugComponentsLookup.CustomObjectList;
-        var component = (ExampleContent.VisualDebugging.CustomObjectListComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectListComponent));
-        component.value = (System.Collections.Generic.List<ExampleContent.VisualDebugging.CustomObject>)JCMG.EntitasRedux.ListTools.DeepCopy(copyComponent.value);
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveCustomObjectList() {
-        RemoveComponent(VisualDebugComponentsLookup.CustomObjectList);
-    }
+	public void RemoveCustomObjectList()
+	{
+		RemoveComponent(VisualDebugComponentsLookup.CustomObjectList);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -47,19 +51,22 @@ public partial class VisualDebugEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class VisualDebugMatcher {
+public sealed partial class VisualDebugMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherCustomObjectList;
 
-    static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherCustomObjectList;
+	public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> CustomObjectList
+	{
+		get
+		{
+			if (_matcherCustomObjectList == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.CustomObjectList);
+				matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
+				_matcherCustomObjectList = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> CustomObjectList {
-        get {
-            if (_matcherCustomObjectList == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.CustomObjectList);
-                matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
-                _matcherCustomObjectList = matcher;
-            }
-
-            return _matcherCustomObjectList;
-        }
-    }
+			return _matcherCustomObjectList;
+		}
+	}
 }

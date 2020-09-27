@@ -7,35 +7,39 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class VisualDebugEntity {
+public partial class VisualDebugEntity
+{
+	public ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent DontDrawSimpleObject { get { return (ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent)GetComponent(VisualDebugComponentsLookup.DontDrawSimpleObject); } }
+	public bool HasDontDrawSimpleObject { get { return HasComponent(VisualDebugComponentsLookup.DontDrawSimpleObject); } }
 
-    public ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent DontDrawSimpleObject { get { return (ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent)GetComponent(VisualDebugComponentsLookup.DontDrawSimpleObject); } }
-    public bool HasDontDrawSimpleObject { get { return HasComponent(VisualDebugComponentsLookup.DontDrawSimpleObject); } }
+	public void AddDontDrawSimpleObject(ExampleContent.VisualDebugging.SimpleObject newSimpleObject)
+	{
+		var index = VisualDebugComponentsLookup.DontDrawSimpleObject;
+		var component = (ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent));
+		component.simpleObject = newSimpleObject;
+		AddComponent(index, component);
+	}
 
-    public void AddDontDrawSimpleObject(ExampleContent.VisualDebugging.SimpleObject newSimpleObject) {
-        var index = VisualDebugComponentsLookup.DontDrawSimpleObject;
-        var component = (ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent));
-        component.simpleObject = newSimpleObject;
-        AddComponent(index, component);
-    }
+	public void ReplaceDontDrawSimpleObject(ExampleContent.VisualDebugging.SimpleObject newSimpleObject)
+	{
+		var index = VisualDebugComponentsLookup.DontDrawSimpleObject;
+		var component = (ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent));
+		component.simpleObject = newSimpleObject;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceDontDrawSimpleObject(ExampleContent.VisualDebugging.SimpleObject newSimpleObject) {
-        var index = VisualDebugComponentsLookup.DontDrawSimpleObject;
-        var component = (ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent));
-        component.simpleObject = newSimpleObject;
-        ReplaceComponent(index, component);
-    }
+	public void CopyDontDrawSimpleObjectTo(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent copyComponent)
+	{
+		var index = VisualDebugComponentsLookup.DontDrawSimpleObject;
+		var component = (ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent));
+		component.simpleObject = copyComponent.simpleObject;
+		ReplaceComponent(index, component);
+	}
 
-	public void CopyDontDrawSimpleObjectTo(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent copyComponent) {
-        var index = VisualDebugComponentsLookup.DontDrawSimpleObject;
-        var component = (ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DontDrawSimpleObjectComponent));
-        component.simpleObject = copyComponent.simpleObject;
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveDontDrawSimpleObject() {
-        RemoveComponent(VisualDebugComponentsLookup.DontDrawSimpleObject);
-    }
+	public void RemoveDontDrawSimpleObject()
+	{
+		RemoveComponent(VisualDebugComponentsLookup.DontDrawSimpleObject);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -47,19 +51,22 @@ public partial class VisualDebugEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class VisualDebugMatcher {
+public sealed partial class VisualDebugMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherDontDrawSimpleObject;
 
-    static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherDontDrawSimpleObject;
+	public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> DontDrawSimpleObject
+	{
+		get
+		{
+			if (_matcherDontDrawSimpleObject == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.DontDrawSimpleObject);
+				matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
+				_matcherDontDrawSimpleObject = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> DontDrawSimpleObject {
-        get {
-            if (_matcherDontDrawSimpleObject == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.DontDrawSimpleObject);
-                matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
-                _matcherDontDrawSimpleObject = matcher;
-            }
-
-            return _matcherDontDrawSimpleObject;
-        }
-    }
+			return _matcherDontDrawSimpleObject;
+		}
+	}
 }

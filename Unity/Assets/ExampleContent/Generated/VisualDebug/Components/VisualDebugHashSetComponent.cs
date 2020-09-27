@@ -7,35 +7,39 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class VisualDebugEntity {
+public partial class VisualDebugEntity
+{
+	public ExampleContent.VisualDebugging.HashSetComponent HashSet { get { return (ExampleContent.VisualDebugging.HashSetComponent)GetComponent(VisualDebugComponentsLookup.HashSet); } }
+	public bool HasHashSet { get { return HasComponent(VisualDebugComponentsLookup.HashSet); } }
 
-    public ExampleContent.VisualDebugging.HashSetComponent HashSet { get { return (ExampleContent.VisualDebugging.HashSetComponent)GetComponent(VisualDebugComponentsLookup.HashSet); } }
-    public bool HasHashSet { get { return HasComponent(VisualDebugComponentsLookup.HashSet); } }
+	public void AddHashSet(System.Collections.Generic.HashSet<string> newHashset)
+	{
+		var index = VisualDebugComponentsLookup.HashSet;
+		var component = (ExampleContent.VisualDebugging.HashSetComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.HashSetComponent));
+		component.hashset = newHashset;
+		AddComponent(index, component);
+	}
 
-    public void AddHashSet(System.Collections.Generic.HashSet<string> newHashset) {
-        var index = VisualDebugComponentsLookup.HashSet;
-        var component = (ExampleContent.VisualDebugging.HashSetComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.HashSetComponent));
-        component.hashset = newHashset;
-        AddComponent(index, component);
-    }
+	public void ReplaceHashSet(System.Collections.Generic.HashSet<string> newHashset)
+	{
+		var index = VisualDebugComponentsLookup.HashSet;
+		var component = (ExampleContent.VisualDebugging.HashSetComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.HashSetComponent));
+		component.hashset = newHashset;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceHashSet(System.Collections.Generic.HashSet<string> newHashset) {
-        var index = VisualDebugComponentsLookup.HashSet;
-        var component = (ExampleContent.VisualDebugging.HashSetComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.HashSetComponent));
-        component.hashset = newHashset;
-        ReplaceComponent(index, component);
-    }
+	public void CopyHashSetTo(ExampleContent.VisualDebugging.HashSetComponent copyComponent)
+	{
+		var index = VisualDebugComponentsLookup.HashSet;
+		var component = (ExampleContent.VisualDebugging.HashSetComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.HashSetComponent));
+		component.hashset = copyComponent.hashset;
+		ReplaceComponent(index, component);
+	}
 
-	public void CopyHashSetTo(ExampleContent.VisualDebugging.HashSetComponent copyComponent) {
-        var index = VisualDebugComponentsLookup.HashSet;
-        var component = (ExampleContent.VisualDebugging.HashSetComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.HashSetComponent));
-        component.hashset = copyComponent.hashset;
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveHashSet() {
-        RemoveComponent(VisualDebugComponentsLookup.HashSet);
-    }
+	public void RemoveHashSet()
+	{
+		RemoveComponent(VisualDebugComponentsLookup.HashSet);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -47,19 +51,22 @@ public partial class VisualDebugEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class VisualDebugMatcher {
+public sealed partial class VisualDebugMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherHashSet;
 
-    static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherHashSet;
+	public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> HashSet
+	{
+		get
+		{
+			if (_matcherHashSet == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.HashSet);
+				matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
+				_matcherHashSet = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> HashSet {
-        get {
-            if (_matcherHashSet == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.HashSet);
-                matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
-                _matcherHashSet = matcher;
-            }
-
-            return _matcherHashSet;
-        }
-    }
+			return _matcherHashSet;
+		}
+	}
 }

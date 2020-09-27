@@ -7,28 +7,34 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class ExampleEntity {
+public partial class ExampleEntity
+{
+	static readonly ExampleContent.VisualDebugging.NoContextComponent NoContextComponent = new ExampleContent.VisualDebugging.NoContextComponent();
 
-    static readonly ExampleContent.VisualDebugging.NoContextComponent NoContextComponent = new ExampleContent.VisualDebugging.NoContextComponent();
+	public bool IsNoContext
+	{
+		get { return HasComponent(ExampleComponentsLookup.NoContext); }
+		set
+		{
+			if (value != IsNoContext)
+			{
+				var index = ExampleComponentsLookup.NoContext;
+				if (value)
+				{
+					var componentPool = GetComponentPool(index);
+					var component = componentPool.Count > 0
+							? componentPool.Pop()
+							: NoContextComponent;
 
-    public bool IsNoContext {
-        get { return HasComponent(ExampleComponentsLookup.NoContext); }
-        set {
-            if (value != IsNoContext) {
-                var index = ExampleComponentsLookup.NoContext;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : NoContextComponent;
-
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
-    }
+					AddComponent(index, component);
+				}
+				else
+				{
+					RemoveComponent(index);
+				}
+			}
+		}
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -40,19 +46,22 @@ public partial class ExampleEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class ExampleMatcher {
+public sealed partial class ExampleMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<ExampleEntity> _matcherNoContext;
 
-    static JCMG.EntitasRedux.IMatcher<ExampleEntity> _matcherNoContext;
+	public static JCMG.EntitasRedux.IMatcher<ExampleEntity> NoContext
+	{
+		get
+		{
+			if (_matcherNoContext == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<ExampleEntity>)JCMG.EntitasRedux.Matcher<ExampleEntity>.AllOf(ExampleComponentsLookup.NoContext);
+				matcher.ComponentNames = ExampleComponentsLookup.ComponentNames;
+				_matcherNoContext = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<ExampleEntity> NoContext {
-        get {
-            if (_matcherNoContext == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<ExampleEntity>)JCMG.EntitasRedux.Matcher<ExampleEntity>.AllOf(ExampleComponentsLookup.NoContext);
-                matcher.ComponentNames = ExampleComponentsLookup.ComponentNames;
-                _matcherNoContext = matcher;
-            }
-
-            return _matcherNoContext;
-        }
-    }
+			return _matcherNoContext;
+		}
+	}
 }

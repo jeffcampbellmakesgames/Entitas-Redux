@@ -7,35 +7,39 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class VisualDebugEntity {
+public partial class VisualDebugEntity
+{
+	public ExampleContent.VisualDebugging.CustomObjectDictionaryComponent CustomObjectDictionary { get { return (ExampleContent.VisualDebugging.CustomObjectDictionaryComponent)GetComponent(VisualDebugComponentsLookup.CustomObjectDictionary); } }
+	public bool HasCustomObjectDictionary { get { return HasComponent(VisualDebugComponentsLookup.CustomObjectDictionary); } }
 
-    public ExampleContent.VisualDebugging.CustomObjectDictionaryComponent CustomObjectDictionary { get { return (ExampleContent.VisualDebugging.CustomObjectDictionaryComponent)GetComponent(VisualDebugComponentsLookup.CustomObjectDictionary); } }
-    public bool HasCustomObjectDictionary { get { return HasComponent(VisualDebugComponentsLookup.CustomObjectDictionary); } }
+	public void AddCustomObjectDictionary(System.Collections.Generic.Dictionary<string, ExampleContent.VisualDebugging.CustomObject> newValue)
+	{
+		var index = VisualDebugComponentsLookup.CustomObjectDictionary;
+		var component = (ExampleContent.VisualDebugging.CustomObjectDictionaryComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectDictionaryComponent));
+		component.value = newValue;
+		AddComponent(index, component);
+	}
 
-    public void AddCustomObjectDictionary(System.Collections.Generic.Dictionary<string, ExampleContent.VisualDebugging.CustomObject> newValue) {
-        var index = VisualDebugComponentsLookup.CustomObjectDictionary;
-        var component = (ExampleContent.VisualDebugging.CustomObjectDictionaryComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectDictionaryComponent));
-        component.value = newValue;
-        AddComponent(index, component);
-    }
+	public void ReplaceCustomObjectDictionary(System.Collections.Generic.Dictionary<string, ExampleContent.VisualDebugging.CustomObject> newValue)
+	{
+		var index = VisualDebugComponentsLookup.CustomObjectDictionary;
+		var component = (ExampleContent.VisualDebugging.CustomObjectDictionaryComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectDictionaryComponent));
+		component.value = newValue;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceCustomObjectDictionary(System.Collections.Generic.Dictionary<string, ExampleContent.VisualDebugging.CustomObject> newValue) {
-        var index = VisualDebugComponentsLookup.CustomObjectDictionary;
-        var component = (ExampleContent.VisualDebugging.CustomObjectDictionaryComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectDictionaryComponent));
-        component.value = newValue;
-        ReplaceComponent(index, component);
-    }
+	public void CopyCustomObjectDictionaryTo(ExampleContent.VisualDebugging.CustomObjectDictionaryComponent copyComponent)
+	{
+		var index = VisualDebugComponentsLookup.CustomObjectDictionary;
+		var component = (ExampleContent.VisualDebugging.CustomObjectDictionaryComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectDictionaryComponent));
+		component.value = (System.Collections.Generic.Dictionary<string, ExampleContent.VisualDebugging.CustomObject>)JCMG.EntitasRedux.DictionaryTools.DeepCopy(copyComponent.value);
+		ReplaceComponent(index, component);
+	}
 
-	public void CopyCustomObjectDictionaryTo(ExampleContent.VisualDebugging.CustomObjectDictionaryComponent copyComponent) {
-        var index = VisualDebugComponentsLookup.CustomObjectDictionary;
-        var component = (ExampleContent.VisualDebugging.CustomObjectDictionaryComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.CustomObjectDictionaryComponent));
-        component.value = (System.Collections.Generic.Dictionary<string, ExampleContent.VisualDebugging.CustomObject>)JCMG.EntitasRedux.DictionaryTools.DeepCopy(copyComponent.value);
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveCustomObjectDictionary() {
-        RemoveComponent(VisualDebugComponentsLookup.CustomObjectDictionary);
-    }
+	public void RemoveCustomObjectDictionary()
+	{
+		RemoveComponent(VisualDebugComponentsLookup.CustomObjectDictionary);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -47,19 +51,22 @@ public partial class VisualDebugEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class VisualDebugMatcher {
+public sealed partial class VisualDebugMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherCustomObjectDictionary;
 
-    static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherCustomObjectDictionary;
+	public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> CustomObjectDictionary
+	{
+		get
+		{
+			if (_matcherCustomObjectDictionary == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.CustomObjectDictionary);
+				matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
+				_matcherCustomObjectDictionary = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> CustomObjectDictionary {
-        get {
-            if (_matcherCustomObjectDictionary == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.CustomObjectDictionary);
-                matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
-                _matcherCustomObjectDictionary = matcher;
-            }
-
-            return _matcherCustomObjectDictionary;
-        }
-    }
+			return _matcherCustomObjectDictionary;
+		}
+	}
 }

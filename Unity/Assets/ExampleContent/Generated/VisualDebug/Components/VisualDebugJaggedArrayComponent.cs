@@ -7,35 +7,39 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class VisualDebugEntity {
+public partial class VisualDebugEntity
+{
+	public ExampleContent.VisualDebugging.JaggedArrayComponent JaggedArray { get { return (ExampleContent.VisualDebugging.JaggedArrayComponent)GetComponent(VisualDebugComponentsLookup.JaggedArray); } }
+	public bool HasJaggedArray { get { return HasComponent(VisualDebugComponentsLookup.JaggedArray); } }
 
-    public ExampleContent.VisualDebugging.JaggedArrayComponent JaggedArray { get { return (ExampleContent.VisualDebugging.JaggedArrayComponent)GetComponent(VisualDebugComponentsLookup.JaggedArray); } }
-    public bool HasJaggedArray { get { return HasComponent(VisualDebugComponentsLookup.JaggedArray); } }
+	public void AddJaggedArray(string[][] newJaggedArray)
+	{
+		var index = VisualDebugComponentsLookup.JaggedArray;
+		var component = (ExampleContent.VisualDebugging.JaggedArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.JaggedArrayComponent));
+		component.jaggedArray = newJaggedArray;
+		AddComponent(index, component);
+	}
 
-    public void AddJaggedArray(string[][] newJaggedArray) {
-        var index = VisualDebugComponentsLookup.JaggedArray;
-        var component = (ExampleContent.VisualDebugging.JaggedArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.JaggedArrayComponent));
-        component.jaggedArray = newJaggedArray;
-        AddComponent(index, component);
-    }
+	public void ReplaceJaggedArray(string[][] newJaggedArray)
+	{
+		var index = VisualDebugComponentsLookup.JaggedArray;
+		var component = (ExampleContent.VisualDebugging.JaggedArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.JaggedArrayComponent));
+		component.jaggedArray = newJaggedArray;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceJaggedArray(string[][] newJaggedArray) {
-        var index = VisualDebugComponentsLookup.JaggedArray;
-        var component = (ExampleContent.VisualDebugging.JaggedArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.JaggedArrayComponent));
-        component.jaggedArray = newJaggedArray;
-        ReplaceComponent(index, component);
-    }
+	public void CopyJaggedArrayTo(ExampleContent.VisualDebugging.JaggedArrayComponent copyComponent)
+	{
+		var index = VisualDebugComponentsLookup.JaggedArray;
+		var component = (ExampleContent.VisualDebugging.JaggedArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.JaggedArrayComponent));
+		component.jaggedArray = (string[][])JCMG.EntitasRedux.ArrayTools.DeepCopy(copyComponent.jaggedArray);
+		ReplaceComponent(index, component);
+	}
 
-	public void CopyJaggedArrayTo(ExampleContent.VisualDebugging.JaggedArrayComponent copyComponent) {
-        var index = VisualDebugComponentsLookup.JaggedArray;
-        var component = (ExampleContent.VisualDebugging.JaggedArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.JaggedArrayComponent));
-        component.jaggedArray = (string[][])JCMG.EntitasRedux.ArrayTools.DeepCopy(copyComponent.jaggedArray);
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveJaggedArray() {
-        RemoveComponent(VisualDebugComponentsLookup.JaggedArray);
-    }
+	public void RemoveJaggedArray()
+	{
+		RemoveComponent(VisualDebugComponentsLookup.JaggedArray);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -47,19 +51,22 @@ public partial class VisualDebugEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class VisualDebugMatcher {
+public sealed partial class VisualDebugMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherJaggedArray;
 
-    static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherJaggedArray;
+	public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> JaggedArray
+	{
+		get
+		{
+			if (_matcherJaggedArray == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.JaggedArray);
+				matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
+				_matcherJaggedArray = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> JaggedArray {
-        get {
-            if (_matcherJaggedArray == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.JaggedArray);
-                matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
-                _matcherJaggedArray = matcher;
-            }
-
-            return _matcherJaggedArray;
-        }
-    }
+			return _matcherJaggedArray;
+		}
+	}
 }

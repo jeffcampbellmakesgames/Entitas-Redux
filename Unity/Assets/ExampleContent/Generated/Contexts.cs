@@ -7,7 +7,8 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class Contexts : JCMG.EntitasRedux.IContexts {
+public partial class Contexts : JCMG.EntitasRedux.IContexts
+{
 
 	#if UNITY_EDITOR
 
@@ -29,46 +30,53 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts {
 		}
 	}
 
-    public static Contexts SharedInstance {
-        get {
-            if (_sharedInstance == null) {
-                _sharedInstance = new Contexts();
-            }
+	public static Contexts SharedInstance
+	{
+		get
+		{
+			if (_sharedInstance == null)
+			{
+				_sharedInstance = new Contexts();
+			}
 
-            return _sharedInstance;
-        }
-        set { _sharedInstance = value; }
-    }
+			return _sharedInstance;
+		}
+		set	{ _sharedInstance = value; }
+	}
 
 	#endif
 
-    static Contexts _sharedInstance;
+	static Contexts _sharedInstance;
 
-    public ExampleContext Example { get; set; }
-    public VisualDebugContext VisualDebug { get; set; }
+	public ExampleContext Example { get; set; }
+	public VisualDebugContext VisualDebug { get; set; }
 
-    public JCMG.EntitasRedux.IContext[] AllContexts { get { return new JCMG.EntitasRedux.IContext [] { Example, VisualDebug }; } }
+	public JCMG.EntitasRedux.IContext[] AllContexts { get { return new JCMG.EntitasRedux.IContext [] { Example, VisualDebug }; } }
 
-    public Contexts() {
-        Example = new ExampleContext();
-        VisualDebug = new VisualDebugContext();
+	public Contexts()
+{
+		Example = new ExampleContext();
+		VisualDebug = new VisualDebugContext();
 
-        var postConstructors = System.Linq.Enumerable.Where(
-            GetType().GetMethods(),
-            method => System.Attribute.IsDefined(method, typeof(JCMG.EntitasRedux.PostConstructorAttribute))
-        );
+		var postConstructors = System.Linq.Enumerable.Where(
+			GetType().GetMethods(),
+			method => System.Attribute.IsDefined(method, typeof(JCMG.EntitasRedux.PostConstructorAttribute))
+		);
 
-        foreach (var postConstructor in postConstructors) {
-            postConstructor.Invoke(this, null);
-        }
-    }
+		foreach (var postConstructor in postConstructors)
+		{
+			postConstructor.Invoke(this, null);
+		}
+	}
 
-    public void Reset() {
-        var contexts = AllContexts;
-        for (int i = 0; i < contexts.Length; i++) {
-            contexts[i].Reset();
-        }
-    }
+	public void Reset()
+	{
+		var contexts = AllContexts;
+		for (int i = 0; i < contexts.Length; i++)
+		{
+			contexts[i].Reset();
+		}
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -84,21 +92,21 @@ public partial class Contexts {
 
 #if (!ENTITAS_DISABLE_VISUAL_DEBUGGING && UNITY_EDITOR)
 
-    [JCMG.EntitasRedux.PostConstructor]
-    public void InitializeContextObservers() {
-        try {
-            CreateContextObserver(Example);
-            CreateContextObserver(VisualDebug);
-        } catch(System.Exception) {
-        }
-    }
+	[JCMG.EntitasRedux.PostConstructor]
+	public void InitializeContextObservers() {
+		try {
+			CreateContextObserver(Example);
+			CreateContextObserver(VisualDebug);
+		} catch(System.Exception) {
+		}
+	}
 
-    public void CreateContextObserver(JCMG.EntitasRedux.IContext context) {
-        if (UnityEngine.Application.isPlaying) {
-            var observer = new JCMG.EntitasRedux.VisualDebugging.ContextObserver(context);
-            UnityEngine.Object.DontDestroyOnLoad(observer.GameObject);
-        }
-    }
+	public void CreateContextObserver(JCMG.EntitasRedux.IContext context) {
+		if (UnityEngine.Application.isPlaying) {
+			var observer = new JCMG.EntitasRedux.VisualDebugging.ContextObserver(context);
+			UnityEngine.Object.DontDestroyOnLoad(observer.GameObject);
+		}
+	}
 
 #endif
 }

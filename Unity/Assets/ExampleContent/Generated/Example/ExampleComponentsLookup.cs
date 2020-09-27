@@ -11,31 +11,33 @@ using System;
 using System.Collections.Generic;
 using JCMG.EntitasRedux;
 
-public static class ExampleComponentsLookup {
+public static class ExampleComponentsLookup
+{
+	public const int AnCleanupDestroyEntity = 0;
+	public const int AnCleanupRemove = 1;
+	public const int NoContext = 2;
 
-    public const int AnCleanupDestroyEntity = 0;
-    public const int AnCleanupRemove = 1;
-    public const int NoContext = 2;
+	public const int TotalComponents = 3;
 
-    public const int TotalComponents = 3;
+	public static readonly string[] ComponentNames =
+	{
+		"AnCleanupDestroyEntity",
+		"AnCleanupRemove",
+		"NoContext"
+	};
 
-    public static readonly string[] ComponentNames = {
-        "AnCleanupDestroyEntity",
-        "AnCleanupRemove",
-        "NoContext"
-    };
-
-    public static readonly System.Type[] ComponentTypes = {
-        typeof(ExampleContent.VisualDebugging.AnCleanupDestroyEntityComponent),
-        typeof(ExampleContent.VisualDebugging.AnCleanupRemoveComponent),
-        typeof(ExampleContent.VisualDebugging.NoContextComponent)
-    };
+	public static readonly System.Type[] ComponentTypes =
+	{
+		typeof(ExampleContent.VisualDebugging.AnCleanupDestroyEntityComponent),
+		typeof(ExampleContent.VisualDebugging.AnCleanupRemoveComponent),
+		typeof(ExampleContent.VisualDebugging.NoContextComponent)
+	};
 
 	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
 	{
-        { typeof(ExampleContent.VisualDebugging.AnCleanupDestroyEntityComponent), 0 },
-        { typeof(ExampleContent.VisualDebugging.AnCleanupRemoveComponent), 1 },
-        { typeof(ExampleContent.VisualDebugging.NoContextComponent), 2 }
+		{ typeof(ExampleContent.VisualDebugging.AnCleanupDestroyEntityComponent), 0 },
+		{ typeof(ExampleContent.VisualDebugging.AnCleanupRemoveComponent), 1 },
+		{ typeof(ExampleContent.VisualDebugging.NoContextComponent), 2 }
 	};
 
 	/// <summary>

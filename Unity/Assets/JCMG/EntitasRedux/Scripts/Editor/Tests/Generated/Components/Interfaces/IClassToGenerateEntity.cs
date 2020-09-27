@@ -7,12 +7,12 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial interface IClassToGenerateEntity {
+public partial interface IClassToGenerateEntity
+{
+	ClassToGenerateComponent ClassToGenerate { get; }
+	bool HasClassToGenerate { get; }
 
-    ClassToGenerateComponent ClassToGenerate { get; }
-    bool HasClassToGenerate { get; }
-
-    void AddClassToGenerate(EntitasRedux.Tests.ClassToGenerate newValue);
-    void ReplaceClassToGenerate(EntitasRedux.Tests.ClassToGenerate newValue);
-    void RemoveClassToGenerate();
+	void AddClassToGenerate(EntitasRedux.Tests.ClassToGenerate newValue);
+	void ReplaceClassToGenerate(EntitasRedux.Tests.ClassToGenerate newValue);
+	void RemoveClassToGenerate();
 }

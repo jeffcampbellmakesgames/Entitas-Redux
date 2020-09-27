@@ -7,6 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public interface ITest2AnyEventToGenerateAddedListener {
-    void OnAnyEventToGenerateAdded(Test2Entity entity, EntitasRedux.Tests.EventToGenerate value);
+public interface ITest2AnyEventToGenerateAddedListener
+{
+	void OnAnyEventToGenerateAdded(Test2Entity entity, EntitasRedux.Tests.EventToGenerate value);
 }

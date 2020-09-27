@@ -7,35 +7,39 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class TestEntity {
+public partial class TestEntity
+{
+	public EntitasRedux.Tests.MyNamespaceComponent MyNamespace { get { return (EntitasRedux.Tests.MyNamespaceComponent)GetComponent(TestComponentsLookup.MyNamespace); } }
+	public bool HasMyNamespace { get { return HasComponent(TestComponentsLookup.MyNamespace); } }
 
-    public EntitasRedux.Tests.MyNamespaceComponent MyNamespace { get { return (EntitasRedux.Tests.MyNamespaceComponent)GetComponent(TestComponentsLookup.MyNamespace); } }
-    public bool HasMyNamespace { get { return HasComponent(TestComponentsLookup.MyNamespace); } }
+	public void AddMyNamespace(string newValue)
+	{
+		var index = TestComponentsLookup.MyNamespace;
+		var component = (EntitasRedux.Tests.MyNamespaceComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MyNamespaceComponent));
+		component.value = newValue;
+		AddComponent(index, component);
+	}
 
-    public void AddMyNamespace(string newValue) {
-        var index = TestComponentsLookup.MyNamespace;
-        var component = (EntitasRedux.Tests.MyNamespaceComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MyNamespaceComponent));
-        component.value = newValue;
-        AddComponent(index, component);
-    }
+	public void ReplaceMyNamespace(string newValue)
+	{
+		var index = TestComponentsLookup.MyNamespace;
+		var component = (EntitasRedux.Tests.MyNamespaceComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MyNamespaceComponent));
+		component.value = newValue;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceMyNamespace(string newValue) {
-        var index = TestComponentsLookup.MyNamespace;
-        var component = (EntitasRedux.Tests.MyNamespaceComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MyNamespaceComponent));
-        component.value = newValue;
-        ReplaceComponent(index, component);
-    }
+	public void CopyMyNamespaceTo(EntitasRedux.Tests.MyNamespaceComponent copyComponent)
+	{
+		var index = TestComponentsLookup.MyNamespace;
+		var component = (EntitasRedux.Tests.MyNamespaceComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MyNamespaceComponent));
+		component.value = copyComponent.value;
+		ReplaceComponent(index, component);
+	}
 
-	public void CopyMyNamespaceTo(EntitasRedux.Tests.MyNamespaceComponent copyComponent) {
-        var index = TestComponentsLookup.MyNamespace;
-        var component = (EntitasRedux.Tests.MyNamespaceComponent)CreateComponent(index, typeof(EntitasRedux.Tests.MyNamespaceComponent));
-        component.value = copyComponent.value;
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveMyNamespace() {
-        RemoveComponent(TestComponentsLookup.MyNamespace);
-    }
+	public void RemoveMyNamespace()
+	{
+		RemoveComponent(TestComponentsLookup.MyNamespace);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -58,19 +62,22 @@ public partial class TestEntity : IMyNamespaceEntity { }
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class TestMatcher {
+public sealed partial class TestMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<TestEntity> _matcherMyNamespace;
 
-    static JCMG.EntitasRedux.IMatcher<TestEntity> _matcherMyNamespace;
+	public static JCMG.EntitasRedux.IMatcher<TestEntity> MyNamespace
+	{
+		get
+		{
+			if (_matcherMyNamespace == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<TestEntity>)JCMG.EntitasRedux.Matcher<TestEntity>.AllOf(TestComponentsLookup.MyNamespace);
+				matcher.ComponentNames = TestComponentsLookup.ComponentNames;
+				_matcherMyNamespace = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<TestEntity> MyNamespace {
-        get {
-            if (_matcherMyNamespace == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<TestEntity>)JCMG.EntitasRedux.Matcher<TestEntity>.AllOf(TestComponentsLookup.MyNamespace);
-                matcher.ComponentNames = TestComponentsLookup.ComponentNames;
-                _matcherMyNamespace = matcher;
-            }
-
-            return _matcherMyNamespace;
-        }
-    }
+			return _matcherMyNamespace;
+		}
+	}
 }

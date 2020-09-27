@@ -7,35 +7,39 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class VisualDebugEntity {
+public partial class VisualDebugEntity
+{
+	public SomeStructComponent SomeStruct { get { return (SomeStructComponent)GetComponent(VisualDebugComponentsLookup.SomeStruct); } }
+	public bool HasSomeStruct { get { return HasComponent(VisualDebugComponentsLookup.SomeStruct); } }
 
-    public SomeStructComponent SomeStruct { get { return (SomeStructComponent)GetComponent(VisualDebugComponentsLookup.SomeStruct); } }
-    public bool HasSomeStruct { get { return HasComponent(VisualDebugComponentsLookup.SomeStruct); } }
+	public void AddSomeStruct(ExampleContent.VisualDebugging.SomeStruct newValue)
+	{
+		var index = VisualDebugComponentsLookup.SomeStruct;
+		var component = (SomeStructComponent)CreateComponent(index, typeof(SomeStructComponent));
+		component.value = newValue;
+		AddComponent(index, component);
+	}
 
-    public void AddSomeStruct(ExampleContent.VisualDebugging.SomeStruct newValue) {
-        var index = VisualDebugComponentsLookup.SomeStruct;
-        var component = (SomeStructComponent)CreateComponent(index, typeof(SomeStructComponent));
-        component.value = newValue;
-        AddComponent(index, component);
-    }
+	public void ReplaceSomeStruct(ExampleContent.VisualDebugging.SomeStruct newValue)
+	{
+		var index = VisualDebugComponentsLookup.SomeStruct;
+		var component = (SomeStructComponent)CreateComponent(index, typeof(SomeStructComponent));
+		component.value = newValue;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceSomeStruct(ExampleContent.VisualDebugging.SomeStruct newValue) {
-        var index = VisualDebugComponentsLookup.SomeStruct;
-        var component = (SomeStructComponent)CreateComponent(index, typeof(SomeStructComponent));
-        component.value = newValue;
-        ReplaceComponent(index, component);
-    }
+	public void CopySomeStructTo(SomeStructComponent copyComponent)
+	{
+		var index = VisualDebugComponentsLookup.SomeStruct;
+		var component = (SomeStructComponent)CreateComponent(index, typeof(SomeStructComponent));
+		component.value = copyComponent.value;
+		ReplaceComponent(index, component);
+	}
 
-	public void CopySomeStructTo(SomeStructComponent copyComponent) {
-        var index = VisualDebugComponentsLookup.SomeStruct;
-        var component = (SomeStructComponent)CreateComponent(index, typeof(SomeStructComponent));
-        component.value = copyComponent.value;
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveSomeStruct() {
-        RemoveComponent(VisualDebugComponentsLookup.SomeStruct);
-    }
+	public void RemoveSomeStruct()
+	{
+		RemoveComponent(VisualDebugComponentsLookup.SomeStruct);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -47,19 +51,22 @@ public partial class VisualDebugEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class VisualDebugMatcher {
+public sealed partial class VisualDebugMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherSomeStruct;
 
-    static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherSomeStruct;
+	public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> SomeStruct
+	{
+		get
+		{
+			if (_matcherSomeStruct == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.SomeStruct);
+				matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
+				_matcherSomeStruct = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> SomeStruct {
-        get {
-            if (_matcherSomeStruct == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.SomeStruct);
-                matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
-                _matcherSomeStruct = matcher;
-            }
-
-            return _matcherSomeStruct;
-        }
-    }
+			return _matcherSomeStruct;
+		}
+	}
 }

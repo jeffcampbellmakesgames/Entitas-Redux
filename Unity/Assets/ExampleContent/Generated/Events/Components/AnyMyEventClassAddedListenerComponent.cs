@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 [JCMG.EntitasRedux.DontGenerate(false)]
-public sealed class AnyMyEventClassAddedListenerComponent : JCMG.EntitasRedux.IComponent {
-    public System.Collections.Generic.List<IAnyMyEventClassAddedListener> value;
+public sealed class AnyMyEventClassAddedListenerComponent : JCMG.EntitasRedux.IComponent
+{
+	public System.Collections.Generic.List<IAnyMyEventClassAddedListener> value;
 }

@@ -7,6 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public interface IAnyMixedEventAddedListener {
-    void OnAnyMixedEventAdded(TestEntity entity, string value);
+public interface IAnyMixedEventAddedListener
+{
+	void OnAnyMixedEventAdded(TestEntity entity, string value);
 }

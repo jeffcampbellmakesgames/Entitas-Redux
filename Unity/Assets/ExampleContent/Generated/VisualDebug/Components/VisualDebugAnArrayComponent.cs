@@ -7,35 +7,39 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class VisualDebugEntity {
+public partial class VisualDebugEntity
+{
+	public ExampleContent.VisualDebugging.AnArrayComponent AnArray { get { return (ExampleContent.VisualDebugging.AnArrayComponent)GetComponent(VisualDebugComponentsLookup.AnArray); } }
+	public bool HasAnArray { get { return HasComponent(VisualDebugComponentsLookup.AnArray); } }
 
-    public ExampleContent.VisualDebugging.AnArrayComponent AnArray { get { return (ExampleContent.VisualDebugging.AnArrayComponent)GetComponent(VisualDebugComponentsLookup.AnArray); } }
-    public bool HasAnArray { get { return HasComponent(VisualDebugComponentsLookup.AnArray); } }
+	public void AddAnArray(string[] newArray)
+	{
+		var index = VisualDebugComponentsLookup.AnArray;
+		var component = (ExampleContent.VisualDebugging.AnArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.AnArrayComponent));
+		component.array = newArray;
+		AddComponent(index, component);
+	}
 
-    public void AddAnArray(string[] newArray) {
-        var index = VisualDebugComponentsLookup.AnArray;
-        var component = (ExampleContent.VisualDebugging.AnArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.AnArrayComponent));
-        component.array = newArray;
-        AddComponent(index, component);
-    }
+	public void ReplaceAnArray(string[] newArray)
+	{
+		var index = VisualDebugComponentsLookup.AnArray;
+		var component = (ExampleContent.VisualDebugging.AnArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.AnArrayComponent));
+		component.array = newArray;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceAnArray(string[] newArray) {
-        var index = VisualDebugComponentsLookup.AnArray;
-        var component = (ExampleContent.VisualDebugging.AnArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.AnArrayComponent));
-        component.array = newArray;
-        ReplaceComponent(index, component);
-    }
+	public void CopyAnArrayTo(ExampleContent.VisualDebugging.AnArrayComponent copyComponent)
+	{
+		var index = VisualDebugComponentsLookup.AnArray;
+		var component = (ExampleContent.VisualDebugging.AnArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.AnArrayComponent));
+		component.array = (string[])copyComponent.array.Clone();
+		ReplaceComponent(index, component);
+	}
 
-	public void CopyAnArrayTo(ExampleContent.VisualDebugging.AnArrayComponent copyComponent) {
-        var index = VisualDebugComponentsLookup.AnArray;
-        var component = (ExampleContent.VisualDebugging.AnArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.AnArrayComponent));
-        component.array = (string[])copyComponent.array.Clone();
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveAnArray() {
-        RemoveComponent(VisualDebugComponentsLookup.AnArray);
-    }
+	public void RemoveAnArray()
+	{
+		RemoveComponent(VisualDebugComponentsLookup.AnArray);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -47,19 +51,22 @@ public partial class VisualDebugEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class VisualDebugMatcher {
+public sealed partial class VisualDebugMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherAnArray;
 
-    static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherAnArray;
+	public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> AnArray
+	{
+		get
+		{
+			if (_matcherAnArray == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.AnArray);
+				matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
+				_matcherAnArray = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> AnArray {
-        get {
-            if (_matcherAnArray == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.AnArray);
-                matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
-                _matcherAnArray = matcher;
-            }
-
-            return _matcherAnArray;
-        }
-    }
+			return _matcherAnArray;
+		}
+	}
 }

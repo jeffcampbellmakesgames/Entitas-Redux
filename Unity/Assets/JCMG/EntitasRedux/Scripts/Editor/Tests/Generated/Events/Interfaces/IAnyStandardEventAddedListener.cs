@@ -7,6 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public interface IAnyStandardEventAddedListener {
-    void OnAnyStandardEventAdded(TestEntity entity, string value);
+public interface IAnyStandardEventAddedListener
+{
+	void OnAnyStandardEventAdded(TestEntity entity, string value);
 }

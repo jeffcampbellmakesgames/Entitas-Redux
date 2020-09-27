@@ -9,32 +9,42 @@
 //------------------------------------------------------------------------------
 public partial class TestContext {
 
-    public TestEntity UniqueStandardEntity { get { return GetGroup(TestMatcher.UniqueStandard).GetSingleEntity(); } }
-    public EntitasRedux.Tests.UniqueStandardComponent UniqueStandard { get { return UniqueStandardEntity.UniqueStandard; } }
-    public bool HasUniqueStandard { get { return UniqueStandardEntity != null; } }
+	public TestEntity UniqueStandardEntity { get { return GetGroup(TestMatcher.UniqueStandard).GetSingleEntity(); } }
+	public EntitasRedux.Tests.UniqueStandardComponent UniqueStandard { get { return UniqueStandardEntity.UniqueStandard; } }
+	public bool HasUniqueStandard { get { return UniqueStandardEntity != null; } }
 
-    public TestEntity SetUniqueStandard(string newValue) {
-        if (HasUniqueStandard) {
-            throw new JCMG.EntitasRedux.EntitasReduxException("Could not set UniqueStandard!\n" + this + " already has an entity with EntitasRedux.Tests.UniqueStandardComponent!",
-                "You should check if the context already has a UniqueStandardEntity before setting it or use context.ReplaceUniqueStandard().");
-        }
-        var entity = CreateEntity();
-        entity.AddUniqueStandard(newValue);
-        return entity;
-    }
+	public TestEntity SetUniqueStandard(string newValue)
+	{
+		if (HasUniqueStandard)
+		{
+			throw new JCMG.EntitasRedux.EntitasReduxException(
+				"Could not set UniqueStandard!\n" +
+				this +
+				" already has an entity with EntitasRedux.Tests.UniqueStandardComponent!",
+				"You should check if the context already has a UniqueStandardEntity before setting it or use context.ReplaceUniqueStandard().");
+		}
+		var entity = CreateEntity();
+		entity.AddUniqueStandard(newValue);
+		return entity;
+	}
 
-    public void ReplaceUniqueStandard(string newValue) {
-        var entity = UniqueStandardEntity;
-        if (entity == null) {
-            entity = SetUniqueStandard(newValue);
-        } else {
-            entity.ReplaceUniqueStandard(newValue);
-        }
-    }
+	public void ReplaceUniqueStandard(string newValue)
+	{
+		var entity = UniqueStandardEntity;
+		if (entity == null)
+		{
+			entity = SetUniqueStandard(newValue);
+		}
+		else
+		{
+			entity.ReplaceUniqueStandard(newValue);
+		}
+	}
 
-    public void RemoveUniqueStandard() {
-        UniqueStandardEntity.Destroy();
-    }
+	public void RemoveUniqueStandard()
+	{
+		UniqueStandardEntity.Destroy();
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -46,35 +56,39 @@ public partial class TestContext {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class TestEntity {
+public partial class TestEntity
+{
+	public EntitasRedux.Tests.UniqueStandardComponent UniqueStandard { get { return (EntitasRedux.Tests.UniqueStandardComponent)GetComponent(TestComponentsLookup.UniqueStandard); } }
+	public bool HasUniqueStandard { get { return HasComponent(TestComponentsLookup.UniqueStandard); } }
 
-    public EntitasRedux.Tests.UniqueStandardComponent UniqueStandard { get { return (EntitasRedux.Tests.UniqueStandardComponent)GetComponent(TestComponentsLookup.UniqueStandard); } }
-    public bool HasUniqueStandard { get { return HasComponent(TestComponentsLookup.UniqueStandard); } }
+	public void AddUniqueStandard(string newValue)
+	{
+		var index = TestComponentsLookup.UniqueStandard;
+		var component = (EntitasRedux.Tests.UniqueStandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueStandardComponent));
+		component.value = newValue;
+		AddComponent(index, component);
+	}
 
-    public void AddUniqueStandard(string newValue) {
-        var index = TestComponentsLookup.UniqueStandard;
-        var component = (EntitasRedux.Tests.UniqueStandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueStandardComponent));
-        component.value = newValue;
-        AddComponent(index, component);
-    }
+	public void ReplaceUniqueStandard(string newValue)
+	{
+		var index = TestComponentsLookup.UniqueStandard;
+		var component = (EntitasRedux.Tests.UniqueStandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueStandardComponent));
+		component.value = newValue;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceUniqueStandard(string newValue) {
-        var index = TestComponentsLookup.UniqueStandard;
-        var component = (EntitasRedux.Tests.UniqueStandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueStandardComponent));
-        component.value = newValue;
-        ReplaceComponent(index, component);
-    }
+	public void CopyUniqueStandardTo(EntitasRedux.Tests.UniqueStandardComponent copyComponent)
+	{
+		var index = TestComponentsLookup.UniqueStandard;
+		var component = (EntitasRedux.Tests.UniqueStandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueStandardComponent));
+		component.value = copyComponent.value;
+		ReplaceComponent(index, component);
+	}
 
-	public void CopyUniqueStandardTo(EntitasRedux.Tests.UniqueStandardComponent copyComponent) {
-        var index = TestComponentsLookup.UniqueStandard;
-        var component = (EntitasRedux.Tests.UniqueStandardComponent)CreateComponent(index, typeof(EntitasRedux.Tests.UniqueStandardComponent));
-        component.value = copyComponent.value;
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveUniqueStandard() {
-        RemoveComponent(TestComponentsLookup.UniqueStandard);
-    }
+	public void RemoveUniqueStandard()
+	{
+		RemoveComponent(TestComponentsLookup.UniqueStandard);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -86,19 +100,22 @@ public partial class TestEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class TestMatcher {
+public sealed partial class TestMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<TestEntity> _matcherUniqueStandard;
 
-    static JCMG.EntitasRedux.IMatcher<TestEntity> _matcherUniqueStandard;
+	public static JCMG.EntitasRedux.IMatcher<TestEntity> UniqueStandard
+	{
+		get
+		{
+			if (_matcherUniqueStandard == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<TestEntity>)JCMG.EntitasRedux.Matcher<TestEntity>.AllOf(TestComponentsLookup.UniqueStandard);
+				matcher.ComponentNames = TestComponentsLookup.ComponentNames;
+				_matcherUniqueStandard = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<TestEntity> UniqueStandard {
-        get {
-            if (_matcherUniqueStandard == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<TestEntity>)JCMG.EntitasRedux.Matcher<TestEntity>.AllOf(TestComponentsLookup.UniqueStandard);
-                matcher.ComponentNames = TestComponentsLookup.ComponentNames;
-                _matcherUniqueStandard = matcher;
-            }
-
-            return _matcherUniqueStandard;
-        }
-    }
+			return _matcherUniqueStandard;
+		}
+	}
 }

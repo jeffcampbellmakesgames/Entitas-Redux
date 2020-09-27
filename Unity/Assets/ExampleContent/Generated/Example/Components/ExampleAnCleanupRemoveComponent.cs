@@ -7,28 +7,34 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class ExampleEntity {
+public partial class ExampleEntity
+{
+	static readonly ExampleContent.VisualDebugging.AnCleanupRemoveComponent AnCleanupRemoveComponent = new ExampleContent.VisualDebugging.AnCleanupRemoveComponent();
 
-    static readonly ExampleContent.VisualDebugging.AnCleanupRemoveComponent AnCleanupRemoveComponent = new ExampleContent.VisualDebugging.AnCleanupRemoveComponent();
+	public bool IsAnCleanupRemove
+	{
+		get { return HasComponent(ExampleComponentsLookup.AnCleanupRemove); }
+		set
+		{
+			if (value != IsAnCleanupRemove)
+			{
+				var index = ExampleComponentsLookup.AnCleanupRemove;
+				if (value)
+				{
+					var componentPool = GetComponentPool(index);
+					var component = componentPool.Count > 0
+							? componentPool.Pop()
+							: AnCleanupRemoveComponent;
 
-    public bool IsAnCleanupRemove {
-        get { return HasComponent(ExampleComponentsLookup.AnCleanupRemove); }
-        set {
-            if (value != IsAnCleanupRemove) {
-                var index = ExampleComponentsLookup.AnCleanupRemove;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : AnCleanupRemoveComponent;
-
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
-    }
+					AddComponent(index, component);
+				}
+				else
+				{
+					RemoveComponent(index);
+				}
+			}
+		}
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -51,19 +57,22 @@ public partial class ExampleEntity : IAnCleanupRemoveEntity { }
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class ExampleMatcher {
+public sealed partial class ExampleMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<ExampleEntity> _matcherAnCleanupRemove;
 
-    static JCMG.EntitasRedux.IMatcher<ExampleEntity> _matcherAnCleanupRemove;
+	public static JCMG.EntitasRedux.IMatcher<ExampleEntity> AnCleanupRemove
+	{
+		get
+		{
+			if (_matcherAnCleanupRemove == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<ExampleEntity>)JCMG.EntitasRedux.Matcher<ExampleEntity>.AllOf(ExampleComponentsLookup.AnCleanupRemove);
+				matcher.ComponentNames = ExampleComponentsLookup.ComponentNames;
+				_matcherAnCleanupRemove = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<ExampleEntity> AnCleanupRemove {
-        get {
-            if (_matcherAnCleanupRemove == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<ExampleEntity>)JCMG.EntitasRedux.Matcher<ExampleEntity>.AllOf(ExampleComponentsLookup.AnCleanupRemove);
-                matcher.ComponentNames = ExampleComponentsLookup.ComponentNames;
-                _matcherAnCleanupRemove = matcher;
-            }
-
-            return _matcherAnCleanupRemove;
-        }
-    }
+			return _matcherAnCleanupRemove;
+		}
+	}
 }

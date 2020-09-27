@@ -7,41 +7,45 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class VisualDebugEntity {
+public partial class VisualDebugEntity
+{
+	public ExampleContent.VisualDebugging.DictArrayComponent DictArray { get { return (ExampleContent.VisualDebugging.DictArrayComponent)GetComponent(VisualDebugComponentsLookup.DictArray); } }
+	public bool HasDictArray { get { return HasComponent(VisualDebugComponentsLookup.DictArray); } }
 
-    public ExampleContent.VisualDebugging.DictArrayComponent DictArray { get { return (ExampleContent.VisualDebugging.DictArrayComponent)GetComponent(VisualDebugComponentsLookup.DictArray); } }
-    public bool HasDictArray { get { return HasComponent(VisualDebugComponentsLookup.DictArray); } }
+	public void AddDictArray(System.Collections.Generic.Dictionary<int, string[]> newDict, System.Collections.Generic.Dictionary<int, ExampleContent.VisualDebugging.CustomObject[]> newDictRefArrayType, System.Collections.Generic.Dictionary<int, string[]>[] newDictArray)
+	{
+		var index = VisualDebugComponentsLookup.DictArray;
+		var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
+		component.dict = newDict;
+		component.dictRefArrayType = newDictRefArrayType;
+		component.dictArray = newDictArray;
+		AddComponent(index, component);
+	}
 
-    public void AddDictArray(System.Collections.Generic.Dictionary<int, string[]> newDict, System.Collections.Generic.Dictionary<int, ExampleContent.VisualDebugging.CustomObject[]> newDictRefArrayType, System.Collections.Generic.Dictionary<int, string[]>[] newDictArray) {
-        var index = VisualDebugComponentsLookup.DictArray;
-        var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
-        component.dict = newDict;
-        component.dictRefArrayType = newDictRefArrayType;
-        component.dictArray = newDictArray;
-        AddComponent(index, component);
-    }
+	public void ReplaceDictArray(System.Collections.Generic.Dictionary<int, string[]> newDict, System.Collections.Generic.Dictionary<int, ExampleContent.VisualDebugging.CustomObject[]> newDictRefArrayType, System.Collections.Generic.Dictionary<int, string[]>[] newDictArray)
+	{
+		var index = VisualDebugComponentsLookup.DictArray;
+		var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
+		component.dict = newDict;
+		component.dictRefArrayType = newDictRefArrayType;
+		component.dictArray = newDictArray;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceDictArray(System.Collections.Generic.Dictionary<int, string[]> newDict, System.Collections.Generic.Dictionary<int, ExampleContent.VisualDebugging.CustomObject[]> newDictRefArrayType, System.Collections.Generic.Dictionary<int, string[]>[] newDictArray) {
-        var index = VisualDebugComponentsLookup.DictArray;
-        var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
-        component.dict = newDict;
-        component.dictRefArrayType = newDictRefArrayType;
-        component.dictArray = newDictArray;
-        ReplaceComponent(index, component);
-    }
+	public void CopyDictArrayTo(ExampleContent.VisualDebugging.DictArrayComponent copyComponent)
+	{
+		var index = VisualDebugComponentsLookup.DictArray;
+		var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
+		component.dict = (System.Collections.Generic.Dictionary<int, string[]>)JCMG.EntitasRedux.DictionaryTools.DeepCopy(copyComponent.dict);
+		component.dictRefArrayType = (System.Collections.Generic.Dictionary<int, ExampleContent.VisualDebugging.CustomObject[]>)JCMG.EntitasRedux.DictionaryTools.DeepCopyArrayValue(copyComponent.dictRefArrayType);
+		component.dictArray = (System.Collections.Generic.Dictionary<int, string[]>[])copyComponent.dictArray.Clone();
+		ReplaceComponent(index, component);
+	}
 
-	public void CopyDictArrayTo(ExampleContent.VisualDebugging.DictArrayComponent copyComponent) {
-        var index = VisualDebugComponentsLookup.DictArray;
-        var component = (ExampleContent.VisualDebugging.DictArrayComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.DictArrayComponent));
-        component.dict = (System.Collections.Generic.Dictionary<int, string[]>)JCMG.EntitasRedux.DictionaryTools.DeepCopy(copyComponent.dict);
-        component.dictRefArrayType = (System.Collections.Generic.Dictionary<int, ExampleContent.VisualDebugging.CustomObject[]>)JCMG.EntitasRedux.DictionaryTools.DeepCopyArrayValue(copyComponent.dictRefArrayType);
-        component.dictArray = (System.Collections.Generic.Dictionary<int, string[]>[])copyComponent.dictArray.Clone();
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveDictArray() {
-        RemoveComponent(VisualDebugComponentsLookup.DictArray);
-    }
+	public void RemoveDictArray()
+	{
+		RemoveComponent(VisualDebugComponentsLookup.DictArray);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -53,19 +57,22 @@ public partial class VisualDebugEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class VisualDebugMatcher {
+public sealed partial class VisualDebugMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherDictArray;
 
-    static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherDictArray;
+	public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> DictArray
+	{
+		get
+		{
+			if (_matcherDictArray == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.DictArray);
+				matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
+				_matcherDictArray = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> DictArray {
-        get {
-            if (_matcherDictArray == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.DictArray);
-                matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
-                _matcherDictArray = matcher;
-            }
-
-            return _matcherDictArray;
-        }
-    }
+			return _matcherDictArray;
+		}
+	}
 }

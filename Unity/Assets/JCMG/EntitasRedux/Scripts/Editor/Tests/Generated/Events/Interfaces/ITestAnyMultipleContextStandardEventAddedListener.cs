@@ -7,6 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public interface ITestAnyMultipleContextStandardEventAddedListener {
-    void OnAnyMultipleContextStandardEventAdded(TestEntity entity, string value);
+public interface ITestAnyMultipleContextStandardEventAddedListener
+{
+	void OnAnyMultipleContextStandardEventAdded(TestEntity entity, string value);
 }

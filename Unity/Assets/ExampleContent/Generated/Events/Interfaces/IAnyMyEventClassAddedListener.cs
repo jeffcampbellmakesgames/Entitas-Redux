@@ -7,6 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public interface IAnyMyEventClassAddedListener {
-    void OnAnyMyEventClassAdded(VisualDebugEntity entity, ExampleContent.VisualDebugging.MyEventClass value);
+public interface IAnyMyEventClassAddedListener
+{
+	void OnAnyMyEventClassAdded(VisualDebugEntity entity, ExampleContent.VisualDebugging.MyEventClass value);
 }

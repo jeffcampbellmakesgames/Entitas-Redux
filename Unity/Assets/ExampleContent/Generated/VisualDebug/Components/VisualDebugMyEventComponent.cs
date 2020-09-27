@@ -7,35 +7,39 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class VisualDebugEntity {
+public partial class VisualDebugEntity
+{
+	public ExampleContent.VisualDebugging.MyEventComponent MyEvent { get { return (ExampleContent.VisualDebugging.MyEventComponent)GetComponent(VisualDebugComponentsLookup.MyEvent); } }
+	public bool HasMyEvent { get { return HasComponent(VisualDebugComponentsLookup.MyEvent); } }
 
-    public ExampleContent.VisualDebugging.MyEventComponent MyEvent { get { return (ExampleContent.VisualDebugging.MyEventComponent)GetComponent(VisualDebugComponentsLookup.MyEvent); } }
-    public bool HasMyEvent { get { return HasComponent(VisualDebugComponentsLookup.MyEvent); } }
+	public void AddMyEvent(string newValue)
+	{
+		var index = VisualDebugComponentsLookup.MyEvent;
+		var component = (ExampleContent.VisualDebugging.MyEventComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyEventComponent));
+		component.value = newValue;
+		AddComponent(index, component);
+	}
 
-    public void AddMyEvent(string newValue) {
-        var index = VisualDebugComponentsLookup.MyEvent;
-        var component = (ExampleContent.VisualDebugging.MyEventComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyEventComponent));
-        component.value = newValue;
-        AddComponent(index, component);
-    }
+	public void ReplaceMyEvent(string newValue)
+	{
+		var index = VisualDebugComponentsLookup.MyEvent;
+		var component = (ExampleContent.VisualDebugging.MyEventComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyEventComponent));
+		component.value = newValue;
+		ReplaceComponent(index, component);
+	}
 
-    public void ReplaceMyEvent(string newValue) {
-        var index = VisualDebugComponentsLookup.MyEvent;
-        var component = (ExampleContent.VisualDebugging.MyEventComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyEventComponent));
-        component.value = newValue;
-        ReplaceComponent(index, component);
-    }
+	public void CopyMyEventTo(ExampleContent.VisualDebugging.MyEventComponent copyComponent)
+	{
+		var index = VisualDebugComponentsLookup.MyEvent;
+		var component = (ExampleContent.VisualDebugging.MyEventComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyEventComponent));
+		component.value = copyComponent.value;
+		ReplaceComponent(index, component);
+	}
 
-	public void CopyMyEventTo(ExampleContent.VisualDebugging.MyEventComponent copyComponent) {
-        var index = VisualDebugComponentsLookup.MyEvent;
-        var component = (ExampleContent.VisualDebugging.MyEventComponent)CreateComponent(index, typeof(ExampleContent.VisualDebugging.MyEventComponent));
-        component.value = copyComponent.value;
-        ReplaceComponent(index, component);
-    }
-
-    public void RemoveMyEvent() {
-        RemoveComponent(VisualDebugComponentsLookup.MyEvent);
-    }
+	public void RemoveMyEvent()
+	{
+		RemoveComponent(VisualDebugComponentsLookup.MyEvent);
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -47,19 +51,22 @@ public partial class VisualDebugEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class VisualDebugMatcher {
+public sealed partial class VisualDebugMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherMyEvent;
 
-    static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherMyEvent;
+	public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> MyEvent
+	{
+		get
+		{
+			if (_matcherMyEvent == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.MyEvent);
+				matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
+				_matcherMyEvent = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> MyEvent {
-        get {
-            if (_matcherMyEvent == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.MyEvent);
-                matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
-                _matcherMyEvent = matcher;
-            }
-
-            return _matcherMyEvent;
-        }
-    }
+			return _matcherMyEvent;
+		}
+	}
 }

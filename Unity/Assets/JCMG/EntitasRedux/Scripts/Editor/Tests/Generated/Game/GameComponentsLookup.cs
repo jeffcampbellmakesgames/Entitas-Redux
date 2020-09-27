@@ -11,23 +11,25 @@ using System;
 using System.Collections.Generic;
 using JCMG.EntitasRedux;
 
-public static class GameComponentsLookup {
+public static class GameComponentsLookup
+{
+	public const int GeneratedContext = 0;
 
-    public const int GeneratedContext = 0;
+	public const int TotalComponents = 1;
 
-    public const int TotalComponents = 1;
+	public static readonly string[] ComponentNames =
+	{
+		"GeneratedContext"
+	};
 
-    public static readonly string[] ComponentNames = {
-        "GeneratedContext"
-    };
-
-    public static readonly System.Type[] ComponentTypes = {
-        typeof(EntitasRedux.Tests.GeneratedContextComponent)
-    };
+	public static readonly System.Type[] ComponentTypes =
+	{
+		typeof(EntitasRedux.Tests.GeneratedContextComponent)
+	};
 
 	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
 	{
-        { typeof(EntitasRedux.Tests.GeneratedContextComponent), 0 }
+		{ typeof(EntitasRedux.Tests.GeneratedContextComponent), 0 }
 	};
 
 	/// <summary>
