@@ -84,6 +84,9 @@ namespace ExampleContent.VisualDebugging
 			// Duplicate systems added to same Feature
 			systems.Add(CreateSameInstance());
 
+			// Add per-context cleanup systems
+			systems.Add(new VisualDebugCleanupFeature());
+
 			return systems;
 		}
 
