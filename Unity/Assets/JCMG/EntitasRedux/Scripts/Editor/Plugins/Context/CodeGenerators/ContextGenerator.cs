@@ -32,7 +32,8 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 	internal sealed class ContextGenerator : ICodeGenerator
 	{
 		private const string TEMPLATE =
-			@"public sealed partial class ${ContextType} : JCMG.EntitasRedux.Context<${EntityType}> {
+@"public sealed partial class ${ContextType} : JCMG.EntitasRedux.Context<${EntityType}>
+{
 
     public ${ContextType}()
         : base(
@@ -51,8 +52,20 @@ namespace JCMG.EntitasRedux.Editor.Plugins
                 new JCMG.EntitasRedux.SafeAERC(entity),
 #endif
             () => new ${EntityType}()
-        ) {
+        )
+	{
     }
+
+	/// <summary>
+	/// Creates a new entity and adds copies of all specified components to it. If replaceExisting is true, it will
+	/// replace existing components.
+	/// </summary>
+	public ${EntityType} CloneEntity(${EntityType} entity, bool replaceExisting = false, params int[] indices)
+	{
+		var target = CreateEntity();
+		entity.CopyTo(target, replaceExisting, indices);
+		return target;
+	}
 }
 ";
 
