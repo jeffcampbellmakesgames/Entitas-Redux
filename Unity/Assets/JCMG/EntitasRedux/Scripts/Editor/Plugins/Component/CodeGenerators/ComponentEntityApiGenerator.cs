@@ -55,7 +55,9 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 	{
 		var index = ${Index};
 		var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+		#if !ENTITAS_REDUX_NO_IMPL
 ${memberAssignmentList}
+		#endif
 		AddComponent(index, component);
 	}
 
@@ -63,7 +65,9 @@ ${memberAssignmentList}
 	{
 		var index = ${Index};
 		var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+		#if !ENTITAS_REDUX_NO_IMPL
 ${memberAssignmentList}
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -71,7 +75,9 @@ ${memberAssignmentList}
 	{
 		var index = ${Index};
 		var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+		#if !ENTITAS_REDUX_NO_IMPL
 ${memberCopyAssignmentList}
+		#endif
 		ReplaceComponent(index, component);
 	}
 
@@ -125,7 +131,9 @@ public partial class ${ContextName}Entity
 	/// </summary>
 	public void CopyComponentTo(IComponent component)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 ${copyToComponentList}
+		#endif
 	}
 
 	/// <summary>

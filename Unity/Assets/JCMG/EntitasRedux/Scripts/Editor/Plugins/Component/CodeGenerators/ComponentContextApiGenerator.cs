@@ -54,12 +54,15 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 				""You should check if the context already has a ${componentName}Entity before setting it or use context.Replace${ComponentName}()."");
 		}
 		var entity = CreateEntity();
+		#if !ENTITAS_REDUX_NO_IMPL
 		entity.Add${ComponentName}(${newMethodArgs});
+		#endif
 		return entity;
 	}
 
 	public void Replace${ComponentName}(${newMethodParameters})
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		var entity = ${componentName}Entity;
 		if (entity == null)
 		{
@@ -69,6 +72,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		{
 			entity.Replace${ComponentName}(${newMethodArgs});
 		}
+		#endif
 	}
 
 	public void Remove${ComponentName}()
