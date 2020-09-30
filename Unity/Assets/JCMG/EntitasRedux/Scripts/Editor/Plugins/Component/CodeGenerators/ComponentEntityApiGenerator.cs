@@ -46,61 +46,77 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		}
 
 		private const string STANDARD_TEMPLATE =
-			@"public partial class ${EntityType} {
+			@"public partial class ${EntityType}
+{
+	public ${ComponentType} ${validComponentName} { get { return (${ComponentType})GetComponent(${Index}); } }
+	public bool Has${ComponentName} { get { return HasComponent(${Index}); } }
 
-    public ${ComponentType} ${validComponentName} { get { return (${ComponentType})GetComponent(${Index}); } }
-    public bool Has${ComponentName} { get { return HasComponent(${Index}); } }
-
-    public void Add${ComponentName}(${newMethodParameters}) {
-        var index = ${Index};
-        var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+	public void Add${ComponentName}(${newMethodParameters})
+	{
+		var index = ${Index};
+		var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+		#if !ENTITAS_REDUX_NO_IMPL
 ${memberAssignmentList}
-        AddComponent(index, component);
-    }
+		#endif
+		AddComponent(index, component);
+	}
 
-    public void Replace${ComponentName}(${newMethodParameters}) {
-        var index = ${Index};
-        var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+	public void Replace${ComponentName}(${newMethodParameters})
+	{
+		var index = ${Index};
+		var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+		#if !ENTITAS_REDUX_NO_IMPL
 ${memberAssignmentList}
-        ReplaceComponent(index, component);
-    }
+		#endif
+		ReplaceComponent(index, component);
+	}
 
-	public void Copy${ComponentName}To(${ComponentType} copyComponent) {
-        var index = ${Index};
-        var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+	public void Copy${ComponentName}To(${ComponentType} copyComponent)
+	{
+		var index = ${Index};
+		var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+		#if !ENTITAS_REDUX_NO_IMPL
 ${memberCopyAssignmentList}
-        ReplaceComponent(index, component);
-    }
+		#endif
+		ReplaceComponent(index, component);
+	}
 
-    public void Remove${ComponentName}() {
-        RemoveComponent(${Index});
-    }
+	public void Remove${ComponentName}()
+	{
+		RemoveComponent(${Index});
+	}
 }
 ";
 
 		private const string FLAG_TEMPLATE =
-@"public partial class ${EntityType} {
+@"public partial class ${EntityType}
+{
+	static readonly ${ComponentType} ${componentName}Component = new ${ComponentType}();
 
-    static readonly ${ComponentType} ${componentName}Component = new ${ComponentType}();
+	public bool ${prefixedComponentName}
+	{
+		get { return HasComponent(${Index}); }
+		set
+		{
+			if (value != ${prefixedComponentName})
+			{
+				var index = ${Index};
+				if (value)
+				{
+					var componentPool = GetComponentPool(index);
+					var component = componentPool.Count > 0
+							? componentPool.Pop()
+							: ${componentName}Component;
 
-    public bool ${prefixedComponentName} {
-        get { return HasComponent(${Index}); }
-        set {
-            if (value != ${prefixedComponentName}) {
-                var index = ${Index};
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : ${componentName}Component;
-
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
-    }
+					AddComponent(index, component);
+				}
+				else
+				{
+					RemoveComponent(index);
+				}
+			}
+		}
+	}
 }
 ";
 
@@ -115,7 +131,9 @@ public partial class ${ContextName}Entity
 	/// </summary>
 	public void CopyComponentTo(IComponent component)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 ${copyToComponentList}
+		#endif
 	}
 
 	/// <summary>

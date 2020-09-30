@@ -58,7 +58,7 @@ namespace EntitasRedux.Tests.Performance
 
 		[NUnit.Framework.Test]
 		[Explicit("This test should only be manually run as it takes a significant amount of time to " +
-		                        "complete and is not a simple pass/fail.")]
+								"complete and is not a simple pass/fail.")]
 		public void RunAllTests()
 		{
 			SB.Clear();
@@ -100,38 +100,38 @@ namespace EntitasRedux.Tests.Performance
 		}
 
 		//Running performance tests...
-		//ContextCreateEntity:                     30 ms
-		//ContextDestroyEntity:                    29 ms
-		//ContextDestroyAllEntities:               25 ms
-		//ContextGetGroup:                          5 ms
-		//ContextGetEntities:                       2 ms
-		//ContextHasEntity:                        10 ms
-		//ContextOnEntityReplaced:                  6 ms
+		//ContextCreateEntity:					 30 ms
+		//ContextDestroyEntity:					29 ms
+		//ContextDestroyAllEntities:			   25 ms
+		//ContextGetGroup:						  5 ms
+		//ContextGetEntities:					   2 ms
+		//ContextHasEntity:						10 ms
+		//ContextOnEntityReplaced:				  6 ms
 
-		//EntityAddComponent:                     257 ms
-		//EntityGetComponent:                      44 ms
-		//EntityGetComponents:                      4 ms
-		//EntityHasComponent:                       2 ms
-		//EntityRemoveAddComponent:               289 ms
-		//EntityReplaceComponent:                  20 ms
+		//EntityAddComponent:					 257 ms
+		//EntityGetComponent:					  44 ms
+		//EntityGetComponents:					  4 ms
+		//EntityHasComponent:					   2 ms
+		//EntityRemoveAddComponent:			   289 ms
+		//EntityReplaceComponent:				  20 ms
 
-		//MatcherEquals:                          171 ms
-		//MatcherGetHashCode:                      17 ms
+		//MatcherEquals:						  171 ms
+		//MatcherGetHashCode:					  17 ms
 
-		//ContextCreateBlueprint:                 256 ms
+		//ContextCreateBlueprint:				 256 ms
 
-		//NewInstanceT:                           393 ms
-		//NewInstanceActivator:                   542 ms
-		//EntityIndexGetEntity:                    59 ms
+		//NewInstanceT:						   393 ms
+		//NewInstanceActivator:				   542 ms
+		//EntityIndexGetEntity:					59 ms
 
-		//IterateHashetToArray:                   456 ms
-		//IterateHashSet:                         774 ms
+		//IterateHashetToArray:				   456 ms
+		//IterateHashSet:						 774 ms
 
-		//ObjectGetProperty:                        6 ms
+		//ObjectGetProperty:						6 ms
 
-		//CollectorIterateCollectedEntities:      957 ms
-		//CollectorActivate:                        1 ms
-		//PropertiesCreate:                       251 ms
+		//CollectorIterateCollectedEntities:	  957 ms
+		//CollectorActivate:						1 ms
+		//PropertiesCreate:					   251 ms
 
 		private static void Run<T>()
 			where T : class, IPerformanceTest, new()

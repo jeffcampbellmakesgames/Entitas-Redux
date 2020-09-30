@@ -39,53 +39,73 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		private const string STANDARD_TEMPLATE =
 			@"public partial class ${ContextType} {
 
-    public ${EntityType} ${componentName}Entity { get { return GetGroup(${MatcherType}.${ComponentName}).GetSingleEntity(); } }
-    public ${ComponentType} ${validComponentName} { get { return ${componentName}Entity.${componentName}; } }
-    public bool Has${ComponentName} { get { return ${componentName}Entity != null; } }
+	public ${EntityType} ${componentName}Entity { get { return GetGroup(${MatcherType}.${ComponentName}).GetSingleEntity(); } }
+	public ${ComponentType} ${validComponentName} { get { return ${componentName}Entity.${componentName}; } }
+	public bool Has${ComponentName} { get { return ${componentName}Entity != null; } }
 
-    public ${EntityType} Set${ComponentName}(${newMethodParameters}) {
-        if (Has${ComponentName}) {
-            throw new JCMG.EntitasRedux.EntitasReduxException(""Could not set ${ComponentName}!\n"" + this + "" already has an entity with ${ComponentType}!"",
-                ""You should check if the context already has a ${componentName}Entity before setting it or use context.Replace${ComponentName}()."");
-        }
-        var entity = CreateEntity();
-        entity.Add${ComponentName}(${newMethodArgs});
-        return entity;
-    }
+	public ${EntityType} Set${ComponentName}(${newMethodParameters})
+	{
+		if (Has${ComponentName})
+		{
+			throw new JCMG.EntitasRedux.EntitasReduxException(
+				""Could not set ${ComponentName}!\n"" +
+				this +
+				"" already has an entity with ${ComponentType}!"",
+				""You should check if the context already has a ${componentName}Entity before setting it or use context.Replace${ComponentName}()."");
+		}
+		var entity = CreateEntity();
+		#if !ENTITAS_REDUX_NO_IMPL
+		entity.Add${ComponentName}(${newMethodArgs});
+		#endif
+		return entity;
+	}
 
-    public void Replace${ComponentName}(${newMethodParameters}) {
-        var entity = ${componentName}Entity;
-        if (entity == null) {
-            entity = Set${ComponentName}(${newMethodArgs});
-        } else {
-            entity.Replace${ComponentName}(${newMethodArgs});
-        }
-    }
+	public void Replace${ComponentName}(${newMethodParameters})
+	{
+		#if !ENTITAS_REDUX_NO_IMPL
+		var entity = ${componentName}Entity;
+		if (entity == null)
+		{
+			entity = Set${ComponentName}(${newMethodArgs});
+		}
+		else
+		{
+			entity.Replace${ComponentName}(${newMethodArgs});
+		}
+		#endif
+	}
 
-    public void Remove${ComponentName}() {
-        ${componentName}Entity.Destroy();
-    }
+	public void Remove${ComponentName}()
+	{
+		${componentName}Entity.Destroy();
+	}
 }
 ";
 
 		private const string FLAG_TEMPLATE =
-			@"public partial class ${ContextType} {
+@"public partial class ${ContextType}
+{
+	public ${EntityType} ${componentName}Entity { get { return GetGroup(${MatcherType}.${ComponentName}).GetSingleEntity(); } }
 
-    public ${EntityType} ${componentName}Entity { get { return GetGroup(${MatcherType}.${ComponentName}).GetSingleEntity(); } }
-
-    public bool ${prefixedComponentName} {
-        get { return ${componentName}Entity != null; }
-        set {
-            var entity = ${componentName}Entity;
-            if (value != (entity != null)) {
-                if (value) {
-                    CreateEntity().${prefixedComponentName} = true;
-                } else {
-                    entity.Destroy();
-                }
-            }
-        }
-    }
+	public bool ${prefixedComponentName}
+	{
+		get { return ${componentName}Entity != null; }
+		set
+		{
+			var entity = ${componentName}Entity;
+			if (value != (entity != null))
+			{
+				if (value)
+				{
+					CreateEntity().${prefixedComponentName} = true;
+				}
+				else
+				{
+					entity.Destroy();
+				}
+			}
+		}
+	}
 }
 ";
 

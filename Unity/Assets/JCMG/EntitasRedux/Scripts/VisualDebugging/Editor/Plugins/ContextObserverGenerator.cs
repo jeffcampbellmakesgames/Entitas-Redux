@@ -36,26 +36,26 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor.Plugins
 
 #if (!ENTITAS_DISABLE_VISUAL_DEBUGGING && UNITY_EDITOR)
 
-    [JCMG.EntitasRedux.PostConstructor]
-    public void InitializeContextObservers() {
-        try {
+	[JCMG.EntitasRedux.PostConstructor]
+	public void InitializeContextObservers() {
+		try {
 ${contextObservers}
-        } catch(System.Exception) {
-        }
-    }
+		} catch(System.Exception) {
+		}
+	}
 
-    public void CreateContextObserver(JCMG.EntitasRedux.IContext context) {
-        if (UnityEngine.Application.isPlaying) {
-            var observer = new JCMG.EntitasRedux.VisualDebugging.ContextObserver(context);
-            UnityEngine.Object.DontDestroyOnLoad(observer.GameObject);
-        }
-    }
+	public void CreateContextObserver(JCMG.EntitasRedux.IContext context) {
+		if (UnityEngine.Application.isPlaying) {
+			var observer = new JCMG.EntitasRedux.VisualDebugging.ContextObserver(context);
+			UnityEngine.Object.DontDestroyOnLoad(observer.GameObject);
+		}
+	}
 
 #endif
 }
 ";
 
-		private const string CONTEXT_OBSERVER_TEMPLATE = @"            CreateContextObserver(${contextName});";
+		private const string CONTEXT_OBSERVER_TEMPLATE = @"			CreateContextObserver(${contextName});";
 
 		private string GenerateContextsClass(string[] contextNames)
 		{

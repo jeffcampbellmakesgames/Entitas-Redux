@@ -7,6 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial interface IAnCleanupDestroyEntityEntity {
-    bool IsAnCleanupDestroyEntity { get; set; }
+public partial interface IAnCleanupDestroyEntityEntity
+{
+	bool IsAnCleanupDestroyEntity { get; set; }
 }

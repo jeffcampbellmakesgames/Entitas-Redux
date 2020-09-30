@@ -17,6 +17,7 @@ public partial class Test2Entity
 	/// </summary>
 	public void CopyComponentTo(IComponent component)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		if (component is EntitasRedux.Tests.EntityIndexComponent EntityIndex)
 		{
 			CopyEntityIndexTo(EntityIndex);
@@ -73,6 +74,7 @@ public partial class Test2Entity
 		{
 			CopyTest2AnyEventToGenerateAddedListenerTo(Test2AnyEventToGenerateAddedListener);
 		}
+		#endif
 	}
 
 	/// <summary>

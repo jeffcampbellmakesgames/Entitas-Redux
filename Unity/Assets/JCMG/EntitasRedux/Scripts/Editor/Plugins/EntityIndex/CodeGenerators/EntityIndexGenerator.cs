@@ -32,46 +32,50 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 	internal sealed class EntityIndexGenerator : ICodeGenerator
 	{
 		private const string CLASS_TEMPLATE =
-			@"public partial class Contexts {
-
+@"public partial class Contexts
+{
 ${indexConstants}
 
-    [JCMG.EntitasRedux.PostConstructor]
-    public void InitializeEntityIndices() {
+	[JCMG.EntitasRedux.PostConstructor]
+	public void InitializeEntityIndices()
+	{
 ${addIndices}
-    }
+	}
 }
 
-public static class ContextsExtensions {
-
+public static class ContextsExtensions
+{
 ${getIndices}
 }";
 
-		private const string INDEX_CONSTANTS_TEMPLATE = @"    public const string ${IndexName} = ""${IndexName}"";";
+		private const string INDEX_CONSTANTS_TEMPLATE = @"	public const string ${IndexName} = ""${IndexName}"";";
 
 		private const string ADD_INDEX_TEMPLATE =
-			@"        ${contextName}.AddEntityIndex(new ${IndexType}<${ContextName}Entity, ${KeyType}>(
-            ${IndexName},
-            ${contextName}.GetGroup(${ContextName}Matcher.${Matcher}),
-            (e, c) => ((${ComponentType})c).${MemberName}));";
+			@"		${contextName}.AddEntityIndex(new ${IndexType}<${ContextName}Entity, ${KeyType}>(
+			${IndexName},
+			${contextName}.GetGroup(${ContextName}Matcher.${Matcher}),
+			(e, c) => ((${ComponentType})c).${MemberName}));";
 
 		private const string ADD_CUSTOM_INDEX_TEMPLATE =
-			@"        ${contextName}.AddEntityIndex(new ${IndexType}(${contextName}));";
+			@"		${contextName}.AddEntityIndex(new ${IndexType}(${contextName}));";
 
 		private const string GET_INDEX_TEMPLATE =
-			@"    public static System.Collections.Generic.HashSet<${ContextName}Entity> GetEntitiesWith${IndexName}(this ${ContextName}Context context, ${KeyType} ${MemberName}) {
-        return ((${IndexType}<${ContextName}Entity, ${KeyType}>)context.GetEntityIndex(Contexts.${IndexName})).GetEntities(${MemberName});
-    }";
+@"	public static System.Collections.Generic.HashSet<${ContextName}Entity> GetEntitiesWith${IndexName}(this ${ContextName}Context context, ${KeyType} ${MemberName})
+	{
+		return ((${IndexType}<${ContextName}Entity, ${KeyType}>)context.GetEntityIndex(Contexts.${IndexName})).GetEntities(${MemberName});
+	}";
 
 		private const string GET_PRIMARY_INDEX_TEMPLATE =
-			@"    public static ${ContextName}Entity GetEntityWith${IndexName}(this ${ContextName}Context context, ${KeyType} ${MemberName}) {
-        return ((${IndexType}<${ContextName}Entity, ${KeyType}>)context.GetEntityIndex(Contexts.${IndexName})).GetEntity(${MemberName});
-    }";
+@"	public static ${ContextName}Entity GetEntityWith${IndexName}(this ${ContextName}Context context, ${KeyType} ${MemberName})
+	{
+		return ((${IndexType}<${ContextName}Entity, ${KeyType}>)context.GetEntityIndex(Contexts.${IndexName})).GetEntity(${MemberName});
+	}";
 
 		private const string CUSTOM_METHOD_TEMPLATE =
-			@"    public static ${ReturnType} ${MethodName}(this ${ContextName}Context context, ${methodArgs}) {
-        return ((${IndexType})(context.GetEntityIndex(Contexts.${IndexName}))).${MethodName}(${args});
-    }
+@"	public static ${ReturnType} ${MethodName}(this ${ContextName}Context context, ${methodArgs})
+	{
+		return ((${IndexType})(context.GetEntityIndex(Contexts.${IndexName}))).${MethodName}(${args});
+	}
 ";
 
 		private CodeGenFile[] GenerateEntityIndices(EntityIndexData[] data)

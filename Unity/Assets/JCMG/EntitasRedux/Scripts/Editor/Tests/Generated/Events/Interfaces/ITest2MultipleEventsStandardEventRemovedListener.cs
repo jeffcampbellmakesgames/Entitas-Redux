@@ -7,6 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public interface ITest2MultipleEventsStandardEventRemovedListener {
-    void OnMultipleEventsStandardEventRemoved(Test2Entity entity);
+public interface ITest2MultipleEventsStandardEventRemovedListener
+{
+	void OnMultipleEventsStandardEventRemoved(Test2Entity entity);
 }

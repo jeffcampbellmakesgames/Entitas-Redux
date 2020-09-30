@@ -32,8 +32,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 	internal sealed class EntityGenerator : ICodeGenerator
 	{
 		private const string TEMPLATE =
-			@"public sealed partial class ${EntityType} : JCMG.EntitasRedux.Entity {
-}
+@"public sealed partial class ${EntityType} : JCMG.EntitasRedux.Entity { }
 ";
 
 		private CodeGenFile Generate(ContextData data)

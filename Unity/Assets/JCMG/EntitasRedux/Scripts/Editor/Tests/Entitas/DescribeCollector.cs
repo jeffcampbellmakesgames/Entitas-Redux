@@ -331,12 +331,12 @@ namespace EntitasRedux.Tests
 		public void CollectorContainsEntitiesFromTwoGroupsWhenAdded()
 		{
 			_collectorA = new Collector<MyTestEntity>(
-	           new [] { _groupA, _groupB },
-	           new [] {
-	               GroupEvent.Added,
-	               GroupEvent.Added
-	           }
-	       );
+			   new [] { _groupA, _groupB },
+			   new [] {
+				   GroupEvent.Added,
+				   GroupEvent.Added
+			   }
+		   );
 
 			var eA = CreateEntityWithAComponent();
 			var eB = CreateEntityWithBComponent();

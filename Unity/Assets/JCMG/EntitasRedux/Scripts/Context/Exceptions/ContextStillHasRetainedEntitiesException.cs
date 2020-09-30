@@ -47,12 +47,12 @@ namespace JCMG.EntitasRedux
 								if (e.AERC is SafeAERC safeAerc)
 								{
 									return e +
-									       " - " +
-									       string.Join(
-										       ", ",
-										       safeAerc.Owners
-											       .Select(o => o.ToString())
-											       .ToArray());
+										   " - " +
+										   string.Join(
+											   ", ",
+											   safeAerc.Owners
+												   .Select(o => o.ToString())
+												   .ToArray());
 								}
 
 								return e.ToString();

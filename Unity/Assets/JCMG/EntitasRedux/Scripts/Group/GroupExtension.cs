@@ -35,7 +35,7 @@ namespace JCMG.EntitasRedux
 		/// <param name="groupEvent"></param>
 		/// <returns></returns>
 		public static ICollector<TEntity> CreateCollector<TEntity>(this IGroup<TEntity> group,
-		                                                           GroupEvent groupEvent = GroupEvent.Added)
+																   GroupEvent groupEvent = GroupEvent.Added)
 			where TEntity : class, IEntity
 		{
 			return new Collector<TEntity>(group, groupEvent);

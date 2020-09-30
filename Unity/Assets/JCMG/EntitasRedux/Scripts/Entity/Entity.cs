@@ -131,9 +131,9 @@ namespace JCMG.EntitasRedux
 					.Append(_creationIndex)
 
 					// TODO VD PERFORMANCE
-					//                    .Append("(*")
-					//                    .Append(retainCount)
-					//                    .Append(")")
+					//					.Append("(*")
+					//					.Append(retainCount)
+					//					.Append(")")
 					.Append("(");
 
 				const string separator = ", ";
@@ -147,13 +147,13 @@ namespace JCMG.EntitasRedux
 					// TODO VD PERFORMANCE
 					_toStringCache = null;
 
-					//                    var implementsToString = type.GetMethod("ToString")
-					//                        .DeclaringType.ImplementsInterface<IComponent>();
-					//                    _toStringBuilder.Append(
-					//                        implementsToString
-					//                            ? component.ToString()
-					//                            : type.ToCompilableString().RemoveComponentSuffix()
-					//                    );
+					//					var implementsToString = type.GetMethod("ToString")
+					//						.DeclaringType.ImplementsInterface<IComponent>();
+					//					_toStringBuilder.Append(
+					//						implementsToString
+					//							? component.ToString()
+					//							: type.ToCompilableString().RemoveComponentSuffix()
+					//					);
 
 					_toStringBuilder.Append(component);
 
@@ -249,7 +249,7 @@ namespace JCMG.EntitasRedux
 		public IAERC AERC => _aerc;
 
 		public void Initialize(int creationIndex, int totalComponents, Stack<IComponent>[] componentPools,
-		                       ContextInfo contextInfo = null, IAERC aerc = null)
+							   ContextInfo contextInfo = null, IAERC aerc = null)
 		{
 			Reactivate(creationIndex);
 

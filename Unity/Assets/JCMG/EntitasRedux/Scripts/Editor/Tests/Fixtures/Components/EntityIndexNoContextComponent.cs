@@ -27,9 +27,9 @@ using JCMG.EntitasRedux;
 
 namespace EntitasRedux.Tests {
 
-    public class EntityIndexNoContextComponent : IComponent {
+	public class EntityIndexNoContextComponent : IComponent {
 
-        [EntityIndex]
-        public string value;
-    }
+		[EntityIndex]
+		public string value;
+	}
 }

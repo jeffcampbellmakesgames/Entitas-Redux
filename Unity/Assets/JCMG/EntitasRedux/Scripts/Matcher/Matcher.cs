@@ -88,8 +88,8 @@ namespace JCMG.EntitasRedux
 		public bool Matches(TEntity entity)
 		{
 			return (_allOfIndices == null || entity.HasComponents(_allOfIndices)) &&
-			       (_anyOfIndices == null || entity.HasAnyComponent(_anyOfIndices)) &&
-			       (_noneOfIndices == null || !entity.HasAnyComponent(_noneOfIndices));
+				   (_anyOfIndices == null || entity.HasAnyComponent(_anyOfIndices)) &&
+				   (_noneOfIndices == null || !entity.HasAnyComponent(_noneOfIndices));
 		}
 	}
 }

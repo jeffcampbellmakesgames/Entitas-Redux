@@ -6,7 +6,7 @@ using UnityEditor;
 namespace ExampleContent.VisualDebugging.Editor
 {
 	public class CustomObjectDrawer : ITypeDrawer,
-	                                  IDefaultInstanceCreator
+									  IDefaultInstanceCreator
 	{
 		public object CreateDefault(Type type)
 		{

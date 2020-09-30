@@ -7,12 +7,12 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial interface IMultipleContextStandardEventEntity {
+public partial interface IMultipleContextStandardEventEntity
+{
+	EntitasRedux.Tests.MultipleContextStandardEventComponent MultipleContextStandardEvent { get; }
+	bool HasMultipleContextStandardEvent { get; }
 
-    EntitasRedux.Tests.MultipleContextStandardEventComponent MultipleContextStandardEvent { get; }
-    bool HasMultipleContextStandardEvent { get; }
-
-    void AddMultipleContextStandardEvent(string newValue);
-    void ReplaceMultipleContextStandardEvent(string newValue);
-    void RemoveMultipleContextStandardEvent();
+	void AddMultipleContextStandardEvent(string newValue);
+	void ReplaceMultipleContextStandardEvent(string newValue);
+	void RemoveMultipleContextStandardEvent();
 }

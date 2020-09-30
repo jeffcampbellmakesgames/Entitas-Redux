@@ -7,8 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed class GameAttribute : JCMG.EntitasRedux.ContextAttribute {
-
-    public GameAttribute() : base("Game") {
-    }
+public sealed class GameAttribute : JCMG.EntitasRedux.ContextAttribute
+{
+	public GameAttribute() : base("Game")	{ }
 }

@@ -7,6 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public interface IAnyBaseAddedListener {
-    void OnAnyBaseAdded(TestEntity entity, int value);
+public interface IAnyBaseAddedListener
+{
+	void OnAnyBaseAdded(TestEntity entity, int value);
 }

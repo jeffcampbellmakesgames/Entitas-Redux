@@ -7,6 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public interface IAnyMyEventAddedListener {
-    void OnAnyMyEventAdded(VisualDebugEntity entity, string value);
+public interface IAnyMyEventAddedListener
+{
+	void OnAnyMyEventAdded(VisualDebugEntity entity, string value);
 }

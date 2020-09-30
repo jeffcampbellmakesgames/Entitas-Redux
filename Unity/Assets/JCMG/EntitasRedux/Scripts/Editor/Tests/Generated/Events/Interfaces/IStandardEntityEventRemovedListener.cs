@@ -7,6 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public interface IStandardEntityEventRemovedListener {
-    void OnStandardEntityEventRemoved(TestEntity entity);
+public interface IStandardEntityEventRemovedListener
+{
+	void OnStandardEntityEventRemoved(TestEntity entity);
 }

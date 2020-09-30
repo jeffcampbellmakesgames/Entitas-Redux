@@ -7,6 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public interface IAnyFlagEventRemovedListener {
-    void OnAnyFlagEventRemoved(TestEntity entity);
+public interface IAnyFlagEventRemovedListener
+{
+	void OnAnyFlagEventRemoved(TestEntity entity);
 }

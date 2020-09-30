@@ -7,8 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed class TestAttribute : JCMG.EntitasRedux.ContextAttribute {
-
-    public TestAttribute() : base("Test") {
-    }
+public sealed class TestAttribute : JCMG.EntitasRedux.ContextAttribute
+{
+	public TestAttribute() : base("Test")	{ }
 }

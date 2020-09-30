@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 [JCMG.EntitasRedux.DontGenerate(false)]
-public sealed class ClassWithEntitIndexAttributeComponent : JCMG.EntitasRedux.IComponent {
-    public EntitasRedux.Tests.ClassWithEntitIndexAttribute value;
+public sealed class ClassWithEntitIndexAttributeComponent : JCMG.EntitasRedux.IComponent
+{
+	public EntitasRedux.Tests.ClassWithEntitIndexAttribute value;
 }

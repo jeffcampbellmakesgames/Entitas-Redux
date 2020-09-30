@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 [JCMG.EntitasRedux.DontGenerate(false)]
-public sealed class UniqueClassToGenerateComponent : JCMG.EntitasRedux.IComponent {
-    public EntitasRedux.Tests.UniqueClassToGenerate value;
+public sealed class UniqueClassToGenerateComponent : JCMG.EntitasRedux.IComponent
+{
+	public EntitasRedux.Tests.UniqueClassToGenerate value;
 }

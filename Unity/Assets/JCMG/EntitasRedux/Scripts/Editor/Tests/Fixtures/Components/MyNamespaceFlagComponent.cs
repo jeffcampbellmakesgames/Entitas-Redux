@@ -27,7 +27,7 @@ using JCMG.EntitasRedux;
 
 namespace EntitasRedux.Tests {
 
-    [Context("Test")]
-    public sealed class MyNamespaceFlagComponent : IComponent {
-    }
+	[Context("Test")]
+	public sealed class MyNamespaceFlagComponent : IComponent {
+	}
 }

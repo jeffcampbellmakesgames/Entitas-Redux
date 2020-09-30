@@ -7,12 +7,12 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial interface IEventToGenerateEntity {
+public partial interface IEventToGenerateEntity
+{
+	EventToGenerateComponent EventToGenerate { get; }
+	bool HasEventToGenerate { get; }
 
-    EventToGenerateComponent EventToGenerate { get; }
-    bool HasEventToGenerate { get; }
-
-    void AddEventToGenerate(EntitasRedux.Tests.EventToGenerate newValue);
-    void ReplaceEventToGenerate(EntitasRedux.Tests.EventToGenerate newValue);
-    void RemoveEventToGenerate();
+	void AddEventToGenerate(EntitasRedux.Tests.EventToGenerate newValue);
+	void ReplaceEventToGenerate(EntitasRedux.Tests.EventToGenerate newValue);
+	void RemoveEventToGenerate();
 }

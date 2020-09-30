@@ -57,8 +57,8 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 					foundDuplicateComponents = true;
 
 					const string ERROR_FORMAT = "[EntitasRedux] [{0}] for Context [{1}] has {2} separate Type instances " +
-					                            "with the same name. Please ensure all components belonging to a single " +
-					                            "context have unique names.";
+												"with the same name. Please ensure all components belonging to a single " +
+												"context have unique names.";
 
 					foreach (var dupeComponentGroup in dupesByNameGroup)
 					{

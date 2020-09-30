@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 [JCMG.EntitasRedux.DontGenerate(false)]
-public sealed class TestAnyMultipleContextStandardEventAddedListenerComponent : JCMG.EntitasRedux.IComponent {
-    public System.Collections.Generic.List<ITestAnyMultipleContextStandardEventAddedListener> value;
+public sealed class TestAnyMultipleContextStandardEventAddedListenerComponent : JCMG.EntitasRedux.IComponent
+{
+	public System.Collections.Generic.List<ITestAnyMultipleContextStandardEventAddedListener> value;
 }

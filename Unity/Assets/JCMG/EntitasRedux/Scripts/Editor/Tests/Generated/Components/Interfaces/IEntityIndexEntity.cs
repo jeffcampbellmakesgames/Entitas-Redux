@@ -7,12 +7,12 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial interface IEntityIndexEntity {
+public partial interface IEntityIndexEntity
+{
+	EntitasRedux.Tests.EntityIndexComponent EntityIndex { get; }
+	bool HasEntityIndex { get; }
 
-    EntitasRedux.Tests.EntityIndexComponent EntityIndex { get; }
-    bool HasEntityIndex { get; }
-
-    void AddEntityIndex(string newValue);
-    void ReplaceEntityIndex(string newValue);
-    void RemoveEntityIndex();
+	void AddEntityIndex(string newValue);
+	void ReplaceEntityIndex(string newValue);
+	void RemoveEntityIndex();
 }

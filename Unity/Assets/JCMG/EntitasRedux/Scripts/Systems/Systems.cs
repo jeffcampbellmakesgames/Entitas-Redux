@@ -35,12 +35,12 @@ namespace JCMG.EntitasRedux
 	/// you added them.
 	/// </summary>
 	public class Systems : IInitializeSystem,
-	                       IUpdateSystem,
-	                       IFixedUpdateSystem,
+						   IUpdateSystem,
+						   IFixedUpdateSystem,
 						   ILateUpdateSystem,
 						   IReactiveSystem,
-	                       ICleanupSystem,
-	                       ITearDownSystem
+						   ICleanupSystem,
+						   ITearDownSystem
 	{
 		protected readonly List<IFixedUpdateSystem> _fixedUpdateSystems;
 		protected readonly List<IUpdateSystem> _updateSystems;

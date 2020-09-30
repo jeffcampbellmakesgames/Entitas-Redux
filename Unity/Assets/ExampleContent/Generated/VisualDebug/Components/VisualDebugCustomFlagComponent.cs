@@ -7,28 +7,34 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public partial class VisualDebugEntity {
+public partial class VisualDebugEntity
+{
+	static readonly ExampleContent.VisualDebugging.CustomFlagComponent CustomFlagComponent = new ExampleContent.VisualDebugging.CustomFlagComponent();
 
-    static readonly ExampleContent.VisualDebugging.CustomFlagComponent CustomFlagComponent = new ExampleContent.VisualDebugging.CustomFlagComponent();
+	public bool MyCustomFlag
+	{
+		get { return HasComponent(VisualDebugComponentsLookup.CustomFlag); }
+		set
+		{
+			if (value != MyCustomFlag)
+			{
+				var index = VisualDebugComponentsLookup.CustomFlag;
+				if (value)
+				{
+					var componentPool = GetComponentPool(index);
+					var component = componentPool.Count > 0
+							? componentPool.Pop()
+							: CustomFlagComponent;
 
-    public bool MyCustomFlag {
-        get { return HasComponent(VisualDebugComponentsLookup.CustomFlag); }
-        set {
-            if (value != MyCustomFlag) {
-                var index = VisualDebugComponentsLookup.CustomFlag;
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : CustomFlagComponent;
-
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
-    }
+					AddComponent(index, component);
+				}
+				else
+				{
+					RemoveComponent(index);
+				}
+			}
+		}
+	}
 }
 
 //------------------------------------------------------------------------------
@@ -40,19 +46,22 @@ public partial class VisualDebugEntity {
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed partial class VisualDebugMatcher {
+public sealed partial class VisualDebugMatcher
+{
+	static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherCustomFlag;
 
-    static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> _matcherCustomFlag;
+	public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> CustomFlag
+	{
+		get
+		{
+			if (_matcherCustomFlag == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.CustomFlag);
+				matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
+				_matcherCustomFlag = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<VisualDebugEntity> CustomFlag {
-        get {
-            if (_matcherCustomFlag == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<VisualDebugEntity>)JCMG.EntitasRedux.Matcher<VisualDebugEntity>.AllOf(VisualDebugComponentsLookup.CustomFlag);
-                matcher.ComponentNames = VisualDebugComponentsLookup.ComponentNames;
-                _matcherCustomFlag = matcher;
-            }
-
-            return _matcherCustomFlag;
-        }
-    }
+			return _matcherCustomFlag;
+		}
+	}
 }

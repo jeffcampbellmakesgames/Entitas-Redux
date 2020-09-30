@@ -32,23 +32,27 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 	internal sealed class ContextMatcherGenerator : ICodeGenerator
 	{
 		private const string TEMPLATE =
-			@"public sealed partial class ${MatcherType} {
+@"public sealed partial class ${MatcherType}
+{
+	public static JCMG.EntitasRedux.IAllOfMatcher<${EntityType}> AllOf(params int[] indices)
+	{
+		return JCMG.EntitasRedux.Matcher<${EntityType}>.AllOf(indices);
+	}
 
-    public static JCMG.EntitasRedux.IAllOfMatcher<${EntityType}> AllOf(params int[] indices) {
-        return JCMG.EntitasRedux.Matcher<${EntityType}>.AllOf(indices);
-    }
+	public static JCMG.EntitasRedux.IAllOfMatcher<${EntityType}> AllOf(params JCMG.EntitasRedux.IMatcher<${EntityType}>[] matchers)
+	{
+		return JCMG.EntitasRedux.Matcher<${EntityType}>.AllOf(matchers);
+	}
 
-    public static JCMG.EntitasRedux.IAllOfMatcher<${EntityType}> AllOf(params JCMG.EntitasRedux.IMatcher<${EntityType}>[] matchers) {
-          return JCMG.EntitasRedux.Matcher<${EntityType}>.AllOf(matchers);
-    }
+	public static JCMG.EntitasRedux.IAnyOfMatcher<${EntityType}> AnyOf(params int[] indices)
+	{
+		return JCMG.EntitasRedux.Matcher<${EntityType}>.AnyOf(indices);
+	}
 
-    public static JCMG.EntitasRedux.IAnyOfMatcher<${EntityType}> AnyOf(params int[] indices) {
-          return JCMG.EntitasRedux.Matcher<${EntityType}>.AnyOf(indices);
-    }
-
-    public static JCMG.EntitasRedux.IAnyOfMatcher<${EntityType}> AnyOf(params JCMG.EntitasRedux.IMatcher<${EntityType}>[] matchers) {
-          return JCMG.EntitasRedux.Matcher<${EntityType}>.AnyOf(matchers);
-    }
+	public static JCMG.EntitasRedux.IAnyOfMatcher<${EntityType}> AnyOf(params JCMG.EntitasRedux.IMatcher<${EntityType}>[] matchers)
+	{
+		return JCMG.EntitasRedux.Matcher<${EntityType}>.AnyOf(matchers);
+	}
 }
 ";
 

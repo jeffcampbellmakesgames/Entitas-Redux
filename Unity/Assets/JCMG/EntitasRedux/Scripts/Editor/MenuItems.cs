@@ -33,6 +33,46 @@ namespace JCMG.EntitasRedux.Editor
 	/// </summary>
 	internal static class MenuItems
 	{
+		private const string SCRIPTING_SYMBOL = "ENTITAS_REDUX_NO_IMPL";
+		private const string ENABLED_REFACTOR_MODE_MSG = "[EntitasRedux] Enabled refactor mode...";
+		private const string DISABLED_REFACTOR_MODE_MSG = "[EntitasRedux] Disabled refactor mode...";
+
+		#region Refactor Mode
+
+		#if !ENTITAS_REDUX_NO_IMPL
+
+		[MenuItem("Tools/JCMG/EntitasRedux/Enable Refactor Mode #%r")]
+		internal static void DisableRefactorMode()
+		{
+			if (EditorApplication.isCompiling)
+			{
+				return;
+			}
+
+			PlayerSettingsTools.AddScriptingSymbol(SCRIPTING_SYMBOL);
+
+			Debug.Log(ENABLED_REFACTOR_MODE_MSG);
+		}
+
+		#else
+
+		[MenuItem("Tools/JCMG/EntitasRedux/Disable Refactor Mode #%r")]
+		internal static void EnableRefactorMode()
+		{
+			if (EditorApplication.isCompiling)
+			{
+				return;
+			}
+
+			PlayerSettingsTools.RemoveScriptingSymbol(SCRIPTING_SYMBOL);
+
+			Debug.Log(DISABLED_REFACTOR_MODE_MSG);
+		}
+
+		#endif
+
+		#endregion
+
 		[MenuItem("Tools/JCMG/EntitasRedux/Submit bug or feature request")]
 		internal static void OpenURLToGitHubIssuesSection()
 		{

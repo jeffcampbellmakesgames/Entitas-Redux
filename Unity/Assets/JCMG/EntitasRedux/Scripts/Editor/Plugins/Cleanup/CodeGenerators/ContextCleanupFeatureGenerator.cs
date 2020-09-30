@@ -66,7 +66,7 @@ public class ${ContextName}CleanupFeature : Feature
 				var contextName = contextNames[i];
 				var contextComponentData = componentData
 					.Where(x => (x.HasCleanupDestroyEntityData() || x.HasCleanupRemoveComponentData()) &&
-					            x.GetContextNames().Contains(contextName));
+								x.GetContextNames().Contains(contextName));
 				codeGenFiles.Add(GenerateSystems(contextName, contextComponentData));
 			}
 

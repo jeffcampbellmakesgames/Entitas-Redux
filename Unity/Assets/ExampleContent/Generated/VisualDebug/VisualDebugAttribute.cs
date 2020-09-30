@@ -7,8 +7,7 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-public sealed class VisualDebugAttribute : JCMG.EntitasRedux.ContextAttribute {
-
-    public VisualDebugAttribute() : base("VisualDebug") {
-    }
+public sealed class VisualDebugAttribute : JCMG.EntitasRedux.ContextAttribute
+{
+	public VisualDebugAttribute() : base("VisualDebug")	{ }
 }

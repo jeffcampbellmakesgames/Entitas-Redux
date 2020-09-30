@@ -119,9 +119,9 @@ namespace EntitasRedux.Tests
 		public void AllOfMergedMatchersHaveZeroDuplicateIndices()
 		{
 			var m1 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
-            var m2 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
-            var m3 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentB);
-            var mergedMatcher = Matcher<TestEntity>.AllOf(m1, m2, m3);
+			var m2 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentA);
+			var m3 = Matcher<TestEntity>.AllOf(MyTestComponentsLookup.ComponentB);
+			var mergedMatcher = Matcher<TestEntity>.AllOf(m1, m2, m3);
 
 			AssertIndicesContain(mergedMatcher.Indices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);
 			AssertIndicesContain(mergedMatcher.AllOfIndices, MyTestComponentsLookup.ComponentA, MyTestComponentsLookup.ComponentB);

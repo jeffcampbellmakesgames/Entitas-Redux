@@ -11,211 +11,213 @@ using System;
 using System.Collections.Generic;
 using JCMG.EntitasRedux;
 
-public static class TestComponentsLookup {
+public static class TestComponentsLookup
+{
+	public const int AnyBaseAddedListener = 0;
+	public const int AnyFlagEventRemovedListener = 1;
+	public const int AnyMixedEventAddedListener = 2;
+	public const int AnyStandardEventAddedListener = 3;
+	public const int AnyUniqueEventAddedListener = 4;
+	public const int ClassToGenerate = 5;
+	public const int ClassWithEntitIndexAttribute = 6;
+	public const int Base = 7;
+	public const int ComponentWithFields = 8;
+	public const int ComponentWithFieldsAndProperties = 9;
+	public const int ComponentWithProperties = 10;
+	public const int CustomPrefixFlag = 11;
+	public const int DontGenerateMethods = 12;
+	public const int EntityIndex = 13;
+	public const int Flag = 14;
+	public const int FlagEntityEvent = 15;
+	public const int FlagEvent = 16;
+	public const int MixedEvent = 17;
+	public const int MultipleContextStandardEvent = 18;
+	public const int MultipleEntityIndices = 19;
+	public const int MultipleEventsStandardEvent = 20;
+	public const int MyNamespace = 21;
+	public const int MyNamespaceFlag = 22;
+	public const int NameAge = 23;
+	public const int Position = 24;
+	public const int Size = 25;
+	public const int Standard = 26;
+	public const int StandardEntityEvent = 27;
+	public const int StandardEvent = 28;
+	public const int Test2Context = 29;
+	public const int UniqueEvent = 30;
+	public const int UniqueFlag = 31;
+	public const int UniqueMyNamespace = 32;
+	public const int UniqueMyNamespaceFlag = 33;
+	public const int UniqueStandard = 34;
+	public const int EventToGenerate = 35;
+	public const int FlagEntityEventAddedListener = 36;
+	public const int InterfaceToGenerate = 37;
+	public const int MixedEventAddedListener = 38;
+	public const int NewCustomNameComponent1 = 39;
+	public const int NewCustomNameComponent2 = 40;
+	public const int StandardEntityEventRemovedListener = 41;
+	public const int StructToGenerate = 42;
+	public const int TestAnyEventToGenerateAddedListener = 43;
+	public const int TestAnyMultipleContextStandardEventAddedListener = 44;
+	public const int TestAnyMultipleEventsStandardEventAddedListener = 45;
+	public const int TestMultipleEventsStandardEventRemovedListener = 46;
+	public const int UniqueClassToGenerate = 47;
 
-    public const int AnyBaseAddedListener = 0;
-    public const int AnyFlagEventRemovedListener = 1;
-    public const int AnyMixedEventAddedListener = 2;
-    public const int AnyStandardEventAddedListener = 3;
-    public const int AnyUniqueEventAddedListener = 4;
-    public const int ClassToGenerate = 5;
-    public const int ClassWithEntitIndexAttribute = 6;
-    public const int Base = 7;
-    public const int ComponentWithFields = 8;
-    public const int ComponentWithFieldsAndProperties = 9;
-    public const int ComponentWithProperties = 10;
-    public const int CustomPrefixFlag = 11;
-    public const int DontGenerateMethods = 12;
-    public const int EntityIndex = 13;
-    public const int Flag = 14;
-    public const int FlagEntityEvent = 15;
-    public const int FlagEvent = 16;
-    public const int MixedEvent = 17;
-    public const int MultipleContextStandardEvent = 18;
-    public const int MultipleEntityIndices = 19;
-    public const int MultipleEventsStandardEvent = 20;
-    public const int MyNamespace = 21;
-    public const int MyNamespaceFlag = 22;
-    public const int NameAge = 23;
-    public const int Position = 24;
-    public const int Size = 25;
-    public const int Standard = 26;
-    public const int StandardEntityEvent = 27;
-    public const int StandardEvent = 28;
-    public const int Test2Context = 29;
-    public const int UniqueEvent = 30;
-    public const int UniqueFlag = 31;
-    public const int UniqueMyNamespace = 32;
-    public const int UniqueMyNamespaceFlag = 33;
-    public const int UniqueStandard = 34;
-    public const int EventToGenerate = 35;
-    public const int FlagEntityEventAddedListener = 36;
-    public const int InterfaceToGenerate = 37;
-    public const int MixedEventAddedListener = 38;
-    public const int NewCustomNameComponent1 = 39;
-    public const int NewCustomNameComponent2 = 40;
-    public const int StandardEntityEventRemovedListener = 41;
-    public const int StructToGenerate = 42;
-    public const int TestAnyEventToGenerateAddedListener = 43;
-    public const int TestAnyMultipleContextStandardEventAddedListener = 44;
-    public const int TestAnyMultipleEventsStandardEventAddedListener = 45;
-    public const int TestMultipleEventsStandardEventRemovedListener = 46;
-    public const int UniqueClassToGenerate = 47;
+	public const int TotalComponents = 48;
 
-    public const int TotalComponents = 48;
+	public static readonly string[] ComponentNames =
+	{
+		"AnyBaseAddedListener",
+		"AnyFlagEventRemovedListener",
+		"AnyMixedEventAddedListener",
+		"AnyStandardEventAddedListener",
+		"AnyUniqueEventAddedListener",
+		"ClassToGenerate",
+		"ClassWithEntitIndexAttribute",
+		"Base",
+		"ComponentWithFields",
+		"ComponentWithFieldsAndProperties",
+		"ComponentWithProperties",
+		"CustomPrefixFlag",
+		"DontGenerateMethods",
+		"EntityIndex",
+		"Flag",
+		"FlagEntityEvent",
+		"FlagEvent",
+		"MixedEvent",
+		"MultipleContextStandardEvent",
+		"MultipleEntityIndices",
+		"MultipleEventsStandardEvent",
+		"MyNamespace",
+		"MyNamespaceFlag",
+		"NameAge",
+		"Position",
+		"Size",
+		"Standard",
+		"StandardEntityEvent",
+		"StandardEvent",
+		"Test2Context",
+		"UniqueEvent",
+		"UniqueFlag",
+		"UniqueMyNamespace",
+		"UniqueMyNamespaceFlag",
+		"UniqueStandard",
+		"EventToGenerate",
+		"FlagEntityEventAddedListener",
+		"InterfaceToGenerate",
+		"MixedEventAddedListener",
+		"NewCustomNameComponent1",
+		"NewCustomNameComponent2",
+		"StandardEntityEventRemovedListener",
+		"StructToGenerate",
+		"TestAnyEventToGenerateAddedListener",
+		"TestAnyMultipleContextStandardEventAddedListener",
+		"TestAnyMultipleEventsStandardEventAddedListener",
+		"TestMultipleEventsStandardEventRemovedListener",
+		"UniqueClassToGenerate"
+	};
 
-    public static readonly string[] ComponentNames = {
-        "AnyBaseAddedListener",
-        "AnyFlagEventRemovedListener",
-        "AnyMixedEventAddedListener",
-        "AnyStandardEventAddedListener",
-        "AnyUniqueEventAddedListener",
-        "ClassToGenerate",
-        "ClassWithEntitIndexAttribute",
-        "Base",
-        "ComponentWithFields",
-        "ComponentWithFieldsAndProperties",
-        "ComponentWithProperties",
-        "CustomPrefixFlag",
-        "DontGenerateMethods",
-        "EntityIndex",
-        "Flag",
-        "FlagEntityEvent",
-        "FlagEvent",
-        "MixedEvent",
-        "MultipleContextStandardEvent",
-        "MultipleEntityIndices",
-        "MultipleEventsStandardEvent",
-        "MyNamespace",
-        "MyNamespaceFlag",
-        "NameAge",
-        "Position",
-        "Size",
-        "Standard",
-        "StandardEntityEvent",
-        "StandardEvent",
-        "Test2Context",
-        "UniqueEvent",
-        "UniqueFlag",
-        "UniqueMyNamespace",
-        "UniqueMyNamespaceFlag",
-        "UniqueStandard",
-        "EventToGenerate",
-        "FlagEntityEventAddedListener",
-        "InterfaceToGenerate",
-        "MixedEventAddedListener",
-        "NewCustomNameComponent1",
-        "NewCustomNameComponent2",
-        "StandardEntityEventRemovedListener",
-        "StructToGenerate",
-        "TestAnyEventToGenerateAddedListener",
-        "TestAnyMultipleContextStandardEventAddedListener",
-        "TestAnyMultipleEventsStandardEventAddedListener",
-        "TestMultipleEventsStandardEventRemovedListener",
-        "UniqueClassToGenerate"
-    };
-
-    public static readonly System.Type[] ComponentTypes = {
-        typeof(AnyBaseAddedListenerComponent),
-        typeof(AnyFlagEventRemovedListenerComponent),
-        typeof(AnyMixedEventAddedListenerComponent),
-        typeof(AnyStandardEventAddedListenerComponent),
-        typeof(AnyUniqueEventAddedListenerComponent),
-        typeof(ClassToGenerateComponent),
-        typeof(ClassWithEntitIndexAttributeComponent),
-        typeof(EntitasRedux.Tests.BaseComponent),
-        typeof(EntitasRedux.Tests.ComponentWithFields),
-        typeof(EntitasRedux.Tests.ComponentWithFieldsAndProperties),
-        typeof(EntitasRedux.Tests.ComponentWithProperties),
-        typeof(EntitasRedux.Tests.CustomPrefixFlagComponent),
-        typeof(EntitasRedux.Tests.DontGenerateMethodsComponent),
-        typeof(EntitasRedux.Tests.EntityIndexComponent),
-        typeof(EntitasRedux.Tests.FlagComponent),
-        typeof(EntitasRedux.Tests.FlagEntityEventComponent),
-        typeof(EntitasRedux.Tests.FlagEventComponent),
-        typeof(EntitasRedux.Tests.MixedEventComponent),
-        typeof(EntitasRedux.Tests.MultipleContextStandardEventComponent),
-        typeof(EntitasRedux.Tests.MultipleEntityIndicesComponent),
-        typeof(EntitasRedux.Tests.MultipleEventsStandardEventComponent),
-        typeof(EntitasRedux.Tests.MyNamespaceComponent),
-        typeof(EntitasRedux.Tests.MyNamespaceFlagComponent),
-        typeof(EntitasRedux.Tests.NameAgeComponent),
-        typeof(EntitasRedux.Tests.PositionComponent),
-        typeof(EntitasRedux.Tests.SizeComponent),
-        typeof(EntitasRedux.Tests.StandardComponent),
-        typeof(EntitasRedux.Tests.StandardEntityEventComponent),
-        typeof(EntitasRedux.Tests.StandardEventComponent),
-        typeof(EntitasRedux.Tests.Test2ContextComponent),
-        typeof(EntitasRedux.Tests.UniqueEventComponent),
-        typeof(EntitasRedux.Tests.UniqueFlagComponent),
-        typeof(EntitasRedux.Tests.UniqueMyNamespaceComponent),
-        typeof(EntitasRedux.Tests.UniqueMyNamespaceFlagComponent),
-        typeof(EntitasRedux.Tests.UniqueStandardComponent),
-        typeof(EventToGenerateComponent),
-        typeof(FlagEntityEventAddedListenerComponent),
-        typeof(InterfaceToGenerateComponent),
-        typeof(MixedEventAddedListenerComponent),
-        typeof(NewCustomNameComponent1Component),
-        typeof(NewCustomNameComponent2Component),
-        typeof(StandardEntityEventRemovedListenerComponent),
-        typeof(StructToGenerateComponent),
-        typeof(TestAnyEventToGenerateAddedListenerComponent),
-        typeof(TestAnyMultipleContextStandardEventAddedListenerComponent),
-        typeof(TestAnyMultipleEventsStandardEventAddedListenerComponent),
-        typeof(TestMultipleEventsStandardEventRemovedListenerComponent),
-        typeof(UniqueClassToGenerateComponent)
-    };
+	public static readonly System.Type[] ComponentTypes =
+	{
+		typeof(AnyBaseAddedListenerComponent),
+		typeof(AnyFlagEventRemovedListenerComponent),
+		typeof(AnyMixedEventAddedListenerComponent),
+		typeof(AnyStandardEventAddedListenerComponent),
+		typeof(AnyUniqueEventAddedListenerComponent),
+		typeof(ClassToGenerateComponent),
+		typeof(ClassWithEntitIndexAttributeComponent),
+		typeof(EntitasRedux.Tests.BaseComponent),
+		typeof(EntitasRedux.Tests.ComponentWithFields),
+		typeof(EntitasRedux.Tests.ComponentWithFieldsAndProperties),
+		typeof(EntitasRedux.Tests.ComponentWithProperties),
+		typeof(EntitasRedux.Tests.CustomPrefixFlagComponent),
+		typeof(EntitasRedux.Tests.DontGenerateMethodsComponent),
+		typeof(EntitasRedux.Tests.EntityIndexComponent),
+		typeof(EntitasRedux.Tests.FlagComponent),
+		typeof(EntitasRedux.Tests.FlagEntityEventComponent),
+		typeof(EntitasRedux.Tests.FlagEventComponent),
+		typeof(EntitasRedux.Tests.MixedEventComponent),
+		typeof(EntitasRedux.Tests.MultipleContextStandardEventComponent),
+		typeof(EntitasRedux.Tests.MultipleEntityIndicesComponent),
+		typeof(EntitasRedux.Tests.MultipleEventsStandardEventComponent),
+		typeof(EntitasRedux.Tests.MyNamespaceComponent),
+		typeof(EntitasRedux.Tests.MyNamespaceFlagComponent),
+		typeof(EntitasRedux.Tests.NameAgeComponent),
+		typeof(EntitasRedux.Tests.PositionComponent),
+		typeof(EntitasRedux.Tests.SizeComponent),
+		typeof(EntitasRedux.Tests.StandardComponent),
+		typeof(EntitasRedux.Tests.StandardEntityEventComponent),
+		typeof(EntitasRedux.Tests.StandardEventComponent),
+		typeof(EntitasRedux.Tests.Test2ContextComponent),
+		typeof(EntitasRedux.Tests.UniqueEventComponent),
+		typeof(EntitasRedux.Tests.UniqueFlagComponent),
+		typeof(EntitasRedux.Tests.UniqueMyNamespaceComponent),
+		typeof(EntitasRedux.Tests.UniqueMyNamespaceFlagComponent),
+		typeof(EntitasRedux.Tests.UniqueStandardComponent),
+		typeof(EventToGenerateComponent),
+		typeof(FlagEntityEventAddedListenerComponent),
+		typeof(InterfaceToGenerateComponent),
+		typeof(MixedEventAddedListenerComponent),
+		typeof(NewCustomNameComponent1Component),
+		typeof(NewCustomNameComponent2Component),
+		typeof(StandardEntityEventRemovedListenerComponent),
+		typeof(StructToGenerateComponent),
+		typeof(TestAnyEventToGenerateAddedListenerComponent),
+		typeof(TestAnyMultipleContextStandardEventAddedListenerComponent),
+		typeof(TestAnyMultipleEventsStandardEventAddedListenerComponent),
+		typeof(TestMultipleEventsStandardEventRemovedListenerComponent),
+		typeof(UniqueClassToGenerateComponent)
+	};
 
 	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
 	{
-        { typeof(AnyBaseAddedListenerComponent), 0 },
-        { typeof(AnyFlagEventRemovedListenerComponent), 1 },
-        { typeof(AnyMixedEventAddedListenerComponent), 2 },
-        { typeof(AnyStandardEventAddedListenerComponent), 3 },
-        { typeof(AnyUniqueEventAddedListenerComponent), 4 },
-        { typeof(ClassToGenerateComponent), 5 },
-        { typeof(ClassWithEntitIndexAttributeComponent), 6 },
-        { typeof(EntitasRedux.Tests.BaseComponent), 7 },
-        { typeof(EntitasRedux.Tests.ComponentWithFields), 8 },
-        { typeof(EntitasRedux.Tests.ComponentWithFieldsAndProperties), 9 },
-        { typeof(EntitasRedux.Tests.ComponentWithProperties), 10 },
-        { typeof(EntitasRedux.Tests.CustomPrefixFlagComponent), 11 },
-        { typeof(EntitasRedux.Tests.DontGenerateMethodsComponent), 12 },
-        { typeof(EntitasRedux.Tests.EntityIndexComponent), 13 },
-        { typeof(EntitasRedux.Tests.FlagComponent), 14 },
-        { typeof(EntitasRedux.Tests.FlagEntityEventComponent), 15 },
-        { typeof(EntitasRedux.Tests.FlagEventComponent), 16 },
-        { typeof(EntitasRedux.Tests.MixedEventComponent), 17 },
-        { typeof(EntitasRedux.Tests.MultipleContextStandardEventComponent), 18 },
-        { typeof(EntitasRedux.Tests.MultipleEntityIndicesComponent), 19 },
-        { typeof(EntitasRedux.Tests.MultipleEventsStandardEventComponent), 20 },
-        { typeof(EntitasRedux.Tests.MyNamespaceComponent), 21 },
-        { typeof(EntitasRedux.Tests.MyNamespaceFlagComponent), 22 },
-        { typeof(EntitasRedux.Tests.NameAgeComponent), 23 },
-        { typeof(EntitasRedux.Tests.PositionComponent), 24 },
-        { typeof(EntitasRedux.Tests.SizeComponent), 25 },
-        { typeof(EntitasRedux.Tests.StandardComponent), 26 },
-        { typeof(EntitasRedux.Tests.StandardEntityEventComponent), 27 },
-        { typeof(EntitasRedux.Tests.StandardEventComponent), 28 },
-        { typeof(EntitasRedux.Tests.Test2ContextComponent), 29 },
-        { typeof(EntitasRedux.Tests.UniqueEventComponent), 30 },
-        { typeof(EntitasRedux.Tests.UniqueFlagComponent), 31 },
-        { typeof(EntitasRedux.Tests.UniqueMyNamespaceComponent), 32 },
-        { typeof(EntitasRedux.Tests.UniqueMyNamespaceFlagComponent), 33 },
-        { typeof(EntitasRedux.Tests.UniqueStandardComponent), 34 },
-        { typeof(EventToGenerateComponent), 35 },
-        { typeof(FlagEntityEventAddedListenerComponent), 36 },
-        { typeof(InterfaceToGenerateComponent), 37 },
-        { typeof(MixedEventAddedListenerComponent), 38 },
-        { typeof(NewCustomNameComponent1Component), 39 },
-        { typeof(NewCustomNameComponent2Component), 40 },
-        { typeof(StandardEntityEventRemovedListenerComponent), 41 },
-        { typeof(StructToGenerateComponent), 42 },
-        { typeof(TestAnyEventToGenerateAddedListenerComponent), 43 },
-        { typeof(TestAnyMultipleContextStandardEventAddedListenerComponent), 44 },
-        { typeof(TestAnyMultipleEventsStandardEventAddedListenerComponent), 45 },
-        { typeof(TestMultipleEventsStandardEventRemovedListenerComponent), 46 },
-        { typeof(UniqueClassToGenerateComponent), 47 }
+		{ typeof(AnyBaseAddedListenerComponent), 0 },
+		{ typeof(AnyFlagEventRemovedListenerComponent), 1 },
+		{ typeof(AnyMixedEventAddedListenerComponent), 2 },
+		{ typeof(AnyStandardEventAddedListenerComponent), 3 },
+		{ typeof(AnyUniqueEventAddedListenerComponent), 4 },
+		{ typeof(ClassToGenerateComponent), 5 },
+		{ typeof(ClassWithEntitIndexAttributeComponent), 6 },
+		{ typeof(EntitasRedux.Tests.BaseComponent), 7 },
+		{ typeof(EntitasRedux.Tests.ComponentWithFields), 8 },
+		{ typeof(EntitasRedux.Tests.ComponentWithFieldsAndProperties), 9 },
+		{ typeof(EntitasRedux.Tests.ComponentWithProperties), 10 },
+		{ typeof(EntitasRedux.Tests.CustomPrefixFlagComponent), 11 },
+		{ typeof(EntitasRedux.Tests.DontGenerateMethodsComponent), 12 },
+		{ typeof(EntitasRedux.Tests.EntityIndexComponent), 13 },
+		{ typeof(EntitasRedux.Tests.FlagComponent), 14 },
+		{ typeof(EntitasRedux.Tests.FlagEntityEventComponent), 15 },
+		{ typeof(EntitasRedux.Tests.FlagEventComponent), 16 },
+		{ typeof(EntitasRedux.Tests.MixedEventComponent), 17 },
+		{ typeof(EntitasRedux.Tests.MultipleContextStandardEventComponent), 18 },
+		{ typeof(EntitasRedux.Tests.MultipleEntityIndicesComponent), 19 },
+		{ typeof(EntitasRedux.Tests.MultipleEventsStandardEventComponent), 20 },
+		{ typeof(EntitasRedux.Tests.MyNamespaceComponent), 21 },
+		{ typeof(EntitasRedux.Tests.MyNamespaceFlagComponent), 22 },
+		{ typeof(EntitasRedux.Tests.NameAgeComponent), 23 },
+		{ typeof(EntitasRedux.Tests.PositionComponent), 24 },
+		{ typeof(EntitasRedux.Tests.SizeComponent), 25 },
+		{ typeof(EntitasRedux.Tests.StandardComponent), 26 },
+		{ typeof(EntitasRedux.Tests.StandardEntityEventComponent), 27 },
+		{ typeof(EntitasRedux.Tests.StandardEventComponent), 28 },
+		{ typeof(EntitasRedux.Tests.Test2ContextComponent), 29 },
+		{ typeof(EntitasRedux.Tests.UniqueEventComponent), 30 },
+		{ typeof(EntitasRedux.Tests.UniqueFlagComponent), 31 },
+		{ typeof(EntitasRedux.Tests.UniqueMyNamespaceComponent), 32 },
+		{ typeof(EntitasRedux.Tests.UniqueMyNamespaceFlagComponent), 33 },
+		{ typeof(EntitasRedux.Tests.UniqueStandardComponent), 34 },
+		{ typeof(EventToGenerateComponent), 35 },
+		{ typeof(FlagEntityEventAddedListenerComponent), 36 },
+		{ typeof(InterfaceToGenerateComponent), 37 },
+		{ typeof(MixedEventAddedListenerComponent), 38 },
+		{ typeof(NewCustomNameComponent1Component), 39 },
+		{ typeof(NewCustomNameComponent2Component), 40 },
+		{ typeof(StandardEntityEventRemovedListenerComponent), 41 },
+		{ typeof(StructToGenerateComponent), 42 },
+		{ typeof(TestAnyEventToGenerateAddedListenerComponent), 43 },
+		{ typeof(TestAnyMultipleContextStandardEventAddedListenerComponent), 44 },
+		{ typeof(TestAnyMultipleEventsStandardEventAddedListenerComponent), 45 },
+		{ typeof(TestMultipleEventsStandardEventRemovedListenerComponent), 46 },
+		{ typeof(UniqueClassToGenerateComponent), 47 }
 	};
 
 	/// <summary>

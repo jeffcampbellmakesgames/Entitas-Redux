@@ -17,6 +17,7 @@ public partial class VisualDebugEntity
 	/// </summary>
 	public void CopyComponentTo(IComponent component)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 		if (component is ExampleContent.VisualDebugging.AnArrayComponent AnArray)
 		{
 			CopyAnArrayTo(AnArray);
@@ -249,6 +250,7 @@ public partial class VisualDebugEntity
 		{
 			CopyAnyMyEventClassAddedListenerTo(AnyMyEventClassAddedListener);
 		}
+		#endif
 	}
 
 	/// <summary>

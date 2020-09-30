@@ -3,7 +3,7 @@
 namespace ExampleContent.VisualDebugging
 {
 	public class SomeInitializeUpdateSystem : IInitializeSystem,
-	                                           IUpdateSystem
+											   IUpdateSystem
 	{
 		public void Update()
 		{

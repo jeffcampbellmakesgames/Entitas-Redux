@@ -27,8 +27,8 @@ using JCMG.EntitasRedux;
 
 namespace EntitasRedux.Tests {
 
-    [Context("Test")]
-    public struct StructToGenerate {
-        public string value;
-    }
+	[Context("Test")]
+	public struct StructToGenerate {
+		public string value;
+	}
 }

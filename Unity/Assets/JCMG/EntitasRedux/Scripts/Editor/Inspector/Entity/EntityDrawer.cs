@@ -173,14 +173,14 @@ using Entitas.VisualDebugging.Unity.Editor;
 
 public class Default${ShortType}InstanceCreator : IDefaultInstanceCreator {
 
-    public bool HandlesType(Type type) {
-        return type == typeof(${Type});
-    }
+	public bool HandlesType(Type type) {
+		return type == typeof(${Type});
+	}
 
-    public object CreateDefault(Type type) {
-        // TODO return an instance of type ${Type}
-        throw new NotImplementedException();
-    }
+	public object CreateDefault(Type type) {
+		// TODO return an instance of type ${Type}
+		throw new NotImplementedException();
+	}
 }
 ";
 
@@ -191,14 +191,14 @@ using Entitas.VisualDebugging.Unity.Editor;
 
 public class ${ShortType}TypeDrawer : ITypeDrawer {
 
-    public bool HandlesType(Type type) {
-        return type == typeof(${Type});
-    }
+	public bool HandlesType(Type type) {
+		return type == typeof(${Type});
+	}
 
-    public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target) {
-        // TODO draw the type ${Type}
-        throw new NotImplementedException();
-    }
+	public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target) {
+		// TODO draw the type ${Type}
+		throw new NotImplementedException();
+	}
 }
 ";
 
@@ -357,10 +357,10 @@ public class ${ShortType}TypeDrawer : ITypeDrawer {
 		}
 
 		public static void DrawComponent(bool[] unfoldedComponents,
-		                                 string[] componentMemberSearch,
-		                                 IEntity entity,
-		                                 int index,
-		                                 IComponent component)
+										 string[] componentMemberSearch,
+										 IEntity entity,
+										 int index,
+										 IComponent component)
 		{
 			var componentType = component.GetType();
 			var componentName = componentType.Name.RemoveComponentSuffix();
@@ -543,7 +543,7 @@ public class ${ShortType}TypeDrawer : ITypeDrawer {
 		}
 
 		public static bool DrawObjectMember(Type memberType, string memberName, object value, object target,
-		                                    Action<object, object> setValue)
+											Action<object, object> setValue)
 		{
 			if (value == null)
 			{
@@ -603,7 +603,7 @@ public class ${ShortType}TypeDrawer : ITypeDrawer {
 				{
 					var targetType = target.GetType();
 					var shouldDraw = !targetType.ImplementsInterface<IComponent>() ||
-					                 !Attribute.IsDefined(targetType, typeof(DontDrawComponentAttribute));
+									 !Attribute.IsDefined(targetType, typeof(DontDrawComponentAttribute));
 					if (shouldDraw)
 					{
 						EditorGUILayout.LabelField(memberName, value.ToString());

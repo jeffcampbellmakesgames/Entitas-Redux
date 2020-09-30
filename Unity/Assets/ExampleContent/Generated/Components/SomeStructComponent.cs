@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 [JCMG.EntitasRedux.DontGenerate(false)]
-public sealed class SomeStructComponent : JCMG.EntitasRedux.IComponent {
-    public ExampleContent.VisualDebugging.SomeStruct value;
+public sealed class SomeStructComponent : JCMG.EntitasRedux.IComponent
+{
+	public ExampleContent.VisualDebugging.SomeStruct value;
 }

@@ -9,27 +9,26 @@
 //------------------------------------------------------------------------------
 public sealed partial class MyTestContext : JCMG.EntitasRedux.Context<MyTestEntity>
 {
-
-    public MyTestContext()
-        : base(
-            MyTestComponentsLookup.TotalComponents,
-            0,
-            new JCMG.EntitasRedux.ContextInfo(
-                "MyTest",
-                MyTestComponentsLookup.ComponentNames,
-                MyTestComponentsLookup.ComponentTypes
-            ),
-            (entity) =>
+	public MyTestContext()
+		: base(
+			MyTestComponentsLookup.TotalComponents,
+			0,
+			new JCMG.EntitasRedux.ContextInfo(
+				"MyTest",
+				MyTestComponentsLookup.ComponentNames,
+				MyTestComponentsLookup.ComponentTypes
+			),
+			(entity) =>
 
 #if (ENTITAS_FAST_AND_UNSAFE)
-                new JCMG.EntitasRedux.UnsafeAERC(),
+				new JCMG.EntitasRedux.UnsafeAERC(),
 #else
-                new JCMG.EntitasRedux.SafeAERC(entity),
+				new JCMG.EntitasRedux.SafeAERC(entity),
 #endif
-            () => new MyTestEntity()
-        )
+			() => new MyTestEntity()
+		)
 	{
-    }
+	}
 
 	/// <summary>
 	/// Creates a new entity and adds copies of all specified components to it. If replaceExisting is true, it will
