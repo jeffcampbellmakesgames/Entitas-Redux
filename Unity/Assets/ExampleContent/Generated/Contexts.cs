@@ -30,6 +30,8 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 		}
 	}
 
+	#endif
+
 	public static Contexts SharedInstance
 	{
 		get
@@ -43,8 +45,6 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 		}
 		set	{ _sharedInstance = value; }
 	}
-
-	#endif
 
 	static Contexts _sharedInstance;
 
