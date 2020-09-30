@@ -94,7 +94,7 @@ namespace JCMG.EntitasRedux
 		/// <param name="aercFactory"></param>
 		/// <param name="entityFactory"></param>
 		public Context(int totalComponents, int startCreationIndex, ContextInfo contextInfo, Func<IEntity, IAERC> aercFactory,
-		               Func<TEntity> entityFactory)
+					   Func<TEntity> entityFactory)
 		{
 			_totalComponents = totalComponents;
 			_creationIndex = startCreationIndex;
@@ -175,7 +175,7 @@ namespace JCMG.EntitasRedux
 		}
 
 		private void UpdateGroupsComponentReplaced(IEntity entity, int index, IComponent previousComponent,
-		                                           IComponent newComponent)
+												   IComponent newComponent)
 		{
 			var groups = _groupsForIndex[index];
 			if (groups != null)

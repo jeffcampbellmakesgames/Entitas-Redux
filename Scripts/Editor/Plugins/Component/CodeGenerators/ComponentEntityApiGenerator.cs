@@ -23,7 +23,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -47,61 +46,77 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		}
 
 		private const string STANDARD_TEMPLATE =
-			@"public partial class ${EntityType} {
+			@"public partial class ${EntityType}
+{
+	public ${ComponentType} ${validComponentName} { get { return (${ComponentType})GetComponent(${Index}); } }
+	public bool Has${ComponentName} { get { return HasComponent(${Index}); } }
 
-    public ${ComponentType} ${validComponentName} { get { return (${ComponentType})GetComponent(${Index}); } }
-    public bool Has${ComponentName} { get { return HasComponent(${Index}); } }
-
-    public void Add${ComponentName}(${newMethodParameters}) {
-        var index = ${Index};
-        var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+	public void Add${ComponentName}(${newMethodParameters})
+	{
+		var index = ${Index};
+		var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+		#if !ENTITAS_REDUX_NO_IMPL
 ${memberAssignmentList}
-        AddComponent(index, component);
-    }
+		#endif
+		AddComponent(index, component);
+	}
 
-    public void Replace${ComponentName}(${newMethodParameters}) {
-        var index = ${Index};
-        var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+	public void Replace${ComponentName}(${newMethodParameters})
+	{
+		var index = ${Index};
+		var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+		#if !ENTITAS_REDUX_NO_IMPL
 ${memberAssignmentList}
-        ReplaceComponent(index, component);
-    }
+		#endif
+		ReplaceComponent(index, component);
+	}
 
-	public void Copy${ComponentName}To(${ComponentType} copyComponent) {
-        var index = ${Index};
-        var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+	public void Copy${ComponentName}To(${ComponentType} copyComponent)
+	{
+		var index = ${Index};
+		var component = (${ComponentType})CreateComponent(index, typeof(${ComponentType}));
+		#if !ENTITAS_REDUX_NO_IMPL
 ${memberCopyAssignmentList}
-        ReplaceComponent(index, component);
-    }
+		#endif
+		ReplaceComponent(index, component);
+	}
 
-    public void Remove${ComponentName}() {
-        RemoveComponent(${Index});
-    }
+	public void Remove${ComponentName}()
+	{
+		RemoveComponent(${Index});
+	}
 }
 ";
 
 		private const string FLAG_TEMPLATE =
-@"public partial class ${EntityType} {
+@"public partial class ${EntityType}
+{
+	static readonly ${ComponentType} ${componentName}Component = new ${ComponentType}();
 
-    static readonly ${ComponentType} ${componentName}Component = new ${ComponentType}();
+	public bool ${prefixedComponentName}
+	{
+		get { return HasComponent(${Index}); }
+		set
+		{
+			if (value != ${prefixedComponentName})
+			{
+				var index = ${Index};
+				if (value)
+				{
+					var componentPool = GetComponentPool(index);
+					var component = componentPool.Count > 0
+							? componentPool.Pop()
+							: ${componentName}Component;
 
-    public bool ${prefixedComponentName} {
-        get { return HasComponent(${Index}); }
-        set {
-            if (value != ${prefixedComponentName}) {
-                var index = ${Index};
-                if (value) {
-                    var componentPool = GetComponentPool(index);
-                    var component = componentPool.Count > 0
-                            ? componentPool.Pop()
-                            : ${componentName}Component;
-
-                    AddComponent(index, component);
-                } else {
-                    RemoveComponent(index);
-                }
-            }
-        }
-    }
+					AddComponent(index, component);
+				}
+				else
+				{
+					RemoveComponent(index);
+				}
+			}
+		}
+	}
 }
 ";
 
@@ -111,9 +126,100 @@ using JCMG.EntitasRedux;
 
 public partial class ${ContextName}Entity
 {
+	/// <summary>
+	/// Copies <paramref name=""component""/> to this entity as a new component instance.
+	/// </summary>
 	public void CopyComponentTo(IComponent component)
 	{
+		#if !ENTITAS_REDUX_NO_IMPL
 ${copyToComponentList}
+		#endif
+	}
+
+	/// <summary>
+	/// Copies all components on this entity to <paramref name=""copyToEntity""/>.
+	/// </summary>
+	public void CopyTo(${ContextName}Entity copyToEntity)
+	{
+		for (var i = 0; i < ${ContextName}ComponentsLookup.TotalComponents; ++i)
+		{
+			if (HasComponent(i))
+			{
+				if (copyToEntity.HasComponent(i))
+				{
+					throw new EntityAlreadyHasComponentException(
+						i,
+						""Cannot copy component '"" +
+						${ContextName}ComponentsLookup.ComponentNames[i] +
+						""' to "" +
+						this +
+						""!"",
+						""If replacement is intended, please call CopyTo() with `replaceExisting` set to true."");
+				}
+
+				var component = GetComponent(i);
+				copyToEntity.CopyComponentTo(component);
+			}
+		}
+	}
+
+	/// <summary>
+	/// Copies all components on this entity to <paramref name=""copyToEntity""/>; if <paramref name=""replaceExisting""/>
+	/// is true any of the components that <paramref name=""copyToEntity""/> has that this entity has will be replaced,
+	/// otherwise they will be skipped.
+	/// </summary>
+	public void CopyTo(${ContextName}Entity copyToEntity, bool replaceExisting)
+	{
+		for (var i = 0; i < ${ContextName}ComponentsLookup.TotalComponents; ++i)
+		{
+			if (!HasComponent(i))
+			{
+				continue;
+			}
+
+			if (!copyToEntity.HasComponent(i) || replaceExisting)
+			{
+				var component = GetComponent(i);
+				copyToEntity.CopyComponentTo(component);
+			}
+		}
+	}
+
+	/// <summary>
+	/// Copies components on this entity at <paramref name=""indices""/> in the <see cref=""${ContextName}ComponentsLookup""/> to
+	/// <paramref name=""copyToEntity""/>. If <paramref name=""replaceExisting""/> is true any of the components that
+	/// <paramref name=""copyToEntity""/> has that this entity has will be replaced, otherwise they will be skipped.
+	/// </summary>
+	public void CopyTo(${ContextName}Entity copyToEntity, bool replaceExisting, params int[] indices)
+	{
+		for (var i = 0; i < indices.Length; ++i)
+		{
+			var index = indices[i];
+
+			// Validate that the index is within range of the component lookup
+			if (index < 0 && index >= ${ContextName}ComponentsLookup.TotalComponents)
+			{
+				const string OUT_OF_RANGE_WARNING =
+					""Component Index [{0}] is out of range for [{1}]."";
+
+				const string HINT = ""Please ensure any CopyTo indices are valid."";
+
+				throw new IndexOutOfLookupRangeException(
+					string.Format(OUT_OF_RANGE_WARNING, index, nameof(${ContextName}ComponentsLookup)),
+					HINT);
+			}
+
+			if (!HasComponent(index))
+			{
+				continue;
+			}
+
+			if (!copyToEntity.HasComponent(index) || replaceExisting)
+			{
+				var component = GetComponent(index);
+				copyToEntity.CopyComponentTo(component);
+			}
+		}
 	}
 }
 ";
@@ -164,11 +270,11 @@ ${copyToComponentList}
 				.SelectMany(Generate)
 				.ToArray();
 
-			var copyToCodeGenFile = contextNameToComponentData
-				.Select(y => GenerateCopyToMethodFile(y.Key, y.Value.ToArray()));
+			var copyComponentToCodeGenFiles = contextNameToComponentData
+				.Select(kvp => GenerateCopyMethodsFile(kvp.Key, kvp.Value));
 
 			codeGenFileList.AddRange(componentSpecificCodeGenFiles);
-			codeGenFileList.AddRange(copyToCodeGenFile);
+			codeGenFileList.AddRange(copyComponentToCodeGenFiles);
 
 			return codeGenFileList.ToArray();
 		}
@@ -243,7 +349,7 @@ ${copyToComponentList}
 			return _SB.ToString();
 		}
 
-		private CodeGenFile GenerateCopyToMethodFile(string contextName, ComponentData[] componentData)
+		private CodeGenFile GenerateCopyMethodsFile(string contextName, List<ComponentData> componentData)
 		{
 			const string FILENAME_FORMAT = "${ContextName}Entity_CopyTo.cs";
 			var filename = Path.Combine(
@@ -251,7 +357,7 @@ ${copyToComponentList}
 				FILENAME_FORMAT.Replace(contextName));
 
 			_SB.Clear();
-			for (var i = 0; i < componentData.Length; ++i)
+			for (var i = 0; i < componentData.Count; ++i)
 			{
 				var cd = componentData[i];
 				var block_template = i == 0
@@ -267,7 +373,7 @@ ${copyToComponentList}
 					.Replace("${ComponentCall}",
 						statement_template.Replace(cd, contextName));
 
-				if (i < componentData.Length - 1)
+				if (i < componentData.Count - 1)
 				{
 					_SB.AppendLine(finalCodeSnippet);
 				}

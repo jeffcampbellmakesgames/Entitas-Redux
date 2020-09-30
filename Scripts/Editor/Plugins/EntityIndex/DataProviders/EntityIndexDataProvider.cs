@@ -32,8 +32,8 @@ using JCMG.Genesis.Editor;
 namespace JCMG.EntitasRedux.Editor.Plugins
 {
 	internal sealed class EntityIndexDataProvider : IDataProvider,
-	                                                IConfigurable,
-	                                                ICacheable
+													IConfigurable,
+													ICacheable
 	{
 		private readonly ContextsComponentDataProvider _contextsComponentDataProvider;
 		private readonly AssembliesConfig _assembliesConfig;
@@ -53,7 +53,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		private EntityIndexData[] CreateEntityIndexData(Type type, List<PublicMemberInfo> infos)
 		{
 			var hasMultiple = infos.Count(i => i.attributes.Count(attr => attr.attribute is AbstractEntityIndexAttribute) == 1) >
-			                  1;
+							  1;
 			return infos
 				.Where(i => i.attributes.Count(attr => attr.attribute is AbstractEntityIndexAttribute) == 1)
 				.Select(
@@ -147,7 +147,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 				: ReflectionTools.GetAvailableAssemblies();
 
 			var types = _types ??
-			            assemblies.SelectMany(x => x.GetTypes());
+						assemblies.SelectMany(x => x.GetTypes());
 
 			var entityIndexData = types
 				.Where(type => !type.IsAbstract)

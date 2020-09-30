@@ -23,8 +23,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-using System;
-
 namespace JCMG.EntitasRedux
 {
 	public static class ContextExtension
@@ -40,29 +38,6 @@ namespace JCMG.EntitasRedux
 			where TEntity : class, IEntity
 		{
 			return context.GetGroup(matcher).GetEntities();
-		}
-
-		/// <summary>
-		/// Creates a new entity and adds copies of all
-		/// specified components to it.
-		/// If replaceExisting is true it will replace existing components.
-		/// </summary>
-		/// <typeparam name="TEntity"></typeparam>
-		/// <param name="context"></param>
-		/// <param name="entity"></param>
-		/// <param name="replaceExisting"></param>
-		/// <param name="indices"></param>
-		/// <returns></returns>
-		[Obsolete("This method is set to be refactored and is currently not functional.", true)]
-		public static TEntity CloneEntity<TEntity>(this IContext<TEntity> context,
-		                                           IEntity entity,
-		                                           bool replaceExisting = false,
-		                                           params int[] indices)
-			where TEntity : class, IEntity
-		{
-			var target = context.CreateEntity();
-			entity.CopyTo(target, replaceExisting, indices);
-			return target;
 		}
 	}
 }

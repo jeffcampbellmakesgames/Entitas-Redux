@@ -41,8 +41,8 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 		/// Returns true if the context has any valid components that can be selected in the inspector, otherwise false.
 		/// </summary>
 		protected bool ContextHasSerializableComponents => _componentTypes.Length > 0 ||
-		                                                 _componentDisplayNames.Length > 0 ||
-		                                                 _componentInfo.Length > 0;
+														 _componentDisplayNames.Length > 0 ||
+														 _componentInfo.Length > 0;
 
 		private static readonly IEnumerable<Assembly> ASSEMBLIES;
 
@@ -181,10 +181,10 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 		}
 
 		protected void GetComponentInfo(string contextTypeName,
-		                                out Type[] componentTypes,
-		                                out string[] componentDisplayNames,
-		                                out EntityDrawer.ComponentInfo[] componentInfo,
-		                                out int totalNumberOfComponents)
+										out Type[] componentTypes,
+										out string[] componentDisplayNames,
+										out EntityDrawer.ComponentInfo[] componentInfo,
+										out int totalNumberOfComponents)
 		{
 			// Get static component lookup type for the context this blueprint is associated with
 			var componentLookupTypeName = GetContextLookupTypeNameFromContextName(contextTypeName);
@@ -218,7 +218,7 @@ namespace JCMG.EntitasRedux.Blueprints.Editor
 				// If our component type is not serializable OR does not provide a default constructor, don't enable
 				// selection of it.
 				if (!allComponentTypes[i].IsSerializable ||
-				    allComponentTypes[i].GetConstructor(Type.EmptyTypes) == null)
+					allComponentTypes[i].GetConstructor(Type.EmptyTypes) == null)
 				{
 					continue;
 				}

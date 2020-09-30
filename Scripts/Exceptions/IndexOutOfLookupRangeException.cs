@@ -1,4 +1,4 @@
-/*
+﻿/*
 
 MIT License
 
@@ -23,44 +23,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-using System.IO;
-using System.Linq;
-using JCMG.Genesis.Editor;
-
-namespace JCMG.EntitasRedux.Editor.Plugins
+namespace JCMG.EntitasRedux
 {
-	internal sealed class EntityGenerator : ICodeGenerator
+	/// <summary>
+	/// An exception that occurs when an index is attempted to be used with a component lookup that is out of range for
+	/// the components it contains.
+	/// </summary>
+	public sealed class IndexOutOfLookupRangeException : EntitasReduxException
 	{
-		private const string TEMPLATE =
-@"public sealed partial class ${EntityType} : JCMG.EntitasRedux.Entity { }
-";
-
-		private CodeGenFile Generate(ContextData data)
+		public IndexOutOfLookupRangeException(string message, string hint) : base(message, hint)
 		{
-			var contextName = data.GetContextName();
-			return new CodeGenFile(
-				contextName +
-				Path.DirectorySeparatorChar +
-				contextName.AddEntitySuffix() +
-				".cs",
-				TEMPLATE.Replace(contextName),
-				GetType().FullName);
-		}
-
-		public string Name => NAME;
-
-		public int Priority => 0;
-
-		public bool RunInDryMode => true;
-
-		private const string NAME = "Entity";
-
-		public CodeGenFile[] Generate(CodeGeneratorData[] data)
-		{
-			return data
-				.OfType<ContextData>()
-				.Select(Generate)
-				.ToArray();
 		}
 	}
 }

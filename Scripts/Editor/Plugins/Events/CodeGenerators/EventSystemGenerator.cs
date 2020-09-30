@@ -36,72 +36,87 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		private const string NAME = "Event (System)";
 
 		private const string ANY_TARGET_TEMPLATE =
-			@"public sealed class ${Event}EventSystem : JCMG.EntitasRedux.ReactiveSystem<${EntityType}> {
+@"public sealed class ${Event}EventSystem : JCMG.EntitasRedux.ReactiveSystem<${EntityType}>
+{
+	readonly JCMG.EntitasRedux.IGroup<${EntityType}> _listeners;
+	readonly System.Collections.Generic.List<${EntityType}> _entityBuffer;
+	readonly System.Collections.Generic.List<I${EventListener}> _listenerBuffer;
 
-    readonly JCMG.EntitasRedux.IGroup<${EntityType}> _listeners;
-    readonly System.Collections.Generic.List<${EntityType}> _entityBuffer;
-    readonly System.Collections.Generic.List<I${EventListener}> _listenerBuffer;
+	public ${Event}EventSystem(Contexts contexts) : base(contexts.${contextName})
+	{
+		_listeners = contexts.${contextName}.GetGroup(${MatcherType}.${EventListener});
+		_entityBuffer = new System.Collections.Generic.List<${EntityType}>();
+		_listenerBuffer = new System.Collections.Generic.List<I${EventListener}>();
+	}
 
-    public ${Event}EventSystem(Contexts contexts) : base(contexts.${contextName}) {
-        _listeners = contexts.${contextName}.GetGroup(${MatcherType}.${EventListener});
-        _entityBuffer = new System.Collections.Generic.List<${EntityType}>();
-        _listenerBuffer = new System.Collections.Generic.List<I${EventListener}>();
-    }
+	protected override JCMG.EntitasRedux.ICollector<${EntityType}> GetTrigger(JCMG.EntitasRedux.IContext<${EntityType}> context)
+	{
+		return JCMG.EntitasRedux.CollectorContextExtension.CreateCollector(
+			context,
+			JCMG.EntitasRedux.TriggerOnEventMatcherExtension.${GroupEvent}(${MatcherType}.${ComponentName})
+		);
+	}
 
-    protected override JCMG.EntitasRedux.ICollector<${EntityType}> GetTrigger(JCMG.EntitasRedux.IContext<${EntityType}> context) {
-        return JCMG.EntitasRedux.CollectorContextExtension.CreateCollector(
-            context, JCMG.EntitasRedux.TriggerOnEventMatcherExtension.${GroupEvent}(${MatcherType}.${ComponentName})
-        );
-    }
+	protected override bool Filter(${EntityType} entity)
+	{
+		return ${filter};
+	}
 
-    protected override bool Filter(${EntityType} entity) {
-        return ${filter};
-    }
-
-    protected override void Execute(System.Collections.Generic.List<${EntityType}> entities) {
-        foreach (var e in entities) {
-            ${cachedAccess}
-            foreach (var listenerEntity in _listeners.GetEntities(_entityBuffer)) {
-                _listenerBuffer.Clear();
-                _listenerBuffer.AddRange(listenerEntity.${eventListener}.value);
-                foreach (var listener in _listenerBuffer) {
-                    listener.On${EventComponentName}${EventType}(e${methodArgs});
-                }
-            }
-        }
-    }
+	protected override void Execute(System.Collections.Generic.List<${EntityType}> entities)
+	{
+		foreach (var e in entities)
+		{
+			${cachedAccess}
+			foreach (var listenerEntity in _listeners.GetEntities(_entityBuffer))
+			{
+				_listenerBuffer.Clear();
+				_listenerBuffer.AddRange(listenerEntity.${eventListener}.value);
+				foreach (var listener in _listenerBuffer)
+				{
+					listener.On${EventComponentName}${EventType}(e${methodArgs});
+				}
+			}
+		}
+	}
 }
 ";
 
 		private const string SELF_TARGET_TEMPLATE =
-			@"public sealed class ${Event}EventSystem : JCMG.EntitasRedux.ReactiveSystem<${EntityType}> {
+@"public sealed class ${Event}EventSystem : JCMG.EntitasRedux.ReactiveSystem<${EntityType}>
+{
+	readonly System.Collections.Generic.List<I${EventListener}> _listenerBuffer;
 
-    readonly System.Collections.Generic.List<I${EventListener}> _listenerBuffer;
+	public ${Event}EventSystem(Contexts contexts) : base(contexts.${contextName})
+	{
+		_listenerBuffer = new System.Collections.Generic.List<I${EventListener}>();
+	}
 
-    public ${Event}EventSystem(Contexts contexts) : base(contexts.${contextName}) {
-        _listenerBuffer = new System.Collections.Generic.List<I${EventListener}>();
-    }
+	protected override JCMG.EntitasRedux.ICollector<${EntityType}> GetTrigger(JCMG.EntitasRedux.IContext<${EntityType}> context)
+	{
+		return JCMG.EntitasRedux.CollectorContextExtension.CreateCollector(
+			context,
+			JCMG.EntitasRedux.TriggerOnEventMatcherExtension.${GroupEvent}(${MatcherType}.${ComponentName})
+		);
+	}
 
-    protected override JCMG.EntitasRedux.ICollector<${EntityType}> GetTrigger(JCMG.EntitasRedux.IContext<${EntityType}> context) {
-        return JCMG.EntitasRedux.CollectorContextExtension.CreateCollector(
-            context, JCMG.EntitasRedux.TriggerOnEventMatcherExtension.${GroupEvent}(${MatcherType}.${ComponentName})
-        );
-    }
+	protected override bool Filter(${EntityType} entity)
+	{
+		return ${filter};
+	}
 
-    protected override bool Filter(${EntityType} entity) {
-        return ${filter};
-    }
-
-    protected override void Execute(System.Collections.Generic.List<${EntityType}> entities) {
-        foreach (var e in entities) {
-            ${cachedAccess}
-            _listenerBuffer.Clear();
-            _listenerBuffer.AddRange(e.${eventListener}.value);
-            foreach (var listener in _listenerBuffer) {
-                listener.On${ComponentName}${EventType}(e${methodArgs});
-            }
-        }
-    }
+	protected override void Execute(System.Collections.Generic.List<${EntityType}> entities)
+	{
+		foreach (var e in entities)
+		{
+			${cachedAccess}
+			_listenerBuffer.Clear();
+			_listenerBuffer.AddRange(e.${eventListener}.value);
+			foreach (var listener in _listenerBuffer)
+			{
+				listener.On${ComponentName}${EventType}(e${methodArgs});
+			}
+		}
+	}
 }
 ";
 

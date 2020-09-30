@@ -37,21 +37,24 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		}
 
 		private const string TEMPLATE =
-			@"public sealed partial class ${MatcherType} {
+@"public sealed partial class ${MatcherType}
+{
+	static JCMG.EntitasRedux.IMatcher<${EntityType}> _matcher${ComponentName};
 
-    static JCMG.EntitasRedux.IMatcher<${EntityType}> _matcher${ComponentName};
+	public static JCMG.EntitasRedux.IMatcher<${EntityType}> ${ComponentName}
+	{
+		get
+		{
+			if (_matcher${ComponentName} == null)
+			{
+				var matcher = (JCMG.EntitasRedux.Matcher<${EntityType}>)JCMG.EntitasRedux.Matcher<${EntityType}>.AllOf(${Index});
+				matcher.ComponentNames = ${componentNames};
+				_matcher${ComponentName} = matcher;
+			}
 
-    public static JCMG.EntitasRedux.IMatcher<${EntityType}> ${ComponentName} {
-        get {
-            if (_matcher${ComponentName} == null) {
-                var matcher = (JCMG.EntitasRedux.Matcher<${EntityType}>)JCMG.EntitasRedux.Matcher<${EntityType}>.AllOf(${Index});
-                matcher.ComponentNames = ${componentNames};
-                _matcher${ComponentName} = matcher;
-            }
-
-            return _matcher${ComponentName};
-        }
-    }
+			return _matcher${ComponentName};
+		}
+	}
 }
 ";
 

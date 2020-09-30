@@ -36,8 +36,9 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		private const string NAME = "Event (Listener Interface)";
 
 		private const string TEMPLATE =
-			@"public interface I${EventListener} {
-    void On${EventComponentName}${EventType}(${ContextName}Entity entity${methodParameters});
+@"public interface I${EventListener}
+{
+	void On${EventComponentName}${EventType}(${ContextName}Entity entity${methodParameters});
 }
 ";
 

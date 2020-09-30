@@ -32,8 +32,8 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 	public class DuplicateComponentNameException : EntitasReduxException
 	{
 		private const string DUPLICATE_COMPONENT_NAME_ERROR = "Two or more components belonging to the same Context " +
-		                                                      "have the same name.  Please ensure all components " +
-		                                                      "belonging to a single context have unique names.";
+															  "have the same name.  Please ensure all components " +
+															  "belonging to a single context have unique names.";
 
 		public DuplicateComponentNameException() : base(DUPLICATE_COMPONENT_NAME_ERROR, string.Empty)
 		{

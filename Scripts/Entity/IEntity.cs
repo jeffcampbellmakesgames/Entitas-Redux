@@ -45,10 +45,10 @@ namespace JCMG.EntitasRedux
 		event EntityEvent OnDestroyEntity;
 
 		void Initialize(int creationIndex,
-		                int totalComponents,
-		                Stack<IComponent>[] componentPools,
-		                ContextInfo contextInfo = null,
-		                IAERC aerc = null);
+						int totalComponents,
+						Stack<IComponent>[] componentPools,
+						ContextInfo contextInfo = null,
+						IAERC aerc = null);
 
 		void Reactivate(int creationIndex);
 

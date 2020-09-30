@@ -49,14 +49,14 @@ namespace JCMG.EntitasRedux
 		}
 
 		public EntityIndex(string name, IGroup<TEntity> group, Func<TEntity, IComponent, TKey> getKey,
-		                   IEqualityComparer<TKey> comparer) : base(name, group, getKey)
+						   IEqualityComparer<TKey> comparer) : base(name, group, getKey)
 		{
 			_index = new Dictionary<TKey, HashSet<TEntity>>(comparer);
 			Activate();
 		}
 
 		public EntityIndex(string name, IGroup<TEntity> group, Func<TEntity, IComponent, TKey[]> getKeys,
-		                   IEqualityComparer<TKey> comparer) : base(name, group, getKeys)
+						   IEqualityComparer<TKey> comparer) : base(name, group, getKeys)
 		{
 			_index = new Dictionary<TKey, HashSet<TEntity>>(comparer);
 			Activate();

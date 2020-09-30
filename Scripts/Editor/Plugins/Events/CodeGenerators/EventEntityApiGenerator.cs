@@ -36,25 +36,30 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		private const string NAME = "Event (Entity API)";
 
 		private const string TEMPLATE =
-			@"public partial class ${EntityType} {
+@"public partial class ${EntityType}
+{
+	public void Add${EventListener}(I${EventListener} value)
+	{
+		var listeners = Has${EventListener}
+			? ${eventListener}.value
+			: new System.Collections.Generic.List<I${EventListener}>();
+		listeners.Add(value);
+		Replace${EventListener}(listeners);
+	}
 
-    public void Add${EventListener}(I${EventListener} value) {
-        var listeners = Has${EventListener}
-            ? ${eventListener}.value
-            : new System.Collections.Generic.List<I${EventListener}>();
-        listeners.Add(value);
-        Replace${EventListener}(listeners);
-    }
-
-    public void Remove${EventListener}(I${EventListener} value, bool removeComponentWhenEmpty = true) {
-        var listeners = ${eventListener}.value;
-        listeners.Remove(value);
-        if (removeComponentWhenEmpty && listeners.Count == 0) {
-            Remove${EventListener}();
-        } else {
-            Replace${EventListener}(listeners);
-        }
-    }
+	public void Remove${EventListener}(I${EventListener} value, bool removeComponentWhenEmpty = true)
+	{
+		var listeners = ${eventListener}.value;
+		listeners.Remove(value);
+		if (removeComponentWhenEmpty && listeners.Count == 0)
+		{
+			Remove${EventListener}();
+		}
+		else
+		{
+			Replace${EventListener}(listeners);
+		}
+	}
 }
 ";
 

@@ -34,7 +34,7 @@ namespace JCMG.EntitasRedux.Editor
 		public bool HandlesType(Type type)
 		{
 			return type == typeof(Object) ||
-			       type.IsSubclassOf(typeof(Object));
+				   type.IsSubclassOf(typeof(Object));
 		}
 
 		public object DrawAndGetNewValue(Type memberType, string memberName, object value, object target)

@@ -31,50 +31,80 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 	internal sealed class ContextsGenerator : ICodeGenerator
 	{
 		private const string TEMPLATE =
-			@"public partial class Contexts : JCMG.EntitasRedux.IContexts {
+@"public partial class Contexts : JCMG.EntitasRedux.IContexts
+{
 
-    public static Contexts SharedInstance {
-        get {
-            if (_sharedInstance == null) {
-                _sharedInstance = new Contexts();
-            }
+	#if UNITY_EDITOR
 
-            return _sharedInstance;
-        }
-        set { _sharedInstance = value; }
-    }
+	static Contexts()
+	{
+		UnityEditor.EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+	}
 
-    static Contexts _sharedInstance;
+	/// <summary>
+	/// Invoked when the Unity Editor has a <see cref=""UnityEditor.PlayModeStateChange""/> change.
+	/// </summary>
+	private static void OnPlayModeStateChanged(UnityEditor.PlayModeStateChange playModeStateChange)
+	{
+		// When entering edit-mode, reset all static state so that it does not interfere with the
+		// next play-mode session.
+		if (playModeStateChange == UnityEditor.PlayModeStateChange.EnteredEditMode)
+		{
+			_sharedInstance = null;
+		}
+	}
+
+	public static Contexts SharedInstance
+	{
+		get
+		{
+			if (_sharedInstance == null)
+			{
+				_sharedInstance = new Contexts();
+			}
+
+			return _sharedInstance;
+		}
+		set	{ _sharedInstance = value; }
+	}
+
+	#endif
+
+	static Contexts _sharedInstance;
 
 ${contextPropertiesList}
 
-    public JCMG.EntitasRedux.IContext[] AllContexts { get { return new JCMG.EntitasRedux.IContext [] { ${contextList} }; } }
+	public JCMG.EntitasRedux.IContext[] AllContexts { get { return new JCMG.EntitasRedux.IContext [] { ${contextList} }; } }
 
-    public Contexts() {
+	public Contexts()
+{
 ${contextAssignmentsList}
 
-        var postConstructors = System.Linq.Enumerable.Where(
-            GetType().GetMethods(),
-            method => System.Attribute.IsDefined(method, typeof(JCMG.EntitasRedux.PostConstructorAttribute))
-        );
+		var postConstructors = System.Linq.Enumerable.Where(
+			GetType().GetMethods(),
+			method => System.Attribute.IsDefined(method, typeof(JCMG.EntitasRedux.PostConstructorAttribute))
+		);
 
-        foreach (var postConstructor in postConstructors) {
-            postConstructor.Invoke(this, null);
-        }
-    }
+		foreach (var postConstructor in postConstructors)
+		{
+			postConstructor.Invoke(this, null);
+		}
+	}
 
-    public void Reset() {
-        var contexts = AllContexts;
-        for (int i = 0; i < contexts.Length; i++) {
-            contexts[i].Reset();
-        }
-    }
+	public void Reset()
+	{
+		var contexts = AllContexts;
+		for (int i = 0; i < contexts.Length; i++)
+		{
+			contexts[i].Reset();
+		}
+	}
 }
 ";
 
-		private const string CONTEXT_PROPERTY_TEMPLATE = @"    public ${ContextType} ${contextName} { get; set; }";
+		private const string CONTEXT_PROPERTY_TEMPLATE = @"	public ${ContextType} ${contextName} { get; set; }";
 		private const string CONTEXT_LIST_TEMPLATE = @"${contextName}";
-		private const string CONTEXT_ASSIGNMENT_TEMPLATE = @"        ${contextName} = new ${ContextType}();";
+		private const string CONTEXT_ASSIGNMENT_TEMPLATE = @"		${contextName} = new ${ContextType}();";
 
 		private string Generate(string[] contextNames)
 		{
