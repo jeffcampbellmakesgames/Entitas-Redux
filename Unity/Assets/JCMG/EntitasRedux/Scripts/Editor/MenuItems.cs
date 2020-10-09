@@ -42,17 +42,17 @@ namespace JCMG.EntitasRedux.Editor
 		#if !ENTITAS_REDUX_NO_IMPL
 
 		[MenuItem("Tools/JCMG/EntitasRedux/Enable Refactor Mode #%r")]
-		internal static void DisableRefactorMode()
+		internal static void EnableRefactorMode()
 		{
-			RefactorModeTools.DisableRefactorMode();
+			RefactorModeTools.EnableRefactorMode();
 		}
 
 		#else
 
 		[MenuItem("Tools/JCMG/EntitasRedux/Disable Refactor Mode #%r")]
-		internal static void EnableRefactorMode()
+		internal static void DisableRefactorMode()
 		{
-			RefactorModeTools.EnableRefactorMode();
+			RefactorModeTools.DisableRefactorMode();
 		}
 
 		#endif
