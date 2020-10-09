@@ -33,7 +33,7 @@ namespace JCMG.EntitasRedux
 		/// <summary>
 		/// The semantic version
 		/// </summary>
-		public const string VERSION = "1.3.1";
+		public const string VERSION = "1.3.2";
 
 		/// <summary>
 		/// The branch of GIT this package was published from.
@@ -43,16 +43,16 @@ namespace JCMG.EntitasRedux
 		/// <summary>
 		/// The current GIT commit hash this package was published on.
 		/// </summary>
-		public const string GIT_COMMIT = "28a67398e17d855f61eb26ff876d02073b55fdb1";
+		public const string GIT_COMMIT = "13a6889b2627200066e83e9b168fa1b56f94cfb2";
 
 		/// <summary>
 		/// The UTC human-readable date this package was published at.
 		/// </summary>
-		public const string PUBLISH_DATE = "Wednesday, September 30, 2020";
+		public const string PUBLISH_DATE = "Friday, October 9, 2020";
 
 		/// <summary>
 		/// The UTC time this package was published at.
 		/// </summary>
-		public const string PUBLISH_TIME = "09/30/2020 01:00:10";
+		public const string PUBLISH_TIME = "10/09/2020 12:26:54";
 	}
 }
