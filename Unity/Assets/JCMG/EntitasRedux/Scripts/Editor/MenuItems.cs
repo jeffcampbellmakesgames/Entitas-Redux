@@ -44,14 +44,7 @@ namespace JCMG.EntitasRedux.Editor
 		[MenuItem("Tools/JCMG/EntitasRedux/Enable Refactor Mode #%r")]
 		internal static void DisableRefactorMode()
 		{
-			if (EditorApplication.isCompiling)
-			{
-				return;
-			}
-
-			PlayerSettingsTools.AddScriptingSymbol(SCRIPTING_SYMBOL);
-
-			Debug.Log(ENABLED_REFACTOR_MODE_MSG);
+			RefactorModeTools.DisableRefactorMode();
 		}
 
 		#else
@@ -59,14 +52,7 @@ namespace JCMG.EntitasRedux.Editor
 		[MenuItem("Tools/JCMG/EntitasRedux/Disable Refactor Mode #%r")]
 		internal static void EnableRefactorMode()
 		{
-			if (EditorApplication.isCompiling)
-			{
-				return;
-			}
-
-			PlayerSettingsTools.RemoveScriptingSymbol(SCRIPTING_SYMBOL);
-
-			Debug.Log(DISABLED_REFACTOR_MODE_MSG);
+			RefactorModeTools.EnableRefactorMode();
 		}
 
 		#endif
