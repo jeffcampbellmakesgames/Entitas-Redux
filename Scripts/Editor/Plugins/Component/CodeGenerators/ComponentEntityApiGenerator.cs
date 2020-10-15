@@ -241,40 +241,34 @@ ${copyToComponentList}
 
 		public override CodeGenFile[] Generate(CodeGeneratorData[] data)
 		{
+			var contextData = data.OfType<ContextData>().Select(x => x.GetContextName());
 			var methodComponentData = data
 				.OfType<ComponentData>()
 				.Where(d => d.ShouldGenerateMethods())
 				.ToArray();
 
-			var contextNameToComponentData = methodComponentData
-				.Aggregate(
-					new Dictionary<string, List<ComponentData>>(),
-					(dict, d) =>
-					{
-						var contextNames = d.GetContextNames();
-						foreach (var contextName in contextNames)
-						{
-							if (!dict.ContainsKey(contextName))
-							{
-								dict.Add(contextName, new List<ComponentData>());
-							}
-
-							dict[contextName].Add(d);
-						}
-
-						return dict;
-					});
-
 			var codeGenFileList = new List<CodeGenFile>();
+			foreach (var cd in contextData)
+			{
+				var componentData = new List<ComponentData>();
+				for (var i = 0; i < methodComponentData.Length; i++)
+				{
+					if (!methodComponentData[i].GetContextNames().Contains(cd))
+					{
+						continue;
+					}
+
+					componentData.Add(methodComponentData[i]);
+				}
+
+				codeGenFileList.Add(GenerateCopyMethodsFile(cd, componentData));
+			}
+
 			var componentSpecificCodeGenFiles = methodComponentData
 				.SelectMany(Generate)
 				.ToArray();
 
-			var copyComponentToCodeGenFiles = contextNameToComponentData
-				.Select(kvp => GenerateCopyMethodsFile(kvp.Key, kvp.Value));
-
 			codeGenFileList.AddRange(componentSpecificCodeGenFiles);
-			codeGenFileList.AddRange(copyComponentToCodeGenFiles);
 
 			return codeGenFileList.ToArray();
 		}
