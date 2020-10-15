@@ -33,7 +33,6 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		private const string TEMPLATE =
 @"public partial class Contexts : JCMG.EntitasRedux.IContexts
 {
-
 	#if UNITY_EDITOR
 
 	static Contexts()
@@ -54,6 +53,8 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		}
 	}
 
+	#endif
+
 	public static Contexts SharedInstance
 	{
 		get
@@ -67,8 +68,6 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 		}
 		set	{ _sharedInstance = value; }
 	}
-
-	#endif
 
 	static Contexts _sharedInstance;
 
