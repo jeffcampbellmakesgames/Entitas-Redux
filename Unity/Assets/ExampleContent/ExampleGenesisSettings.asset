@@ -56,6 +56,6 @@ MonoBehaviour:
   - key: EntitasRedux.VisualDebugging.TypeDrawerFolderPath
     value: Assets/Editor/TypeDrawer
   - key: EntitasRedux.CodeGeneration.Plugins.Contexts
-    value: Example, VisualDebug
+    value: Example, VisualDebug, Empty
   - key: EntitasRedux.CodeGeneration.Plugins.IgnoreNamespaces
     value: true

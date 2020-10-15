@@ -30,8 +30,6 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 		}
 	}
 
-	#endif
-
 	public static Contexts SharedInstance
 	{
 		get
@@ -46,15 +44,19 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 		set	{ _sharedInstance = value; }
 	}
 
+	#endif
+
 	static Contexts _sharedInstance;
 
+	public EmptyContext Empty { get; set; }
 	public ExampleContext Example { get; set; }
 	public VisualDebugContext VisualDebug { get; set; }
 
-	public JCMG.EntitasRedux.IContext[] AllContexts { get { return new JCMG.EntitasRedux.IContext [] { Example, VisualDebug }; } }
+	public JCMG.EntitasRedux.IContext[] AllContexts { get { return new JCMG.EntitasRedux.IContext [] { Empty, Example, VisualDebug }; } }
 
 	public Contexts()
 {
+		Empty = new EmptyContext();
 		Example = new ExampleContext();
 		VisualDebug = new VisualDebugContext();
 
@@ -95,6 +97,7 @@ public partial class Contexts {
 	[JCMG.EntitasRedux.PostConstructor]
 	public void InitializeContextObservers() {
 		try {
+			CreateContextObserver(Empty);
 			CreateContextObserver(Example);
 			CreateContextObserver(VisualDebug);
 		} catch(System.Exception) {
