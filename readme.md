@@ -31,7 +31,7 @@ Using the native Unity Package Manager, you can add this library as a package by
 	"dependencies": {
 		...
 		"com.jeffcampbellmakesgames.genesis" : "https://github.com/jeffcampbellmakesgames/genesis.git#release/stable",
-		"com.jeffcampbellmakesgames.entitasredux" : "https://github.com/jeffcampbellmakesgames/entitasredux.git#releases/stable",
+		"com.jeffcampbellmakesgames.entitasredux" : "https://github.com/jeffcampbellmakesgames/entitas-redux.git#releases/stable",
 		...
 	}
 }
