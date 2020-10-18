@@ -31,7 +31,7 @@ Using the native Unity Package Manager, you can add this library as a package by
 	"dependencies": {
 		...
 		"com.jeffcampbellmakesgames.genesis" : "https://github.com/jeffcampbellmakesgames/genesis.git#release/stable",
-		"com.jeffcampbellmakesgames.entitasredux" : "https://github.com/jeffcampbellmakesgames/entitasredux.git#release/stable",
+		"com.jeffcampbellmakesgames.entitasredux" : "https://github.com/jeffcampbellmakesgames/entitasredux.git#releases/stable",
 		...
 	}
 }
@@ -41,7 +41,7 @@ Using the native Unity Package Manager, you can add this library as a package by
 You will need to have Git installed and available in your system's PATH.
 
 ### Install via classic `.UnityPackage`
-The latest release can be found [here](https://github.com/jeffcampbellmakesgames/entitasredux/releases) as a UnityPackage file that can be downloaded and imported directly into your project's Assets folder.
+The latest release can be found [here](https://github.com/jeffcampbellmakesgames/entitas-redux/releases) as a UnityPackage file that can be downloaded and imported directly into your project's Assets folder.
 
 **Note:** If you install EntitasRedux using a `.UnityPackage` you must also grab the latest release of Genesis as well from [here](https://github.com/jeffcampbellmakesgames/Genesis) as it is not included. For better dependency handling, I would recommend using OpenUPM instead.
 
