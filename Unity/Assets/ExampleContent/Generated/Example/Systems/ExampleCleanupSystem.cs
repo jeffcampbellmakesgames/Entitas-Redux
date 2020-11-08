@@ -16,11 +16,13 @@ public class ExampleCleanupSystems : JCMG.EntitasRedux.Systems
 		var context = Contexts.SharedInstance.Example;
 		_cleanupSystems.Add(new DestroyExampleEntitiesWithAnCleanupDestroyEntitySystem(context));
 		_cleanupSystems.Add(new RemoveAnCleanupRemoveFromExampleEntitiesSystem(context));
+		_cleanupSystems.Add(new DestroyExampleEntitiesWithEventGenBugSystem(context));
 	}
 
 	public ExampleCleanupSystems(IContext<ExampleEntity> context) : base()
 	{
 		_cleanupSystems.Add(new DestroyExampleEntitiesWithAnCleanupDestroyEntitySystem(context));
 		_cleanupSystems.Add(new RemoveAnCleanupRemoveFromExampleEntitiesSystem(context));
+		_cleanupSystems.Add(new DestroyExampleEntitiesWithEventGenBugSystem(context));
 	}
 }

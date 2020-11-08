@@ -25,5 +25,6 @@ public class ExampleCleanupFeature : Feature
 	{
 		Add(new DestroyExampleEntitiesWithAnCleanupDestroyEntitySystem(context));
 		Add(new RemoveAnCleanupRemoveFromExampleEntitiesSystem(context));
+		Add(new DestroyExampleEntitiesWithEventGenBugSystem(context));
 	}
 }

@@ -7,22 +7,8 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using JCMG.EntitasRedux;
-
-public class TestCleanupFeature : Feature
+[JCMG.EntitasRedux.DontGenerate(false)]
+public sealed class EventGenBugAddedListenerComponent : JCMG.EntitasRedux.IComponent
 {
-	public TestCleanupFeature() : base()
-	{
-		AddSystems(Contexts.SharedInstance.Test);
-	}
-
-	public TestCleanupFeature(IContext<TestEntity> context) : base()
-	{
-		AddSystems(context);
-	}
-
-	private void AddSystems(IContext<TestEntity> context)
-	{
-		Add(new RemoveBaseFromTestEntitiesSystem(context));
-	}
+	public System.Collections.Generic.List<IEventGenBugAddedListener> value;
 }

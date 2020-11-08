@@ -10,15 +10,15 @@
 using System.Collections.Generic;
 using JCMG.EntitasRedux;
 
-public sealed class RemoveAnyBaseAddedListenerFromTestEntitiesSystem : ICleanupSystem
+public sealed class DestroyExampleEntitiesWithEventGenBugSystem : ICleanupSystem
 {
-	private readonly IGroup<TestEntity> _group;
-	private readonly List<TestEntity> _entities;
+	private readonly IGroup<ExampleEntity> _group;
+	private readonly List<ExampleEntity> _entities;
 
-	public RemoveAnyBaseAddedListenerFromTestEntitiesSystem(IContext<TestEntity> context)
+	public DestroyExampleEntitiesWithEventGenBugSystem(IContext<ExampleEntity> context)
 	{
-		_group = context.GetGroup(TestMatcher.AnyBaseAddedListener);
-		_entities = new List<TestEntity>();
+		_group = context.GetGroup(ExampleMatcher.EventGenBug);
+		_entities = new List<ExampleEntity>();
 	}
 
 	/// <summary>
@@ -29,7 +29,7 @@ public sealed class RemoveAnyBaseAddedListenerFromTestEntitiesSystem : ICleanupS
 		_group.GetEntities(_entities);
 		for (var i = 0; i < _entities.Count; ++i)
 		{
-			_entities[i].RemoveAnyBaseAddedListener();
+			_entities[i].Destroy();
 		}
 	}
 }

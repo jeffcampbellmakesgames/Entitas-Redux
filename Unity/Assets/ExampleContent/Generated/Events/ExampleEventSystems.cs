@@ -7,18 +7,10 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using JCMG.EntitasRedux;
-
-public class TestCleanupSystems : JCMG.EntitasRedux.Systems
+public sealed class ExampleEventSystems : Feature
 {
-	public TestCleanupSystems() : base()
+	public ExampleEventSystems(Contexts contexts)
 	{
-		var context = Contexts.SharedInstance.Test;
-		_cleanupSystems.Add(new RemoveBaseFromTestEntitiesSystem(context));
-	}
-
-	public TestCleanupSystems(IContext<TestEntity> context) : base()
-	{
-		_cleanupSystems.Add(new RemoveBaseFromTestEntitiesSystem(context));
+		Add(new EventGenBugAddedEventSystem(contexts)); // priority: 0
 	}
 }

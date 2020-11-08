@@ -26,9 +26,17 @@ public partial class ExampleEntity
 		{
 			IsAnCleanupRemove = true;
 		}
+		else if (component is ExampleContent.VisualDebugging.EventGenBugComponent EventGenBug)
+		{
+			IsEventGenBug = true;
+		}
 		else if (component is ExampleContent.VisualDebugging.NoContextComponent NoContext)
 		{
 			IsNoContext = true;
+		}
+		else if (component is EventGenBugAddedListenerComponent EventGenBugAddedListener)
+		{
+			CopyEventGenBugAddedListenerTo(EventGenBugAddedListener);
 		}
 		#endif
 	}
