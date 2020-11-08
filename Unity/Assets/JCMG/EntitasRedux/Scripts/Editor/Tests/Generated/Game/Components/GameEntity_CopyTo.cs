@@ -18,9 +18,17 @@ public partial class GameEntity
 	public void CopyComponentTo(IComponent component)
 	{
 		#if !ENTITAS_REDUX_NO_IMPL
-		if (component is EntitasRedux.Tests.GeneratedContextComponent GeneratedContext)
+		if (component is EntitasRedux.Tests.CleanupEventComponent CleanupEvent)
+		{
+			IsCleanupEvent = true;
+		}
+		else if (component is EntitasRedux.Tests.GeneratedContextComponent GeneratedContext)
 		{
 			IsGeneratedContext = true;
+		}
+		else if (component is CleanupEventAddedListenerComponent CleanupEventAddedListener)
+		{
+			CopyCleanupEventAddedListenerTo(CleanupEventAddedListener);
 		}
 		#endif
 	}

@@ -7,22 +7,10 @@
 //		the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-using JCMG.EntitasRedux;
-
-public class GameCleanupFeature : Feature
+public sealed class GameEventSystems : Feature
 {
-	public GameCleanupFeature() : base()
+	public GameEventSystems(Contexts contexts)
 	{
-		AddSystems(Contexts.SharedInstance.Game);
-	}
-
-	public GameCleanupFeature(IContext<GameEntity> context) : base()
-	{
-		AddSystems(context);
-	}
-
-	private void AddSystems(IContext<GameEntity> context)
-	{
-		Add(new DestroyGameEntitiesWithCleanupEventSystem(context));
+		Add(new CleanupEventAddedEventSystem(contexts)); // priority: 0
 	}
 }

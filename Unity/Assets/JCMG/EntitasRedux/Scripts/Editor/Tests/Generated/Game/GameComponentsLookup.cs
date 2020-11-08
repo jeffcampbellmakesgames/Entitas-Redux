@@ -13,23 +13,31 @@ using JCMG.EntitasRedux;
 
 public static class GameComponentsLookup
 {
-	public const int GeneratedContext = 0;
+	public const int CleanupEventAddedListener = 0;
+	public const int CleanupEvent = 1;
+	public const int GeneratedContext = 2;
 
-	public const int TotalComponents = 1;
+	public const int TotalComponents = 3;
 
 	public static readonly string[] ComponentNames =
 	{
+		"CleanupEventAddedListener",
+		"CleanupEvent",
 		"GeneratedContext"
 	};
 
 	public static readonly System.Type[] ComponentTypes =
 	{
+		typeof(CleanupEventAddedListenerComponent),
+		typeof(EntitasRedux.Tests.CleanupEventComponent),
 		typeof(EntitasRedux.Tests.GeneratedContextComponent)
 	};
 
 	public static readonly Dictionary<Type, int> ComponentTypeToIndex = new Dictionary<Type, int>
 	{
-		{ typeof(EntitasRedux.Tests.GeneratedContextComponent), 0 }
+		{ typeof(CleanupEventAddedListenerComponent), 0 },
+		{ typeof(EntitasRedux.Tests.CleanupEventComponent), 1 },
+		{ typeof(EntitasRedux.Tests.GeneratedContextComponent), 2 }
 	};
 
 	/// <summary>
