@@ -24,6 +24,7 @@ THE SOFTWARE.
 */
 
 using System;
+using System.Linq;
 using JCMG.EntitasRedux;
 using JCMG.EntitasRedux.Editor.Plugins;
 using JCMG.Genesis.Editor;
@@ -222,6 +223,31 @@ namespace EntitasRedux.Tests
 
 			Assert.AreEqual(typeof(int), GetData<StandardEventComponent>().GetEventData()[0].priority.GetType());
 			Assert.AreEqual(1, GetData<StandardEntityEventComponent>().GetEventData()[0].priority);
+		}
+
+		[NUnit.Framework.Test]
+		public void CleanupComponentHasCleanupData()
+		{
+			SetupMyNamespaceComponents();
+
+			var cleanupComponent = GetData<CleanupEventComponent>();
+
+			Assert.IsTrue(cleanupComponent.HasCleanupData());
+			Assert.IsTrue(cleanupComponent.HasCleanupRemoveComponentData());
+			Assert.IsTrue(cleanupComponent.HasCleanupDestroyEntityData());
+		}
+
+		[NUnit.Framework.Test]
+		public void EventComponentListenerHasNoCleanupData()
+		{
+			SetupMyNamespaceComponents();
+
+			var cleanupComponents = GetMultipleData<CleanupEventComponent>();
+			var cleanupComponent = cleanupComponents.First(x => x.GetTypeName() == "CleanupEventAddedListenerComponent");
+
+			Assert.IsFalse(cleanupComponent.HasCleanupData());
+			Assert.IsFalse(cleanupComponent.HasCleanupRemoveComponentData());
+			Assert.IsFalse(cleanupComponent.HasCleanupDestroyEntityData());
 		}
 
 		[NUnit.Framework.Test]
