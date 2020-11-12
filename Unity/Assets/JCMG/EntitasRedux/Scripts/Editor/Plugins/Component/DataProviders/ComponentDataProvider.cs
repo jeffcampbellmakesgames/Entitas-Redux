@@ -130,6 +130,7 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 									dataForEvent.IsEvent(false);
 									dataForEvent.IsUnique(false);
 									dataForEvent.ShouldGenerateComponent(false);
+									dataForEvent.RemoveCleanupData();
 									var eventComponentName = data.EventComponentName(eventData);
 									var eventTypeSuffix = eventData.GetEventTypeSuffix();
 									var optionalContextName =

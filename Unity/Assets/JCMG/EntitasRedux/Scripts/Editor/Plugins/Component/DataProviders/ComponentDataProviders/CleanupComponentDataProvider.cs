@@ -66,6 +66,11 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 			return data.ContainsKey(CLEANUP_DATA_KEY);
 		}
 
+		public static void RemoveCleanupData(this ComponentData data)
+		{
+			data.Remove(CLEANUP_DATA_KEY);
+		}
+
 		public static bool HasCleanupRemoveComponentData(this ComponentData data)
 		{
 			return data.ContainsKey(CLEANUP_DATA_KEY) &&
