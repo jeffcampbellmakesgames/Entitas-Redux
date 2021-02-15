@@ -7,8 +7,6 @@ name: Unit Tests
 on:
   push:
     branches: [ develop ]
-  pull_request:
-    branches: [ develop ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -33,9 +31,7 @@ jobs:
       # Runs a single command using the runners shell
       - uses: webbertakken/unity-test-runner@v1.4
         env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
           projectPath: Unity
           unityVersion: 2019.4.8f1
@@ -44,3 +40,8 @@ jobs:
         with:
           name: Test results
           path: artifacts
+      
+      # Return Unity License
+      - name: Return Unity license
+        uses: game-ci/unity-return-license@v1
+        if: always()
