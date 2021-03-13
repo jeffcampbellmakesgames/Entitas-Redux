@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-using JCMG.Genesis.Editor;
+using Genesis.Shared;
 
 namespace JCMG.EntitasRedux.Editor.Plugins
 {
@@ -31,24 +31,25 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 	{
 		public string[] ContextNames
 		{
-			get { return _settings.GetOrSetValue(CONTEXTS_KEY, DEFAULT_CONTEXTS).ArrayFromCSV(); }
-			set { _settings.SetValue(CONTEXTS_KEY, value.ToCSV()); }
+			get => _genesisConfig.GetOrSetValue(CONTEXTS_KEY, DEFAULT_CONTEXTS).ArrayFromCSV();
+			set => _genesisConfig.SetValue(CONTEXTS_KEY, value.ToCSV());
 		}
 
 		internal string RawContextNames
 		{
-			get { return _settings.GetOrSetValue(CONTEXTS_KEY, DEFAULT_CONTEXTS); }
-			set { _settings.SetValue(CONTEXTS_KEY, value); }
+			get => _genesisConfig.GetOrSetValue(CONTEXTS_KEY, DEFAULT_CONTEXTS);
+			set => _genesisConfig.SetValue(CONTEXTS_KEY, value);
 		}
 
 		private const string DEFAULT_CONTEXTS = "Game, Input";
 		private const string CONTEXTS_KEY = "EntitasRedux.CodeGeneration.Plugins.Contexts";
 
-		public override void Configure(GenesisSettings settings)
+		/// <inheritdoc />
+		public override void Configure(IGenesisConfig genesisConfig)
 		{
-			base.Configure(settings);
+			base.Configure(genesisConfig);
 
-			settings.SetIfNotPresent(CONTEXTS_KEY, DEFAULT_CONTEXTS);
+			_genesisConfig.SetIfNotPresent(CONTEXTS_KEY, DEFAULT_CONTEXTS);
 		}
 	}
 }

@@ -23,6 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+using Genesis.Shared;
 using JCMG.Genesis.Editor;
 
 namespace JCMG.EntitasRedux.Editor.Plugins
@@ -31,18 +32,18 @@ namespace JCMG.EntitasRedux.Editor.Plugins
 	{
 		public string[] Templates
 		{
-			get { return _settings.GetOrSetValue(TEMPLATES_KEY, DEFAULT_VALUE).ArrayFromCSV(); }
-			set { _settings.SetValue(TEMPLATES_KEY, value.ToCSV()); }
+			get => _genesisConfig.GetOrSetValue(TEMPLATES_KEY, DEFAULT_VALUE).ArrayFromCSV();
+			set => _genesisConfig.SetValue(TEMPLATES_KEY, value.ToCSV());
 		}
 
 		private const string TEMPLATES_KEY = "EntitasRedux.CodeGeneration.Plugins.Templates";
 		private const string DEFAULT_VALUE = "Plugins/EntitasRedux/Templates";
 
-		public override void Configure(GenesisSettings settings)
+		public override void Configure(IGenesisConfig genesisConfig)
 		{
-			base.Configure(settings);
+			base.Configure(genesisConfig);
 
-			settings.SetIfNotPresent(TEMPLATES_KEY, DEFAULT_VALUE);
+			genesisConfig.SetIfNotPresent(TEMPLATES_KEY, DEFAULT_VALUE);
 		}
 	}
 }

@@ -24,7 +24,7 @@ THE SOFTWARE.
 */
 
 using System.Linq;
-using JCMG.Genesis.Editor;
+using Genesis.Shared;
 using UnityEditor;
 
 namespace JCMG.EntitasRedux.Editor

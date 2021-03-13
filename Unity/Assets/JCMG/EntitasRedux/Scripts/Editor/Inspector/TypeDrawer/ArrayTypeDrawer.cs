@@ -25,7 +25,6 @@ THE SOFTWARE.
 
 using System;
 using System.Collections;
-using JCMG.Genesis.Editor;
 using UnityEditor;
 
 namespace JCMG.EntitasRedux.Editor

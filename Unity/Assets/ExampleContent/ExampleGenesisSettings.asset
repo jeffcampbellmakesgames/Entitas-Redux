@@ -59,3 +59,41 @@ MonoBehaviour:
     value: Example, VisualDebug, Empty
   - key: EntitasRedux.CodeGeneration.Plugins.IgnoreNamespaces
     value: true
+  _genesisCLIInstallationFolder: 
+  _genesisConfig:
+    keyValuePairs:
+    - key: Genesis.SearchPaths
+      value: plugins
+    - key: Genesis.Plugins
+      value: Genesis.Core.Plugin, Genesis.Unity.Factory.Plugin
+    - key: Genesis.PreProcessors
+      value: 
+    - key: Genesis.DataProviders
+      value: Genesis.Unity.Factory.Plugin.ScriptableFactoryDataProvider
+    - key: Genesis.CodeGenerators
+      value: Genesis.Unity.Factory.Plugin.ScriptableFactoryCodeGenerator
+    - key: Genesis.PostProcessors
+      value: 
+    - key: Genesis.AllPreProcessors
+      value: 
+    - key: Genesis.AllDataProviders
+      value: Genesis.Unity.Factory.Plugin.ScriptableFactoryDataProvider
+    - key: Genesis.AllCodeGenerators
+      value: Genesis.Unity.Factory.Plugin.ScriptableFactoryCodeGenerator
+    - key: Genesis.AllPostProcessors
+      value: Genesis.Core.Plugin.AddFileHeaderPostProcessor, Genesis.Core.Plugin.CleanTargetDirectoryPostProcessor,
+        Genesis.Core.Plugin.NewLinePostProcessor, Genesis.Core.Plugin.MergeFilesPostProcessor,
+        Genesis.Core.Plugin.WriteToDiskPostProcessor
+    - key: Genesis.DoUseWhiteListedAssemblies
+      value: false
+    - key: Genesis.WhiteListedAssemblies
+      value: Assembly-CSharp, Assembly-CSharp-Editor
+    - key: Genesis.LineEndings
+      value: Unix
+    - key: Genesis.TargetDirectory
+      value: Assets/ExampleContent/Generated
+    - key: EntitasRedux.VisualDebugging.DefaultInstanceCreatorFolderPath
+      value: Assets/Editor/DefaultInstanceCreator
+    - key: EntitasRedux.VisualDebugging.TypeDrawerFolderPath
+      value: Assets/Editor/TypeDrawer
+    name: ExampleGenesisSettings
