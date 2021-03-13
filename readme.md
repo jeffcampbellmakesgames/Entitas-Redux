@@ -13,37 +13,9 @@ Entitas Redux is a reworked version of [Entitas](https://github.com/sschmid/Enti
 * **Min Unity Version**: 2019.4
 * **Scripting Runtime**: .Net 4.X
 
-## Installing Entitas Redux
-Using this library in your project can be done in three ways:
+## Installing Entitas Redux and Getting Started
 
-### Install via OpenUPM
-The package is available on the [openupm registry](https://openupm.com/). It's recommended to install it via [openupm-cli](https://github.com/openupm/openupm-cli).
-
-```
-openupm add com.jeffcampbellmakesgames.entitasredux
-```
-
-### Install via GIT URL
-Using the native Unity Package Manager, you can add this library as a package by modifying your `manifest.json` file found at `/ProjectName/Packages/manifest.json` to include it as a dependency. See the example below on how to reference it.
-
-```
-{
-	"dependencies": {
-		...
-		"com.jeffcampbellmakesgames.genesis" : "https://github.com/jeffcampbellmakesgames/genesis.git#release/stable",
-		"com.jeffcampbellmakesgames.entitasredux" : "https://github.com/jeffcampbellmakesgames/entitas-redux.git#releases/stable",
-		...
-	}
-}
-```
-
-
-You will need to have Git installed and available in your system's PATH.
-
-### Install via classic `.UnityPackage`
-The latest release can be found [here](https://github.com/jeffcampbellmakesgames/entitas-redux/releases) as a UnityPackage file that can be downloaded and imported directly into your project's Assets folder.
-
-**Note:** If you install EntitasRedux using a `.UnityPackage` you must also grab the latest release of Genesis as well from [here](https://github.com/jeffcampbellmakesgames/Genesis) as it is not included. For better dependency handling, I would recommend using OpenUPM instead.
+For instructions on installing Entitas Redux and how to get up and running, see [here](https://github.com/jeffcampbellmakesgames/Entitas-Redux/wiki/Getting-Started) on the wiki.
 
 ## Usage
 
