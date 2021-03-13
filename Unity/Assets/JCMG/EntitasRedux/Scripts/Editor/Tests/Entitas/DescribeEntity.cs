@@ -1164,8 +1164,7 @@ namespace EntitasRedux.Tests
 				value = new CloneableObject(),
 				dict = new Dictionary<CloneableObject, CloneableObject>
 					{{new CloneableObject(), new CloneableObject()}},
-				list = new List<CloneableObject> {new CloneableObject()}
-
+				list = new List<CloneableObject> { new CloneableObject() }
 			};
 		}
 
