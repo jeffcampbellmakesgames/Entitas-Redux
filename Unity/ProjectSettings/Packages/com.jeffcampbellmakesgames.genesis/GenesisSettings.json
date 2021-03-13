@@ -1,0 +1,13 @@
+{
+    "m_Name": "GenesisSettings",
+    "m_Path": "ProjectSettings/Packages/com.jeffcampbellmakesgames.genesis/GenesisSettings.json",
+    "m_Dictionary": {
+        "m_DictionaryValues": [
+            {
+                "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                "key": "Genesis.InstallationFolder",
+                "value": "{\"m_Value\":\"../Genesis.CLI\"}"
+            }
+        ]
+    }
+}

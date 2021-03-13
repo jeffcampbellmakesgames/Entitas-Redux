@@ -1,0 +1,62 @@
+{
+  "keyValuePairs": [
+    {
+      "key": "Genesis.DoUseWhiteListedAssemblies",
+      "value": "false"
+    },
+    {
+      "key": "Genesis.WhiteListedAssemblies",
+      "value": "Assembly-CSharp, Assembly-CSharp-Editor"
+    },
+    {
+      "key": "Genesis.SearchPaths",
+      "value": "plugins"
+    },
+    {
+      "key": "Genesis.Plugins",
+      "value": "Genesis.Core.Plugin, Genesis.Unity.Factory.Plugin"
+    },
+    {
+      "key": "Genesis.PreProcessors",
+      "value": ""
+    },
+    {
+      "key": "Genesis.DataProviders",
+      "value": "Genesis.Unity.Factory.Plugin.ScriptableFactoryDataProvider"
+    },
+    {
+      "key": "Genesis.CodeGenerators",
+      "value": "Genesis.Unity.Factory.Plugin.ScriptableFactoryCodeGenerator"
+    },
+    {
+      "key": "Genesis.PostProcessors",
+      "value": "Genesis.Core.Plugin.AddFileHeaderPostProcessor, Genesis.Core.Plugin.CleanTargetDirectoryPostProcessor, Genesis.Core.Plugin.NewLinePostProcessor, Genesis.Core.Plugin.MergeFilesPostProcessor, Genesis.Core.Plugin.WriteToDiskPostProcessor"
+    },
+    {
+      "key": "Genesis.AllPreProcessors",
+      "value": ""
+    },
+    {
+      "key": "Genesis.AllDataProviders",
+      "value": "Genesis.Unity.Factory.Plugin.ScriptableFactoryDataProvider"
+    },
+    {
+      "key": "Genesis.AllCodeGenerators",
+      "value": "Genesis.Unity.Factory.Plugin.ScriptableFactoryCodeGenerator"
+    },
+    {
+      "key": "Genesis.AllPostProcessors",
+      "value": "Genesis.Core.Plugin.AddFileHeaderPostProcessor, Genesis.Core.Plugin.CleanTargetDirectoryPostProcessor, Genesis.Core.Plugin.NewLinePostProcessor, Genesis.Core.Plugin.MergeFilesPostProcessor, Genesis.Core.Plugin.WriteToDiskPostProcessor"
+    },
+    {
+      "key": "Genesis.TargetDirectory",
+      "value": "Assets"
+    },
+    {
+      "key": "Genesis.LineEndings",
+      "value": "Unix"
+    }
+  ],
+  "name": "DefaultGenesisConfig",
+  "Name": "DefaultGenesisConfig"
+}
