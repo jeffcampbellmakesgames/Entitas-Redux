@@ -26,10 +26,14 @@ MonoBehaviour:
     for Unity. It leverages code generation and an extensible plugin framework to
     make life easier for developers.
   category: Scripting
+  author:
+    name: 
+    email: 
+    url: 
   keywords: []
   dependencies:
   - packageName: com.jeffcampbellmakesgames.genesis
-    packageVersion: 1.3.0
+    packageVersion: 2.0.6
   versionConstantsPath: Assets/JCMG/EntitasRedux/Scripts
-  versionConstantsNamespace: JCMG.EntitasRedux
+  versionTemplateGuid: 5037ab3a74375fd4b87e04aa5f278380
   _id: 6c31b17e-d755-422c-88ff-421b4c2fed29

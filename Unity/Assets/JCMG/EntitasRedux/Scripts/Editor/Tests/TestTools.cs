@@ -25,9 +25,6 @@ THE SOFTWARE.
 
 using System.Collections.Generic;
 using JCMG.EntitasRedux;
-using JCMG.EntitasRedux.Editor.Plugins;
-using JCMG.Genesis.Editor;
-using UnityEngine;
 
 namespace EntitasRedux.Tests
 {
@@ -44,22 +41,6 @@ namespace EntitasRedux.Tests
 				MyTestComponentsLookup.TotalComponents,
 				new Stack<IComponent>[MyTestComponentsLookup.TotalComponents]);
 			return entity;
-		}
-
-		public static GenesisSettings CreateSettingsForContextNames(params string[] contextNames)
-		{
-			var settings = ScriptableObject.CreateInstance<GenesisSettings>();
-			var contextConfig = settings.CreateAndConfigure<ContextSettingsConfig>();
-			contextConfig.ContextNames = contextNames;
-
-			var assembliesConfig = settings.CreateAndConfigure<AssembliesConfig>();
-			assembliesConfig.DoUseWhitelistOfAssemblies = true;
-			assembliesConfig.WhiteListedAssemblies = new[]
-			{
-				"EntitasRedux.Tests"
-			};
-
-			return settings;
 		}
 	}
 }

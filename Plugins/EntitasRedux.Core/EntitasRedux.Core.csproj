@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace>JCMG.EntitasRedux</RootNamespace>
+  </PropertyGroup>
+
+  <Target Name="CopyBuildArtifacts" AfterTargets="Build">
+    <ItemGroup>
+      <DataFiles Include="$(ProjectDir)$(OutDir)**\*.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(DataFiles)" DestinationFolder="$(ProjectDir)..\..\Unity\Assets\JCMG\EntitasRedux\Plugins\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

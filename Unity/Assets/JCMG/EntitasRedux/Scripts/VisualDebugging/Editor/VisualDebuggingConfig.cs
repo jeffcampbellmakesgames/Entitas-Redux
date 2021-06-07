@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-using JCMG.Genesis.Editor;
+using Genesis.Shared;
 
 namespace JCMG.EntitasRedux.VisualDebugging.Editor
 {
@@ -31,14 +31,14 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 	{
 		public string DefaultInstanceCreatorFolderPath
 		{
-			get { return _settings.GetOrSetValue(DEFAULT_INSTANCE_CREATOR_FOLDER_PATH_KEY, DEFAULT_CREATOR_FOLDER_PATH); }
-			set { _settings.SetValue(DEFAULT_INSTANCE_CREATOR_FOLDER_PATH_KEY, value); }
+			get => _genesisConfig.GetOrSetValue(DEFAULT_INSTANCE_CREATOR_FOLDER_PATH_KEY, DEFAULT_CREATOR_FOLDER_PATH);
+			set => _genesisConfig.SetValue(DEFAULT_INSTANCE_CREATOR_FOLDER_PATH_KEY, value);
 		}
 
 		public string TypeDrawerFolderPath
 		{
-			get { return _settings.GetOrSetValue(TYPE_DRAWER_FOLDER_PATH_KEY, DEFAULT_DRAWER_FOLDER_PATH); }
-			set { _settings.SetValue(TYPE_DRAWER_FOLDER_PATH_KEY, value); }
+			get => _genesisConfig.GetOrSetValue(TYPE_DRAWER_FOLDER_PATH_KEY, DEFAULT_DRAWER_FOLDER_PATH);
+			set => _genesisConfig.SetValue(TYPE_DRAWER_FOLDER_PATH_KEY, value);
 		}
 
 		private const string SYSTEM_WARNING_THRESHOLD_KEY = "EntitasRedux.VisualDebugging.SystemWarningThreshold";
@@ -52,12 +52,12 @@ namespace JCMG.EntitasRedux.VisualDebugging.Editor
 		private const string DEFAULT_CREATOR_FOLDER_PATH = "Assets/Editor/DefaultInstanceCreator";
 		private const string DEFAULT_DRAWER_FOLDER_PATH = "Assets/Editor/TypeDrawer";
 
-		public override void Configure(GenesisSettings settings)
+		public override void Configure(IGenesisConfig genesisConfig)
 		{
-			base.Configure(settings);
+			base.Configure(genesisConfig);
 
-			settings.SetIfNotPresent(DEFAULT_INSTANCE_CREATOR_FOLDER_PATH_KEY, DEFAULT_CREATOR_FOLDER_PATH);
-			settings.SetIfNotPresent(TYPE_DRAWER_FOLDER_PATH_KEY, DEFAULT_DRAWER_FOLDER_PATH);
+			genesisConfig.SetIfNotPresent(DEFAULT_INSTANCE_CREATOR_FOLDER_PATH_KEY, DEFAULT_CREATOR_FOLDER_PATH);
+			genesisConfig.SetIfNotPresent(TYPE_DRAWER_FOLDER_PATH_KEY, DEFAULT_DRAWER_FOLDER_PATH);
 		}
 	}
 }

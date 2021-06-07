@@ -27,11 +27,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Genesis.Shared;
 using JCMG.EntitasRedux.Editor;
-using JCMG.Genesis.Editor;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace JCMG.EntitasRedux.Blueprints.Editor
 {

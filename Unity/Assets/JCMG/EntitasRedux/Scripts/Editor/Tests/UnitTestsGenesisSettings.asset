@@ -59,3 +59,72 @@ MonoBehaviour:
     value: MyTest, Game, Test, Test2
   - key: EntitasRedux.CodeGeneration.Plugins.IgnoreNamespaces
     value: true
+  _genesisCLIInstallationFolder: 
+  _genesisConfig:
+    keyValuePairs:
+    - key: Genesis.SearchPaths
+      value: plugins
+    - key: Genesis.Plugins
+      value: EntitasRedux.Core.Plugins, EntitasRedux.Unity.Blueprint.Plugins, EntitasRedux.Unity.VisualDebugging.Plugins,
+        Genesis.Core.Plugin, Genesis.Unity.Factory.Plugin
+    - key: Genesis.PreProcessors
+      value: 
+    - key: Genesis.DataProviders
+      value: EntitasRedux.Core.Plugins.ComponentDataProvider, EntitasRedux.Core.Plugins.ContextDataProvider,
+        EntitasRedux.Core.Plugins.EntityIndexDataProvider, Genesis.Unity.Factory.Plugin.ScriptableFactoryDataProvider
+    - key: Genesis.CodeGenerators
+      value: EntitasRedux.Core.Plugins.CleanupDestroyEntitySystemGenerator, EntitasRedux.Core.Plugins.CleanupRemoveComponentSystemGenerator,
+        EntitasRedux.Core.Plugins.ComponentContextApiGenerator, EntitasRedux.Core.Plugins.ComponentEntityApiGenerator,
+        EntitasRedux.Core.Plugins.ComponentEntityApiInterfaceGenerator, EntitasRedux.Core.Plugins.ComponentGenerator,
+        EntitasRedux.Core.Plugins.ComponentLookupGenerator, EntitasRedux.Core.Plugins.ComponentMatcherApiGenerator,
+        EntitasRedux.Core.Plugins.ContextAttributeGenerator, EntitasRedux.Core.Plugins.ContextCleanupFeatureGenerator,
+        EntitasRedux.Core.Plugins.ContextCleanupSystemsGenerator, EntitasRedux.Core.Plugins.ContextGenerator,
+        EntitasRedux.Core.Plugins.ContextMatcherGenerator, EntitasRedux.Core.Plugins.ContextsGenerator,
+        EntitasRedux.Core.Plugins.EntityGenerator, EntitasRedux.Core.Plugins.EntityIndexGenerator,
+        EntitasRedux.Core.Plugins.EventEntityApiGenerator, EntitasRedux.Core.Plugins.EventListenerComponentGenerator,
+        EntitasRedux.Core.Plugins.EventListenerInterfaceGenerator, EntitasRedux.Core.Plugins.EventSystemGenerator,
+        EntitasRedux.Core.Plugins.EventSystemsGenerator, EntitasRedux.Unity.BlueprintPlugins.BlueprintClassGenerator,
+        EntitasRedux.Unity.VisualDebuggingPlugins.ContextObserverGenerator, EntitasRedux.Unity.VisualDebuggingPlugins.FeatureClassGenerator,
+        Genesis.Unity.Factory.Plugin.ScriptableFactoryCodeGenerator
+    - key: Genesis.PostProcessors
+      value: Genesis.Core.Plugin.AddFileHeaderPostProcessor, Genesis.Core.Plugin.CleanTargetDirectoryPostProcessor,
+        Genesis.Core.Plugin.NewLinePostProcessor, Genesis.Core.Plugin.MergeFilesPostProcessor,
+        Genesis.Core.Plugin.WriteToDiskPostProcessor
+    - key: Genesis.AllPreProcessors
+      value: 
+    - key: Genesis.AllDataProviders
+      value: EntitasRedux.Core.Plugins.ComponentDataProvider, EntitasRedux.Core.Plugins.ContextDataProvider,
+        EntitasRedux.Core.Plugins.EntityIndexDataProvider, Genesis.Unity.Factory.Plugin.ScriptableFactoryDataProvider
+    - key: Genesis.AllCodeGenerators
+      value: EntitasRedux.Core.Plugins.CleanupDestroyEntitySystemGenerator, EntitasRedux.Core.Plugins.CleanupRemoveComponentSystemGenerator,
+        EntitasRedux.Core.Plugins.ComponentContextApiGenerator, EntitasRedux.Core.Plugins.ComponentEntityApiGenerator,
+        EntitasRedux.Core.Plugins.ComponentEntityApiInterfaceGenerator, EntitasRedux.Core.Plugins.ComponentGenerator,
+        EntitasRedux.Core.Plugins.ComponentLookupGenerator, EntitasRedux.Core.Plugins.ComponentMatcherApiGenerator,
+        EntitasRedux.Core.Plugins.ContextAttributeGenerator, EntitasRedux.Core.Plugins.ContextCleanupFeatureGenerator,
+        EntitasRedux.Core.Plugins.ContextCleanupSystemsGenerator, EntitasRedux.Core.Plugins.ContextGenerator,
+        EntitasRedux.Core.Plugins.ContextMatcherGenerator, EntitasRedux.Core.Plugins.ContextsGenerator,
+        EntitasRedux.Core.Plugins.EntityGenerator, EntitasRedux.Core.Plugins.EntityIndexGenerator,
+        EntitasRedux.Core.Plugins.EventEntityApiGenerator, EntitasRedux.Core.Plugins.EventListenerComponentGenerator,
+        EntitasRedux.Core.Plugins.EventListenerInterfaceGenerator, EntitasRedux.Core.Plugins.EventSystemGenerator,
+        EntitasRedux.Core.Plugins.EventSystemsGenerator, EntitasRedux.Unity.BlueprintPlugins.BlueprintClassGenerator,
+        EntitasRedux.Unity.VisualDebuggingPlugins.ContextObserverGenerator, EntitasRedux.Unity.VisualDebuggingPlugins.FeatureClassGenerator,
+        Genesis.Unity.Factory.Plugin.ScriptableFactoryCodeGenerator
+    - key: Genesis.AllPostProcessors
+      value: Genesis.Core.Plugin.AddFileHeaderPostProcessor, Genesis.Core.Plugin.CleanTargetDirectoryPostProcessor,
+        Genesis.Core.Plugin.NewLinePostProcessor, Genesis.Core.Plugin.MergeFilesPostProcessor,
+        Genesis.Core.Plugin.WriteToDiskPostProcessor
+    - key: Genesis.DoUseWhiteListedAssemblies
+      value: true
+    - key: Genesis.WhiteListedAssemblies
+      value: EntitasRedux.Tests
+    - key: Genesis.LineEndings
+      value: Unix
+    - key: Genesis.TargetDirectory
+      value: Assets/JCMG/EntitasRedux/Scripts/Editor/Tests/Generated
+    - key: EntitasRedux.VisualDebugging.DefaultInstanceCreatorFolderPath
+      value: Assets/Editor/DefaultInstanceCreator
+    - key: EntitasRedux.VisualDebugging.TypeDrawerFolderPath
+      value: Assets/Editor/TypeDrawer
+    - key: EntitasRedux.CodeGeneration.Plugins.Contexts
+      value: MyTest, MyTest2, Test, Test2, Game
+    name: UnitTestsGenesisSettings
