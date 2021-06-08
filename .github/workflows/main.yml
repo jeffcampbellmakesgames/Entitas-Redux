@@ -25,23 +25,18 @@ jobs:
             Library-
             
       # Execute Unity Unit Tests and Upload results
-    - name: Run Unity Unit Tests
-      uses: game-ci/unity-test-runner@v2.0-alpha-3
-      env:
-        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-      with:
-        projectPath: './Unity'
-        unityVersion: 2019.4.20f1
+      - name: Run Unity Unit Tests
+        uses: game-ci/unity-test-runner@v2.0-alpha-5
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        with:
+          projectPath: './Unity'
+          unityVersion: 2019.4.20f1
 
-    - name: Upload Unit Test Results
-      uses: actions/upload-artifact@v1
-      with:
-        name: Test results
-        path: artifacts
-      
-      # Return Unity License
-      - name: Return Unity license
-        uses: game-ci/unity-return-license@v1
-        if: always()
+      - name: Upload Unit Test Results
+        uses: actions/upload-artifact@v1
+        with:
+          name: Test results
+          path: artifacts
