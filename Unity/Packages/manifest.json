@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.jeffcampbellmakesgames.genesis": "2.2.1",
+    "com.jeffcampbellmakesgames.genesis": "2.2.2",
     "com.jeffcampbellmakesgames.packagetools": "1.5.1",
     "com.unity.ext.nunit": "1.0.6",
     "com.unity.ide.rider": "1.1.4",
