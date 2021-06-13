@@ -2,10 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Jeff Campbell</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>C# Roslyn Unity Unity3D UnityEditor Genesis CodeGeneration</PackageTags>
+    <RepositoryUrl>https://github.com/jeffcampbellmakesgames/Entitas-Redux.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Genesis.Plugin" Version="2.2.1" />
+    <PackageReference Include="Genesis.Plugin" Version="2.2.2" />
     <PackageReference Include="System.CodeDom" Version="5.0.0" />
   </ItemGroup>
 
@@ -18,7 +23,7 @@
       <DataFiles Include="$(ProjectDir)$(OutDir)**\*.*" />
     </ItemGroup>
 
-    <Copy SourceFiles="@(DataFiles)" DestinationFolder="$(ProjectDir)..\..\Genesis.CLI\Plugins\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(DataFiles)" DestinationFolder="$(ProjectDir)..\..\Genesis.CLI\Plugins\ERPlugins\%(RecursiveDir)" SkipUnchangedFiles="true" />
   </Target>
 
 </Project>
