@@ -26,7 +26,6 @@ THE SOFTWARE.
 using Genesis.Plugin;
 using Genesis.Shared;
 using JCMG.EntitasRedux;
-using Microsoft.CodeAnalysis;
 using Serilog;
 using System.Linq;
 
@@ -74,14 +73,14 @@ namespace EntitasRedux.Core.Plugins
 
 			var componentName = nameof(IComponent);
 			var dataFromComponents = generateNamedTypeSymbols
-				.Where(namedTypeSymbolInfo => namedTypeSymbolInfo.ImplementsInterface(componentName))
-				.Where(namedTypeSymbolInfo => !namedTypeSymbolInfo.NamedTypeSymbol.IsAbstract)
+				.Where(cachedNamedTypeSymbol => cachedNamedTypeSymbol.ImplementsInterface(componentName))
+				.Where(cachedNamedTypeSymbol => !cachedNamedTypeSymbol.NamedTypeSymbol.IsAbstract)
 				.SelectMany(CreateDataForComponents)
 				.ToArray();
 
 			var dataFromNonComponents = generateNamedTypeSymbols
-				.Where(namedTypeSymbolInfo => !namedTypeSymbolInfo.ImplementsInterface(componentName))
-				.Where(namedTypeSymbolInfo => !namedTypeSymbolInfo.NamedTypeSymbol.IsGenericType)
+				.Where(cachedNamedTypeSymbol => !cachedNamedTypeSymbol.ImplementsInterface(componentName))
+				.Where(cachedNamedTypeSymbol => !cachedNamedTypeSymbol.NamedTypeSymbol.IsGenericType)
 				.Where(HasContexts)
 				.SelectMany(CreateDataForNonComponents)
 				.ToArray();
@@ -130,30 +129,30 @@ namespace EntitasRedux.Core.Plugins
 				.ToArray();
 		}
 
-		private ComponentData[] CreateDataForComponents(NamedTypeSymbolInfo namedTypeSymbolInfo)
+		private ComponentData[] CreateDataForComponents(ICachedNamedTypeSymbol cachedNamedTypeSymbol)
 		{
-			return GetComponentNames(namedTypeSymbolInfo)
+			return GetComponentNames(cachedNamedTypeSymbol)
 				.Select(
 					componentName =>
 					{
-						var data = CreateDataForComponent(namedTypeSymbolInfo);
+						var data = CreateDataForComponent(cachedNamedTypeSymbol);
 						return data;
 					})
 				.ToArray();
 		}
 
-		private ComponentData[] CreateDataForNonComponents(NamedTypeSymbolInfo namedTypeSymbolInfo)
+		private ComponentData[] CreateDataForNonComponents(ICachedNamedTypeSymbol cachedNamedTypeSymbol)
 		{
-			return GetComponentNames(namedTypeSymbolInfo)
+			return GetComponentNames(cachedNamedTypeSymbol)
 				.Select(
 					componentName =>
 					{
-						var data = CreateDataForComponent(namedTypeSymbolInfo);
+						var data = CreateDataForComponent(cachedNamedTypeSymbol);
 						data.SetTypeName(componentName.AddComponentSuffix());
 						data.SetMemberData(
 							new[]
 							{
-								new MemberData(namedTypeSymbolInfo, "value")
+								new MemberData(cachedNamedTypeSymbol, "value")
 							});
 
 						return data;
@@ -161,7 +160,7 @@ namespace EntitasRedux.Core.Plugins
 				.ToArray();
 		}
 
-		private ComponentData CreateDataForComponent(NamedTypeSymbolInfo namedTypeSymbol)
+		private ComponentData CreateDataForComponent(ICachedNamedTypeSymbol namedTypeSymbol)
 		{
 			var data = new ComponentData();
 			foreach (var provider in _dataProviders)
@@ -211,12 +210,12 @@ namespace EntitasRedux.Core.Plugins
 				.ToArray();
 		}
 
-		private bool HasContexts(NamedTypeSymbolInfo namedTypeSymbolInfo)
+		private bool HasContexts(ICachedNamedTypeSymbol cachedNamedTypeSymbol)
 		{
-			return namedTypeSymbolInfo.NamedTypeSymbol.GetContextNames().Length != 0;
+			return cachedNamedTypeSymbol.NamedTypeSymbol.GetContextNames().Length != 0;
 		}
 
-		private string[] GetComponentNames(NamedTypeSymbolInfo namedTypeSymbol)
+		private string[] GetComponentNames(ICachedNamedTypeSymbol namedTypeSymbol)
 		{
 			// if there are not any
 			var componentAttrTypeSymbols = namedTypeSymbol.GetAttributes(nameof(ComponentNameAttribute));

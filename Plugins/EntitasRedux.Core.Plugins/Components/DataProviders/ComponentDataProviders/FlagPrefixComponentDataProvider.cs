@@ -26,20 +26,19 @@ THE SOFTWARE.
 using System.Linq;
 using Genesis.Plugin;
 using JCMG.EntitasRedux;
-using Microsoft.CodeAnalysis;
 
 namespace EntitasRedux.Core.Plugins
 {
 	internal sealed class FlagPrefixComponentDataProvider : IComponentDataProvider
 	{
-		public void Provide(NamedTypeSymbolInfo namedTypeSymbolInfo, ComponentData data)
+		public void Provide(ICachedNamedTypeSymbol cachedNamedTypeSymbol, ComponentData data)
 		{
-			data.SetFlagPrefix(GetFlagPrefix(namedTypeSymbolInfo));
+			data.SetFlagPrefix(GetFlagPrefix(cachedNamedTypeSymbol));
 		}
 
-		private string GetFlagPrefix(NamedTypeSymbolInfo namedTypeSymbolInfo)
+		private string GetFlagPrefix(ICachedNamedTypeSymbol cachedNamedTypeSymbol)
 		{
-			var attr = namedTypeSymbolInfo.GetAttributes(nameof(FlagPrefixAttribute)).SingleOrDefault();
+			var attr = cachedNamedTypeSymbol.GetAttributes(nameof(FlagPrefixAttribute)).SingleOrDefault();
 			return attr == null ? "is" : attr.ConstructorArguments[0].Value?.ToString();
 		}
 	}

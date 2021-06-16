@@ -49,13 +49,10 @@ namespace EntitasRedux.Core.Plugins
 		private IMemoryCache _memoryCache;
 		private AssembliesConfig _assembliesConfig;
 
-		public EntityIndexDataProvider() : this(null)
-		{
-		}
-
-		internal EntityIndexDataProvider(Type[] types)
+		public EntityIndexDataProvider()
 		{
 			_contextsComponentDataProvider = new ContextsComponentDataProvider();
+
 		}
 
 		public void Configure(IGenesisConfig genesisConfig)
@@ -77,11 +74,11 @@ namespace EntitasRedux.Core.Plugins
 			var namedTypeSymbols =
 				_assembliesConfig.FilterTypeSymbols(_memoryCache.GetNamedTypeSymbols());
 			var entityIndexData = namedTypeSymbols
-				.Where(namedTypeSymbolInfo => !namedTypeSymbolInfo.NamedTypeSymbol.IsAbstract)
-				.Where(namedTypeSymbolInfo => namedTypeSymbolInfo.ImplementsInterface(componentName))
+				.Where(cachedNamedTypeSymbol => !cachedNamedTypeSymbol.NamedTypeSymbol.IsAbstract)
+				.Where(cachedNamedTypeSymbol => cachedNamedTypeSymbol.ImplementsInterface(componentName))
 				.ToDictionary(
-					namedTypeSymbolInfo => namedTypeSymbolInfo,
-					namedTypeSymbolInfo => namedTypeSymbolInfo.GetPublicMemberData())
+					cachedNamedTypeSymbol => cachedNamedTypeSymbol,
+					cachedNamedTypeSymbol => cachedNamedTypeSymbol.GetPublicMemberData())
 				.Where(kv => kv.Value.Any(info =>
 					info.memberTypeSymbol != null &&
 					info.memberTypeSymbol.HasAttribute<AbstractEntityIndexAttribute>()))
@@ -89,8 +86,8 @@ namespace EntitasRedux.Core.Plugins
 
 			var abstractEntityIndexName = nameof(AbstractEntityIndexAttribute);
 			var customEntityIndexData = namedTypeSymbols
-				.Where(namedTypeSymbolInfo => !namedTypeSymbolInfo.NamedTypeSymbol.IsAbstract)
-				.Where(namedTypeSymbolInfo => namedTypeSymbolInfo.HasAttribute(abstractEntityIndexName))
+				.Where(cachedNamedTypeSymbol => !cachedNamedTypeSymbol.NamedTypeSymbol.IsAbstract)
+				.Where(cachedNamedTypeSymbol => cachedNamedTypeSymbol.HasAttribute(abstractEntityIndexName))
 				.Select(CreateCustomEntityIndexData);
 
 			return entityIndexData
@@ -98,7 +95,7 @@ namespace EntitasRedux.Core.Plugins
 				.ToArray();
 		}
 
-		private EntityIndexData[] CreateEntityIndexData(NamedTypeSymbolInfo namedTypeSymbolInfo, IEnumerable<MemberData> memberData)
+		private EntityIndexData[] CreateEntityIndexData(ICachedNamedTypeSymbol cachedNamedTypeSymbol, IEnumerable<MemberData> memberData)
 		{
 			var hasMultiple = memberData
 				.Any(i => i.memberTypeSymbol.GetAttributes(nameof(AbstractEntityIndexAttribute)).Count() > 1);
@@ -115,25 +112,25 @@ namespace EntitasRedux.Core.Plugins
 
 						data.SetEntityIndexType(GetEntityIndexType(attribute));
 						data.IsCustom(false);
-						data.SetEntityIndexName(namedTypeSymbolInfo.FullTypeName.ToComponentName());
+						data.SetEntityIndexName(cachedNamedTypeSymbol.FullTypeName.ToComponentName());
 						data.SetKeyType(info.compilableTypeString);
-						data.SetComponentType(namedTypeSymbolInfo.FullTypeName);
+						data.SetComponentType(cachedNamedTypeSymbol.FullTypeName);
 						data.SetMemberName(info.name);
 						data.SetHasMultiple(hasMultiple);
-						data.SetContextNames(namedTypeSymbolInfo.NamedTypeSymbol.GetContextNames());
+						data.SetContextNames(cachedNamedTypeSymbol.NamedTypeSymbol.GetContextNames());
 
 						return data;
 					})
 				.ToArray();
 		}
 
-		private EntityIndexData CreateCustomEntityIndexData(NamedTypeSymbolInfo namedTypeSymbolInfo)
+		private EntityIndexData CreateCustomEntityIndexData(ICachedNamedTypeSymbol cachedNamedTypeSymbol)
 		{
 			var data = new EntityIndexData();
-			var attribute = namedTypeSymbolInfo.GetAttributes(nameof(CustomEntityIndexAttribute)).Single();
+			var attribute = cachedNamedTypeSymbol.GetAttributes(nameof(CustomEntityIndexAttribute)).Single();
 			var contextType = (ITypeSymbol)attribute.ConstructorArguments[0].Value;
 
-			var fullTypeName = namedTypeSymbolInfo.FullTypeName;
+			var fullTypeName = cachedNamedTypeSymbol.FullTypeName;
 			data.SetEntityIndexType(fullTypeName);
 			data.IsCustom(true);
 			data.SetEntityIndexName(fullTypeName.RemoveDots());

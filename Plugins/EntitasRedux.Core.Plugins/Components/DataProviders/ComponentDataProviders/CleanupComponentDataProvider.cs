@@ -26,7 +26,6 @@ THE SOFTWARE.
 using System.Linq;
 using Genesis.Plugin;
 using JCMG.EntitasRedux;
-using Microsoft.CodeAnalysis;
 
 namespace EntitasRedux.Core.Plugins
 {
@@ -35,9 +34,9 @@ namespace EntitasRedux.Core.Plugins
 	/// </summary>
 	internal sealed class CleanupComponentDataProvider : IComponentDataProvider
 	{
-		public void Provide(NamedTypeSymbolInfo namedTypeSymbolInfo, ComponentData data)
+		public void Provide(ICachedNamedTypeSymbol cachedNamedTypeSymbol, ComponentData data)
 		{
-			var attributes = namedTypeSymbolInfo
+			var attributes = cachedNamedTypeSymbol
 				.GetAttributes(nameof(CleanupAttribute))
 				.ToArray();
 			if (attributes.Any())

@@ -25,15 +25,14 @@ THE SOFTWARE.
 
 using System.Linq;
 using Genesis.Plugin;
-using Microsoft.CodeAnalysis;
 
 namespace EntitasRedux.Core.Plugins
 {
 	internal sealed class MemberDataComponentDataProvider : IComponentDataProvider
 	{
-		public void Provide(NamedTypeSymbolInfo namedTypeSymbolInfo, ComponentData data)
+		public void Provide(ICachedNamedTypeSymbol cachedNamedTypeSymbol, ComponentData data)
 		{
-			var memberData = namedTypeSymbolInfo.GetPublicMemberData().ToArray();
+			var memberData = cachedNamedTypeSymbol.GetPublicMemberData().ToArray();
 			data.SetMemberData(memberData);
 		}
 	}

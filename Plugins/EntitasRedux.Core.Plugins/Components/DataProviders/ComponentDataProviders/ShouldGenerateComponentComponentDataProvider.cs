@@ -24,21 +24,19 @@ THE SOFTWARE.
 */
 
 using System.ComponentModel;
-using System.Linq;
 using Genesis.Plugin;
-using Microsoft.CodeAnalysis;
 
 namespace EntitasRedux.Core.Plugins
 {
 	internal sealed class ShouldGenerateComponentComponentDataProvider : IComponentDataProvider
 	{
-		public void Provide(NamedTypeSymbolInfo namedTypeSymbolInfo, ComponentData data)
+		public void Provide(ICachedNamedTypeSymbol cachedNamedTypeSymbol, ComponentData data)
 		{
-			var shouldGenerateComponent = !namedTypeSymbolInfo.ImplementsInterface<IComponent>();
+			var shouldGenerateComponent = !cachedNamedTypeSymbol.ImplementsInterface<IComponent>();
 			data.ShouldGenerateComponent(shouldGenerateComponent);
 			if (shouldGenerateComponent)
 			{
-				data.SetObjectTypeName(namedTypeSymbolInfo.FullTypeName);
+				data.SetObjectTypeName(cachedNamedTypeSymbol.FullTypeName);
 			}
 		}
 	}

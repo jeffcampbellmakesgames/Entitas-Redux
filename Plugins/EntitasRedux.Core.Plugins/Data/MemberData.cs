@@ -31,10 +31,10 @@ namespace EntitasRedux.Core.Plugins
 			name = memberName;
 		}
 
-		public MemberData(NamedTypeSymbolInfo namedTypeSymbolInfo, string memberName)
+		public MemberData(ICachedNamedTypeSymbol cachedNamedTypeSymbol, string memberName)
 		{
-			memberTypeSymbol = namedTypeSymbolInfo.NamedTypeSymbol;
-			compilableTypeString = namedTypeSymbolInfo.FullTypeName;
+			memberTypeSymbol = cachedNamedTypeSymbol.NamedTypeSymbol;
+			compilableTypeString = cachedNamedTypeSymbol.FullTypeName;
 			name = memberName;
 		}
 	}

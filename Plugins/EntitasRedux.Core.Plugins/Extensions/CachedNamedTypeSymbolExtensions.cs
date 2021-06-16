@@ -6,21 +6,21 @@ using Microsoft.CodeAnalysis;
 namespace EntitasRedux.Core.Plugins
 {
 	/// <summary>
-	/// Helper methods for <see cref="NamedTypeSymbolInfo"/>.
+	/// Helper methods for <see cref="ICachedNamedTypeSymbol"/>.
 	/// </summary>
-	public static class NamedTypeSymbolInfoExtensions
+	public static class CachedNamedTypeSymbolExtensions
 	{
-		public static IEnumerable<MemberData> GetPublicMemberData(this NamedTypeSymbolInfo namedTypeSymbolInfo)
+		public static IEnumerable<MemberData> GetPublicMemberData(this ICachedNamedTypeSymbol cachedNamedTypeSymbol)
 		{
 			// Get all public fields and create members for each.
-			var publicFieldMembers = namedTypeSymbolInfo.AllPublicMembers
+			var publicFieldMembers = cachedNamedTypeSymbol.AllPublicMembers
 				.Where(x =>
 					x.IsPublic() &&
 					x.IsKind(SymbolKind.Field) &&
 					!x.IsStatic)
 				.Cast<IFieldSymbol>();
 
-			var publicPropertyMembers = namedTypeSymbolInfo.AllPublicMembers
+			var publicPropertyMembers = cachedNamedTypeSymbol.AllPublicMembers
 				.Where(x =>
 					x.IsPublic() &&
 					x.IsKind(SymbolKind.Property) &&

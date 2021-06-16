@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Genesis.Plugin" Version="2.2.2" />
+    <PackageReference Include="Genesis.Plugin" Version="2.3.0" />
     <PackageReference Include="System.CodeDom" Version="5.0.0" />
   </ItemGroup>
 
