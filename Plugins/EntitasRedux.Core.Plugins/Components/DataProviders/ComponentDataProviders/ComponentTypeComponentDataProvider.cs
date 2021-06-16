@@ -24,15 +24,14 @@ THE SOFTWARE.
 */
 
 using Genesis.Plugin;
-using Microsoft.CodeAnalysis;
 
 namespace EntitasRedux.Core.Plugins
 {
 	internal sealed class ComponentTypeComponentDataProvider : IComponentDataProvider
 	{
-		public void Provide(NamedTypeSymbolInfo namedTypeSymbolInfo, ComponentData data)
+		public void Provide(ICachedNamedTypeSymbol cachedNamedTypeSymbol, ComponentData data)
 		{
-			data.SetTypeName(namedTypeSymbolInfo.FullTypeName);
+			data.SetTypeName(cachedNamedTypeSymbol.FullTypeName);
 		}
 	}
 }

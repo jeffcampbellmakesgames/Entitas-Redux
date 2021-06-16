@@ -3,6 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>JCMG.EntitasRedux</RootNamespace>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/jeffcampbellmakesgames/Entitas-Redux.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>C# Unity Unity3D Runtime ECS Framework</PackageTags>
+    <Authors>Jeff Campbell</Authors>
+    <Product />
+    <Company />
   </PropertyGroup>
 
   <Target Name="CopyBuildArtifacts" AfterTargets="Build">

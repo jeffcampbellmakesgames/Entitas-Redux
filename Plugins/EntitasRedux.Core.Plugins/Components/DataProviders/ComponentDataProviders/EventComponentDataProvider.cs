@@ -26,15 +26,14 @@ THE SOFTWARE.
 using System.Linq;
 using Genesis.Plugin;
 using JCMG.EntitasRedux;
-using Microsoft.CodeAnalysis;
 
 namespace EntitasRedux.Core.Plugins
 {
 	internal sealed class EventComponentDataProvider : IComponentDataProvider
 	{
-		public void Provide(NamedTypeSymbolInfo namedTypeSymbolInfo, ComponentData data)
+		public void Provide(ICachedNamedTypeSymbol cachedNamedTypeSymbol, ComponentData data)
 		{
-			var attrs = namedTypeSymbolInfo.GetAttributes(nameof(EventAttribute)).ToArray();
+			var attrs = cachedNamedTypeSymbol.GetAttributes(nameof(EventAttribute)).ToArray();
 			if (attrs.Any())
 			{
 				data.IsEvent(true);

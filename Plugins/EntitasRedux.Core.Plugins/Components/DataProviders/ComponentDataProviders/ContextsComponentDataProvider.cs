@@ -34,9 +34,9 @@ namespace EntitasRedux.Core.Plugins
 	{
 		private readonly ContextSettingsConfig _contextSettingsConfig = new ContextSettingsConfig();
 
-		public void Provide(NamedTypeSymbolInfo namedTypeSymbolInfo, ComponentData data)
+		public void Provide(ICachedNamedTypeSymbol cachedNamedTypeSymbol, ComponentData data)
 		{
-			var contextNames = GetContextNamesOrDefault(namedTypeSymbolInfo.NamedTypeSymbol);
+			var contextNames = GetContextNamesOrDefault(cachedNamedTypeSymbol.NamedTypeSymbol);
 			data.SetContextNames(contextNames);
 		}
 

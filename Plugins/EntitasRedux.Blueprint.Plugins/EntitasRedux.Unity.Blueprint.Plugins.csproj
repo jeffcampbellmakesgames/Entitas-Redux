@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Genesis.Plugin" Version="2.2.1" />
+    <PackageReference Include="Genesis.Plugin" Version="2.3.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +17,7 @@
       <DataFiles Include="$(ProjectDir)$(OutDir)**\*.*" />
     </ItemGroup>
 
-    <Copy SourceFiles="@(DataFiles)" DestinationFolder="$(ProjectDir)..\..\Genesis.CLI\Plugins\%(RecursiveDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(DataFiles)" DestinationFolder="$(ProjectDir)..\..\Genesis.CLI\Plugins\ERPlugins\%(RecursiveDir)" SkipUnchangedFiles="true" />
   </Target>
 
 </Project>

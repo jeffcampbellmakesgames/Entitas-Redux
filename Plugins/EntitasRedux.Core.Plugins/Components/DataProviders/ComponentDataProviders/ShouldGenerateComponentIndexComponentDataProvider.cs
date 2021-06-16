@@ -26,20 +26,19 @@ THE SOFTWARE.
 using System.Linq;
 using Genesis.Plugin;
 using JCMG.EntitasRedux;
-using Microsoft.CodeAnalysis;
 
 namespace EntitasRedux.Core.Plugins
 {
 	internal sealed class ShouldGenerateComponentIndexComponentDataProvider : IComponentDataProvider
 	{
-		public void Provide(NamedTypeSymbolInfo namedTypeSymbolInfo, ComponentData data)
+		public void Provide(ICachedNamedTypeSymbol cachedNamedTypeSymbol, ComponentData data)
 		{
-			data.ShouldGenerateIndex(GetGenerateIndex(namedTypeSymbolInfo));
+			data.ShouldGenerateIndex(GetGenerateIndex(cachedNamedTypeSymbol));
 		}
 
-		private bool GetGenerateIndex(NamedTypeSymbolInfo namedTypeSymbolInfo)
+		private bool GetGenerateIndex(ICachedNamedTypeSymbol cachedNamedTypeSymbol)
 		{
-			var attr = namedTypeSymbolInfo
+			var attr = cachedNamedTypeSymbol
 				.GetAttributes(nameof(DontGenerateAttribute))
 				.FirstOrDefault();
 

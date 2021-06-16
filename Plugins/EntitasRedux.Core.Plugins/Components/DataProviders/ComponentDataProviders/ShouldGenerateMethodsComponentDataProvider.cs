@@ -26,15 +26,14 @@ THE SOFTWARE.
 using System.Linq;
 using Genesis.Plugin;
 using JCMG.EntitasRedux;
-using Microsoft.CodeAnalysis;
 
 namespace EntitasRedux.Core.Plugins
 {
 	internal sealed class ShouldGenerateMethodsComponentDataProvider : IComponentDataProvider
 	{
-		public void Provide(NamedTypeSymbolInfo namedTypeSymbolInfo, ComponentData data)
+		public void Provide(ICachedNamedTypeSymbol cachedNamedTypeSymbol, ComponentData data)
 		{
-			var generate = !namedTypeSymbolInfo.GetAttributes(nameof(DontGenerateAttribute)).Any();
+			var generate = !cachedNamedTypeSymbol.GetAttributes(nameof(DontGenerateAttribute)).Any();
 			data.ShouldGenerateMethods(generate);
 		}
 	}
