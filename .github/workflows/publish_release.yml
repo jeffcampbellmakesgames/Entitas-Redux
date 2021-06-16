@@ -113,76 +113,74 @@ jobs:
         customParameters: version=${{ env.GitVersion_MajorMinorPatch }} GenerateVersionConstants=true
 
     # Check build contents on develop branch
-    - name: Add & Commit Build Artifacts
-      uses: EndBug/add-and-commit@v5.1.0
-      env:
-        # This is necessary in order to push a commit to the repo
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        cwd: './Entitas-Redux'
-        author_name: Github Action Bot
-        message: 'Auto-updated Plugin Zip contents for v${{ env.GitVersion_MajorMinorPatch }}'
+    #- name: Add & Commit Build Artifacts
+    #  uses: EndBug/add-and-commit@v5.1.0
+    #  env:
+    #    # This is necessary in order to push a commit to the repo
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #  with:
+    #    cwd: './Entitas-Redux'
+    #    author_name: Github Action Bot
+    #    message: 'Auto-updated Plugin Zip contents for v${{ env.GitVersion_MajorMinorPatch }}'
 
     # Check in Unity Package on Release branch
-    - name: Add & Commit Release Changes
-      uses: EndBug/add-and-commit@v5.1.0
-      env:
-        # This is necessary in order to push a commit to the repo
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        author_name: Github Action Bot
-        cwd: './Entitas-Redux-Release'
-        branch: 'release/stable'
-        message: 'v${{ env.GitVersion_MajorMinorPatch }}'
+    #- name: Add & Commit Release Changes
+    #  uses: EndBug/add-and-commit@v5.1.0
+    #  env:
+    #    # This is necessary in order to push a commit to the repo
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #  with:
+    #    author_name: Github Action Bot
+    #    cwd: './Entitas-Redux-Release'
+    #    branch: 'release/stable'
+    #    message: 'v${{ env.GitVersion_MajorMinorPatch }}'
 
     # Create and Publish Nuget package for EntitasRedux.Core
     - name: Create Nuget Package for EntitasRedux.Core
       run: dotnet pack ./Entitas-Redux/Plugins/EntitasRedux.Core.csproj -c Release --nologo -p:PackageVersion=${{ env.GitVersion_MajorMinorPatch }}
-    - name: Publish Nuget Package for EntitasRedux.Core
-      run: dotnet nuget push ./Entitas-Redux/Plugins/EntitasRedux.Core/bin/Release/**/*.nupkg --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+    #- name: Publish Nuget Package for EntitasRedux.Core
+    #  run: dotnet nuget push ./Entitas-Redux/Plugins/EntitasRedux.Core/bin/Release/**/*.nupkg --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
 
     # Create and Publish Nuget package for EntitasRedux.Core.Plugins
     - name: Create Nuget Package for EntitasRedux.Core.Plugins
       run: dotnet pack ./Entitas-Redux/Plugins/EntitasRedux.Core.Plugins.csproj -c Release --nologo -p:PackageVersion=${{ env.GitVersion_MajorMinorPatch }}
-    - name: Publish Nuget Package for EntitasRedux.Core.Plugins
-      run: dotnet nuget push ./Entitas-Redux/Plugins/EntitasRedux.Core.Plugins/bin/Release/**/*.nupkg --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+    #- name: Publish Nuget Package for EntitasRedux.Core.Plugins
+    #  run: dotnet nuget push ./Entitas-Redux/Plugins/EntitasRedux.Core.Plugins/bin/Release/**/*.nupkg --skip-duplicate --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
 
-    # Tag commit just made with new Nuget package version and push it to remote
+    # Tag commit just made with new Nuget package version and push it to remote (Add back 'git push origin --tags' after tests)
     - name: Create Tag
       run: |
         cd './Entitas-Redux'
         git config --global user.email "mirraraenn@gmail.com"
         git config --global user.name "Github Action Bot"
         git tag -a "nuget/v${{ env.GitVersion_MajorMinorPatch }}" -m "v${{ env.GitVersion_MajorMinorPatch }} Nuget Package"        
-        git push origin --tags
+        
 
-    # Tag commit just made with new Unity package version and push it to remote
+    # Tag commit just made with new Unity package version and push it to remote (Add back 'git push origin --tags' after tests)
     - name: Create Tag
       run: |
         cd './Entitas-Redux-Release'
         git config --global user.email "mirraraenn@gmail.com"
         git config --global user.name "Github Action Bot"
         git tag -a "upm/v${{ env.GitVersion_MajorMinorPatch }}" -m "v${{ env.GitVersion_MajorMinorPatch }}"
-        git push origin --tags
 
-    # Tag commit just made with new Unity package version and push it to remote
+    # Tag commit just made with new Unity package version and push it to remote (Add back 'git push origin --tags' after tests)
     - name: Create Tag
       run: |
         cd './Genesis-Release'
         git config --global user.email "mirraraenn@gmail.com"
         git config --global user.name "Github Action Bot"
         git tag -a "upm/v${{ env.GitVersion_MajorMinorPatch }}" -m "v${{ env.GitVersion_MajorMinorPatch }}"
-        git push origin --tags
 
     # Create release
-    - name: Create Release
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: 'v${{ env.GitVersion_MajorMinorPatch }}'
-        draft: false
-        prerelease: false
-        files: |
-          /Entitas-Redux/Builds/*.unityPackage
-          /Entitas-Redux/Unity/Assets/JCMG/EntitasRedux/GenesisPluginInstaller/*.zip
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #- name: Create Release
+    #  uses: softprops/action-gh-release@v1
+    #  with:
+    #    tag_name: 'v${{ env.GitVersion_MajorMinorPatch }}'
+    #    draft: false
+    #    prerelease: false
+    #    files: |
+    #      /Entitas-Redux/Builds/*.unityPackage
+    #      /Entitas-Redux/Unity/Assets/JCMG/EntitasRedux/GenesisPluginInstaller/*.zip
+    #  env:
+    #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
