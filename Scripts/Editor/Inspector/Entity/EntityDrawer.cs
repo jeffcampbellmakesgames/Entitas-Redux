@@ -27,7 +27,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using JCMG.Genesis.Editor;
+using Genesis.Shared;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
