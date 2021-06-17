@@ -24,14 +24,10 @@ THE SOFTWARE.
 */
 
 using System.Reflection;
-using System.Runtime.CompilerServices;
-
-[assembly: InternalsVisibleTo("EntitasRedux.VisualDebugging.Editor")]
-[assembly: InternalsVisibleTo("EntitasRedux.VisualDebugging.Editor.Plugins")]
 
 [assembly: AssemblyCompany("Jeff Campbell")]
 [assembly: AssemblyFileVersion("0.0.0")]
 [assembly: AssemblyInformationalVersion("0.0.0")]
-[assembly: AssemblyProduct("EntitasRedux.VisualDebugging")]
-[assembly: AssemblyTitle("EntitasRedux.VisualDebugging")]
+[assembly: AssemblyProduct("EntitasRedux.Blueprints.Editor")]
+[assembly: AssemblyTitle("EntitasRedux.Blueprints.Editor")]
 [assembly: AssemblyMetadata("RepositoryUrl", "https://github.com/jeffcampbellmakesgames/Entitas-Redux.git")]

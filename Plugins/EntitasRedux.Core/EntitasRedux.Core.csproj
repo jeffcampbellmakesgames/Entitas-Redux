@@ -10,6 +10,7 @@
     <Authors>Jeff Campbell</Authors>
     <Product />
     <Company />
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <Target Name="CopyBuildArtifacts" AfterTargets="Build">

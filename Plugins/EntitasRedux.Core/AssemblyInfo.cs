@@ -23,8 +23,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("EntitasRedux.Editor")]
 [assembly: InternalsVisibleTo("EntitasRedux.Tests")]
 [assembly: InternalsVisibleTo("EntitasRedux.Core.Tests")]
+
+[assembly: AssemblyCompanyAttribute("Jeff Campbell")]
+[assembly: AssemblyFileVersion("0.0.0")]
+[assembly: AssemblyInformationalVersion("0.0.0")]
+[assembly: AssemblyProductAttribute("EntitasRedux.Core")]
+[assembly: AssemblyTitleAttribute("EntitasRedux.Core")]
+[assembly: AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/jeffcampbellmakesgames/Entitas-Redux.git")]
+

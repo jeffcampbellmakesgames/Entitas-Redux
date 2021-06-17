@@ -7,6 +7,8 @@
     <PackageTags>C# Roslyn Unity Unity3D UnityEditor Genesis CodeGeneration</PackageTags>
     <RepositoryUrl>https://github.com/jeffcampbellmakesgames/Entitas-Redux.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,5 +27,4 @@
 
     <Copy SourceFiles="@(DataFiles)" DestinationFolder="$(ProjectDir)..\..\Genesis.CLI\Plugins\ERPlugins\%(RecursiveDir)" SkipUnchangedFiles="true" />
   </Target>
-
 </Project>
