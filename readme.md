@@ -13,6 +13,7 @@ Entitas Redux is a reworked version of [Entitas](https://github.com/sschmid/Enti
 ## Requirements
 * **Min Unity Version**: 2019.4
 * **Scripting Runtime**: .Net 4.X
+* **.Net Core Runtime**: 3.1.X
 
 ## Installing Entitas Redux and Getting Started
 
