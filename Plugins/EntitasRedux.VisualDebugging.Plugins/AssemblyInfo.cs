@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 
 [assembly: AssemblyCompany("Jeff Campbell")]
-[assembly: AssemblyFileVersion("2.0.0")]
-[assembly: AssemblyInformationalVersion("2.0.0+121.Branch.develop.Sha.ca880e473b12de194b811c422c1084216cce49f8")]
+[assembly: AssemblyFileVersion("2.0.1")]
+[assembly: AssemblyInformationalVersion("2.0.1+6.Branch.develop.Sha.e418c47de9d2dd37396e366aa9c850c1d992f2d2")]
 [assembly: AssemblyProduct("EntitasRedux.Unity.VisualDebugging.Plugins")]
 [assembly: AssemblyTitle("EntitasRedux.Unity.VisualDebugging.Plugins")]
 [assembly: AssemblyMetadata("RepositoryUrl", "https://github.com/jeffcampbellmakesgames/Entitas-Redux.git")]
 
-[assembly: AssemblyVersion("2.0.0")]
+[assembly: AssemblyVersion("2.0.1")]
