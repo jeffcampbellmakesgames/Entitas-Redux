@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Genesis.Plugin" Version="2.3.0" />
+    <PackageReference Include="Genesis.Plugin" Version="2.3.2" />
   </ItemGroup>
 
   <ItemGroup>
