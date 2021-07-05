@@ -6,6 +6,7 @@ on:
     branches: [ develop ]
     paths:
     - 'Unity/Assets/JCMG/EntitasRedux/Scripts/**/*.cs'
+    - 'Unity/Packages/manifest.json'
     - 'Plugins/**/*.cs'
     - 'Plugins/**/*.cproj'
     - '.github/workflows/publish_releases.yml'
