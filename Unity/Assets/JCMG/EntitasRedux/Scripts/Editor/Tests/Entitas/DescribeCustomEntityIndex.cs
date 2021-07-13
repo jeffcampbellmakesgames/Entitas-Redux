@@ -35,7 +35,7 @@ namespace EntitasRedux.Tests
 		public void CustomIndexReturnsDesiredEntities()
 		{
 			var ctx = new TestContext();
-			var index = new CustomEntityIndex(ctx);
+			var index = new MyCustomEntityIndex(ctx);
 
 			var e = ctx.CreateEntity();
 			e.AddPosition(2, 3);

@@ -58,5 +58,10 @@ namespace EntitasRedux.Core.Plugins
 
 			return contextNames;
 		}
+
+		public string[] GetContextNamesOrDefault(ICachedNamedTypeSymbol cachedNamedTypeSymbol)
+		{
+			return GetContextNamesOrDefault(cachedNamedTypeSymbol.NamedTypeSymbol);
+		}
 	}
 }

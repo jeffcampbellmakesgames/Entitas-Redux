@@ -30,7 +30,7 @@ namespace EntitasRedux.Core.Plugins
 
 			// Create member data
 			var memberData = publicFieldMembers
-				.Select(x => new MemberData(x.Type, x.Name))
+				.Select(x => new MemberData(x, x.Type, x.Name))
 				.Concat(publicPropertyMembers.Select(x => new MemberData(
 					x.Type.GetFullTypeName(),
 					x.Name)))

@@ -1,4 +1,6 @@
-﻿namespace EntitasRedux.Core.Plugins
+﻿using Genesis.Plugin;
+
+namespace EntitasRedux.Core.Plugins
 {
 	public static class EntityIndexDataExtensions
 	{
@@ -48,6 +50,13 @@
 		public static string GetEntityIndexName(this EntityIndexData data)
 		{
 			return (string)data[ENTITY_INDEX_NAME];
+		}
+
+		public static string GetMemberEntityIndexName(this EntityIndexData data)
+		{
+			return data.GetHasMultiple()
+				? (string)data[ENTITY_INDEX_NAME] + data.GetMemberName().UppercaseFirst()
+				: (string)data[ENTITY_INDEX_NAME];
 		}
 
 		public static void SetEntityIndexName(this EntityIndexData data, string name)

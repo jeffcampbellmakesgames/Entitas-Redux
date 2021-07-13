@@ -83,13 +83,11 @@ ${getIndices}
 			var indexConstants = string.Join(
 				"\n",
 				data
+					.Where(x => !x.IsCustom())
 					.Select(
 						d => INDEX_CONSTANTS_TEMPLATE
 							.Replace(
-								"${IndexName}",
-								d.GetHasMultiple()
-									? d.GetEntityIndexName() + d.GetMemberName().UppercaseFirst()
-									: d.GetEntityIndexName()))
+								"${IndexName}", d.GetMemberEntityIndexName()))
 					.ToArray());
 
 			var addIndices = string.Join(
@@ -153,10 +151,7 @@ ${getIndices}
 				.Replace("${contextName}", contextName)
 				.Replace("${ContextName}", contextName)
 				.Replace(
-					"${IndexName}",
-					data.GetHasMultiple()
-						? data.GetEntityIndexName() + data.GetMemberName().UppercaseFirst()
-						: data.GetEntityIndexName())
+					"${IndexName}", data.GetMemberEntityIndexName())
 				.Replace("${Matcher}", data.GetEntityIndexName())
 				.Replace("${IndexType}", data.GetEntityIndexType())
 				.Replace("${KeyType}", data.GetKeyType())
@@ -204,10 +199,7 @@ ${getIndices}
 			return template
 				.Replace("${ContextName}", contextName)
 				.Replace(
-					"${IndexName}",
-					data.GetHasMultiple()
-						? data.GetEntityIndexName() + data.GetMemberName().UppercaseFirst()
-						: data.GetEntityIndexName())
+					"${IndexName}", data.GetMemberEntityIndexName())
 				.Replace("${IndexType}", data.GetEntityIndexType())
 				.Replace("${KeyType}", data.GetKeyType())
 				.Replace("${MemberName}", data.GetMemberName());
@@ -228,10 +220,7 @@ ${getIndices}
 								string.Join(", ", m.parameters.Select(p => p.compilableTypeString + " " + p.name).ToArray()))
 							.Replace("${IndexType}", data.GetEntityIndexType())
 							.Replace(
-								"${IndexName}",
-								data.GetHasMultiple()
-									? data.GetEntityIndexName() + data.GetMemberName().UppercaseFirst()
-									: data.GetEntityIndexName())
+								"${IndexName}", data.GetMemberEntityIndexName())
 							.Replace("${args}", string.Join(", ", m.parameters.Select(p => p.name).ToArray())))
 					.ToArray());
 		}

@@ -87,9 +87,8 @@ MonoBehaviour:
         EntitasRedux.Unity.VisualDebuggingPlugins.ContextObserverGenerator, EntitasRedux.Unity.VisualDebuggingPlugins.FeatureClassGenerator,
         Genesis.Unity.Factory.Plugin.ScriptableFactoryCodeGenerator
     - key: Genesis.PostProcessors
-      value: Genesis.Core.Plugin.AddFileHeaderPostProcessor, Genesis.Core.Plugin.CleanTargetDirectoryPostProcessor,
-        Genesis.Core.Plugin.NewLinePostProcessor, Genesis.Core.Plugin.MergeFilesPostProcessor,
-        Genesis.Core.Plugin.WriteToDiskPostProcessor
+      value: Genesis.Core.Plugin.CleanTargetDirectoryPostProcessor, Genesis.Core.Plugin.NewLinePostProcessor,
+        Genesis.Core.Plugin.MergeFilesPostProcessor, Genesis.Core.Plugin.WriteToDiskPostProcessor
     - key: Genesis.AllPreProcessors
       value: 
     - key: Genesis.AllDataProviders

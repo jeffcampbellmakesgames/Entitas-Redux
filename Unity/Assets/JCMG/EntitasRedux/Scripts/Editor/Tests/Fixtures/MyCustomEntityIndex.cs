@@ -30,11 +30,11 @@ using JCMG.EntitasRedux;
 namespace EntitasRedux.Tests
 {
 	[CustomEntityIndex(typeof(TestContext))]
-	public class CustomEntityIndex : EntityIndex<TestEntity, IntVector2> {
+	public class MyCustomEntityIndex : EntityIndex<TestEntity, IntVector2> {
 
 		static readonly List<IntVector2> _cachedList = new List<IntVector2>();
 
-		public CustomEntityIndex(TestContext context)
+		public MyCustomEntityIndex(TestContext context)
 			: base(
 				"MyCustomEntityIndex",
 				context.GetGroup(Matcher<TestEntity>.AllOf(TestMatcher.Position, TestMatcher.Size)),

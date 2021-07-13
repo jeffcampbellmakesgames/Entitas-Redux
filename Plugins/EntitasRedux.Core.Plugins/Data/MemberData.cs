@@ -6,6 +6,7 @@ namespace EntitasRedux.Core.Plugins
 {
 	public class MemberData
 	{
+		public readonly IFieldSymbol memberFieldSymbol;
 		public readonly ITypeSymbol memberTypeSymbol;
 		public readonly Type memberType;
 		public readonly string name;
@@ -24,8 +25,9 @@ namespace EntitasRedux.Core.Plugins
 			name = memberName;
 		}
 
-		public MemberData(ITypeSymbol typeSymbol, string memberName)
+		public MemberData(IFieldSymbol fieldSymbol, ITypeSymbol typeSymbol, string memberName)
 		{
+			memberFieldSymbol = fieldSymbol;
 			memberTypeSymbol = typeSymbol;
 			compilableTypeString = typeSymbol.GetFullTypeName();
 			name = memberName;
