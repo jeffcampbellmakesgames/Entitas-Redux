@@ -89,6 +89,14 @@ public partial class VisualDebugEntity
 		{
 			CopyHashSetTo(HashSet);
 		}
+		else if (component is ExampleContent.VisualDebugging.IndexedEntityComponent IndexedEntity)
+		{
+			CopyIndexedEntityTo(IndexedEntity);
+		}
+		else if (component is ExampleContent.VisualDebugging.IndexedPrimaryComponent IndexedPrimary)
+		{
+			CopyIndexedPrimaryTo(IndexedPrimary);
+		}
 		else if (component is ExampleContent.VisualDebugging.JaggedArrayComponent JaggedArray)
 		{
 			CopyJaggedArrayTo(JaggedArray);

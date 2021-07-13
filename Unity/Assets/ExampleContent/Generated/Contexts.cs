@@ -46,7 +46,7 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 	public JCMG.EntitasRedux.IContext[] AllContexts { get { return new JCMG.EntitasRedux.IContext [] { Empty, Example, Game, VisualDebug }; } }
 
 	public Contexts()
-{
+	{
 		Empty = new EmptyContext();
 		Example = new ExampleContext();
 		Game = new GameContext();
@@ -73,6 +73,42 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 	}
 }
 
+public partial class Contexts
+{
+	public const string IndexedEntity = "IndexedEntity";
+	public const string IndexedPrimary = "IndexedPrimary";
+
+	[JCMG.EntitasRedux.PostConstructor]
+	public void InitializeEntityIndices()
+	{
+		VisualDebug.AddEntityIndex(new ExampleContent.VisualDebugging.CustomIndexes.ColorPositionEntityIndex(VisualDebug));
+
+		VisualDebug.AddEntityIndex(new JCMG.EntitasRedux.EntityIndex<VisualDebugEntity, int>(
+			IndexedEntity,
+			VisualDebug.GetGroup(VisualDebugMatcher.IndexedEntity),
+			(e, c) => ((ExampleContent.VisualDebugging.IndexedEntityComponent)c).id));
+
+		VisualDebug.AddEntityIndex(new JCMG.EntitasRedux.PrimaryEntityIndex<VisualDebugEntity, int>(
+			IndexedPrimary,
+			VisualDebug.GetGroup(VisualDebugMatcher.IndexedPrimary),
+			(e, c) => ((ExampleContent.VisualDebugging.IndexedPrimaryComponent)c).id));
+	}
+}
+
+public static class ContextsExtensions
+{
+
+
+	public static System.Collections.Generic.HashSet<VisualDebugEntity> GetEntitiesWithIndexedEntity(this VisualDebugContext context, int id)
+	{
+		return ((JCMG.EntitasRedux.EntityIndex<VisualDebugEntity, int>)context.GetEntityIndex(Contexts.IndexedEntity)).GetEntities(id);
+	}
+
+	public static VisualDebugEntity GetEntityWithIndexedPrimary(this VisualDebugContext context, int id)
+	{
+		return ((JCMG.EntitasRedux.PrimaryEntityIndex<VisualDebugEntity, int>)context.GetEntityIndex(Contexts.IndexedPrimary)).GetEntity(id);
+	}
+}
 public partial class Contexts {
 
 #if (!ENTITAS_DISABLE_VISUAL_DEBUGGING && UNITY_EDITOR)
