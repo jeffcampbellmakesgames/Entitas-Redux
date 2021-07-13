@@ -76,7 +76,7 @@ ${contextPropertiesList}
 	public JCMG.EntitasRedux.IContext[] AllContexts { get { return new JCMG.EntitasRedux.IContext [] { ${contextList} }; } }
 
 	public Contexts()
-{
+	{
 ${contextAssignmentsList}
 
 		var postConstructors = System.Linq.Enumerable.Where(
