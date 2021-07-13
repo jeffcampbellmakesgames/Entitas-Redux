@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Releases]
+### [2.1.0] - 2021-07-13
+#### Fixes
+* Fixed several bugs with Entity Index code generation where index-related methods and code was not generated.
+
+#### Changes
+* Sealed attribute types EntityIndex, PrimaryEntityIndex, and CustomEntityIndex to ensure stable behavior for the EntityIndex code-generator.
+
 ### [2.0.1] - 2021-07-05
 #### Fixes
 * Updated Genesis package dependency min version to v2.3.2 to include several fixes for path issues
