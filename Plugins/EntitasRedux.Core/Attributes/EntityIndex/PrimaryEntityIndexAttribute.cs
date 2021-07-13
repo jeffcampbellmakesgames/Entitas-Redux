@@ -28,7 +28,7 @@ using System;
 namespace JCMG.EntitasRedux
 {
 	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class)]
-	public class PrimaryEntityIndexAttribute : AbstractEntityIndexAttribute
+	public sealed class PrimaryEntityIndexAttribute : AbstractEntityIndexAttribute
 	{
 		public PrimaryEntityIndexAttribute() : base(EntityIndexType.PrimaryEntityIndex)
 		{

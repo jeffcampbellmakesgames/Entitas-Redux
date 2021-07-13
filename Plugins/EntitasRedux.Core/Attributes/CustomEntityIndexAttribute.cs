@@ -28,7 +28,7 @@ using System;
 namespace JCMG.EntitasRedux
 {
 	[AttributeUsage(AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Class)]
-	public class CustomEntityIndexAttribute : Attribute
+	public sealed class CustomEntityIndexAttribute : Attribute
 	{
 		public readonly Type contextType;
 
