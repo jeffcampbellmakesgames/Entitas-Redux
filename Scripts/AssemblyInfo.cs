@@ -30,10 +30,10 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("EntitasRedux.Tests")]
 
 [assembly: AssemblyCompany("Jeff Campbell")]
-[assembly: AssemblyFileVersion("2.1.0")]
-[assembly: AssemblyInformationalVersion("2.1.0+7.Branch.develop.Sha.21ee36e5c2bfc83d5c03aa0da164adbc40f7b20e")]
+[assembly: AssemblyFileVersion("2.1.1")]
+[assembly: AssemblyInformationalVersion("2.1.1+3.Branch.develop.Sha.53d411fa265c0891fe5e9038b12205289e610f41")]
 [assembly: AssemblyProduct("EntitasRedux")]
 [assembly: AssemblyTitle("EntitasRedux")]
 [assembly: AssemblyMetadata("RepositoryUrl", "https://github.com/jeffcampbellmakesgames/Entitas-Redux.git")]
 
-[assembly: AssemblyVersion("2.1.0")]
+[assembly: AssemblyVersion("2.1.1")]
