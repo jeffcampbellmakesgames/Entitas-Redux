@@ -43,7 +43,7 @@ namespace JCMG.EntitasRedux
 		/// <summary>
 		/// The current GIT commit hash this package was published on.
 		/// </summary>
-		public const string GIT_COMMIT = "53d411fa265c0891fe5e9038b12205289e610f41";
+		public const string GIT_COMMIT = "dd321a160eaee6a814ba9fe0ed134e6c399721ba";
 
 		/// <summary>
 		/// The UTC human-readable date this package was published at.
@@ -53,6 +53,6 @@ namespace JCMG.EntitasRedux
 		/// <summary>
 		/// The UTC time this package was published at.
 		/// </summary>
-		public const string PUBLISH_TIME = "02/04/2022 14:02:36";
+		public const string PUBLISH_TIME = "02/04/2022 14:11:18";
 	}
 }
