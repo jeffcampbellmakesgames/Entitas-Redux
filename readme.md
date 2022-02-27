@@ -14,6 +14,10 @@ Entitas Redux is a reworked version of [Entitas](https://github.com/sschmid/Enti
 * **Min Unity Version**: 2019.4
 * **Scripting Runtime**: .Net 4.X
 * **.Net Core Runtime**: 3.1.X
+* **MSBuild**: MSBuild is required for the Roslyn parsing Genesis Requires. There are a few ways to ensure this is installed and I would recommend restarting your PC after performing any of these steps (see [here](https://docs.microsoft.com/en-us/visualstudio/msbuild/walkthrough-using-msbuild?view=vs-2022) for MS docs on installation).
+	* MSBuild is installed along with Visual Studio, so having VS installed accomplishes this requirement.
+	* Installing the .Net Core SDK v3.1 will ensure MSBuild is installed.
+	* Installing the Visual Studio Build Tools [here](https://docs.microsoft.com/en-us/visualstudio/msbuild/walkthrough-using-msbuild?view=vs-2022) will ensure MSBuild is available.
 
 ## Installing Entitas Redux and Getting Started
 

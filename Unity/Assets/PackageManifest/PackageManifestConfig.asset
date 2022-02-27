@@ -27,13 +27,13 @@ MonoBehaviour:
     make life easier for developers.
   category: Scripting
   author:
-    name: 
-    email: 
-    url: 
+    name: Jeff Campbell
+    email: mirraraenn@gmail.com
+    url: https://www.jeffcampbellmakes.games/
   keywords: []
   dependencies:
   - packageName: com.jeffcampbellmakesgames.genesis
-    packageVersion: 2.3.2
+    packageVersion: 2.4.4
   versionConstantsPath: Assets/JCMG/EntitasRedux/Scripts
   versionTemplateGuid: 5037ab3a74375fd4b87e04aa5f278380
   _id: 6c31b17e-d755-422c-88ff-421b4c2fed29
