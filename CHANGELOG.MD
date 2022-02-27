@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Releases]
+### [2.1.1] - 2022-02-27
+#### Fixes
+* Updated Genesis min package version to include bug fix for CLI installation paths with spaces in folder names.
+
+#### Changes
+* Added author details to ER package manifest.
+
 ### [2.1.0] - 2021-07-13
 #### Fixes
 * Fixed several bugs with Entity Index code generation where index-related methods and code was not generated.
