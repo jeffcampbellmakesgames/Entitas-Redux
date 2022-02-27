@@ -30,10 +30,10 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("EntitasRedux.Blueprints.Editor")]
 
 [assembly: AssemblyCompany("Jeff Campbell")]
-[assembly: AssemblyFileVersion("2.1.1")]
-[assembly: AssemblyInformationalVersion("2.1.1+4.Branch.develop.Sha.dd321a160eaee6a814ba9fe0ed134e6c399721ba")]
+[assembly: AssemblyFileVersion("2.1.2")]
+[assembly: AssemblyInformationalVersion("2.1.2+4.Branch.develop.Sha.1cc031f2293c96e937e0381949a61b67684d7471")]
 [assembly: AssemblyProduct("EntitasRedux.Editor")]
 [assembly: AssemblyTitle("EntitasRedux.Editor")]
 [assembly: AssemblyMetadata("RepositoryUrl", "https://github.com/jeffcampbellmakesgames/Entitas-Redux.git")]
 
-[assembly: AssemblyVersion("2.1.1")]
+[assembly: AssemblyVersion("2.1.2")]
