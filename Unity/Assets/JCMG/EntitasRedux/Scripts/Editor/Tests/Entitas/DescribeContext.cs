@@ -797,6 +797,25 @@ namespace EntitasRedux.Tests
 			Assert.Throws<ContextEntityIndexDoesAlreadyExistException>(() => _defaultContext.AddEntityIndex(entityIndex));
 		}
 
+		[NUnit.Framework.Test]
+		public void CanGetAllEntityIndices()
+		{
+			const int componentIndex = 1;
+			var entityIndex = new PrimaryEntityIndex<MyTestEntity, string>(
+				"TestIndex",
+				_defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(componentIndex)),
+				(arg1, arg2) => string.Empty);
+
+			var entityIndex2 = new PrimaryEntityIndex<MyTestEntity, string>(
+				"TestIndex2",
+				_defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(componentIndex)),
+				(arg1, arg2) => string.Empty);
+
+			_defaultContext.AddEntityIndex(entityIndex);
+			_defaultContext.AddEntityIndex(entityIndex2);
+
+			Assert.That(_defaultContext.EntityIndices, Contains.Item(entityIndex).And.Contains(entityIndex2));
+		}
 		#endregion
 
 		#region Reset Event Handlers
