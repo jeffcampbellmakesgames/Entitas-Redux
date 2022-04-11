@@ -455,6 +455,12 @@ namespace JCMG.EntitasRedux
 		}
 
 		/// <summary>
+		/// Returns a collection of all <see cref="IEntityIndex"/>es managed by this context,
+		/// in no particular order.
+		/// </summary>
+		public IReadOnlyCollection<IEntityIndex> EntityIndices => _entityIndices.Values;
+
+		/// <summary>
 		/// Resets the creationIndex back to 0.
 		/// </summary>
 		public void ResetCreationIndex()

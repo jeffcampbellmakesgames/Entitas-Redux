@@ -48,7 +48,7 @@ namespace JCMG.EntitasRedux
 
 		void AddEntityIndex(IEntityIndex entityIndex);
 		IEntityIndex GetEntityIndex(string name);
-
+		IReadOnlyCollection<IEntityIndex> EntityIndices { get; }
 		void ResetCreationIndex();
 		void ClearComponentPool(int index);
 		void ClearComponentPools();
