@@ -49,6 +49,11 @@ namespace JCMG.EntitasRedux
 		void AddEntityIndex(IEntityIndex entityIndex);
 		IEntityIndex GetEntityIndex(string name);
 
+		/// <summary>
+		/// Returns a collection of all <see cref="IEntityIndex"/>es managed by this context,
+		/// in no particular order.
+		/// </summary>
+		IReadOnlyCollection<IEntityIndex> EntityIndices { get; }
 		void ResetCreationIndex();
 		void ClearComponentPool(int index);
 		void ClearComponentPools();
