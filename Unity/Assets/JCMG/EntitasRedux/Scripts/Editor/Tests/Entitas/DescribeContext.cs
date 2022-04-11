@@ -807,7 +807,7 @@ namespace EntitasRedux.Tests
 				(arg1, arg2) => string.Empty);
 
 			var entityIndex2 = new PrimaryEntityIndex<MyTestEntity, string>(
-				"TestIndex",
+				"TestIndex2",
 				_defaultContext.GetGroup(Matcher<MyTestEntity>.AllOf(componentIndex)),
 				(arg1, arg2) => string.Empty);
 
