@@ -56,6 +56,14 @@ namespace EntitasRedux.Core.Plugins
 	#endif
 
 	#if !ENTITAS_REDUX_NO_SHARED_CONTEXT
+	/// <summary>
+	/// A globally-accessible singleton instance of <see cref=""Contexts""/>. Instantiated
+	/// the first time its <see langword=""get""/> property is used.
+	/// </summary>
+	/// <remarks>
+	/// If your project forbids global singletons like this one, add a <c>#define</c> named <c>ENTITAS_REDUX_NO_SHARED_CONTEXT</c>
+	/// to its build settings. Doing so will remove this property to prevent accidental use.
+	/// </remarks>
 	public static Contexts SharedInstance
 	{
 		get
