@@ -58,11 +58,13 @@ namespace EntitasRedux.Core.Plugins
 
 public class ${ContextName}CleanupSystems : JCMG.EntitasRedux.Systems
 {
+	#if !ENTITAS_REDUX_NO_SHARED_CONTEXT
 	public ${ContextName}CleanupSystems() : base()
 	{
 		var context = Contexts.SharedInstance.${ContextName};
 {AddCleanupSystems}
 	}
+	#endif
 
 	public ${ContextName}CleanupSystems(IContext<${ContextName}Entity> context) : base()
 	{

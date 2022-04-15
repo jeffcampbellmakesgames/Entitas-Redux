@@ -33,7 +33,7 @@ namespace EntitasRedux.Core.Plugins
 		private const string TEMPLATE =
 @"public partial class Contexts : JCMG.EntitasRedux.IContexts
 {
-	#if UNITY_EDITOR
+	#if UNITY_EDITOR && !ENTITAS_REDUX_NO_SHARED_CONTEXT
 
 	static Contexts()
 	{
@@ -55,6 +55,7 @@ namespace EntitasRedux.Core.Plugins
 
 	#endif
 
+	#if !ENTITAS_REDUX_NO_SHARED_CONTEXT
 	public static Contexts SharedInstance
 	{
 		get
@@ -70,6 +71,7 @@ namespace EntitasRedux.Core.Plugins
 	}
 
 	static Contexts _sharedInstance;
+	#endif
 
 ${contextPropertiesList}
 

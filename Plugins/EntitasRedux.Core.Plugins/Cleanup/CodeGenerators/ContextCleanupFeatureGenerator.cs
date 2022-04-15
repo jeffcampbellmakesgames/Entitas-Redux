@@ -58,10 +58,12 @@ namespace EntitasRedux.Core.Plugins
 
 public class ${ContextName}CleanupFeature : Feature
 {
+	#if !ENTITAS_REDUX_NO_SHARED_CONTEXT
 	public ${ContextName}CleanupFeature() : base()
 	{
 		AddSystems(Contexts.SharedInstance.${ContextName});
 	}
+	#endif
 
 	public ${ContextName}CleanupFeature(IContext<${ContextName}Entity> context) : base()
 	{
