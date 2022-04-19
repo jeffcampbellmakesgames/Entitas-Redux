@@ -144,7 +144,9 @@ namespace EntitasRedux.Core.Plugins
 					contextType.GetFullTypeName().ShortTypeName().RemoveContextSuffix()
 				});
 
-			var getMethods = contextType.GetAllMembers()
+			var getMethods = cachedNamedTypeSymbol
+				.NamedTypeSymbol
+				.GetAllMembers()
 				.Where(method => method.HasAttribute<EntityIndexGetMethodAttribute>())
 				.Select(
 					method => new MethodData(
