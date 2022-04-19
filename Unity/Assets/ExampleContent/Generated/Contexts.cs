@@ -75,6 +75,7 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 
 public partial class Contexts
 {
+	public const string ExampleContentVisualDebuggingCustomIndexesColorPositionEntityIndex = "ExampleContentVisualDebuggingCustomIndexesColorPositionEntityIndex";
 	public const string IndexedEntity = "IndexedEntity";
 	public const string IndexedPrimary = "IndexedPrimary";
 
@@ -97,7 +98,10 @@ public partial class Contexts
 
 public static class ContextsExtensions
 {
-
+	public static System.Collections.Generic.HashSet<VisualDebugEntity> GetColorEntitiesAtPosition(this VisualDebugContext context, ExampleContent.VisualDebugging.IntVector2 pos)
+	{
+		return ((ExampleContent.VisualDebugging.CustomIndexes.ColorPositionEntityIndex)(context.GetEntityIndex(Contexts.ExampleContentVisualDebuggingCustomIndexesColorPositionEntityIndex))).GetColorEntitiesAtPosition(pos);
+	}
 
 	public static System.Collections.Generic.HashSet<VisualDebugEntity> GetEntitiesWithIndexedEntity(this VisualDebugContext context, int id)
 	{
