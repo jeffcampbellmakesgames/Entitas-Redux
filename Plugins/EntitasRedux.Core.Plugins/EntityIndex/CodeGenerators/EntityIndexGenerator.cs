@@ -83,7 +83,6 @@ ${getIndices}
 			var indexConstants = string.Join(
 				"\n",
 				data
-					.Where(x => !x.IsCustom())
 					.Select(
 						d => INDEX_CONSTANTS_TEMPLATE
 							.Replace(
