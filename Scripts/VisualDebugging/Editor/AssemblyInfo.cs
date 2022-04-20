@@ -26,10 +26,10 @@ THE SOFTWARE.
 using System.Reflection;
 
 [assembly: AssemblyCompany("Jeff Campbell")]
-[assembly: AssemblyFileVersion("2.1.2")]
-[assembly: AssemblyInformationalVersion("2.1.2+4.Branch.develop.Sha.1cc031f2293c96e937e0381949a61b67684d7471")]
+[assembly: AssemblyFileVersion("2.1.3")]
+[assembly: AssemblyInformationalVersion("2.1.3+15.Branch.develop.Sha.3bf771953a941cb5e4e419e95cd38229a932bc2b")]
 [assembly: AssemblyProduct("EntitasRedux.VisualDebugging.Editor")]
 [assembly: AssemblyTitle("EntitasRedux.VisualDebugging.Editor")]
 [assembly: AssemblyMetadata("RepositoryUrl", "https://github.com/jeffcampbellmakesgames/Entitas-Redux.git")]
 
-[assembly: AssemblyVersion("2.1.2")]
+[assembly: AssemblyVersion("2.1.3")]
