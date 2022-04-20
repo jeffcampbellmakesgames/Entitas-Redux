@@ -5,9 +5,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Releases]
-### [2.1.1] - 2022-02-27
+### [2.1.3] - 2022-04-20
 #### Fixes
-* Updated Genesis min package version to include bug fix for CLI installation paths with spaces in folder names.
+* Updated Genesis min package version to include bug fix for CLI installation paths with spaces in folder names when importing config contents
+* Fixed bug with custom entity index generation where parts of code-gen were not being output.
+
+#### Changes
+* Added optional ENTITAS_REDUX_NO_SHARED_CONTEXT define to enable compiling out usage of `Contexts.SharedInstance`.
+* Added `IContext.EntityIndices` to enable returning a read-only collection of all entity indexes for that context.
+
+## [Releases]
+### [2.1.2] - 2022-02-27
+#### Fixes
+* Updated Genesis min package version to include bug fix for CLI installation paths with spaces in folder names when generating code.
 
 #### Changes
 * Added author details to ER package manifest.
