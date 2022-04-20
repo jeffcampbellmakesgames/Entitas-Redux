@@ -2,10 +2,12 @@ using JCMG.EntitasRedux;
 
 public class VisualDebugCleanupFeature : Feature
 {
+	#if !ENTITAS_REDUX_NO_SHARED_CONTEXT
 	public VisualDebugCleanupFeature() : base()
 	{
 		AddSystems(Contexts.SharedInstance.VisualDebug);
 	}
+	#endif
 
 	public VisualDebugCleanupFeature(IContext<VisualDebugEntity> context) : base()
 	{

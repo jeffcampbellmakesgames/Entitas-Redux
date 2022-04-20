@@ -1,6 +1,6 @@
 public partial class Contexts : JCMG.EntitasRedux.IContexts
 {
-	#if UNITY_EDITOR
+	#if UNITY_EDITOR && !ENTITAS_REDUX_NO_SHARED_CONTEXT
 
 	static Contexts()
 	{
@@ -22,6 +22,15 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 
 	#endif
 
+	#if !ENTITAS_REDUX_NO_SHARED_CONTEXT
+	/// <summary>
+	/// A globally-accessible singleton instance of <see cref="Contexts"/>. Instantiated
+	/// the first time its <see langword="get"/> property is used.
+	/// </summary>
+	/// <remarks>
+	/// If your project forbids global singletons like this one, add a <c>#define</c> named <c>ENTITAS_REDUX_NO_SHARED_CONTEXT</c>
+	/// to its build settings. Doing so will remove this property to prevent accidental use.
+	/// </remarks>
 	public static Contexts SharedInstance
 	{
 		get
@@ -37,6 +46,7 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 	}
 
 	static Contexts _sharedInstance;
+	#endif
 
 	public EmptyContext Empty { get; set; }
 	public ExampleContext Example { get; set; }
@@ -75,6 +85,7 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 
 public partial class Contexts
 {
+	public const string ExampleContentVisualDebuggingCustomIndexesColorPositionEntityIndex = "ExampleContentVisualDebuggingCustomIndexesColorPositionEntityIndex";
 	public const string IndexedEntity = "IndexedEntity";
 	public const string IndexedPrimary = "IndexedPrimary";
 
@@ -97,7 +108,10 @@ public partial class Contexts
 
 public static class ContextsExtensions
 {
-
+	public static System.Collections.Generic.HashSet<VisualDebugEntity> GetColorEntitiesAtPosition(this VisualDebugContext context, ExampleContent.VisualDebugging.IntVector2 pos)
+	{
+		return ((ExampleContent.VisualDebugging.CustomIndexes.ColorPositionEntityIndex)(context.GetEntityIndex(Contexts.ExampleContentVisualDebuggingCustomIndexesColorPositionEntityIndex))).GetColorEntitiesAtPosition(pos);
+	}
 
 	public static System.Collections.Generic.HashSet<VisualDebugEntity> GetEntitiesWithIndexedEntity(this VisualDebugContext context, int id)
 	{

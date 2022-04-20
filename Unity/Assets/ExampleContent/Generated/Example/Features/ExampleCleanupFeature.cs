@@ -2,10 +2,12 @@ using JCMG.EntitasRedux;
 
 public class ExampleCleanupFeature : Feature
 {
+	#if !ENTITAS_REDUX_NO_SHARED_CONTEXT
 	public ExampleCleanupFeature() : base()
 	{
 		AddSystems(Contexts.SharedInstance.Example);
 	}
+	#endif
 
 	public ExampleCleanupFeature(IContext<ExampleEntity> context) : base()
 	{

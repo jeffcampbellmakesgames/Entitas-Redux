@@ -1,6 +1,6 @@
 public partial class Contexts : JCMG.EntitasRedux.IContexts
 {
-	#if UNITY_EDITOR
+	#if UNITY_EDITOR && !ENTITAS_REDUX_NO_SHARED_CONTEXT
 
 	static Contexts()
 	{
@@ -22,6 +22,15 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 
 	#endif
 
+	#if !ENTITAS_REDUX_NO_SHARED_CONTEXT
+	/// <summary>
+	/// A globally-accessible singleton instance of <see cref="Contexts"/>. Instantiated
+	/// the first time its <see langword="get"/> property is used.
+	/// </summary>
+	/// <remarks>
+	/// If your project forbids global singletons like this one, add a <c>#define</c> named <c>ENTITAS_REDUX_NO_SHARED_CONTEXT</c>
+	/// to its build settings. Doing so will remove this property to prevent accidental use.
+	/// </remarks>
 	public static Contexts SharedInstance
 	{
 		get
@@ -37,6 +46,7 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 	}
 
 	static Contexts _sharedInstance;
+	#endif
 
 	public GameContext Game { get; set; }
 	public MyTestContext MyTest { get; set; }
@@ -77,6 +87,7 @@ public partial class Contexts : JCMG.EntitasRedux.IContexts
 
 public partial class Contexts
 {
+	public const string EntitasReduxTestsMyCustomEntityIndex = "EntitasReduxTestsMyCustomEntityIndex";
 	public const string EntityIndex = "EntityIndex";
 	public const string EntityIndexNoContext = "EntityIndexNoContext";
 	public const string MultipleEntityIndicesValue = "MultipleEntityIndicesValue";
@@ -141,7 +152,14 @@ public partial class Contexts
 
 public static class ContextsExtensions
 {
-
+	public static System.Collections.Generic.HashSet<TestEntity> GetEntitiesWithPosition(this TestContext context, EntitasRedux.Tests.IntVector2 position)
+	{
+		return ((EntitasRedux.Tests.MyCustomEntityIndex)(context.GetEntityIndex(Contexts.EntitasReduxTestsMyCustomEntityIndex))).GetEntitiesWithPosition(position);
+	}
+	public static System.Collections.Generic.HashSet<TestEntity> GetEntitiesWithPosition2(this TestContext context, EntitasRedux.Tests.IntVector2 position, EntitasRedux.Tests.IntVector2 size)
+	{
+		return ((EntitasRedux.Tests.MyCustomEntityIndex)(context.GetEntityIndex(Contexts.EntitasReduxTestsMyCustomEntityIndex))).GetEntitiesWithPosition2(position, size);
+	}
 
 	public static System.Collections.Generic.HashSet<TestEntity> GetEntitiesWithEntityIndex(this TestContext context, string value)
 	{

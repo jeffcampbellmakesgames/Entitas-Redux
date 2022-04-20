@@ -454,6 +454,9 @@ namespace JCMG.EntitasRedux
 			return entityIndex;
 		}
 
+		/// <inheritdoc />
+		public IReadOnlyCollection<IEntityIndex> EntityIndices => _entityIndices.Values;
+
 		/// <summary>
 		/// Resets the creationIndex back to 0.
 		/// </summary>

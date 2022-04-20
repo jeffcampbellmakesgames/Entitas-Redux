@@ -12,8 +12,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Genesis.Plugin" Version="2.3.2" />
-    <PackageReference Include="System.CodeDom" Version="5.0.0" />
+    <PackageReference Include="Genesis.Plugin" Version="2.4.6" />
+    <PackageReference Include="System.CodeDom" Version="6.0.0" />
   </ItemGroup>
 
   <ItemGroup>
