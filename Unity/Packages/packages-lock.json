@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.jeffcampbellmakesgames.genesis": {
-      "version": "2.4.6",
+      "version": "2.4.7",
       "depth": 0,
       "source": "registry",
       "dependencies": {
