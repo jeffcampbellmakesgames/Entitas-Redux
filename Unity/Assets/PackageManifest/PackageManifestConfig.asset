@@ -33,7 +33,7 @@ MonoBehaviour:
   keywords: []
   dependencies:
   - packageName: com.jeffcampbellmakesgames.genesis
-    packageVersion: 2.4.6
+    packageVersion: 2.4.7
   versionConstantsPath: Assets/JCMG/EntitasRedux/Scripts
   versionTemplateGuid: 5037ab3a74375fd4b87e04aa5f278380
   _id: 6c31b17e-d755-422c-88ff-421b4c2fed29
