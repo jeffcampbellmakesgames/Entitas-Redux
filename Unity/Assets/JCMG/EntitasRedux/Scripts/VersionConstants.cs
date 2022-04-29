@@ -33,26 +33,26 @@ namespace JCMG.EntitasRedux
 		/// <summary>
 		/// The semantic version
 		/// </summary>
-		public const string VERSION = "2.1.3";
+		public const string VERSION = "2.1.4";
 
 		/// <summary>
 		/// The branch of GIT this package was published from.
 		/// </summary>
-		public const string GIT_BRANCH = "develop";
+		public const string GIT_BRANCH = "";
 
 		/// <summary>
 		/// The current GIT commit hash this package was published on.
 		/// </summary>
-		public const string GIT_COMMIT = "3bf771953a941cb5e4e419e95cd38229a932bc2b";
+		public const string GIT_COMMIT = "";
 
 		/// <summary>
 		/// The UTC human-readable date this package was published at.
 		/// </summary>
-		public const string PUBLISH_DATE = "Wednesday, 20 April 2022";
+		public const string PUBLISH_DATE = "Friday, 29 April 2022";
 
 		/// <summary>
 		/// The UTC time this package was published at.
 		/// </summary>
-		public const string PUBLISH_TIME = "04/20/2022 13:20:25";
+		public const string PUBLISH_TIME = "04/29/2022 11:30:54";
 	}
 }
